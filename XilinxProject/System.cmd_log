@@ -1,0 +1,6 @@
+sch2sym -intstyle ise -family spartan6 -refsym System C:/Users/Phillip/Downloads/MS1553_Interface/MS1553_Interface/System.sch C:/Users/Phillip/Downloads/MS1553_Interface/MS1553_Interface/System.sym 
+xst -intstyle ise -ifn "C:/Users/Phillip/Downloads/MS1553_Interface/MS1553_Interface/System.xst" -ofn "C:/Users/Phillip/Downloads/MS1553_Interface/MS1553_Interface/System.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc6slx45t-fgg484-3 System.ngc System.ngd  
+map -intstyle ise -p xc6slx45t-fgg484-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o System_map.ncd System.ngd System.pcf 
+par -w -intstyle ise -ol high -mt off System_map.ncd System.ncd System.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml System.twx System.ncd -o System.twr System.pcf 

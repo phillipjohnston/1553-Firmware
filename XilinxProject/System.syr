@@ -1,0 +1,1362 @@
+Release 13.4 - xst O.87xd (nt)
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.54 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.54 secs
+ 
+--> Reading design: System.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Parsing
+  3) HDL Elaboration
+  4) HDL Synthesis
+       4.1) HDL Synthesis Report
+  5) Advanced HDL Synthesis
+       5.1) Advanced HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Partition Report
+  8) Design Summary
+       8.1) Primitive and Black Box Usage
+       8.2) Device utilization summary
+       8.3) Partition Resource Summary
+       8.4) Timing Report
+            8.4.1) Clock Information
+            8.4.2) Asynchronous Control Signals Information
+            8.4.3) Timing Summary
+            8.4.4) Timing Details
+            8.4.5) Cross Clock Domains Report
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "System.prj"
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "System"
+Output Format                      : NGC
+Target Device                      : xc6slx45t-3-fgg484
+
+---- Source Options
+Top Module Name                    : System
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Shift Register Extraction          : YES
+ROM Style                          : Auto
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Shift Register Minimum Size        : 2
+Use DSP Block                      : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+LUT Combining                      : Auto
+Reduce Control Sets                : Auto
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 16
+Register Duplication               : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Auto
+Use Synchronous Set                : Auto
+Use Synchronous Reset              : Auto
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Power Reduction                    : NO
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+DSP48 Utilization Ratio            : 100
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+INFO:Xst - Part-select index evaluated to out of bound value may lead to incorrect synthesis results; it is recommended not to use them in RTL
+
+=========================================================================
+*                          HDL Parsing                                  *
+=========================================================================
+Parsing VHDL file "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\DelayModule.vhd" into library work
+Parsing entity <DelayModule>.
+Parsing architecture <Behavioral> of entity <delaymodule>.
+Parsing VHDL file "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\mem_trans_writer.vhd" into library work
+Parsing entity <mem_trans_writer>.
+Parsing architecture <Behavioral> of entity <mem_trans_writer>.
+Parsing VHDL file "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\mem_trans_reader.vhd" into library work
+Parsing entity <mem_trans_reader>.
+Parsing architecture <Behavioral> of entity <mem_trans_reader>.
+Parsing VHDL file "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\Latch8Bit.vhd" into library work
+Parsing entity <Latch8Bit>.
+Parsing architecture <Behavioral> of entity <latch8bit>.
+Parsing VHDL file "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\Latch16Bit.vhd" into library work
+Parsing entity <Latch16Bit>.
+Parsing architecture <Behavioral> of entity <latch16bit>.
+Parsing VHDL file "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\Latch.vhd" into library work
+Parsing entity <Latch>.
+Parsing architecture <Behavioral> of entity <latch>.
+Parsing VHDL file "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\MS1553_Reset_Pulse_Gen.vhd" into library work
+Parsing entity <MS1553_Reset_Pulse_Gen>.
+Parsing architecture <Behavioral> of entity <ms1553_reset_pulse_gen>.
+Parsing VHDL file "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\MS1553_master.vhd" into library work
+Parsing entity <MS1553_master>.
+Parsing architecture <Behavioral> of entity <ms1553_master>.
+Parsing VHDL file "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\holt_mem_trans.vhd" into library work
+Parsing entity <holt_mem_trans>.
+Parsing architecture <Behavioral> of entity <holt_mem_trans>.
+Parsing VHDL file "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\holt_initializer.vhd" into library work
+Parsing entity <holt_initializer>.
+Parsing architecture <Behavioral> of entity <holt_initializer>.
+Parsing VHDL file "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\convers_c.vhd" into library work
+Parsing package <conversion>.
+Parsing package body <conversion>.
+Parsing VHDL file "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\MS1553_Controller.vhf" into library work
+Parsing entity <MS1553_Controller>.
+Parsing architecture <BEHAVIORAL> of entity <ms1553_controller>.
+Parsing VHDL file "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\i8085_c.vhd" into library work
+Parsing entity <I8085_c>.
+Parsing architecture <BEHAVIOR> of entity <i8085_c>.
+Parsing VHDL file "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\System.vhf" into library work
+Parsing entity <MS1553_Controller_MUSER_System>.
+Parsing architecture <BEHAVIORAL> of entity <ms1553_controller_muser_system>.
+Parsing entity <System>.
+Parsing architecture <BEHAVIORAL> of entity <system>.
+
+=========================================================================
+*                            HDL Elaboration                            *
+=========================================================================
+
+Elaborating entity <System> (architecture <BEHAVIORAL>) from library <work>.
+
+Elaborating entity <I8085_c> (architecture <BEHAVIOR>) from library <work>.
+INFO:HDLCompiler:679 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\i8085_c.vhd" Line 443. Case statement is complete. others clause is never selected
+INFO:HDLCompiler:679 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\i8085_c.vhd" Line 467. Case statement is complete. others clause is never selected
+INFO:HDLCompiler:679 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\i8085_c.vhd" Line 488. Case statement is complete. others clause is never selected
+INFO:HDLCompiler:679 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\i8085_c.vhd" Line 509. Case statement is complete. others clause is never selected
+INFO:HDLCompiler:679 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\i8085_c.vhd" Line 527. Case statement is complete. others clause is never selected
+INFO:HDLCompiler:679 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\i8085_c.vhd" Line 540. Case statement is complete. others clause is never selected
+INFO:HDLCompiler:679 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\i8085_c.vhd" Line 744. Case statement is complete. others clause is never selected
+INFO:HDLCompiler:679 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\i8085_c.vhd" Line 757. Case statement is complete. others clause is never selected
+INFO:HDLCompiler:679 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\i8085_c.vhd" Line 773. Case statement is complete. others clause is never selected
+INFO:HDLCompiler:679 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\i8085_c.vhd" Line 973. Case statement is complete. others clause is never selected
+INFO:HDLCompiler:679 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\i8085_c.vhd" Line 976. Case statement is complete. others clause is never selected
+INFO:HDLCompiler:679 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\i8085_c.vhd" Line 1124. Case statement is complete. others clause is never selected
+INFO:HDLCompiler:679 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\i8085_c.vhd" Line 1200. Case statement is complete. others clause is never selected
+INFO:HDLCompiler:679 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\i8085_c.vhd" Line 1210. Case statement is complete. others clause is never selected
+INFO:HDLCompiler:679 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\i8085_c.vhd" Line 1276. Case statement is complete. others clause is never selected
+INFO:HDLCompiler:679 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\i8085_c.vhd" Line 1290. Case statement is complete. others clause is never selected
+INFO:HDLCompiler:679 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\i8085_c.vhd" Line 1519. Case statement is complete. others clause is never selected
+INFO:HDLCompiler:679 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\i8085_c.vhd" Line 1628. Case statement is complete. others clause is never selected
+INFO:HDLCompiler:679 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\i8085_c.vhd" Line 1659. Case statement is complete. others clause is never selected
+INFO:HDLCompiler:679 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\i8085_c.vhd" Line 1754. Case statement is complete. others clause is never selected
+INFO:HDLCompiler:679 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\i8085_c.vhd" Line 1826. Case statement is complete. others clause is never selected
+INFO:HDLCompiler:679 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\i8085_c.vhd" Line 1828. Case statement is complete. others clause is never selected
+WARNING:HDLCompiler:92 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\i8085_c.vhd" Line 1874: resetinbar should be on the sensitivity list of the process
+WARNING:HDLCompiler:92 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\i8085_c.vhd" Line 2010: prio_encode should be on the sensitivity list of the process
+WARNING:HDLCompiler:92 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\i8085_c.vhd" Line 2043: trap should be on the sensitivity list of the process
+WARNING:HDLCompiler:92 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\i8085_c.vhd" Line 2046: m75ff should be on the sensitivity list of the process
+WARNING:HDLCompiler:92 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\i8085_c.vhd" Line 2047: m65ff should be on the sensitivity list of the process
+WARNING:HDLCompiler:92 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\i8085_c.vhd" Line 2048: m55ff should be on the sensitivity list of the process
+WARNING:HDLCompiler:92 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\i8085_c.vhd" Line 2049: intr should be on the sensitivity list of the process
+
+Elaborating entity <MS1553_Controller_MUSER_System> (architecture <BEHAVIORAL>) from library <work>.
+
+Elaborating entity <holt_initializer> (architecture <Behavioral>) from library <work>.
+
+Elaborating entity <holt_mem_trans> (architecture <Behavioral>) from library <work>.
+
+Elaborating entity <mem_trans_reader> (architecture <Behavioral>) from library <work>.
+
+Elaborating entity <DelayModule> (architecture <Behavioral>) from library <work>.
+WARNING:HDLCompiler:92 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\mem_trans_reader.vhd" Line 98: address_in should be on the sensitivity list of the process
+WARNING:HDLCompiler:92 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\mem_trans_reader.vhd" Line 111: address_in should be on the sensitivity list of the process
+WARNING:HDLCompiler:92 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\mem_trans_reader.vhd" Line 118: address_in should be on the sensitivity list of the process
+WARNING:HDLCompiler:92 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\mem_trans_reader.vhd" Line 132: address_in should be on the sensitivity list of the process
+WARNING:HDLCompiler:92 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\mem_trans_reader.vhd" Line 141: address_in should be on the sensitivity list of the process
+WARNING:HDLCompiler:92 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\mem_trans_reader.vhd" Line 163: address_in should be on the sensitivity list of the process
+WARNING:HDLCompiler:92 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\mem_trans_reader.vhd" Line 172: nrd should be on the sensitivity list of the process
+
+Elaborating entity <mem_trans_writer> (architecture <Behavioral>) from library <work>.
+WARNING:HDLCompiler:92 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\mem_trans_writer.vhd" Line 90: address_in should be on the sensitivity list of the process
+WARNING:HDLCompiler:92 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\mem_trans_writer.vhd" Line 91: data_0 should be on the sensitivity list of the process
+WARNING:HDLCompiler:92 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\mem_trans_writer.vhd" Line 102: address_in should be on the sensitivity list of the process
+WARNING:HDLCompiler:92 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\mem_trans_writer.vhd" Line 111: address_in should be on the sensitivity list of the process
+WARNING:HDLCompiler:92 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\mem_trans_writer.vhd" Line 112: data_0 should be on the sensitivity list of the process
+WARNING:HDLCompiler:92 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\mem_trans_writer.vhd" Line 124: address_in should be on the sensitivity list of the process
+WARNING:HDLCompiler:92 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\mem_trans_writer.vhd" Line 130: data_1 should be on the sensitivity list of the process
+WARNING:HDLCompiler:92 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\mem_trans_writer.vhd" Line 133: address_in should be on the sensitivity list of the process
+WARNING:HDLCompiler:92 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\mem_trans_writer.vhd" Line 155: address_in should be on the sensitivity list of the process
+WARNING:HDLCompiler:92 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\mem_trans_writer.vhd" Line 161: data_1 should be on the sensitivity list of the process
+WARNING:HDLCompiler:92 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\mem_trans_writer.vhd" Line 165: nwr should be on the sensitivity list of the process
+
+Elaborating entity <Latch8Bit> (architecture <Behavioral>) from library <work>.
+
+Elaborating entity <Latch16Bit> (architecture <Behavioral>) from library <work>.
+
+Elaborating entity <Latch> (architecture <Behavioral>) from library <work>.
+WARNING:HDLCompiler:92 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\holt_mem_trans.vhd" Line 184: address_in should be on the sensitivity list of the process
+WARNING:HDLCompiler:92 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\holt_mem_trans.vhd" Line 195: address_in should be on the sensitivity list of the process
+
+Elaborating entity <MS1553_master> (architecture <Behavioral>) from library <work>.
+WARNING:HDLCompiler:92 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\MS1553_master.vhd" Line 186: ale should be on the sensitivity list of the process
+
+Elaborating entity <MS1553_Reset_Pulse_Gen> (architecture <Behavioral>) from library <work>.
+WARNING:HDLCompiler:634 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\System.vhf" Line 229: Net <XLXI_1_HOLD_openSignal> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\System.vhf" Line 230: Net <XLXI_1_INTR_openSignal> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\System.vhf" Line 231: Net <XLXI_1_READY_openSignal> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\System.vhf" Line 232: Net <XLXI_1_RESETINBAR_openSignal> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\System.vhf" Line 233: Net <XLXI_1_RST55_openSignal> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\System.vhf" Line 234: Net <XLXI_1_RST65_openSignal> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\System.vhf" Line 235: Net <XLXI_1_RST75_openSignal> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\System.vhf" Line 236: Net <XLXI_1_SID_openSignal> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\System.vhf" Line 237: Net <XLXI_1_TRAP_openSignal> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\System.vhf" Line 238: Net <XLXI_1_X1_openSignal> does not have a driver.
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Synthesizing Unit <System>.
+    Related source file is "c:/users/phillip/downloads/ms1553_interface/ms1553_interface/system.vhf".
+INFO:Xst:3210 - "c:/users/phillip/downloads/ms1553_interface/ms1553_interface/system.vhf" line 291: Output port <RESETOUT> of the instance <XLXI_1> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "c:/users/phillip/downloads/ms1553_interface/ms1553_interface/system.vhf" line 291: Output port <SOD> of the instance <XLXI_1> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "c:/users/phillip/downloads/ms1553_interface/ms1553_interface/system.vhf" line 291: Output port <INTABAR> of the instance <XLXI_1> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "c:/users/phillip/downloads/ms1553_interface/ms1553_interface/system.vhf" line 291: Output port <S0> of the instance <XLXI_1> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "c:/users/phillip/downloads/ms1553_interface/ms1553_interface/system.vhf" line 291: Output port <S1> of the instance <XLXI_1> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "c:/users/phillip/downloads/ms1553_interface/ms1553_interface/system.vhf" line 291: Output port <CLKOUT> of the instance <XLXI_1> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "c:/users/phillip/downloads/ms1553_interface/ms1553_interface/system.vhf" line 291: Output port <HLDA> of the instance <XLXI_1> is unconnected or connected to loadless signal.
+WARNING:Xst:653 - Signal <XLXI_1_HOLD_openSignal> is used but never assigned. This sourceless signal will be automatically connected to value GND.
+WARNING:Xst:653 - Signal <XLXI_1_INTR_openSignal> is used but never assigned. This sourceless signal will be automatically connected to value GND.
+WARNING:Xst:653 - Signal <XLXI_1_READY_openSignal> is used but never assigned. This sourceless signal will be automatically connected to value GND.
+WARNING:Xst:653 - Signal <XLXI_1_RESETINBAR_openSignal> is used but never assigned. This sourceless signal will be automatically connected to value GND.
+WARNING:Xst:653 - Signal <XLXI_1_RST55_openSignal> is used but never assigned. This sourceless signal will be automatically connected to value GND.
+WARNING:Xst:653 - Signal <XLXI_1_RST65_openSignal> is used but never assigned. This sourceless signal will be automatically connected to value GND.
+WARNING:Xst:653 - Signal <XLXI_1_RST75_openSignal> is used but never assigned. This sourceless signal will be automatically connected to value GND.
+WARNING:Xst:653 - Signal <XLXI_1_SID_openSignal> is used but never assigned. This sourceless signal will be automatically connected to value GND.
+WARNING:Xst:653 - Signal <XLXI_1_TRAP_openSignal> is used but never assigned. This sourceless signal will be automatically connected to value GND.
+WARNING:Xst:653 - Signal <XLXI_1_X1_openSignal> is used but never assigned. This sourceless signal will be automatically connected to value GND.
+    Summary:
+	no macro.
+Unit <System> synthesized.
+
+Synthesizing Unit <I8085_c>.
+    Related source file is "c:/users/phillip/downloads/ms1553_interface/ms1553_interface/i8085_c.vhd".
+    Register <RST75FF> equivalent to <RESETOUTFF> has been removed
+    Found 1-bit register for signal <RD2>.
+    Found 1-bit register for signal <WR1>.
+    Found 1-bit register for signal <RESETOUTFF>.
+    Found 1-bit register for signal <HLTAFF>.
+    Found 1-bit register for signal <INTEFF>.
+    Found 1-bit register for signal <M75FF>.
+    Found 1-bit register for signal <M65FF>.
+    Found 1-bit register for signal <M55FF>.
+    Found 1-bit register for signal <FETCH_F_WZ>.
+    Found 1-bit register for signal <SOD_FF>.
+    Found 1-bit register for signal <END_INST_flag>.
+    Found 1-bit register for signal <CY>.
+    Found 1-bit register for signal <IGROUP[1]_X1_DFF_51_q>.
+    Found 16-bit register for signal <ADDRESS_OUT>.
+    Found 9-bit register for signal <P2.ALU_OUT>.
+    Found 16-bit register for signal <P2.B16BCTR>.
+    Found 8-bit register for signal <TEMP>.
+    Found 8-bit register for signal <C>.
+    Found 8-bit register for signal <E>.
+    Found 8-bit register for signal <L>.
+    Found 8-bit register for signal <B>.
+    Found 8-bit register for signal <D>.
+    Found 8-bit register for signal <H>.
+    Found 8-bit register for signal <Z_reg>.
+    Found 8-bit register for signal <W_reg>.
+    Found 8-bit register for signal <P2.temp_MOV>.
+    Found 1-bit register for signal <CC_TEST>.
+    Found 1-bit register for signal <PWR_81_o_X1_DFF_71>.
+    Found 1-bit register for signal <HOLDFF>.
+    Found 1-bit register for signal <HLDA>.
+    Found 1-bit register for signal <INTA>.
+    Found 1-bit register for signal <EI_FF>.
+    Found 1-bit register for signal <EI_ENABLE>.
+    Found 1-bit register for signal <RD1>.
+    Found 1-bit register for signal <PC<15>>.
+    Found 1-bit register for signal <PC<14>>.
+    Found 1-bit register for signal <PC<13>>.
+    Found 1-bit register for signal <PC<12>>.
+    Found 1-bit register for signal <PC<11>>.
+    Found 1-bit register for signal <PC<10>>.
+    Found 1-bit register for signal <PC<9>>.
+    Found 1-bit register for signal <PC<8>>.
+    Found 1-bit register for signal <PC<7>>.
+    Found 1-bit register for signal <PC<6>>.
+    Found 1-bit register for signal <PC<5>>.
+    Found 1-bit register for signal <PC<4>>.
+    Found 1-bit register for signal <PC<3>>.
+    Found 1-bit register for signal <PC<2>>.
+    Found 1-bit register for signal <PC<1>>.
+    Found 1-bit register for signal <PC<0>>.
+    Found 1-bit register for signal <P2.LAST_OP<4>>.
+    Found 1-bit register for signal <P2.LAST_OP<3>>.
+    Found 1-bit register for signal <P2.LAST_OP<2>>.
+    Found 1-bit register for signal <P2.LAST_OP<1>>.
+    Found 1-bit register for signal <P2.LAST_OP<0>>.
+    Found 1-bit register for signal <DBUF<7>>.
+    Found 1-bit register for signal <DBUF<6>>.
+    Found 1-bit register for signal <DBUF<5>>.
+    Found 1-bit register for signal <DBUF<4>>.
+    Found 1-bit register for signal <DBUF<3>>.
+    Found 1-bit register for signal <DBUF<2>>.
+    Found 1-bit register for signal <DBUF<1>>.
+    Found 1-bit register for signal <DBUF<0>>.
+    Found 1-bit register for signal <ACC<7>>.
+    Found 1-bit register for signal <ACC<6>>.
+    Found 1-bit register for signal <ACC<5>>.
+    Found 1-bit register for signal <ACC<4>>.
+    Found 1-bit register for signal <ACC<3>>.
+    Found 1-bit register for signal <ACC<2>>.
+    Found 1-bit register for signal <ACC<1>>.
+    Found 1-bit register for signal <ACC<0>>.
+    Found 1-bit register for signal <ACT<7>>.
+    Found 1-bit register for signal <ACT<6>>.
+    Found 1-bit register for signal <ACT<5>>.
+    Found 1-bit register for signal <ACT<4>>.
+    Found 1-bit register for signal <ACT<3>>.
+    Found 1-bit register for signal <ACT<2>>.
+    Found 1-bit register for signal <ACT<1>>.
+    Found 1-bit register for signal <ACT<0>>.
+    Found 1-bit register for signal <IGROUP<1>>.
+    Found 1-bit register for signal <IGROUP<0>>.
+    Found 1-bit register for signal <DDD<2>>.
+    Found 1-bit register for signal <DDD<1>>.
+    Found 1-bit register for signal <DDD<0>>.
+    Found 1-bit register for signal <SSS<2>>.
+    Found 1-bit register for signal <SSS<1>>.
+    Found 1-bit register for signal <SSS<0>>.
+    Found 1-bit register for signal <SP<15>>.
+    Found 1-bit register for signal <SP<14>>.
+    Found 1-bit register for signal <SP<13>>.
+    Found 1-bit register for signal <SP<12>>.
+    Found 1-bit register for signal <SP<11>>.
+    Found 1-bit register for signal <SP<10>>.
+    Found 1-bit register for signal <SP<9>>.
+    Found 1-bit register for signal <SP<8>>.
+    Found 1-bit register for signal <SP<7>>.
+    Found 1-bit register for signal <SP<6>>.
+    Found 1-bit register for signal <SP<5>>.
+    Found 1-bit register for signal <SP<4>>.
+    Found 1-bit register for signal <SP<3>>.
+    Found 1-bit register for signal <SP<2>>.
+    Found 1-bit register for signal <SP<1>>.
+    Found 1-bit register for signal <SP<0>>.
+    Found 1-bit register for signal <TSTATES<3>>.
+    Found 1-bit register for signal <TSTATES<2>>.
+    Found 1-bit register for signal <TSTATES<1>>.
+    Found 1-bit register for signal <TSTATES<0>>.
+    Found 1-bit register for signal <PRIO_ENCODE<2>>.
+    Found 1-bit register for signal <PRIO_ENCODE<1>>.
+    Found 1-bit register for signal <PRIO_ENCODE<0>>.
+    Found 1-bit register for signal <MCYCLE<2>>.
+    Found 1-bit register for signal <MCYCLE<1>>.
+    Found 1-bit register for signal <MCYCLE<0>>.
+    Found 1-bit tristate buffer for signal <IOMBAR> created at line 230
+    Found 1-bit tristate buffer for signal <RDBAR> created at line 1858
+    Found 1-bit tristate buffer for signal <WRBAR> created at line 1858
+    Summary:
+	inferred  16 D-type flip-flop(s).
+	inferred   3 Tristate(s).
+Unit <I8085_c> synthesized.
+
+Synthesizing Unit <MS1553_Controller_MUSER_System>.
+    Related source file is "c:/users/phillip/downloads/ms1553_interface/ms1553_interface/system.vhf".
+    Summary:
+	no macro.
+Unit <MS1553_Controller_MUSER_System> synthesized.
+
+Synthesizing Unit <holt_initializer>.
+    Related source file is "c:/users/phillip/downloads/ms1553_interface/ms1553_interface/holt_initializer.vhd".
+    Summary:
+	no macro.
+Unit <holt_initializer> synthesized.
+
+Synthesizing Unit <holt_mem_trans>.
+    Related source file is "c:/users/phillip/downloads/ms1553_interface/ms1553_interface/holt_mem_trans.vhd".
+WARNING:Xst:647 - Input <HWAIT> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Found 1-bit tristate buffer for signal <DATA<7>> created at line 151
+    Found 1-bit tristate buffer for signal <DATA<6>> created at line 151
+    Found 1-bit tristate buffer for signal <DATA<5>> created at line 151
+    Found 1-bit tristate buffer for signal <DATA<4>> created at line 151
+    Found 1-bit tristate buffer for signal <DATA<3>> created at line 151
+    Found 1-bit tristate buffer for signal <DATA<2>> created at line 151
+    Found 1-bit tristate buffer for signal <DATA<1>> created at line 151
+    Found 1-bit tristate buffer for signal <DATA<0>> created at line 151
+    Summary:
+	inferred  11 Multiplexer(s).
+	inferred   8 Tristate(s).
+Unit <holt_mem_trans> synthesized.
+
+Synthesizing Unit <mem_trans_reader>.
+    Related source file is "c:/users/phillip/downloads/ms1553_interface/ms1553_interface/mem_trans_reader.vhd".
+    Found 1-bit tristate buffer for signal <ADDRESS<15>> created at line 77
+    Found 1-bit tristate buffer for signal <ADDRESS<14>> created at line 77
+    Found 1-bit tristate buffer for signal <ADDRESS<13>> created at line 77
+    Found 1-bit tristate buffer for signal <ADDRESS<12>> created at line 77
+    Found 1-bit tristate buffer for signal <ADDRESS<11>> created at line 77
+    Found 1-bit tristate buffer for signal <ADDRESS<10>> created at line 77
+    Found 1-bit tristate buffer for signal <ADDRESS<9>> created at line 77
+    Found 1-bit tristate buffer for signal <ADDRESS<8>> created at line 77
+    Found 1-bit tristate buffer for signal <ADDRESS<7>> created at line 77
+    Found 1-bit tristate buffer for signal <ADDRESS<6>> created at line 77
+    Found 1-bit tristate buffer for signal <ADDRESS<5>> created at line 77
+    Found 1-bit tristate buffer for signal <ADDRESS<4>> created at line 77
+    Found 1-bit tristate buffer for signal <ADDRESS<3>> created at line 77
+    Found 1-bit tristate buffer for signal <ADDRESS<2>> created at line 77
+    Found 1-bit tristate buffer for signal <ADDRESS<1>> created at line 77
+    Found 1-bit tristate buffer for signal <ADDRESS<0>> created at line 77
+WARNING:Xst:737 - Found 1-bit latch for signal <READING_STATE[2]_READING_STATE[2]_DLATCH_2_q>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <READING_STATE[2]_READING_STATE[2]_DLATCH_3_q>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+    Found 1-bit tristate buffer for signal <DATA<7>> created at line 77
+    Found 1-bit tristate buffer for signal <DATA<6>> created at line 77
+    Found 1-bit tristate buffer for signal <DATA<5>> created at line 77
+    Found 1-bit tristate buffer for signal <DATA<4>> created at line 77
+    Found 1-bit tristate buffer for signal <DATA<3>> created at line 77
+    Found 1-bit tristate buffer for signal <DATA<2>> created at line 77
+    Found 1-bit tristate buffer for signal <DATA<1>> created at line 77
+WARNING:Xst:737 - Found 1-bit latch for signal <delay_needed<15>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+    Found 1-bit tristate buffer for signal <DATA<0>> created at line 77
+WARNING:Xst:737 - Found 1-bit latch for signal <delay_needed<4>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <delay_needed<2>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <delay_needed<0>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+    Summary:
+	inferred   6 Latch(s).
+	inferred  95 Multiplexer(s).
+	inferred  24 Tristate(s).
+Unit <mem_trans_reader> synthesized.
+
+Synthesizing Unit <DelayModule>.
+    Related source file is "c:/users/phillip/downloads/ms1553_interface/ms1553_interface/delaymodule.vhd".
+    Found 32-bit register for signal <count>.
+    Found 32-bit adder for signal <count[31]_GND_19_o_add_0_OUT> created at line 51.
+    Found 32-bit comparator equal for signal <GND_19_o_count[31]_equal_4_o> created at line 54
+    Summary:
+	inferred   1 Adder/Subtractor(s).
+	inferred  32 D-type flip-flop(s).
+	inferred   1 Comparator(s).
+Unit <DelayModule> synthesized.
+
+Synthesizing Unit <mem_trans_writer>.
+    Related source file is "c:/users/phillip/downloads/ms1553_interface/ms1553_interface/mem_trans_writer.vhd".
+WARNING:Xst:737 - Found 1-bit latch for signal <ADDRESS<14>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <ADDRESS<13>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <ADDRESS<12>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <ADDRESS<11>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <ADDRESS<10>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <ADDRESS<9>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <ADDRESS<8>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <ADDRESS<7>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <ADDRESS<6>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <ADDRESS<5>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <ADDRESS<4>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <ADDRESS<3>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <ADDRESS<2>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <ADDRESS<1>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <ADDRESS<0>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <WRITING_STATE[2]_WRITING_STATE[2]_DLATCH_49_q>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <WRITING_STATE[2]_WRITING_STATE[2]_DLATCH_50_q>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <WRITING_STATE[2]_WRITING_STATE[2]_DLATCH_51_q>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+    Found 1-bit tristate buffer for signal <DATA<7>> created at line 71
+WARNING:Xst:737 - Found 1-bit latch for signal <WRITING_STATE[2]_WRITING_STATE[2]_DLATCH_53_q>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+    Found 1-bit tristate buffer for signal <DATA<6>> created at line 71
+WARNING:Xst:737 - Found 1-bit latch for signal <WRITING_STATE[2]_WRITING_STATE[2]_DLATCH_55_q>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+    Found 1-bit tristate buffer for signal <DATA<5>> created at line 71
+WARNING:Xst:737 - Found 1-bit latch for signal <WRITING_STATE[2]_WRITING_STATE[2]_DLATCH_57_q>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+    Found 1-bit tristate buffer for signal <DATA<4>> created at line 71
+WARNING:Xst:737 - Found 1-bit latch for signal <WRITING_STATE[2]_WRITING_STATE[2]_DLATCH_59_q>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+    Found 1-bit tristate buffer for signal <DATA<3>> created at line 71
+WARNING:Xst:737 - Found 1-bit latch for signal <WRITING_STATE[2]_WRITING_STATE[2]_DLATCH_61_q>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+    Found 1-bit tristate buffer for signal <DATA<2>> created at line 71
+WARNING:Xst:737 - Found 1-bit latch for signal <WRITING_STATE[2]_WRITING_STATE[2]_DLATCH_63_q>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+    Found 1-bit tristate buffer for signal <DATA<1>> created at line 71
+WARNING:Xst:737 - Found 1-bit latch for signal <delay_needed<15>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+    Found 1-bit tristate buffer for signal <DATA<0>> created at line 71
+WARNING:Xst:737 - Found 1-bit latch for signal <delay_needed<2>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <delay_needed<0>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <ADDRESS<15>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+    Summary:
+	inferred  28 Latch(s).
+	inferred  83 Multiplexer(s).
+	inferred   8 Tristate(s).
+Unit <mem_trans_writer> synthesized.
+
+Synthesizing Unit <Latch8Bit>.
+    Related source file is "c:/users/phillip/downloads/ms1553_interface/ms1553_interface/latch8bit.vhd".
+WARNING:Xst:737 - Found 1-bit latch for signal <q<6>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <q<5>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <q<4>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <q<3>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <q<2>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <q<1>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <q<0>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <q<7>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+    Summary:
+	inferred   8 Latch(s).
+Unit <Latch8Bit> synthesized.
+
+Synthesizing Unit <Latch16Bit>.
+    Related source file is "c:/users/phillip/downloads/ms1553_interface/ms1553_interface/latch16bit.vhd".
+WARNING:Xst:737 - Found 1-bit latch for signal <q<14>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <q<13>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <q<12>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <q<11>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <q<10>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <q<9>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <q<8>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <q<7>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <q<6>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <q<5>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <q<4>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <q<3>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <q<2>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <q<1>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <q<0>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <q<15>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+    Summary:
+	inferred  16 Latch(s).
+Unit <Latch16Bit> synthesized.
+
+Synthesizing Unit <Latch>.
+    Related source file is "c:/users/phillip/downloads/ms1553_interface/ms1553_interface/latch.vhd".
+WARNING:Xst:737 - Found 1-bit latch for signal <q>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+    Summary:
+	inferred   1 Latch(s).
+Unit <Latch> synthesized.
+
+Synthesizing Unit <MS1553_master>.
+    Related source file is "c:/users/phillip/downloads/ms1553_interface/ms1553_interface/ms1553_master.vhd".
+WARNING:Xst:647 - Input <nIOM> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <CLOCK> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Found 1-bit tristate buffer for signal <IDATA<7>> created at line 155
+    Found 1-bit tristate buffer for signal <IDATA<6>> created at line 155
+    Found 1-bit tristate buffer for signal <IDATA<5>> created at line 155
+    Found 1-bit tristate buffer for signal <IDATA<4>> created at line 155
+    Found 1-bit tristate buffer for signal <IDATA<3>> created at line 155
+    Found 1-bit tristate buffer for signal <IDATA<2>> created at line 155
+    Found 1-bit tristate buffer for signal <IDATA<1>> created at line 155
+    Found 1-bit tristate buffer for signal <IDATA<0>> created at line 155
+    Summary:
+	inferred  12 Multiplexer(s).
+	inferred   8 Tristate(s).
+Unit <MS1553_master> synthesized.
+
+Synthesizing Unit <MS1553_Reset_Pulse_Gen>.
+    Related source file is "c:/users/phillip/downloads/ms1553_interface/ms1553_interface/ms1553_reset_pulse_gen.vhd".
+WARNING:Xst:737 - Found 1-bit latch for signal <HAVE_WE_RESET>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+    Summary:
+	inferred   1 Latch(s).
+	inferred   1 Multiplexer(s).
+Unit <MS1553_Reset_Pulse_Gen> synthesized.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Adders/Subtractors                                   : 3
+ 32-bit adder                                          : 3
+# Registers                                            : 4
+ 16-bit register                                       : 1
+ 32-bit register                                       : 3
+# Latches                                              : 149
+ 1-bit latch                                           : 149
+# Comparators                                          : 3
+ 32-bit comparator equal                               : 3
+# Multiplexers                                         : 202
+ 1-bit 2-to-1 multiplexer                              : 200
+ 14-bit 2-to-1 multiplexer                             : 1
+ 16-bit 2-to-1 multiplexer                             : 1
+# Tristates                                            : 51
+ 1-bit tristate buffer                                 : 51
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+WARNING:Xst:1290 - Hierarchical block <cd0_L> is unconnected in block <XLXI_4>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <cd1_L> is unconnected in block <XLXI_4>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <h_data0_L> is unconnected in block <XLXI_3>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <h_data1_L> is unconnected in block <XLXI_3>.
+   It will be removed from the design.
+WARNING:Xst:1710 - FF/Latch <q_5> (without init value) has a constant value of 0 in block <addr_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_6> (without init value) has a constant value of 0 in block <addr_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_7> (without init value) has a constant value of 0 in block <addr_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_8> (without init value) has a constant value of 0 in block <addr_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_9> (without init value) has a constant value of 0 in block <addr_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_10> (without init value) has a constant value of 0 in block <addr_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_11> (without init value) has a constant value of 0 in block <addr_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_12> (without init value) has a constant value of 0 in block <addr_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_13> (without init value) has a constant value of 0 in block <addr_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_14> (without init value) has a constant value of 0 in block <addr_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q> (without init value) has a constant value of 0 in block <wr_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <delay_needed_15> has a constant value of 0 in block <writer>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q> (without init value) has a constant value of 0 in block <rd_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <READING_STATE[2]_READING_STATE[2]_DLATCH_3_q> (without init value) has a constant value of 0 in block <reader>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <delay_needed_15> has a constant value of 0 in block <reader>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_7> (without init value) has a constant value of 0 in block <p_data1_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_0> (without init value) has a constant value of 0 in block <p_data1_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_1> (without init value) has a constant value of 0 in block <p_data1_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_2> (without init value) has a constant value of 0 in block <p_data1_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_3> (without init value) has a constant value of 0 in block <p_data1_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_4> (without init value) has a constant value of 0 in block <p_data1_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <ADDRESS_OUT_15> (without init value) has a constant value of 0 in block <XLXI_1>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <ADDRESS_OUT_14> (without init value) has a constant value of 0 in block <XLXI_1>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <ADDRESS_OUT_13> (without init value) has a constant value of 0 in block <XLXI_1>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <ADDRESS_OUT_12> (without init value) has a constant value of 0 in block <XLXI_1>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <ADDRESS_OUT_11> (without init value) has a constant value of 0 in block <XLXI_1>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <ADDRESS_OUT_10> (without init value) has a constant value of 0 in block <XLXI_1>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <ADDRESS_OUT_9> (without init value) has a constant value of 0 in block <XLXI_1>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <ADDRESS_OUT_8> (without init value) has a constant value of 0 in block <XLXI_1>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <ADDRESS_OUT_7> (without init value) has a constant value of 0 in block <XLXI_1>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <ADDRESS_OUT_6> (without init value) has a constant value of 0 in block <XLXI_1>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <ADDRESS_OUT_5> (without init value) has a constant value of 0 in block <XLXI_1>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <ADDRESS_OUT_4> (without init value) has a constant value of 0 in block <XLXI_1>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <ADDRESS_OUT_3> (without init value) has a constant value of 0 in block <XLXI_1>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <ADDRESS_OUT_2> (without init value) has a constant value of 0 in block <XLXI_1>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <ADDRESS_OUT_1> (without init value) has a constant value of 0 in block <XLXI_1>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <ADDRESS_OUT_0> (without init value) has a constant value of 0 in block <XLXI_1>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_15> (without init value) has a constant value of 0 in block <addr_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_0> (without init value) has a constant value of 0 in block <addr_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_1> (without init value) has a constant value of 0 in block <addr_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_2> (without init value) has a constant value of 0 in block <addr_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_3> (without init value) has a constant value of 0 in block <addr_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_4> (without init value) has a constant value of 0 in block <addr_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_3> (without init value) has a constant value of 0 in block <pd1_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_4> (without init value) has a constant value of 0 in block <pd1_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_5> (without init value) has a constant value of 0 in block <pd1_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_6> (without init value) has a constant value of 0 in block <pd1_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_7> (without init value) has a constant value of 0 in block <pd0_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_0> (without init value) has a constant value of 0 in block <pd0_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_1> (without init value) has a constant value of 0 in block <pd0_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_2> (without init value) has a constant value of 0 in block <pd0_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_3> (without init value) has a constant value of 0 in block <pd0_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_4> (without init value) has a constant value of 0 in block <pd0_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_5> (without init value) has a constant value of 0 in block <pd0_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_6> (without init value) has a constant value of 0 in block <pd0_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_7> (without init value) has a constant value of 0 in block <au_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_0> (without init value) has a constant value of 0 in block <au_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_1> (without init value) has a constant value of 0 in block <au_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_2> (without init value) has a constant value of 0 in block <au_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_3> (without init value) has a constant value of 0 in block <au_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_4> (without init value) has a constant value of 0 in block <au_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_5> (without init value) has a constant value of 0 in block <au_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_6> (without init value) has a constant value of 0 in block <au_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_15> (without init value) has a constant value of 0 in block <at_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_0> (without init value) has a constant value of 0 in block <at_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_5> (without init value) has a constant value of 0 in block <p_data1_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_6> (without init value) has a constant value of 0 in block <p_data1_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_7> (without init value) has a constant value of 0 in block <p_data0_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_0> (without init value) has a constant value of 0 in block <p_data0_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_1> (without init value) has a constant value of 0 in block <p_data0_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_2> (without init value) has a constant value of 0 in block <p_data0_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_3> (without init value) has a constant value of 0 in block <p_data0_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_4> (without init value) has a constant value of 0 in block <p_data0_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_5> (without init value) has a constant value of 0 in block <p_data0_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_6> (without init value) has a constant value of 0 in block <p_data0_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_7> (without init value) has a constant value of 0 in block <al_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_0> (without init value) has a constant value of 0 in block <al_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_1> (without init value) has a constant value of 0 in block <al_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_2> (without init value) has a constant value of 0 in block <al_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_3> (without init value) has a constant value of 0 in block <al_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_4> (without init value) has a constant value of 0 in block <al_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_5> (without init value) has a constant value of 0 in block <al_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_6> (without init value) has a constant value of 0 in block <al_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_7> (without init value) has a constant value of 0 in block <pd1_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_0> (without init value) has a constant value of 0 in block <pd1_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_1> (without init value) has a constant value of 0 in block <pd1_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_2> (without init value) has a constant value of 0 in block <pd1_L>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1290 - Hierarchical block <at_L> is unconnected in block <XLXI_4>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <au_L> is unconnected in block <XLXI_4>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <pd0_L> is unconnected in block <XLXI_4>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <pd1_L> is unconnected in block <XLXI_4>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <al_L> is unconnected in block <XLXI_4>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <wr_L> is unconnected in block <XLXI_3>.
+   It will be removed from the design.
+
+Synthesizing (advanced) Unit <DelayModule>.
+The following registers are absorbed into counter <count>: 1 register on signal <count>.
+Unit <DelayModule> synthesized (advanced).
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# Counters                                             : 3
+ 32-bit up counter                                     : 3
+# Registers                                            : 16
+ Flip-Flops                                            : 16
+# Comparators                                          : 3
+ 32-bit comparator equal                               : 3
+# Multiplexers                                         : 201
+ 1-bit 2-to-1 multiplexer                              : 199
+ 14-bit 2-to-1 multiplexer                             : 1
+ 16-bit 2-to-1 multiplexer                             : 1
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+WARNING:Xst:1293 - FF/Latch <delay_needed_15> has a constant value of 0 in block <mem_trans_reader>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <READING_STATE[2]_READING_STATE[2]_DLATCH_3_q> (without init value) has a constant value of 0 in block <mem_trans_reader>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <delay_needed_15> has a constant value of 0 in block <mem_trans_writer>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <ADDRESS_OUT_0> (without init value) has a constant value of 0 in block <I8085_c>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <ADDRESS_OUT_1> (without init value) has a constant value of 0 in block <I8085_c>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <ADDRESS_OUT_2> (without init value) has a constant value of 0 in block <I8085_c>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <ADDRESS_OUT_3> (without init value) has a constant value of 0 in block <I8085_c>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <ADDRESS_OUT_4> (without init value) has a constant value of 0 in block <I8085_c>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <ADDRESS_OUT_5> (without init value) has a constant value of 0 in block <I8085_c>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <ADDRESS_OUT_6> (without init value) has a constant value of 0 in block <I8085_c>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <ADDRESS_OUT_7> (without init value) has a constant value of 0 in block <I8085_c>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <ADDRESS_OUT_8> (without init value) has a constant value of 0 in block <I8085_c>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <ADDRESS_OUT_9> (without init value) has a constant value of 0 in block <I8085_c>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <ADDRESS_OUT_10> (without init value) has a constant value of 0 in block <I8085_c>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <ADDRESS_OUT_11> (without init value) has a constant value of 0 in block <I8085_c>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <ADDRESS_OUT_12> (without init value) has a constant value of 0 in block <I8085_c>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <ADDRESS_OUT_13> (without init value) has a constant value of 0 in block <I8085_c>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <ADDRESS_OUT_14> (without init value) has a constant value of 0 in block <I8085_c>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <ADDRESS_OUT_15> (without init value) has a constant value of 0 in block <I8085_c>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2170 - Unit System : the following signal(s) form a combinatorial loop: XLXI_2/XLXI_5/WE_ARE_RESETTING_HAVE_WE_RESET_AND_919_o, XLXI_2/XLXN_2, nMR.
+WARNING:Xst:2170 - Unit MS1553_master : the following signal(s) form a combinatorial loop: Z_19_o_CHIP_DATA_0[6]_MUX_442_o, DATA_WAS_VALID_0, ADDR_TEMP[0]_DATA_VALID_0_AND_905_o, DATA_WAS_VALID_0_ADDR_TEMP[0]_AND_911_o.
+WARNING:Xst:2170 - Unit MS1553_master : the following signal(s) form a combinatorial loop: DATA_WAS_VALID_1, DATA_WAS_VALID_1_ADDR_TEMP[0]_AND_914_o, ADDR_TEMP[0]_ADDR_TEMP[0]_OR_574_o_inv.
+WARNING:Xst:2170 - Unit mem_trans_reader : the following signal(s) form a combinatorial loop: _n0327, flag, READING_STATE<1>, READING_STATE<0>1, READING_STATE<2>1, OE_int, READING_STATE<1>_mmx_out1, CE.
+WARNING:Xst:2170 - Unit mem_trans_reader : the following signal(s) form a combinatorial loop: READING_STATE<0>1.
+WARNING:Xst:2170 - Unit mem_trans_reader : the following signal(s) form a combinatorial loop: READING_STATE<2>1.
+WARNING:Xst:2170 - Unit mem_trans_writer : the following signal(s) form a combinatorial loop: WRITING_STATE<1>, _n0395, CE, WRITING_STATE<2>1, WRITING_STATE<1>_mmx_out2, flag, WRITING_STATE<0>1, WE.
+WARNING:Xst:2170 - Unit mem_trans_writer : the following signal(s) form a combinatorial loop: WRITING_STATE<2>1.
+WARNING:Xst:2170 - Unit mem_trans_writer : the following signal(s) form a combinatorial loop: WRITING_STATE<0>1.
+WARNING:Xst:3002 - This design contains one or more registers/latches that are directly
+   incompatible with the Spartan6 architecture. The two primary causes of this is
+   either a register or latch described with both an asynchronous set and
+   asynchronous reset, or a register or latch described with an asynchronous
+   set or reset which however has an initialization value of the opposite 
+   polarity (i.e. asynchronous reset with an initialization value of 1).
+    While this circuit can be built, it creates a sub-optimal implementation
+   in terms of area, power and performance. For a more optimal implementation
+   Xilinx highly recommends one of the following:
+
+          1) Remove either the set or reset from all registers and latches
+             if not needed for required functionality
+          2) Modify the code in order to produce a synchronous set
+             and/or reset (both is preferred)
+          3) Ensure all registers have the same initialization value as the
+             described asynchronous set or reset polarity
+          4) Use the -async_to_sync option to transform the asynchronous
+             set/reset to synchronous operation
+             (timing simulation highly recommended when using this option)
+
+  Please refer to http://www.xilinx.com search string "Spartan6 asynchronous set/reset" for more details.
+
+  List of register instances with asynchronous set or reset and opposite initialization value:
+    XLXI_2/XLXI_5/HAVE_WE_RESET in unit <System>
+
+WARNING:Xst:2042 - Unit mem_trans_writer: 8 internal tristates are replaced by logic (pull-up yes): DATA<0>, DATA<1>, DATA<2>, DATA<3>, DATA<4>, DATA<5>, DATA<6>, DATA<7>.
+WARNING:Xst:2042 - Unit mem_trans_reader: 24 internal tristates are replaced by logic (pull-up yes): ADDRESS<0>, ADDRESS<10>, ADDRESS<11>, ADDRESS<12>, ADDRESS<13>, ADDRESS<14>, ADDRESS<15>, ADDRESS<1>, ADDRESS<2>, ADDRESS<3>, ADDRESS<4>, ADDRESS<5>, ADDRESS<6>, ADDRESS<7>, ADDRESS<8>, ADDRESS<9>, DATA<0>, DATA<1>, DATA<2>, DATA<3>, DATA<4>, DATA<5>, DATA<6>, DATA<7>.
+WARNING:Xst:2042 - Unit MS1553_master: 8 internal tristates are replaced by logic (pull-up yes): IDATA<0>, IDATA<1>, IDATA<2>, IDATA<3>, IDATA<4>, IDATA<5>, IDATA<6>, IDATA<7>.
+
+Optimizing unit <Latch16Bit> ...
+
+Optimizing unit <Latch8Bit> ...
+
+Optimizing unit <System> ...
+
+Optimizing unit <MS1553_master> ...
+
+Optimizing unit <mem_trans_reader> ...
+
+Optimizing unit <mem_trans_writer> ...
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_3/writer/ADDRESS_4> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_3/writer/ADDRESS_3> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_3/writer/ADDRESS_2> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_3/writer/ADDRESS_1> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_4/au_L/q_6> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_4/au_L/q_5> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_4/au_L/q_4> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_4/au_L/q_3> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_4/au_L/q_2> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_4/au_L/q_1> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_4/au_L/q_0> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_4/au_L/q_7> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_4/pd0_L/q_6> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_4/pd0_L/q_5> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_4/pd0_L/q_4> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_4/pd0_L/q_3> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_4/pd0_L/q_2> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_4/pd0_L/q_1> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_3/writer/WRITING_STATE[2]_WRITING_STATE[2]_DLATCH_49_q> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_3/writer/WRITING_STATE[2]_WRITING_STATE[2]_DLATCH_51_q> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_3/writer/WRITING_STATE[2]_WRITING_STATE[2]_DLATCH_53_q> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_3/writer/WRITING_STATE[2]_WRITING_STATE[2]_DLATCH_55_q> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_3/writer/WRITING_STATE[2]_WRITING_STATE[2]_DLATCH_57_q> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_3/writer/WRITING_STATE[2]_WRITING_STATE[2]_DLATCH_59_q> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_3/writer/WRITING_STATE[2]_WRITING_STATE[2]_DLATCH_61_q> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_3/writer/WRITING_STATE[2]_WRITING_STATE[2]_DLATCH_63_q> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_3/writer/ADDRESS_15> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_3/writer/ADDRESS_14> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_3/writer/ADDRESS_13> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_3/writer/ADDRESS_12> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_3/writer/ADDRESS_11> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_3/writer/ADDRESS_10> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_3/writer/ADDRESS_9> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_3/writer/ADDRESS_8> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_3/writer/ADDRESS_7> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_3/writer/ADDRESS_6> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_3/writer/ADDRESS_5> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_4/al_L/q_7> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_4/al_L/q_0> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_4/al_L/q_1> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_4/at_L/q_0> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_4/at_L/q_15> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_4/al_L/q_2> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_4/al_L/q_3> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_4/al_L/q_4> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_4/al_L/q_5> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_4/al_L/q_6> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_4/pd1_L/q_7> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_4/pd1_L/q_0> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_4/pd1_L/q_1> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_4/pd1_L/q_2> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_4/pd1_L/q_3> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_4/pd1_L/q_4> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_4/pd1_L/q_5> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_4/pd0_L/q_0> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_4/pd0_L/q_7> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <XLXI_2/XLXI_4/pd1_L/q_6> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <XLXI_2/XLXI_3/addr_L/q_12> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <XLXI_2/XLXI_3/addr_L/q_11> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <XLXI_2/XLXI_3/addr_L/q_10> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <XLXI_2/XLXI_3/addr_L/q_9> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <XLXI_2/XLXI_3/addr_L/q_8> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <XLXI_2/XLXI_3/addr_L/q_7> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <XLXI_2/XLXI_3/addr_L/q_6> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <XLXI_2/XLXI_3/addr_L/q_5> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <XLXI_2/XLXI_3/addr_L/q_4> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <XLXI_2/XLXI_3/addr_L/q_3> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <XLXI_2/XLXI_3/addr_L/q_2> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <XLXI_2/XLXI_3/addr_L/q_1> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <XLXI_2/XLXI_3/addr_L/q_0> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <XLXI_2/XLXI_3/addr_L/q_15> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <XLXI_2/XLXI_3/wr_L/q> (without init value) has a constant value of 1 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <XLXI_2/XLXI_3/rd_L/q> (without init value) has a constant value of 1 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <XLXI_2/XLXI_3/p_data0_L/q_7> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <XLXI_2/XLXI_3/p_data0_L/q_0> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <XLXI_2/XLXI_3/p_data0_L/q_1> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <XLXI_2/XLXI_3/p_data0_L/q_2> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <XLXI_2/XLXI_3/p_data0_L/q_3> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <XLXI_2/XLXI_3/p_data0_L/q_4> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <XLXI_2/XLXI_3/p_data0_L/q_5> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <XLXI_2/XLXI_3/p_data0_L/q_6> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <XLXI_2/XLXI_3/p_data1_L/q_7> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <XLXI_2/XLXI_3/p_data1_L/q_0> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <XLXI_2/XLXI_3/p_data1_L/q_1> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <XLXI_2/XLXI_3/p_data1_L/q_2> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <XLXI_2/XLXI_3/p_data1_L/q_3> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <XLXI_2/XLXI_3/p_data1_L/q_4> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <XLXI_2/XLXI_3/p_data1_L/q_5> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <XLXI_2/XLXI_3/p_data1_L/q_6> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <XLXI_2/XLXI_3/addr_L/q_14> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <XLXI_2/XLXI_3/addr_L/q_13> (without init value) has a constant value of 0 in block <System>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2677 - Node <XLXI_2/XLXI_4/at_L/q_1> of sequential type is unconnected in block <System>.
+WARNING:Xst:2677 - Node <XLXI_2/XLXI_4/at_L/q_2> of sequential type is unconnected in block <System>.
+WARNING:Xst:2677 - Node <XLXI_2/XLXI_4/at_L/q_3> of sequential type is unconnected in block <System>.
+WARNING:Xst:2677 - Node <XLXI_2/XLXI_4/at_L/q_4> of sequential type is unconnected in block <System>.
+WARNING:Xst:2677 - Node <XLXI_2/XLXI_4/at_L/q_5> of sequential type is unconnected in block <System>.
+WARNING:Xst:2677 - Node <XLXI_2/XLXI_4/at_L/q_6> of sequential type is unconnected in block <System>.
+WARNING:Xst:2677 - Node <XLXI_2/XLXI_4/at_L/q_7> of sequential type is unconnected in block <System>.
+WARNING:Xst:2677 - Node <XLXI_2/XLXI_4/at_L/q_8> of sequential type is unconnected in block <System>.
+WARNING:Xst:2677 - Node <XLXI_2/XLXI_4/at_L/q_9> of sequential type is unconnected in block <System>.
+WARNING:Xst:2677 - Node <XLXI_2/XLXI_4/at_L/q_10> of sequential type is unconnected in block <System>.
+WARNING:Xst:2677 - Node <XLXI_2/XLXI_4/at_L/q_11> of sequential type is unconnected in block <System>.
+WARNING:Xst:2677 - Node <XLXI_2/XLXI_4/at_L/q_12> of sequential type is unconnected in block <System>.
+WARNING:Xst:2677 - Node <XLXI_2/XLXI_4/at_L/q_13> of sequential type is unconnected in block <System>.
+WARNING:Xst:2677 - Node <XLXI_2/XLXI_4/at_L/q_14> of sequential type is unconnected in block <System>.
+WARNING:Xst:2677 - Node <XLXI_2/XLXI_4/cd1_L/q_7> of sequential type is unconnected in block <System>.
+WARNING:Xst:2677 - Node <XLXI_2/XLXI_4/cd1_L/q_0> of sequential type is unconnected in block <System>.
+WARNING:Xst:2677 - Node <XLXI_2/XLXI_4/cd1_L/q_1> of sequential type is unconnected in block <System>.
+WARNING:Xst:2677 - Node <XLXI_2/XLXI_4/cd1_L/q_2> of sequential type is unconnected in block <System>.
+WARNING:Xst:2677 - Node <XLXI_2/XLXI_4/cd1_L/q_3> of sequential type is unconnected in block <System>.
+WARNING:Xst:2677 - Node <XLXI_2/XLXI_4/cd1_L/q_4> of sequential type is unconnected in block <System>.
+WARNING:Xst:2677 - Node <XLXI_2/XLXI_4/cd1_L/q_5> of sequential type is unconnected in block <System>.
+WARNING:Xst:2677 - Node <XLXI_2/XLXI_4/cd1_L/q_6> of sequential type is unconnected in block <System>.
+WARNING:Xst:2677 - Node <XLXI_2/XLXI_4/cd0_L/q_7> of sequential type is unconnected in block <System>.
+WARNING:Xst:2677 - Node <XLXI_2/XLXI_4/cd0_L/q_0> of sequential type is unconnected in block <System>.
+WARNING:Xst:2677 - Node <XLXI_2/XLXI_4/cd0_L/q_1> of sequential type is unconnected in block <System>.
+WARNING:Xst:2677 - Node <XLXI_2/XLXI_4/cd0_L/q_2> of sequential type is unconnected in block <System>.
+WARNING:Xst:2677 - Node <XLXI_2/XLXI_4/cd0_L/q_3> of sequential type is unconnected in block <System>.
+WARNING:Xst:2677 - Node <XLXI_2/XLXI_4/cd0_L/q_4> of sequential type is unconnected in block <System>.
+WARNING:Xst:2677 - Node <XLXI_2/XLXI_4/cd0_L/q_5> of sequential type is unconnected in block <System>.
+WARNING:Xst:2677 - Node <XLXI_2/XLXI_4/cd0_L/q_6> of sequential type is unconnected in block <System>.
+WARNING:Xst:2677 - Node <XLXI_2/XLXI_3/h_data0_L/q_7> of sequential type is unconnected in block <System>.
+WARNING:Xst:2677 - Node <XLXI_2/XLXI_3/h_data0_L/q_0> of sequential type is unconnected in block <System>.
+WARNING:Xst:2677 - Node <XLXI_2/XLXI_3/h_data0_L/q_1> of sequential type is unconnected in block <System>.
+WARNING:Xst:2677 - Node <XLXI_2/XLXI_3/h_data0_L/q_2> of sequential type is unconnected in block <System>.
+WARNING:Xst:2677 - Node <XLXI_2/XLXI_3/h_data0_L/q_3> of sequential type is unconnected in block <System>.
+WARNING:Xst:2677 - Node <XLXI_2/XLXI_3/h_data0_L/q_4> of sequential type is unconnected in block <System>.
+WARNING:Xst:2677 - Node <XLXI_2/XLXI_3/h_data0_L/q_5> of sequential type is unconnected in block <System>.
+WARNING:Xst:2677 - Node <XLXI_2/XLXI_3/h_data0_L/q_6> of sequential type is unconnected in block <System>.
+WARNING:Xst:2677 - Node <XLXI_2/XLXI_3/h_data1_L/q_7> of sequential type is unconnected in block <System>.
+WARNING:Xst:2677 - Node <XLXI_2/XLXI_3/h_data1_L/q_0> of sequential type is unconnected in block <System>.
+WARNING:Xst:2677 - Node <XLXI_2/XLXI_3/h_data1_L/q_1> of sequential type is unconnected in block <System>.
+WARNING:Xst:2677 - Node <XLXI_2/XLXI_3/h_data1_L/q_2> of sequential type is unconnected in block <System>.
+WARNING:Xst:2677 - Node <XLXI_2/XLXI_3/h_data1_L/q_3> of sequential type is unconnected in block <System>.
+WARNING:Xst:2677 - Node <XLXI_2/XLXI_3/h_data1_L/q_4> of sequential type is unconnected in block <System>.
+WARNING:Xst:2677 - Node <XLXI_2/XLXI_3/h_data1_L/q_5> of sequential type is unconnected in block <System>.
+WARNING:Xst:2677 - Node <XLXI_2/XLXI_3/h_data1_L/q_6> of sequential type is unconnected in block <System>.
+WARNING:Xst:2677 - Node <XLXI_2/XLXI_3/reader/READING_STATE[2]_READING_STATE[2]_DLATCH_2_q> of sequential type is unconnected in block <System>.
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block System, actual ratio is 0.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 96
+ Flip-Flops                                            : 96
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Design Summary                             *
+=========================================================================
+
+Top Level Output File Name         : System.ngc
+
+Primitive and Black Box Usage:
+------------------------------
+# BELS                             : 380
+#      GND                         : 1
+#      INV                         : 6
+#      LUT1                        : 93
+#      LUT2                        : 5
+#      LUT3                        : 34
+#      LUT4                        : 17
+#      LUT5                        : 1
+#      LUT6                        : 15
+#      MUXCY                       : 111
+#      VCC                         : 1
+#      XORCY                       : 96
+# FlipFlops/Latches                : 104
+#      FDC                         : 32
+#      FDCE                        : 64
+#      LD                          : 8
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 36
+#      OBUF                        : 28
+#      OBUFT                       : 8
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 6slx45tfgg484-3 
+
+
+Slice Logic Utilization: 
+ Number of Slice Registers:             104  out of  54576     0%  
+ Number of Slice LUTs:                  171  out of  27288     0%  
+    Number used as Logic:               171  out of  27288     0%  
+
+Slice Logic Distribution: 
+ Number of LUT Flip Flop pairs used:    171
+   Number with an unused Flip Flop:      67  out of    171    39%  
+   Number with an unused LUT:             0  out of    171     0%  
+   Number of fully used LUT-FF pairs:   104  out of    171    60%  
+   Number of unique control sets:         6
+
+IO Utilization: 
+ Number of IOs:                          38
+ Number of bonded IOBs:                  37  out of    296    12%  
+
+Specific Feature Utilization:
+ Number of BUFG/BUFGCTRLs:                1  out of     16     6%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+Timing Report
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+-------+
+Clock Signal                                                                                                       | Clock buffer(FF name)                                                      | Load  |
+-------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+-------+
+FAST_CLOCK                                                                                                         | BUFGP                                                                      | 96    |
+XLXI_2/XLXI_3/reader/_n0206<0>(XLXI_2/XLXI_3/reader/_n0206<0>1:O)                                                  | NONE(*)(XLXI_2/XLXI_3/reader/delay_needed_4)                               | 3     |
+XLXI_2/XLXI_3/writer/WRITING_STATE[2]_GND_69_o_Mux_20_o(XLXI_2/XLXI_3/writer/WRITING_STATE[2]_GND_69_o_Mux_20_o1:O)| NONE(*)(XLXI_2/XLXI_3/writer/WRITING_STATE[2]_WRITING_STATE[2]_DLATCH_50_q)| 4     |
+XLXI_2/XLXI_5/HAVE_WE_RESET_G(XLXI_2/XLXI_5/flag_HAVE_WE_RESET_AND_920_o1:O)                                       | NONE(*)(XLXI_2/XLXI_5/HAVE_WE_RESET)                                       | 1     |
+-------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+-------+
+(*) These 3 clock signal(s) are generated by combinatorial logic,
+and XST is not able to identify which are the primary clock signals.
+Please use the CLOCK_SIGNAL constraint to specify the clock signal(s) generated by combinatorial logic.
+INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -3
+
+   Minimum period: 10.096ns (Maximum Frequency: 99.047MHz)
+   Minimum input arrival time before clock: No path found
+   Maximum output required time after clock: 13.144ns
+   Maximum combinational path delay: No path found
+
+Timing Details:
+---------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'FAST_CLOCK'
+  Clock period: 10.096ns (frequency: 99.047MHz)
+  Total number of paths / destination ports: 12880 / 192
+-------------------------------------------------------------------------
+Delay:               10.096ns (Levels of Logic = 12)
+  Source:            XLXI_2/XLXI_3/writer/delay_inst/count_4 (FF)
+  Destination:       XLXI_2/XLXI_3/writer/delay_inst/count_31 (FF)
+  Source Clock:      FAST_CLOCK rising
+  Destination Clock: FAST_CLOCK rising
+
+  Data Path: XLXI_2/XLXI_3/writer/delay_inst/count_4 to XLXI_2/XLXI_3/writer/delay_inst/count_31
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q              3   0.447   1.015  XLXI_2/XLXI_3/writer/delay_inst/count_4 (XLXI_2/XLXI_3/writer/delay_inst/count_4)
+     LUT6:I0->O            1   0.203   0.000  XLXI_2/XLXI_3/writer/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_lut<1> (XLXI_2/XLXI_3/writer/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_lut<1>)
+     MUXCY:S->O            1   0.172   0.000  XLXI_2/XLXI_3/writer/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<1> (XLXI_2/XLXI_3/writer/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<1>)
+     MUXCY:CI->O           1   0.019   0.000  XLXI_2/XLXI_3/writer/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<2> (XLXI_2/XLXI_3/writer/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  XLXI_2/XLXI_3/writer/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<3> (XLXI_2/XLXI_3/writer/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  XLXI_2/XLXI_3/writer/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<4> (XLXI_2/XLXI_3/writer/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<4>)
+     MUXCY:CI->O           1   0.213   0.684  XLXI_2/XLXI_3/writer/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<5> (XLXI_2/XLXI_3/writer/delay_inst/GND_19_o_count[31]_equal_4_o)
+     LUT2:I0->O           41   0.203   1.420  XLXI_2/XLXI_3/writer/delay_inst/flag1 (XLXI_2/XLXI_3/writer/flag)
+     LUT4:I3->O           10   0.205   1.085  XLXI_2/XLXI_3/writer/WRITING_STATE<1>1 (XLXI_2/XLXI_3/writer/WRITING_STATE<1>)
+     LUT4:I1->O           10   0.205   1.104  XLXI_2/XLXI_3/writer/Mmux_CE131 (XLXI_2/XLXI_3/writer/WRITING_STATE<2>1)
+     LUT4:I0->O            8   0.203   1.050  XLXI_2/XLXI_3/writer/Mmux_CE121 (XLXI_2/XLXI_3/writer/WRITING_STATE<0>1)
+     LUT4:I0->O           34   0.203   1.321  XLXI_2/XLXI_3/writer/Mmux_CE11 (XLXI_2/XLXI_3/wCE)
+     LUT3:I2->O            1   0.205   0.000  XLXI_2/XLXI_3/writer/delay_inst/count_31_rstpot (XLXI_2/XLXI_3/writer/delay_inst/count_31_rstpot)
+     FDC:D                     0.102          XLXI_2/XLXI_3/writer/delay_inst/count_31
+    ----------------------------------------
+    Total                     10.096ns (2.418ns logic, 7.678ns route)
+                                       (23.9% logic, 76.1% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'XLXI_2/XLXI_3/reader/_n0206<0>'
+  Clock period: 4.886ns (frequency: 204.684MHz)
+  Total number of paths / destination ports: 9 / 3
+-------------------------------------------------------------------------
+Delay:               4.886ns (Levels of Logic = 9)
+  Source:            XLXI_2/XLXI_3/reader/delay_needed_0 (LATCH)
+  Destination:       XLXI_2/XLXI_3/reader/delay_needed_2 (LATCH)
+  Source Clock:      XLXI_2/XLXI_3/reader/_n0206<0> falling
+  Destination Clock: XLXI_2/XLXI_3/reader/_n0206<0> falling
+
+  Data Path: XLXI_2/XLXI_3/reader/delay_needed_0 to XLXI_2/XLXI_3/reader/delay_needed_2
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LD:G->Q               1   0.498   0.944  XLXI_2/XLXI_3/reader/delay_needed_0 (XLXI_2/XLXI_3/reader/delay_needed_0)
+     LUT6:I0->O            1   0.203   0.000  XLXI_2/XLXI_3/reader/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_lut<0> (XLXI_2/XLXI_3/reader/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_lut<0>)
+     MUXCY:S->O            1   0.172   0.000  XLXI_2/XLXI_3/reader/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<0> (XLXI_2/XLXI_3/reader/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<0>)
+     MUXCY:CI->O           1   0.019   0.000  XLXI_2/XLXI_3/reader/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<1> (XLXI_2/XLXI_3/reader/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<1>)
+     MUXCY:CI->O           1   0.019   0.000  XLXI_2/XLXI_3/reader/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<2> (XLXI_2/XLXI_3/reader/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  XLXI_2/XLXI_3/reader/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<3> (XLXI_2/XLXI_3/reader/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  XLXI_2/XLXI_3/reader/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<4> (XLXI_2/XLXI_3/reader/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<4>)
+     MUXCY:CI->O           1   0.213   0.684  XLXI_2/XLXI_3/reader/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<5> (XLXI_2/XLXI_3/reader/delay_inst/GND_19_o_count[31]_equal_4_o)
+     LUT2:I0->O           40   0.203   1.653  XLXI_2/XLXI_3/reader/delay_inst/flag1 (XLXI_2/XLXI_3/reader/flag)
+     LUT4:I0->O            1   0.203   0.000  XLXI_2/XLXI_3/reader/Mmux_CE151 (XLXI_2/XLXI_3/reader/READING_STATE[2]_GND_16_o_Mux_107_o)
+     LD:D                      0.037          XLXI_2/XLXI_3/reader/delay_needed_2
+    ----------------------------------------
+    Total                      4.886ns (1.605ns logic, 3.281ns route)
+                                       (32.9% logic, 67.1% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'XLXI_2/XLXI_3/writer/WRITING_STATE[2]_GND_69_o_Mux_20_o'
+  Clock period: 8.259ns (frequency: 121.076MHz)
+  Total number of paths / destination ports: 56 / 4
+-------------------------------------------------------------------------
+Delay:               8.259ns (Levels of Logic = 12)
+  Source:            XLXI_2/XLXI_3/writer/delay_needed_2 (LATCH)
+  Destination:       XLXI_2/XLXI_3/writer/WRITING_STATE[2]_WRITING_STATE[2]_DLATCH_50_q (LATCH)
+  Source Clock:      XLXI_2/XLXI_3/writer/WRITING_STATE[2]_GND_69_o_Mux_20_o falling
+  Destination Clock: XLXI_2/XLXI_3/writer/WRITING_STATE[2]_GND_69_o_Mux_20_o falling
+
+  Data Path: XLXI_2/XLXI_3/writer/delay_needed_2 to XLXI_2/XLXI_3/writer/WRITING_STATE[2]_WRITING_STATE[2]_DLATCH_50_q
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LD:G->Q               1   0.498   0.944  XLXI_2/XLXI_3/writer/delay_needed_2 (XLXI_2/XLXI_3/writer/delay_needed_2)
+     LUT6:I0->O            1   0.203   0.000  XLXI_2/XLXI_3/writer/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_lut<0> (XLXI_2/XLXI_3/writer/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_lut<0>)
+     MUXCY:S->O            1   0.172   0.000  XLXI_2/XLXI_3/writer/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<0> (XLXI_2/XLXI_3/writer/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<0>)
+     MUXCY:CI->O           1   0.019   0.000  XLXI_2/XLXI_3/writer/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<1> (XLXI_2/XLXI_3/writer/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<1>)
+     MUXCY:CI->O           1   0.019   0.000  XLXI_2/XLXI_3/writer/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<2> (XLXI_2/XLXI_3/writer/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  XLXI_2/XLXI_3/writer/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<3> (XLXI_2/XLXI_3/writer/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  XLXI_2/XLXI_3/writer/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<4> (XLXI_2/XLXI_3/writer/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<4>)
+     MUXCY:CI->O           1   0.213   0.684  XLXI_2/XLXI_3/writer/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<5> (XLXI_2/XLXI_3/writer/delay_inst/GND_19_o_count[31]_equal_4_o)
+     LUT2:I0->O           41   0.203   1.420  XLXI_2/XLXI_3/writer/delay_inst/flag1 (XLXI_2/XLXI_3/writer/flag)
+     LUT4:I3->O           10   0.205   1.085  XLXI_2/XLXI_3/writer/WRITING_STATE<1>1 (XLXI_2/XLXI_3/writer/WRITING_STATE<1>)
+     LUT4:I1->O           10   0.205   1.104  XLXI_2/XLXI_3/writer/Mmux_CE131 (XLXI_2/XLXI_3/writer/WRITING_STATE<2>1)
+     LUT4:I0->O            8   0.203   0.803  XLXI_2/XLXI_3/writer/Mmux_CE121 (XLXI_2/XLXI_3/writer/WRITING_STATE<0>1)
+     LUT4:I3->O            1   0.205   0.000  XLXI_2/XLXI_3/writer/Mmux_CE161 (XLXI_2/XLXI_3/writer/WRITING_STATE[2]_delay_needed[2]_Mux_109_o)
+     LD:D                      0.037          XLXI_2/XLXI_3/writer/delay_needed_2
+    ----------------------------------------
+    Total                      8.259ns (2.220ns logic, 6.039ns route)
+                                       (26.9% logic, 73.1% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'XLXI_2/XLXI_5/HAVE_WE_RESET_G'
+  Clock period: 1.391ns (frequency: 718.778MHz)
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Delay:               1.391ns (Levels of Logic = 1)
+  Source:            XLXI_2/XLXI_5/HAVE_WE_RESET (LATCH)
+  Destination:       XLXI_2/XLXI_5/HAVE_WE_RESET (LATCH)
+  Source Clock:      XLXI_2/XLXI_5/HAVE_WE_RESET_G falling
+  Destination Clock: XLXI_2/XLXI_5/HAVE_WE_RESET_G falling
+
+  Data Path: XLXI_2/XLXI_5/HAVE_WE_RESET to XLXI_2/XLXI_5/HAVE_WE_RESET
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LD:G->Q               3   0.498   0.651  XLXI_2/XLXI_5/HAVE_WE_RESET (XLXI_2/XLXI_5/HAVE_WE_RESET)
+     LUT2:I1->O           34   0.205   0.000  XLXI_2/XLXI_5/flag_HAVE_WE_RESET_AND_920_o1 (XLXI_2/XLXI_5/HAVE_WE_RESET_G)
+     LD:D                      0.037          XLXI_2/XLXI_5/HAVE_WE_RESET
+    ----------------------------------------
+    Total                      1.391ns (0.740ns logic, 0.651ns route)
+                                       (53.2% logic, 46.8% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'XLXI_2/XLXI_3/writer/WRITING_STATE[2]_GND_69_o_Mux_20_o'
+  Total number of paths / destination ports: 41 / 11
+-------------------------------------------------------------------------
+Offset:              13.143ns (Levels of Logic = 14)
+  Source:            XLXI_2/XLXI_3/writer/delay_needed_2 (LATCH)
+  Destination:       nCE (PAD)
+  Source Clock:      XLXI_2/XLXI_3/writer/WRITING_STATE[2]_GND_69_o_Mux_20_o falling
+
+  Data Path: XLXI_2/XLXI_3/writer/delay_needed_2 to nCE
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LD:G->Q               1   0.498   0.944  XLXI_2/XLXI_3/writer/delay_needed_2 (XLXI_2/XLXI_3/writer/delay_needed_2)
+     LUT6:I0->O            1   0.203   0.000  XLXI_2/XLXI_3/writer/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_lut<0> (XLXI_2/XLXI_3/writer/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_lut<0>)
+     MUXCY:S->O            1   0.172   0.000  XLXI_2/XLXI_3/writer/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<0> (XLXI_2/XLXI_3/writer/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<0>)
+     MUXCY:CI->O           1   0.019   0.000  XLXI_2/XLXI_3/writer/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<1> (XLXI_2/XLXI_3/writer/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<1>)
+     MUXCY:CI->O           1   0.019   0.000  XLXI_2/XLXI_3/writer/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<2> (XLXI_2/XLXI_3/writer/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  XLXI_2/XLXI_3/writer/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<3> (XLXI_2/XLXI_3/writer/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  XLXI_2/XLXI_3/writer/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<4> (XLXI_2/XLXI_3/writer/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<4>)
+     MUXCY:CI->O           1   0.213   0.684  XLXI_2/XLXI_3/writer/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<5> (XLXI_2/XLXI_3/writer/delay_inst/GND_19_o_count[31]_equal_4_o)
+     LUT2:I0->O           41   0.203   1.420  XLXI_2/XLXI_3/writer/delay_inst/flag1 (XLXI_2/XLXI_3/writer/flag)
+     LUT4:I3->O           10   0.205   1.085  XLXI_2/XLXI_3/writer/WRITING_STATE<1>1 (XLXI_2/XLXI_3/writer/WRITING_STATE<1>)
+     LUT4:I1->O           10   0.205   1.104  XLXI_2/XLXI_3/writer/Mmux_CE131 (XLXI_2/XLXI_3/writer/WRITING_STATE<2>1)
+     LUT4:I0->O            8   0.203   1.050  XLXI_2/XLXI_3/writer/Mmux_CE121 (XLXI_2/XLXI_3/writer/WRITING_STATE<0>1)
+     LUT4:I0->O           34   0.203   1.320  XLXI_2/XLXI_3/writer/Mmux_CE11 (XLXI_2/XLXI_3/wCE)
+     INV:I->O              1   0.206   0.579  XLXI_2/XLXI_3/Mmux_nCE11_INV_0 (nCE_OBUF)
+     OBUF:I->O                 2.571          nCE_OBUF (nCE)
+    ----------------------------------------
+    Total                     13.143ns (4.958ns logic, 8.185ns route)
+                                       (37.7% logic, 62.3% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'FAST_CLOCK'
+  Total number of paths / destination ports: 544 / 3
+-------------------------------------------------------------------------
+Offset:              13.144ns (Levels of Logic = 13)
+  Source:            XLXI_2/XLXI_3/writer/delay_inst/count_4 (FF)
+  Destination:       nCE (PAD)
+  Source Clock:      FAST_CLOCK rising
+
+  Data Path: XLXI_2/XLXI_3/writer/delay_inst/count_4 to nCE
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q              3   0.447   1.015  XLXI_2/XLXI_3/writer/delay_inst/count_4 (XLXI_2/XLXI_3/writer/delay_inst/count_4)
+     LUT6:I0->O            1   0.203   0.000  XLXI_2/XLXI_3/writer/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_lut<1> (XLXI_2/XLXI_3/writer/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_lut<1>)
+     MUXCY:S->O            1   0.172   0.000  XLXI_2/XLXI_3/writer/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<1> (XLXI_2/XLXI_3/writer/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<1>)
+     MUXCY:CI->O           1   0.019   0.000  XLXI_2/XLXI_3/writer/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<2> (XLXI_2/XLXI_3/writer/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  XLXI_2/XLXI_3/writer/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<3> (XLXI_2/XLXI_3/writer/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  XLXI_2/XLXI_3/writer/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<4> (XLXI_2/XLXI_3/writer/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<4>)
+     MUXCY:CI->O           1   0.213   0.684  XLXI_2/XLXI_3/writer/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<5> (XLXI_2/XLXI_3/writer/delay_inst/GND_19_o_count[31]_equal_4_o)
+     LUT2:I0->O           41   0.203   1.420  XLXI_2/XLXI_3/writer/delay_inst/flag1 (XLXI_2/XLXI_3/writer/flag)
+     LUT4:I3->O           10   0.205   1.085  XLXI_2/XLXI_3/writer/WRITING_STATE<1>1 (XLXI_2/XLXI_3/writer/WRITING_STATE<1>)
+     LUT4:I1->O           10   0.205   1.104  XLXI_2/XLXI_3/writer/Mmux_CE131 (XLXI_2/XLXI_3/writer/WRITING_STATE<2>1)
+     LUT4:I0->O            8   0.203   1.050  XLXI_2/XLXI_3/writer/Mmux_CE121 (XLXI_2/XLXI_3/writer/WRITING_STATE<0>1)
+     LUT4:I0->O           34   0.203   1.320  XLXI_2/XLXI_3/writer/Mmux_CE11 (XLXI_2/XLXI_3/wCE)
+     INV:I->O              1   0.206   0.579  XLXI_2/XLXI_3/Mmux_nCE11_INV_0 (nCE_OBUF)
+     OBUF:I->O                 2.571          nCE_OBUF (nCE)
+    ----------------------------------------
+    Total                     13.144ns (4.888ns logic, 8.256ns route)
+                                       (37.2% logic, 62.8% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'XLXI_2/XLXI_5/HAVE_WE_RESET_G'
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Offset:              3.719ns (Levels of Logic = 1)
+  Source:            XLXI_2/XLXI_5/HAVE_WE_RESET (LATCH)
+  Destination:       nMR (PAD)
+  Source Clock:      XLXI_2/XLXI_5/HAVE_WE_RESET_G falling
+
+  Data Path: XLXI_2/XLXI_5/HAVE_WE_RESET to nMR
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LD:G->Q               3   0.498   0.650  XLXI_2/XLXI_5/HAVE_WE_RESET (XLXI_2/XLXI_5/HAVE_WE_RESET)
+     OBUF:I->O                 2.571          nMR_OBUF (nMR)
+    ----------------------------------------
+    Total                      3.719ns (3.069ns logic, 0.650ns route)
+                                       (82.5% logic, 17.5% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'XLXI_2/XLXI_3/reader/_n0206<0>'
+  Total number of paths / destination ports: 3 / 1
+-------------------------------------------------------------------------
+Offset:              7.998ns (Levels of Logic = 10)
+  Source:            XLXI_2/XLXI_3/reader/delay_needed_0 (LATCH)
+  Destination:       nOE (PAD)
+  Source Clock:      XLXI_2/XLXI_3/reader/_n0206<0> falling
+
+  Data Path: XLXI_2/XLXI_3/reader/delay_needed_0 to nOE
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LD:G->Q               1   0.498   0.944  XLXI_2/XLXI_3/reader/delay_needed_0 (XLXI_2/XLXI_3/reader/delay_needed_0)
+     LUT6:I0->O            1   0.203   0.000  XLXI_2/XLXI_3/reader/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_lut<0> (XLXI_2/XLXI_3/reader/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_lut<0>)
+     MUXCY:S->O            1   0.172   0.000  XLXI_2/XLXI_3/reader/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<0> (XLXI_2/XLXI_3/reader/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<0>)
+     MUXCY:CI->O           1   0.019   0.000  XLXI_2/XLXI_3/reader/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<1> (XLXI_2/XLXI_3/reader/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<1>)
+     MUXCY:CI->O           1   0.019   0.000  XLXI_2/XLXI_3/reader/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<2> (XLXI_2/XLXI_3/reader/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  XLXI_2/XLXI_3/reader/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<3> (XLXI_2/XLXI_3/reader/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  XLXI_2/XLXI_3/reader/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<4> (XLXI_2/XLXI_3/reader/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<4>)
+     MUXCY:CI->O           1   0.213   0.684  XLXI_2/XLXI_3/reader/delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<5> (XLXI_2/XLXI_3/reader/delay_inst/GND_19_o_count[31]_equal_4_o)
+     LUT2:I0->O           40   0.203   1.653  XLXI_2/XLXI_3/reader/delay_inst/flag1 (XLXI_2/XLXI_3/reader/flag)
+     LUT4:I0->O            1   0.203   0.579  XLXI_2/XLXI_3/nOE1 (nOE_OBUF)
+     OBUF:I->O                 2.571          nOE_OBUF (nOE)
+    ----------------------------------------
+    Total                      7.998ns (4.139ns logic, 3.859ns route)
+                                       (51.7% logic, 48.3% route)
+
+=========================================================================
+
+Cross Clock Domains Report:
+--------------------------
+
+Clock to Setup on destination clock FAST_CLOCK
+-------------------------------------------------------+---------+---------+---------+---------+
+                                                       | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock                                           |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+-------------------------------------------------------+---------+---------+---------+---------+
+FAST_CLOCK                                             |   10.096|         |         |         |
+XLXI_2/XLXI_3/reader/_n0206<0>                         |         |    4.828|         |         |
+XLXI_2/XLXI_3/writer/WRITING_STATE[2]_GND_69_o_Mux_20_o|         |   10.095|         |         |
+XLXI_2/XLXI_5/HAVE_WE_RESET_G                          |         |    3.104|         |         |
+-------------------------------------------------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock XLXI_2/XLXI_3/reader/_n0206<0>
+------------------------------+---------+---------+---------+---------+
+                              | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock                  |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+------------------------------+---------+---------+---------+---------+
+FAST_CLOCK                    |         |         |    4.853|         |
+XLXI_2/XLXI_3/reader/_n0206<0>|         |         |    4.886|         |
+------------------------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock XLXI_2/XLXI_3/writer/WRITING_STATE[2]_GND_69_o_Mux_20_o
+-------------------------------------------------------+---------+---------+---------+---------+
+                                                       | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock                                           |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+-------------------------------------------------------+---------+---------+---------+---------+
+FAST_CLOCK                                             |         |         |    8.261|         |
+XLXI_2/XLXI_3/writer/WRITING_STATE[2]_GND_69_o_Mux_20_o|         |         |    8.259|         |
+-------------------------------------------------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock XLXI_2/XLXI_5/HAVE_WE_RESET_G
+-----------------------------+---------+---------+---------+---------+
+                             | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock                 |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+-----------------------------+---------+---------+---------+---------+
+FAST_CLOCK                   |         |         |    3.016|         |
+XLXI_2/XLXI_5/HAVE_WE_RESET_G|         |         |    1.391|         |
+-----------------------------+---------+---------+---------+---------+
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 32.00 secs
+Total CPU time to Xst completion: 32.03 secs
+ 
+--> 
+
+Total memory usage is 261884 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :  378 (   0 filtered)
+Number of infos    :    9 (   0 filtered)
+

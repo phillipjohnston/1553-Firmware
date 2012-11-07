@@ -1,0 +1,2 @@
+sch2hdl,-intstyle,ise,-family,spartan6,-flat,-suppress,-vhdl,C:/Users/Phillip/Downloads/MS1553_Interface/MS1553_Interface/MS1553_Controller.vhf,-w,C:/Users/Phillip/Downloads/MS1553_Interface/MS1553_Interface/MS1553_Controller.sch
+sch2hdl,-intstyle,ise,-family,spartan6,-flat,-suppress,-vhdl,C:/Users/Phillip/Downloads/MS1553_Interface/MS1553_Interface/System.vhf,-w,C:/Users/Phillip/Downloads/MS1553_Interface/MS1553_Interface/System.sch

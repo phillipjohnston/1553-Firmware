@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="C:/Users/Phillip/Downloads/MS1553_Interface/MS1553_Interface/MS1553_master_TB_isim_beh.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="ms1553_master_tb" />
+            <top_module name="std_logic_1164" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="20" />
+   <wvobject fp_name="/ms1553_master_tb/address" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">address[15:0]</obj_property>
+      <obj_property name="ObjectShortName">address[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ms1553_master_tb/ale" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">ale</obj_property>
+      <obj_property name="ObjectShortName">ale</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ms1553_master_tb/nwr" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">nwr</obj_property>
+      <obj_property name="ObjectShortName">nwr</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ms1553_master_tb/nrd" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">nrd</obj_property>
+      <obj_property name="ObjectShortName">nrd</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ms1553_master_tb/niom" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">niom</obj_property>
+      <obj_property name="ObjectShortName">niom</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ms1553_master_tb/clock" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clock</obj_property>
+      <obj_property name="ObjectShortName">clock</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ms1553_master_tb/data_valid" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">data_valid</obj_property>
+      <obj_property name="ObjectShortName">data_valid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ms1553_master_tb/data_in_0" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">data_in_0[7:0]</obj_property>
+      <obj_property name="ObjectShortName">data_in_0[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ms1553_master_tb/data_in_1" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">data_in_1[7:0]</obj_property>
+      <obj_property name="ObjectShortName">data_in_1[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ms1553_master_tb/address_to_chip" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">address_to_chip[15:0]</obj_property>
+      <obj_property name="ObjectShortName">address_to_chip[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ms1553_master_tb/data_out_0" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">data_out_0[7:0]</obj_property>
+      <obj_property name="ObjectShortName">data_out_0[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ms1553_master_tb/data_out_1" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">data_out_1[7:0]</obj_property>
+      <obj_property name="ObjectShortName">data_out_1[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ms1553_master_tb/nread" type="logic" db_ref_id="1">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">nread</obj_property>
+      <obj_property name="ObjectShortName">nread</obj_property>
+      <obj_property name="label">nread</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ms1553_master_tb/nwrite" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">nwrite</obj_property>
+      <obj_property name="ObjectShortName">nwrite</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ms1553_master_tb/reset_ic" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">reset_ic</obj_property>
+      <obj_property name="ObjectShortName">reset_ic</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ms1553_master_tb/is_big_endian" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">is_big_endian</obj_property>
+      <obj_property name="ObjectShortName">is_big_endian</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ms1553_master_tb/mem_test_en" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">mem_test_en</obj_property>
+      <obj_property name="ObjectShortName">mem_test_en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ms1553_master_tb/ram_error_corr_en" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">ram_error_corr_en</obj_property>
+      <obj_property name="ObjectShortName">ram_error_corr_en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ms1553_master_tb/idata" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">idata[7:0]</obj_property>
+      <obj_property name="ObjectShortName">idata[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ms1553_master_tb/clock_period" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">clock_period</obj_property>
+      <obj_property name="ObjectShortName">clock_period</obj_property>
+   </wvobject>
+</wave_config>
