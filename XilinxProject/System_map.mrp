@@ -1,0 +1,296 @@
+Release 13.4 Map O.87xd (nt)
+Xilinx Mapping Report File for Design 'System'
+
+Design Information
+------------------
+Command Line   : map -intstyle ise -p xc6slx45t-fgg484-3 -w -logic_opt off -ol
+high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off
+-pr off -lc off -power off -o System_map.ncd System.ngd System.pcf 
+Target Device  : xc6slx45t
+Target Package : fgg484
+Target Speed   : -3
+Mapper Version : spartan6 -- $Revision: 1.55 $
+Mapped Date    : Tue Nov 06 20:20:41 2012
+
+Design Summary
+--------------
+Number of errors:      0
+Number of warnings:   11
+Slice Logic Utilization:
+  Number of Slice Registers:                   103 out of  54,576    1%
+    Number used as Flip Flops:                  96
+    Number used as Latches:                      7
+    Number used as Latch-thrus:                  0
+    Number used as AND/OR logics:                0
+  Number of Slice LUTs:                        160 out of  27,288    1%
+    Number used as logic:                      157 out of  27,288    1%
+      Number using O6 output only:              53
+      Number using O5 output only:              90
+      Number using O5 and O6:                   14
+      Number used as ROM:                        0
+    Number used as Memory:                       0 out of   6,408    0%
+    Number used exclusively as route-thrus:      3
+      Number with same-slice register load:      0
+      Number with same-slice carry load:         3
+      Number with other load:                    0
+
+Slice Logic Distribution:
+  Number of occupied Slices:                    44 out of   6,822    1%
+  Nummber of MUXCYs used:                      120 out of  13,644    1%
+  Number of LUT Flip Flop pairs used:          161
+    Number with an unused Flip Flop:            58 out of     161   36%
+    Number with an unused LUT:                   1 out of     161    1%
+    Number of fully used LUT-FF pairs:         102 out of     161   63%
+    Number of unique control sets:               6
+    Number of slice register sites lost
+      to control set restrictions:              17 out of  54,576    1%
+
+  A LUT Flip Flop pair for this architecture represents one LUT paired with
+  one Flip Flop within a slice.  A control set is a unique combination of
+  clock, reset, set, and enable signals for a registered element.
+  The Slice Logic Distribution report is not meaningful if the design is
+  over-mapped for a non-slice resource or if Placement fails.
+
+IO Utilization:
+  Number of bonded IOBs:                        29 out of     296    9%
+
+Specific Feature Utilization:
+  Number of RAMB16BWERs:                         0 out of     116    0%
+  Number of RAMB8BWERs:                          0 out of     232    0%
+  Number of BUFIO2/BUFIO2_2CLKs:                 0 out of      32    0%
+  Number of BUFIO2FB/BUFIO2FB_2CLKs:             0 out of      32    0%
+  Number of BUFG/BUFGMUXs:                       1 out of      16    6%
+    Number used as BUFGs:                        1
+    Number used as BUFGMUX:                      0
+  Number of DCM/DCM_CLKGENs:                     0 out of       8    0%
+  Number of ILOGIC2/ISERDES2s:                   0 out of     376    0%
+  Number of IODELAY2/IODRP2/IODRP2_MCBs:         0 out of     376    0%
+  Number of OLOGIC2/OSERDES2s:                   0 out of     376    0%
+  Number of BSCANs:                              0 out of       4    0%
+  Number of BUFHs:                               0 out of     256    0%
+  Number of BUFPLLs:                             0 out of       8    0%
+  Number of BUFPLL_MCBs:                         0 out of       4    0%
+  Number of DSP48A1s:                            0 out of      58    0%
+  Number of GTPA1_DUALs:                         0 out of       2    0%
+  Number of ICAPs:                               0 out of       1    0%
+  Number of MCBs:                                0 out of       2    0%
+  Number of PCIE_A1s:                            0 out of       1    0%
+  Number of PCILOGICSEs:                         0 out of       2    0%
+  Number of PLL_ADVs:                            0 out of       4    0%
+  Number of PMVs:                                0 out of       1    0%
+  Number of STARTUPs:                            0 out of       1    0%
+  Number of SUSPEND_SYNCs:                       0 out of       1    0%
+
+Average Fanout of Non-Clock Nets:                2.83
+
+Peak Memory Usage:  340 MB
+Total REAL time to MAP completion:  59 secs 
+Total CPU time to MAP completion:   58 secs 
+
+Table of Contents
+-----------------
+Section 1 - Errors
+Section 2 - Warnings
+Section 3 - Informational
+Section 4 - Removed Logic Summary
+Section 5 - Removed Logic
+Section 6 - IOB Properties
+Section 7 - RPMs
+Section 8 - Guide Report
+Section 9 - Area Group and Partition Summary
+Section 10 - Timing Report
+Section 11 - Configuration String Information
+Section 12 - Control Set Information
+Section 13 - Utilization by Hierarchy
+
+Section 1 - Errors
+------------------
+
+Section 2 - Warnings
+--------------------
+WARNING:MapLib:701 - Signal HOLT_DATA_BUS<7> connected to top level port
+   HOLT_DATA_BUS<7> has been removed.
+WARNING:MapLib:701 - Signal HOLT_DATA_BUS<6> connected to top level port
+   HOLT_DATA_BUS<6> has been removed.
+WARNING:MapLib:701 - Signal HOLT_DATA_BUS<5> connected to top level port
+   HOLT_DATA_BUS<5> has been removed.
+WARNING:MapLib:701 - Signal HOLT_DATA_BUS<4> connected to top level port
+   HOLT_DATA_BUS<4> has been removed.
+WARNING:MapLib:701 - Signal HOLT_DATA_BUS<3> connected to top level port
+   HOLT_DATA_BUS<3> has been removed.
+WARNING:MapLib:701 - Signal HOLT_DATA_BUS<2> connected to top level port
+   HOLT_DATA_BUS<2> has been removed.
+WARNING:MapLib:701 - Signal HOLT_DATA_BUS<1> connected to top level port
+   HOLT_DATA_BUS<1> has been removed.
+WARNING:MapLib:701 - Signal HOLT_DATA_BUS<0> connected to top level port
+   HOLT_DATA_BUS<0> has been removed.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   XLXI_2/XLXI_3/writer/WRITING_STATE[2]_GND_69_o_Mux_20_o is sourced by a
+   combinatorial pin. This is not good design practice. Use the CE pin to
+   control the loading of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   XLXI_2/XLXI_5/HAVE_WE_RESET_G is sourced by a combinatorial pin. This is not
+   good design practice. Use the CE pin to control the loading of data into the
+   flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   XLXI_2/XLXI_3/reader/_n0206<0> is sourced by a combinatorial pin. This is not
+   good design practice. Use the CE pin to control the loading of data into the
+   flip-flop.
+
+Section 3 - Informational
+-------------------------
+INFO:LIT:243 - Logical network HWAIT has no load.
+INFO:MapLib:562 - No environment variables are currently set.
+INFO:LIT:244 - All of the single ended outputs in this design are using slew
+   rate limited output drivers. The delay on speed critical single ended outputs
+   can be dramatically reduced by designating them as fast outputs.
+INFO:Pack:1716 - Initializing temperature to 85.000 Celsius. (default - Range:
+   0.000 to 85.000 Celsius)
+INFO:Pack:1720 - Initializing voltage to 1.140 Volts. (default - Range: 1.140 to
+   1.260 Volts)
+INFO:Map:215 - The Interim Design Summary has been generated in the MAP Report
+   (.mrp).
+INFO:Pack:1650 - Map created a placed design.
+
+Section 4 - Removed Logic Summary
+---------------------------------
+  19 block(s) removed
+   2 block(s) optimized away
+  11 signal(s) removed
+
+Section 5 - Removed Logic
+-------------------------
+
+The trimmed logic reported below is either:
+   1. part of a cycle
+   2. part of disabled logic
+   3. a side-effect of other trimmed logic
+
+The signal "HOLT_DATA_BUS<7>" is unused and has been removed.
+ Unused block "HOLT_DATA_BUS_7_OBUFT" (TRI) removed.
+  The signal "XLXI_2/XLXI_3/wDATA<0>" is unused and has been removed.
+   Unused block "XLXI_2/XLXI_3/writer/DATA<0>LogicTrst1_INV_0" (BUF) removed.
+    The signal "XLXI_2/XLXI_3/writer/WRITING_STATE[2]_WRITING_STATE[2]_DLATCH_50_q"
+is unused and has been removed.
+     Unused block
+"XLXI_2/XLXI_3/writer/WRITING_STATE[2]_WRITING_STATE[2]_DLATCH_50_q" (LATCH)
+removed.
+      The signal "XLXI_2/XLXI_3/writer/WRITING_STATE[2]_PWR_163_o_Mux_54_o" is unused
+and has been removed.
+       Unused block "XLXI_2/XLXI_3/writer/Mmux_CE141" (ROM) removed.
+The signal "HOLT_DATA_BUS<6>" is unused and has been removed.
+ Unused block "HOLT_DATA_BUS_6_OBUFT" (TRI) removed.
+The signal "HOLT_DATA_BUS<5>" is unused and has been removed.
+ Unused block "HOLT_DATA_BUS_5_OBUFT" (TRI) removed.
+The signal "HOLT_DATA_BUS<4>" is unused and has been removed.
+ Unused block "HOLT_DATA_BUS_4_OBUFT" (TRI) removed.
+The signal "HOLT_DATA_BUS<3>" is unused and has been removed.
+ Unused block "HOLT_DATA_BUS_3_OBUFT" (TRI) removed.
+The signal "HOLT_DATA_BUS<2>" is unused and has been removed.
+ Unused block "HOLT_DATA_BUS_2_OBUFT" (TRI) removed.
+The signal "HOLT_DATA_BUS<1>" is unused and has been removed.
+ Unused block "HOLT_DATA_BUS_1_OBUFT" (TRI) removed.
+The signal "HOLT_DATA_BUS<0>" is unused and has been removed.
+ Unused block "HOLT_DATA_BUS_0_OBUFT" (TRI) removed.
+Unused block "HOLT_DATA_BUS<0>" (PAD) removed.
+Unused block "HOLT_DATA_BUS<1>" (PAD) removed.
+Unused block "HOLT_DATA_BUS<2>" (PAD) removed.
+Unused block "HOLT_DATA_BUS<3>" (PAD) removed.
+Unused block "HOLT_DATA_BUS<4>" (PAD) removed.
+Unused block "HOLT_DATA_BUS<5>" (PAD) removed.
+Unused block "HOLT_DATA_BUS<6>" (PAD) removed.
+Unused block "HOLT_DATA_BUS<7>" (PAD) removed.
+
+Optimized Block(s):
+TYPE 		BLOCK
+GND 		XST_GND
+VCC 		XST_VCC
+
+To enable printing of redundant blocks removed and signals merged, set the
+detailed map report option and rerun map.
+
+Section 6 - IOB Properties
+--------------------------
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------+
+| IOB Name                           | Type             | Direction | IO Standard          | Diff  | Drive    | Slew | Reg (s)      | Resistor | IOB      |
+|                                    |                  |           |                      | Term  | Strength | Rate |              |          | Delay    |
++---------------------------------------------------------------------------------------------------------------------------------------------------------+
+| AUTOEN                             | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| BENDI                              | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| BTYPE                              | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| BWID                               | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| EECOPY                             | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| FAST_CLOCK                         | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| HOLT_ADDR_BUS<0>                   | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HOLT_ADDR_BUS<1>                   | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HOLT_ADDR_BUS<2>                   | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HOLT_ADDR_BUS<3>                   | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HOLT_ADDR_BUS<4>                   | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HOLT_ADDR_BUS<5>                   | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HOLT_ADDR_BUS<6>                   | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HOLT_ADDR_BUS<7>                   | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HOLT_ADDR_BUS<8>                   | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HOLT_ADDR_BUS<9>                   | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HOLT_ADDR_BUS<10>                  | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HOLT_ADDR_BUS<11>                  | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HOLT_ADDR_BUS<12>                  | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HOLT_ADDR_BUS<13>                  | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HOLT_ADDR_BUS<14>                  | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HOLT_ADDR_BUS<15>                  | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| MTSTOFF                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| RAMEDC                             | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| WPOL                               | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| nCE                                | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| nMR                                | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| nOE                                | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| nWE                                | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
++---------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+Section 7 - RPMs
+----------------
+
+Section 8 - Guide Report
+------------------------
+Guide not run on this design.
+
+Section 9 - Area Group and Partition Summary
+--------------------------------------------
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+Area Group Information
+----------------------
+
+  No area groups were found in this design.
+
+----------------------
+
+Section 10 - Timing Report
+--------------------------
+A logic-level (pre-route) timing report can be generated by using Xilinx static
+timing analysis tools, Timing Analyzer (GUI) or TRCE (command line), with the
+mapped NCD and PCF files. Please note that this timing report will be generated
+using estimated delay information. For accurate numbers, please generate a
+timing report with the post Place and Route NCD file.
+
+For more information about the Timing Analyzer, consult the Xilinx Timing
+Analyzer Reference Manual; for more information about TRCE, consult the Xilinx
+Command Line Tools User Guide "TRACE" chapter.
+
+Section 11 - Configuration String Details
+-----------------------------------------
+Use the "-detail" map option to print out Configuration Strings
+
+Section 12 - Control Set Information
+------------------------------------
+Use the "-detail" map option to print out Control Set Information.
+
+Section 13 - Utilization by Hierarchy
+-------------------------------------
+Use the "-detail" map option to print out the Utilization by Hierarchy section.

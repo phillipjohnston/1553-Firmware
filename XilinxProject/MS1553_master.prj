@@ -1,0 +1,3 @@
+vhdl work "Latch8Bit.vhd"
+vhdl work "Latch16Bit.vhd"
+vhdl work "MS1553_master.vhd"

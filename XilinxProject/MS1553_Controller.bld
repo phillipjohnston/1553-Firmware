@@ -1,0 +1,37 @@
+Release 13.4 ngdbuild O.87xd (nt)
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+
+Command Line: C:\Xilinx\13.4\ISE_DS\ISE\bin\nt\unwrapped\ngdbuild.exe -intstyle
+ise -dd _ngo -nt timestamp -i -p xc6slx45t-fgg484-3 MS1553_Controller.ngc
+MS1553_Controller.ngd
+
+Reading NGO file
+"C:/Users/Phillip/Downloads/MS1553_Interface/MS1553_Interface/MS1553_Controller.
+ngc" ...
+Gathering constraint information from source properties...
+Done.
+
+Resolving constraint associations...
+Checking Constraint Associations...
+Done...
+
+Checking expanded design ...
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+NGDBUILD Design Results Summary:
+  Number of errors:     0
+  Number of warnings:   0
+
+Total memory usage is 136888 kilobytes
+
+Writing NGD file "MS1553_Controller.ngd" ...
+Total REAL time to NGDBUILD completion:  12 sec
+Total CPU time to NGDBUILD completion:   11 sec
+
+Writing NGDBUILD log file "MS1553_Controller.bld"...

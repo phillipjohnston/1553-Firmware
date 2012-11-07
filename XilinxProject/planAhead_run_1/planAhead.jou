@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# PlanAhead v13.4 (64-bit)
+# Build 157570 by hdbuild on Fri Dec 16 13:06:31 MST 2011
+# Start of session at: Tue Nov 06 20:25:33 2012
+# Process ID: 1628
+# Log file: C:/Users/Phillip/Downloads/MS1553_Interface/MS1553_Interface/planAhead_run_1/planAhead.log
+# Journal file: C:/Users/Phillip/Downloads/MS1553_Interface/MS1553_Interface/planAhead_run_1/planAhead.jou
+#-----------------------------------------------------------
+start_gui
+source C:/Users/Phillip/Downloads/MS1553_Interface/MS1553_Interface/pa.fromHdl.tcl
+exit
+stop_gui

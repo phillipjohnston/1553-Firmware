@@ -1,0 +1,45 @@
+Running: fuse.exe -relaunch -intstyle "ise" -incremental -lib "secureip" -o "C:/Users/Phillip/Downloads/MS1553_Interface/MS1553_Interface/MS1553_Controller_MS1553_Controller_sch_tb_isim_beh.exe" -prj "C:/Users/Phillip/Downloads/MS1553_Interface/MS1553_Interface/MS1553_Controller_MS1553_Controller_sch_tb_beh.prj" "work.MS1553_Controller_MS1553_Controller_sch_tb" 
+ISim O.87xd (signature 0x2f00eba5)
+Number of CPUs detected in this system: 4
+Turning on mult-threading, number of parallel sub-compilation jobs: 8 
+Determining compilation order of HDL files
+Parsing VHDL file "C:/Users/Phillip/Downloads/MS1553_Interface/MS1553_Interface/DelayModule.vhd" into library work
+Parsing VHDL file "C:/Users/Phillip/Downloads/MS1553_Interface/MS1553_Interface/mem_trans_writer.vhd" into library work
+Parsing VHDL file "C:/Users/Phillip/Downloads/MS1553_Interface/MS1553_Interface/mem_trans_reader.vhd" into library work
+Parsing VHDL file "C:/Users/Phillip/Downloads/MS1553_Interface/MS1553_Interface/Latch8Bit.vhd" into library work
+Parsing VHDL file "C:/Users/Phillip/Downloads/MS1553_Interface/MS1553_Interface/Latch16Bit.vhd" into library work
+Parsing VHDL file "C:/Users/Phillip/Downloads/MS1553_Interface/MS1553_Interface/Latch.vhd" into library work
+Parsing VHDL file "C:/Users/Phillip/Downloads/MS1553_Interface/MS1553_Interface/MS1553_Reset_Pulse_Gen.vhd" into library work
+Parsing VHDL file "C:/Users/Phillip/Downloads/MS1553_Interface/MS1553_Interface/MS1553_master.vhd" into library work
+Parsing VHDL file "C:/Users/Phillip/Downloads/MS1553_Interface/MS1553_Interface/holt_mem_trans.vhd" into library work
+Parsing VHDL file "C:/Users/Phillip/Downloads/MS1553_Interface/MS1553_Interface/holt_initializer.vhd" into library work
+Parsing VHDL file "C:/Users/Phillip/Downloads/MS1553_Interface/MS1553_Interface/MS1553_Controller.vhf" into library work
+Parsing VHDL file "C:/Users/Phillip/Downloads/MS1553_Interface/MS1553_Interface/MS1553_Controller_TB.vhd" into library work
+Starting static elaboration
+Completed static elaboration
+Fuse Memory Usage: 129648 KB
+Fuse CPU Usage: 1435 ms
+Compiling package standard
+Compiling package std_logic_1164
+Compiling package numeric_std
+Compiling package vcomponents
+Compiling architecture behavioral of entity holt_initializer [holt_initializer_default]
+Compiling package std_logic_arith
+Compiling package std_logic_unsigned
+Compiling architecture behavioral of entity DelayModule [delaymodule_default]
+Compiling architecture behavioral of entity mem_trans_reader [mem_trans_reader_default]
+Compiling architecture behavioral of entity mem_trans_writer [mem_trans_writer_default]
+Compiling architecture behavioral of entity Latch8Bit [latch8bit_default]
+Compiling architecture behavioral of entity Latch16Bit [latch16bit_default]
+Compiling architecture behavioral of entity Latch [latch_default]
+Compiling architecture behavioral of entity holt_mem_trans [holt_mem_trans_default]
+Compiling architecture behavioral of entity MS1553_master [ms1553_master_default]
+Compiling architecture behavioral of entity MS1553_Reset_Pulse_Gen [ms1553_reset_pulse_gen_default]
+Compiling architecture behavioral of entity MS1553_Controller [ms1553_controller_default]
+Compiling architecture behavioral of entity ms1553_controller_ms1553_control...
+Time Resolution for simulation is 1ps.
+Waiting for 9 sub-compilation(s) to finish...
+Compiled 29 VHDL Units
+Built simulation executable C:/Users/Phillip/Downloads/MS1553_Interface/MS1553_Interface/MS1553_Controller_MS1553_Controller_sch_tb_isim_beh.exe
+Fuse Memory Usage: 150684 KB
+Fuse CPU Usage: 3042 ms

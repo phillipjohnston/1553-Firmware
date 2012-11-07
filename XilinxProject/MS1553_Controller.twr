@@ -1,0 +1,282 @@
+--------------------------------------------------------------------------------
+Release 13.4 Trace  (nt)
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+
+C:\Xilinx\13.4\ISE_DS\ISE\bin\nt\unwrapped\trce.exe -intstyle ise -v 3 -s 3 -n
+3 -fastpaths -xml MS1553_Controller.twx MS1553_Controller.ncd -o
+MS1553_Controller.twr MS1553_Controller.pcf
+
+Design file:              MS1553_Controller.ncd
+Physical constraint file: MS1553_Controller.pcf
+Device,package,speed:     xc6slx45t,fgg484,C,-3 (PRODUCTION 1.21 2012-01-07)
+Report level:             verbose report
+
+Environment Variable      Effect 
+--------------------      ------ 
+NONE                      No environment variables were set
+--------------------------------------------------------------------------------
+
+INFO:Timing:2698 - No timing constraints found, doing default enumeration.
+INFO:Timing:3412 - To improve timing, see the Timing Closure User Guide (UG612).
+INFO:Timing:2752 - To get complete path coverage, use the unconstrained paths 
+   option. All paths that are not constrained will be reported in the 
+   unconstrained paths section(s) of the report.
+INFO:Timing:3339 - The clock-to-out numbers in this timing report are based on 
+   a 50 Ohm transmission line loading model.  For the details of this model, 
+   and for more information on accounting for different loading conditions, 
+   please see the device datasheet.
+
+
+
+Data Sheet report:
+-----------------
+All values displayed in nanoseconds (ns)
+
+Setup/Hold to clock ALE
+------------+------------+------------+------------+------------+------------------+--------+
+            |Max Setup to|  Process   |Max Hold to |  Process   |                  | Clock  |
+Source      | clk (edge) |   Corner   | clk (edge) |   Corner   |Internal Clock(s) | Phase  |
+------------+------------+------------+------------+------------+------------------+--------+
+Address<0>  |    1.727(F)|      SLOW  |   -1.190(F)|      SLOW  |ALE_IBUF_BUFG     |   0.000|
+            |   -2.684(F)|      FAST  |    4.825(F)|      SLOW  |XLXI_4/au_en      |   0.000|
+            |   -2.331(F)|      FAST  |    4.333(F)|      SLOW  |XLXI_4/pd0_en     |   0.000|
+            |   -2.118(F)|      FAST  |    4.232(F)|      SLOW  |XLXI_4/pd1_en     |   0.000|
+Address<1>  |   -2.692(F)|      FAST  |    4.843(F)|      SLOW  |XLXI_4/au_en      |   0.000|
+            |   -2.536(F)|      FAST  |    4.505(F)|      SLOW  |XLXI_4/pd0_en     |   0.000|
+            |   -2.324(F)|      FAST  |    4.391(F)|      SLOW  |XLXI_4/pd1_en     |   0.000|
+Address<2>  |   -2.781(F)|      FAST  |    4.936(F)|      SLOW  |XLXI_4/au_en      |   0.000|
+            |   -2.714(F)|      FAST  |    4.732(F)|      SLOW  |XLXI_4/pd0_en     |   0.000|
+            |   -2.359(F)|      FAST  |    4.461(F)|      SLOW  |XLXI_4/pd1_en     |   0.000|
+Address<3>  |   -2.919(F)|      FAST  |    5.151(F)|      SLOW  |XLXI_4/au_en      |   0.000|
+            |   -2.850(F)|      FAST  |    4.957(F)|      SLOW  |XLXI_4/pd0_en     |   0.000|
+            |   -2.617(F)|      FAST  |    4.812(F)|      SLOW  |XLXI_4/pd1_en     |   0.000|
+Address<4>  |   -2.959(F)|      FAST  |    5.249(F)|      SLOW  |XLXI_4/au_en      |   0.000|
+            |   -2.004(F)|      FAST  |    3.788(F)|      SLOW  |XLXI_4/pd0_en     |   0.000|
+            |   -2.245(F)|      FAST  |    4.183(F)|      SLOW  |XLXI_4/pd1_en     |   0.000|
+Address<5>  |   -2.952(F)|      FAST  |    5.238(F)|      SLOW  |XLXI_4/au_en      |   0.000|
+            |   -2.016(F)|      FAST  |    3.820(F)|      SLOW  |XLXI_4/pd0_en     |   0.000|
+            |   -2.256(F)|      FAST  |    4.214(F)|      SLOW  |XLXI_4/pd1_en     |   0.000|
+Address<6>  |   -2.933(F)|      FAST  |    5.195(F)|      SLOW  |XLXI_4/au_en      |   0.000|
+            |   -1.887(F)|      FAST  |    3.610(F)|      SLOW  |XLXI_4/pd0_en     |   0.000|
+            |   -2.128(F)|      FAST  |    4.005(F)|      SLOW  |XLXI_4/pd1_en     |   0.000|
+Address<7>  |   -3.053(F)|      FAST  |    5.359(F)|      SLOW  |XLXI_4/au_en      |   0.000|
+            |   -1.966(F)|      FAST  |    3.735(F)|      SLOW  |XLXI_4/pd0_en     |   0.000|
+            |   -2.207(F)|      FAST  |    4.130(F)|      SLOW  |XLXI_4/pd1_en     |   0.000|
+Address<8>  |   -3.917(F)|      FAST  |    6.864(F)|      SLOW  |XLXI_4/au_en      |   0.000|
+Address<9>  |   -3.948(F)|      FAST  |    6.909(F)|      SLOW  |XLXI_4/au_en      |   0.000|
+Address<10> |   -3.882(F)|      FAST  |    6.765(F)|      SLOW  |XLXI_4/au_en      |   0.000|
+Address<11> |   -3.913(F)|      FAST  |    6.810(F)|      SLOW  |XLXI_4/au_en      |   0.000|
+Address<12> |   -3.896(F)|      FAST  |    6.805(F)|      SLOW  |XLXI_4/au_en      |   0.000|
+Address<13> |   -3.927(F)|      FAST  |    6.850(F)|      SLOW  |XLXI_4/au_en      |   0.000|
+Address<14> |   -3.623(F)|      FAST  |    6.519(F)|      SLOW  |XLXI_4/au_en      |   0.000|
+Address<15> |    1.582(F)|      SLOW  |   -1.046(F)|      SLOW  |ALE_IBUF_BUFG     |   0.000|
+            |   -2.760(F)|      FAST  |    5.016(F)|      SLOW  |XLXI_4/au_en      |   0.000|
+------------+------------+------------+------------+------------+------------------+--------+
+
+Setup/Hold to clock nWR
+------------+------------+------------+------------+------------+------------------+--------+
+            |Max Setup to|  Process   |Max Hold to |  Process   |                  | Clock  |
+Source      | clk (edge) |   Corner   | clk (edge) |   Corner   |Internal Clock(s) | Phase  |
+------------+------------+------------+------------+------------+------------------+--------+
+Address<0>  |   -1.342(F)|      FAST  |    2.672(F)|      SLOW  |XLXI_4/pd0_en     |   0.000|
+            |   -1.129(F)|      FAST  |    2.571(F)|      SLOW  |XLXI_4/pd1_en     |   0.000|
+Address<1>  |   -1.547(F)|      FAST  |    2.844(F)|      SLOW  |XLXI_4/pd0_en     |   0.000|
+            |   -1.335(F)|      FAST  |    2.730(F)|      SLOW  |XLXI_4/pd1_en     |   0.000|
+Address<2>  |   -1.725(F)|      FAST  |    3.071(F)|      SLOW  |XLXI_4/pd0_en     |   0.000|
+            |   -1.370(F)|      FAST  |    2.800(F)|      SLOW  |XLXI_4/pd1_en     |   0.000|
+Address<3>  |   -1.861(F)|      FAST  |    3.296(F)|      SLOW  |XLXI_4/pd0_en     |   0.000|
+            |   -1.628(F)|      FAST  |    3.151(F)|      SLOW  |XLXI_4/pd1_en     |   0.000|
+Address<4>  |   -1.015(F)|      FAST  |    2.127(F)|      SLOW  |XLXI_4/pd0_en     |   0.000|
+            |   -1.256(F)|      FAST  |    2.522(F)|      SLOW  |XLXI_4/pd1_en     |   0.000|
+Address<5>  |   -1.027(F)|      FAST  |    2.159(F)|      SLOW  |XLXI_4/pd0_en     |   0.000|
+            |   -1.267(F)|      FAST  |    2.553(F)|      SLOW  |XLXI_4/pd1_en     |   0.000|
+Address<6>  |   -0.898(F)|      FAST  |    1.949(F)|      SLOW  |XLXI_4/pd0_en     |   0.000|
+            |   -1.139(F)|      FAST  |    2.344(F)|      SLOW  |XLXI_4/pd1_en     |   0.000|
+Address<7>  |   -0.977(F)|      FAST  |    2.074(F)|      SLOW  |XLXI_4/pd0_en     |   0.000|
+            |   -1.218(F)|      FAST  |    2.469(F)|      SLOW  |XLXI_4/pd1_en     |   0.000|
+------------+------------+------------+------------+------------+------------------+--------+
+
+Clock ALE to Pad
+-------------+-----------------+------------+-----------------+------------+------------------+--------+
+             |Max (slowest) clk|  Process   |Min (fastest) clk|  Process   |                  | Clock  |
+Destination  |  (edge) to PAD  |   Corner   |  (edge) to PAD  |   Corner   |Internal Clock(s) | Phase  |
+-------------+-----------------+------------+-----------------+------------+------------------+--------+
+HOLT_ADDR<0> |        16.444(F)|      SLOW  |         8.980(F)|      FAST  |XLXI_4/au_en      |   0.000|
+HOLT_ADDR<1> |        17.392(F)|      SLOW  |         9.201(F)|      FAST  |XLXI_4/au_en      |   0.000|
+HOLT_ADDR<2> |        17.028(F)|      SLOW  |         9.342(F)|      FAST  |XLXI_4/au_en      |   0.000|
+HOLT_ADDR<3> |        17.275(F)|      SLOW  |         9.138(F)|      FAST  |XLXI_4/au_en      |   0.000|
+HOLT_ADDR<4> |        17.607(F)|      SLOW  |         9.746(F)|      FAST  |XLXI_4/au_en      |   0.000|
+HOLT_ADDR<5> |        17.204(F)|      SLOW  |         9.481(F)|      FAST  |XLXI_4/au_en      |   0.000|
+HOLT_ADDR<6> |        17.511(F)|      SLOW  |         9.711(F)|      FAST  |XLXI_4/au_en      |   0.000|
+HOLT_ADDR<7> |        17.525(F)|      SLOW  |         9.372(F)|      FAST  |XLXI_4/au_en      |   0.000|
+HOLT_ADDR<8> |        17.254(F)|      SLOW  |         9.605(F)|      FAST  |XLXI_4/au_en      |   0.000|
+HOLT_ADDR<9> |        17.021(F)|      SLOW  |         9.425(F)|      FAST  |XLXI_4/au_en      |   0.000|
+HOLT_ADDR<10>|        17.451(F)|      SLOW  |         9.625(F)|      FAST  |XLXI_4/au_en      |   0.000|
+HOLT_ADDR<11>|        17.476(F)|      SLOW  |         9.474(F)|      FAST  |XLXI_4/au_en      |   0.000|
+HOLT_ADDR<12>|        17.558(F)|      SLOW  |         9.716(F)|      FAST  |XLXI_4/au_en      |   0.000|
+HOLT_ADDR<13>|        17.904(F)|      SLOW  |         9.952(F)|      FAST  |XLXI_4/au_en      |   0.000|
+HOLT_ADDR<14>|        17.425(F)|      SLOW  |         9.653(F)|      FAST  |XLXI_4/au_en      |   0.000|
+HOLT_ADDR<15>|        16.699(F)|      SLOW  |         9.278(F)|      FAST  |XLXI_4/au_en      |   0.000|
+nCE          |        17.998(F)|      SLOW  |        10.540(F)|      FAST  |XLXI_4/au_en      |   0.000|
+nOE          |        16.913(F)|      SLOW  |         8.755(F)|      FAST  |XLXI_4/au_en      |   0.000|
+nWE          |        17.297(F)|      SLOW  |        10.169(F)|      FAST  |XLXI_4/au_en      |   0.000|
+-------------+-----------------+------------+-----------------+------------+------------------+--------+
+
+Clock FAST_CLOCK to Pad
+-------------+-----------------+------------+-----------------+------------+------------------+--------+
+             |Max (slowest) clk|  Process   |Min (fastest) clk|  Process   |                  | Clock  |
+Destination  |  (edge) to PAD  |   Corner   |  (edge) to PAD  |   Corner   |Internal Clock(s) | Phase  |
+-------------+-----------------+------------+-----------------+------------+------------------+--------+
+HOLT_ADDR<0> |        13.497(R)|      SLOW  |         5.498(R)|      FAST  |FAST_CLOCK_BUFGP  |   0.000|
+HOLT_ADDR<1> |        14.445(R)|      SLOW  |         6.267(R)|      FAST  |FAST_CLOCK_BUFGP  |   0.000|
+HOLT_ADDR<2> |        14.081(R)|      SLOW  |         6.002(R)|      FAST  |FAST_CLOCK_BUFGP  |   0.000|
+HOLT_ADDR<3> |        14.328(R)|      SLOW  |         6.190(R)|      FAST  |FAST_CLOCK_BUFGP  |   0.000|
+HOLT_ADDR<4> |        14.660(R)|      SLOW  |         6.235(R)|      FAST  |FAST_CLOCK_BUFGP  |   0.000|
+HOLT_ADDR<5> |        14.257(R)|      SLOW  |         6.157(R)|      FAST  |FAST_CLOCK_BUFGP  |   0.000|
+HOLT_ADDR<6> |        14.564(R)|      SLOW  |         6.140(R)|      FAST  |FAST_CLOCK_BUFGP  |   0.000|
+HOLT_ADDR<7> |        14.578(R)|      SLOW  |         6.341(R)|      FAST  |FAST_CLOCK_BUFGP  |   0.000|
+HOLT_ADDR<8> |        14.307(R)|      SLOW  |         6.015(R)|      FAST  |FAST_CLOCK_BUFGP  |   0.000|
+HOLT_ADDR<9> |        14.074(R)|      SLOW  |         5.909(R)|      FAST  |FAST_CLOCK_BUFGP  |   0.000|
+HOLT_ADDR<10>|        14.504(R)|      SLOW  |         5.982(R)|      FAST  |FAST_CLOCK_BUFGP  |   0.000|
+HOLT_ADDR<11>|        14.529(R)|      SLOW  |         6.295(R)|      FAST  |FAST_CLOCK_BUFGP  |   0.000|
+HOLT_ADDR<12>|        14.611(R)|      SLOW  |         6.455(R)|      FAST  |FAST_CLOCK_BUFGP  |   0.000|
+HOLT_ADDR<13>|        14.957(R)|      SLOW  |         6.607(R)|      FAST  |FAST_CLOCK_BUFGP  |   0.000|
+HOLT_ADDR<14>|        14.478(R)|      SLOW  |         6.338(R)|      FAST  |FAST_CLOCK_BUFGP  |   0.000|
+HOLT_ADDR<15>|        13.752(R)|      SLOW  |         6.424(R)|      FAST  |FAST_CLOCK_BUFGP  |   0.000|
+nCE          |        14.888(R)|      SLOW  |         6.988(R)|      FAST  |FAST_CLOCK_BUFGP  |   0.000|
+nOE          |        13.966(R)|      SLOW  |         5.901(R)|      FAST  |FAST_CLOCK_BUFGP  |   0.000|
+nWE          |        14.187(R)|      SLOW  |         5.991(R)|      FAST  |FAST_CLOCK_BUFGP  |   0.000|
+-------------+-----------------+------------+-----------------+------------+------------------+--------+
+
+Clock nRD to Pad
+-------------+-----------------+------------+-----------------+------------+------------------------------------------------+--------+
+             |Max (slowest) clk|  Process   |Min (fastest) clk|  Process   |                                                | Clock  |
+Destination  |  (edge) to PAD  |   Corner   |  (edge) to PAD  |   Corner   |Internal Clock(s)                               | Phase  |
+-------------+-----------------+------------+-----------------+------------+------------------------------------------------+--------+
+DATA_CHIP<0> |        14.004(F)|      SLOW  |         6.434(F)|      FAST  |XLXI_3/reader/READING_STATE[2]_PWR_28_o_Mux_50_o|   0.000|
+DATA_CHIP<1> |        14.386(F)|      SLOW  |         6.634(F)|      FAST  |XLXI_3/reader/READING_STATE[2]_PWR_28_o_Mux_50_o|   0.000|
+DATA_CHIP<2> |        13.973(F)|      SLOW  |         6.421(F)|      FAST  |XLXI_3/reader/READING_STATE[2]_PWR_28_o_Mux_50_o|   0.000|
+DATA_CHIP<3> |        14.241(F)|      SLOW  |         6.559(F)|      FAST  |XLXI_3/reader/READING_STATE[2]_PWR_28_o_Mux_50_o|   0.000|
+DATA_CHIP<4> |        14.039(F)|      SLOW  |         6.371(F)|      FAST  |XLXI_3/reader/READING_STATE[2]_PWR_28_o_Mux_50_o|   0.000|
+DATA_CHIP<5> |        13.975(F)|      SLOW  |         6.382(F)|      FAST  |XLXI_3/reader/READING_STATE[2]_PWR_28_o_Mux_50_o|   0.000|
+DATA_CHIP<6> |        14.351(F)|      SLOW  |         6.590(F)|      FAST  |XLXI_3/reader/READING_STATE[2]_PWR_28_o_Mux_50_o|   0.000|
+DATA_CHIP<7> |        14.231(F)|      SLOW  |         6.536(F)|      FAST  |XLXI_3/reader/READING_STATE[2]_PWR_28_o_Mux_50_o|   0.000|
+HOLT_ADDR<0> |        17.188(F)|      SLOW  |         7.355(F)|      FAST  |XLXI_3/reader/_n0206<0>                         |   0.000|
+HOLT_ADDR<1> |        18.136(F)|      SLOW  |         8.124(F)|      FAST  |XLXI_3/reader/_n0206<0>                         |   0.000|
+HOLT_ADDR<2> |        17.772(F)|      SLOW  |         7.859(F)|      FAST  |XLXI_3/reader/_n0206<0>                         |   0.000|
+HOLT_ADDR<3> |        18.019(F)|      SLOW  |         8.047(F)|      FAST  |XLXI_3/reader/_n0206<0>                         |   0.000|
+HOLT_ADDR<4> |        18.351(F)|      SLOW  |         8.092(F)|      FAST  |XLXI_3/reader/_n0206<0>                         |   0.000|
+HOLT_ADDR<5> |        17.948(F)|      SLOW  |         8.014(F)|      FAST  |XLXI_3/reader/_n0206<0>                         |   0.000|
+HOLT_ADDR<6> |        18.255(F)|      SLOW  |         7.997(F)|      FAST  |XLXI_3/reader/_n0206<0>                         |   0.000|
+HOLT_ADDR<7> |        18.269(F)|      SLOW  |         8.198(F)|      FAST  |XLXI_3/reader/_n0206<0>                         |   0.000|
+HOLT_ADDR<8> |        17.998(F)|      SLOW  |         7.872(F)|      FAST  |XLXI_3/reader/_n0206<0>                         |   0.000|
+HOLT_ADDR<9> |        17.765(F)|      SLOW  |         7.766(F)|      FAST  |XLXI_3/reader/_n0206<0>                         |   0.000|
+HOLT_ADDR<10>|        18.195(F)|      SLOW  |         7.839(F)|      FAST  |XLXI_3/reader/_n0206<0>                         |   0.000|
+HOLT_ADDR<11>|        18.220(F)|      SLOW  |         8.152(F)|      FAST  |XLXI_3/reader/_n0206<0>                         |   0.000|
+HOLT_ADDR<12>|        18.302(F)|      SLOW  |         8.312(F)|      FAST  |XLXI_3/reader/_n0206<0>                         |   0.000|
+HOLT_ADDR<13>|        18.648(F)|      SLOW  |         8.464(F)|      FAST  |XLXI_3/reader/_n0206<0>                         |   0.000|
+HOLT_ADDR<14>|        18.169(F)|      SLOW  |         8.195(F)|      FAST  |XLXI_3/reader/_n0206<0>                         |   0.000|
+HOLT_ADDR<15>|        17.443(F)|      SLOW  |         8.281(F)|      FAST  |XLXI_3/reader/_n0206<0>                         |   0.000|
+nOE          |        17.657(F)|      SLOW  |         7.758(F)|      FAST  |XLXI_3/reader/_n0206<0>                         |   0.000|
+-------------+-----------------+------------+-----------------+------------+------------------------------------------------+--------+
+
+Clock nWR to Pad
+-------------+-----------------+------------+-----------------+------------+-----------------------------------------------------+--------+
+             |Max (slowest) clk|  Process   |Min (fastest) clk|  Process   |                                                     | Clock  |
+Destination  |  (edge) to PAD  |   Corner   |  (edge) to PAD  |   Corner   |Internal Clock(s)                                    | Phase  |
+-------------+-----------------+------------+-----------------+------------+-----------------------------------------------------+--------+
+DATA_CHIP<0> |        20.101(F)|      SLOW  |        10.707(F)|      FAST  |XLXI_3/writer/WRITING_STATE[2]_GND_61_o_Mux_20_o_BUFG|   0.000|
+DATA_CHIP<1> |        20.516(F)|      SLOW  |        10.676(F)|      FAST  |XLXI_3/writer/WRITING_STATE[2]_GND_61_o_Mux_20_o_BUFG|   0.000|
+DATA_CHIP<2> |        19.872(F)|      SLOW  |        10.351(F)|      FAST  |XLXI_3/writer/WRITING_STATE[2]_GND_61_o_Mux_20_o_BUFG|   0.000|
+DATA_CHIP<3> |        20.140(F)|      SLOW  |        10.320(F)|      FAST  |XLXI_3/writer/WRITING_STATE[2]_GND_61_o_Mux_20_o_BUFG|   0.000|
+DATA_CHIP<4> |        19.824(F)|      SLOW  |        10.369(F)|      FAST  |XLXI_3/writer/WRITING_STATE[2]_GND_61_o_Mux_20_o_BUFG|   0.000|
+DATA_CHIP<5> |        19.760(F)|      SLOW  |        10.519(F)|      FAST  |XLXI_3/writer/WRITING_STATE[2]_GND_61_o_Mux_20_o_BUFG|   0.000|
+DATA_CHIP<6> |        19.747(F)|      SLOW  |        10.208(F)|      FAST  |XLXI_3/writer/WRITING_STATE[2]_GND_61_o_Mux_20_o_BUFG|   0.000|
+DATA_CHIP<7> |        19.626(F)|      SLOW  |        10.329(F)|      FAST  |XLXI_3/writer/WRITING_STATE[2]_GND_61_o_Mux_20_o_BUFG|   0.000|
+HOLT_ADDR<0> |        19.795(F)|      SLOW  |        10.571(F)|      FAST  |XLXI_3/writer/WRITING_STATE[2]_GND_61_o_Mux_20_o_BUFG|   0.000|
+HOLT_ADDR<1> |        18.770(F)|      SLOW  |         9.964(F)|      FAST  |XLXI_3/writer/WRITING_STATE[2]_GND_61_o_Mux_20_o_BUFG|   0.000|
+HOLT_ADDR<2> |        19.324(F)|      SLOW  |        10.306(F)|      FAST  |XLXI_3/writer/WRITING_STATE[2]_GND_61_o_Mux_20_o_BUFG|   0.000|
+HOLT_ADDR<3> |        19.350(F)|      SLOW  |        10.331(F)|      FAST  |XLXI_3/writer/WRITING_STATE[2]_GND_61_o_Mux_20_o_BUFG|   0.000|
+HOLT_ADDR<4> |        19.484(F)|      SLOW  |        10.405(F)|      FAST  |XLXI_3/writer/WRITING_STATE[2]_GND_61_o_Mux_20_o_BUFG|   0.000|
+HOLT_ADDR<5> |        18.750(F)|      SLOW  |         9.983(F)|      FAST  |XLXI_3/writer/WRITING_STATE[2]_GND_61_o_Mux_20_o_BUFG|   0.000|
+HOLT_ADDR<6> |        19.033(F)|      SLOW  |        10.202(F)|      FAST  |XLXI_3/writer/WRITING_STATE[2]_GND_61_o_Mux_20_o_BUFG|   0.000|
+HOLT_ADDR<7> |        18.665(F)|      SLOW  |         9.902(F)|      FAST  |XLXI_3/writer/WRITING_STATE[2]_GND_61_o_Mux_20_o_BUFG|   0.000|
+HOLT_ADDR<8> |        18.784(F)|      SLOW  |        10.029(F)|      FAST  |XLXI_3/writer/WRITING_STATE[2]_GND_61_o_Mux_20_o_BUFG|   0.000|
+HOLT_ADDR<9> |        18.697(F)|      SLOW  |         9.923(F)|      FAST  |XLXI_3/writer/WRITING_STATE[2]_GND_61_o_Mux_20_o_BUFG|   0.000|
+HOLT_ADDR<10>|        19.880(F)|      SLOW  |        10.543(F)|      FAST  |XLXI_3/writer/WRITING_STATE[2]_GND_61_o_Mux_20_o_BUFG|   0.000|
+HOLT_ADDR<11>|        18.928(F)|      SLOW  |        10.086(F)|      FAST  |XLXI_3/writer/WRITING_STATE[2]_GND_61_o_Mux_20_o_BUFG|   0.000|
+HOLT_ADDR<12>|        18.834(F)|      SLOW  |        10.065(F)|      FAST  |XLXI_3/writer/WRITING_STATE[2]_GND_61_o_Mux_20_o_BUFG|   0.000|
+HOLT_ADDR<13>|        18.962(F)|      SLOW  |        10.120(F)|      FAST  |XLXI_3/writer/WRITING_STATE[2]_GND_61_o_Mux_20_o_BUFG|   0.000|
+HOLT_ADDR<14>|        18.778(F)|      SLOW  |         9.999(F)|      FAST  |XLXI_3/writer/WRITING_STATE[2]_GND_61_o_Mux_20_o_BUFG|   0.000|
+nCE          |        25.240(F)|      SLOW  |        12.816(F)|      FAST  |XLXI_3/writer/WRITING_STATE[2]_GND_61_o_Mux_20_o_BUFG|   0.000|
+nWE          |        24.539(F)|      SLOW  |        11.819(F)|      FAST  |XLXI_3/writer/WRITING_STATE[2]_GND_61_o_Mux_20_o_BUFG|   0.000|
+-------------+-----------------+------------+-----------------+------------+-----------------------------------------------------+--------+
+
+Clock to Setup on destination clock FAST_CLOCK
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+ALE            |         |   10.107|         |         |
+FAST_CLOCK     |    6.940|         |         |         |
+nRD            |    4.413|   10.851|         |         |
+nWR            |    5.725|   17.312|         |         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock nRD
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+ALE            |         |         |         |    9.099|
+FAST_CLOCK     |         |         |    4.363|         |
+nRD            |         |         |    3.405|    4.239|
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock nWR
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+ALE            |         |         |         |    3.944|
+FAST_CLOCK     |         |         |    0.421|         |
+nWR            |         |         |   -0.406|    6.082|
+---------------+---------+---------+---------+---------+
+
+Pad to Pad
+---------------+---------------+---------+
+Source Pad     |Destination Pad|  Delay  |
+---------------+---------------+---------+
+nRD            |HOLT_ADDR<0>   |   10.785|
+nRD            |HOLT_ADDR<1>   |   11.733|
+nRD            |HOLT_ADDR<2>   |   11.369|
+nRD            |HOLT_ADDR<3>   |   11.616|
+nRD            |HOLT_ADDR<4>   |   11.948|
+nRD            |HOLT_ADDR<5>   |   11.545|
+nRD            |HOLT_ADDR<6>   |   11.852|
+nRD            |HOLT_ADDR<7>   |   11.866|
+nRD            |HOLT_ADDR<8>   |   11.595|
+nRD            |HOLT_ADDR<9>   |   11.362|
+nRD            |HOLT_ADDR<10>  |   11.792|
+nRD            |HOLT_ADDR<11>  |   11.817|
+nRD            |HOLT_ADDR<12>  |   11.899|
+nRD            |HOLT_ADDR<13>  |   12.245|
+nRD            |HOLT_ADDR<14>  |   11.766|
+nRD            |HOLT_ADDR<15>  |   11.040|
+nRD            |nOE            |   11.254|
+nWR            |nCE            |   13.688|
+nWR            |nWE            |   12.987|
+---------------+---------------+---------+
+
+
+Analysis completed Tue Nov 06 19:18:42 2012 
+--------------------------------------------------------------------------------
+
+Trace Settings:
+-------------------------
+Trace Settings 
+
+Peak Memory Usage: 208 MB
+
+
+
