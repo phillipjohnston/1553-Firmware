@@ -1,0 +1,6 @@
+[Inputs]
+data
+enable
+[Outputs]
+q
+[BiDir]
