@@ -1,2 +1,0 @@
-vhdl work "../../TestProj/MS1553_Interface/holt_initializer.vhd"
-vhdl work "holt_initializer_TB.vhd"
