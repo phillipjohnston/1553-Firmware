@@ -1,0 +1,741 @@
+#------------------------
+# BEGIN UNUSED BOARD PINS
+#------------------------
+
+#NET "CLK_33MHZ_SYSACE"              LOC = "N19";
+## 93 on U17
+##NET "DVI_D0"                        LOC = "K16";
+### 63 on U31 (thru series R39 47.5 ohm)
+##NET "DVI_D1"                        LOC = "U19";
+### 62 on U31 (thru series R38 47.5 ohm)
+##NET "DVI_D2"                        LOC = "T20";
+### 61 on U31 (thru series R37 47.5 ohm)
+##NET "DVI_D3"                        LOC = "N16";
+### 60 on U31 (thru series R36 47.5 ohm)
+##NET "DVI_D4"                        LOC = "P16";
+### 59 on U31 (thru series R35 47.5 ohm)
+##NET "DVI_D5"                        LOC = "M17";
+### 58 on U31 (thru series R34 47.5 ohm)
+##NET "DVI_D6"                        LOC = "M18";
+### 55 on U31 (thru series R33 47.5 ohm)
+##NET "DVI_D7"                        LOC = "R15";
+### 54 on U31 (thru series R32 47.5 ohm)
+##NET "DVI_D8"                        LOC = "R16";
+### 53 on U31 (thru series R31 47.5 ohm)
+##NET "DVI_D9"                        LOC = "P17";
+### 52 on U31 (thru series R30 47.5 ohm)
+##NET "DVI_D10"                       LOC = "P18";
+### 51 on U31 (thru series R29 47.5 ohm)
+##NET "DVI_D11"                       LOC = "R17";
+### 50 on U31 (thru series R28 47.5 ohm)
+##NET "DVI_DE"                        LOC = "J17";
+### 2  on U31 (thru series R40 47.5 ohm)
+##NET "DVI_GPIO1"                     LOC = "D22";
+### 18 on U31
+##NET "DVI_H"                         LOC = "J16";
+### 4  on U31 (thru series R41 47.5 ohm)
+##NET "DVI_RESET_B"                   LOC = "L15";
+### 13 on U31
+##NET "DVI_V"                         LOC = "B22";
+### 5  on U31 (thru series R42 47.5 ohm)
+##NET "DVI_XCLK_N"                    LOC = "C22";
+### 56 on U31
+##NET "DVI_XCLK_P"                    LOC = "C20";
+### 57 on U31
+###
+##NET "FLASH_A0"                      LOC = "N22";
+### 29 on U25
+##NET "FLASH_A1"                      LOC = "N20";
+### 25 on U25
+##NET "FLASH_A2"                      LOC = "M22";
+### 24 on U25
+##NET "FLASH_A3"                      LOC = "M21";
+### 23 on U25
+##NET "FLASH_A4"                      LOC = "L19";
+### 22 on U25
+#NET "FLASH_A5"                      LOC = "K20";
+### 21 on U25
+#NET "FLASH_A6"                      LOC = "H22";
+### 20 on U25
+#NET "FLASH_A7"                      LOC = "H21";
+### 19 on U25
+#NET "FLASH_A8"                      LOC = "L17";
+### 8  on U25
+#NET "FLASH_A9"                      LOC = "K17";
+### 7  on U25
+#NET "FLASH_A10"                     LOC = "G22";
+### 6  on U25
+#NET "FLASH_A11"                     LOC = "G20";
+### 5  on U25
+#NET "FLASH_A12"                     LOC = "K18";
+### 4  on U25
+#NET "FLASH_A13"                     LOC = "K19";
+### 3  on U25
+#NET "FLASH_A14"                     LOC = "H20";
+### 2  on U25
+#NET "FLASH_A15"                     LOC = "J19";
+### 1  on U25
+#NET "FLASH_A16"                     LOC = "E22";
+### 55 on U25
+#NET "FLASH_A17"                     LOC = "E20";
+### 18 on U25
+#NET "FLASH_A18"                     LOC = "F22";
+### 17 on U25
+#NET "FLASH_A19"                     LOC = "F21";
+### 16 on U25
+#NET "FLASH_A20"                     LOC = "H19";
+### 11 on U25
+#NET "FLASH_A21"                     LOC = "H18";
+### 10 on U25
+#NET "FLASH_A22"                     LOC = "F20";
+### 9  on U25
+#NET "FLASH_A23"                     LOC = "G19";
+### 26 on U25
+#NET "FPGA_D0_DIN_MISO_MISO1"        LOC = "AA20";
+### 34 on U25, 8 on U32 (thru series R132 100 ohm), 6 on J17
+#NET "FPGA_D1_MISO2"                 LOC = "R13";
+### 36 on U25, 3 on J17
+#NET "FPGA_D2_MISO3"                 LOC = "T14";
+### 39 on U25, 2 on J17
+#NET "FLASH_D3"                      LOC = "AA6";
+### 41 on U25
+#NET "FLASH_D4"                      LOC = "AB6";
+### 47 on U25
+#NET "FLASH_D5"                      LOC = "Y5";
+### 49 on U25
+#NET "FLASH_D6"                      LOC = "AB5";
+### 51 on U25
+#NET "FLASH_D7"                      LOC = "W9";
+### 53 on U25
+#NET "FLASH_D8"                      LOC = "T7";
+### 35 on U25
+#NET "FLASH_D9"                      LOC = "U6";
+### 37 on U25
+#NET "FLASH_D10"                     LOC = "AB19";
+### 40 on U25
+#NET "FLASH_D11"                     LOC = "AA18";
+### 42 on U25
+#NET "FLASH_D12"                     LOC = "AB18";
+### 48 on U25
+#NET "FLASH_D13"                     LOC = "Y13";
+### 50 on U25
+#NET "FLASH_D14"                     LOC = "AA12";
+### 52 on U25
+#NET "FLASH_D15"                     LOC = "AB12";
+### 54 on U25
+#NET "FLASH_WAIT"                    LOC = "T18";
+### 56 on U25
+#NET "FLASH_WE_B"                    LOC = "R20";
+### 14 on U25
+#NET "FLASH_OE_B"                    LOC = "P22";
+### 32 on U25
+#NET "FLASH_CE_B"                    LOC = "P21";
+### 30 on U25
+#NET "FLASH_ADV_B"                   LOC = "T19";
+### 46 on U25
+### NET "FMC_PWR_GOOD_FLASH_RST_B"   LOC = "V13";   ## 44 on U25 (this signal goes to multiple destinations, see below)
+###
+#NET "FMC_CLK0_M2C_N"                LOC = "G11";
+### H5  on J2
+#NET "FMC_CLK0_M2C_P"                LOC = "H12";
+### H4  on J2
+#NET "FMC_CLK1_M2C_N"                LOC = "F16";
+### G3  on J2
+#NET "FMC_CLK1_M2C_P"                LOC = "E16";
+### G2  on J2
+#NET "FMC_DP0_C2M_N"                 LOC = "A16";
+### C3  on J2
+#NET "FMC_DP0_C2M_P"                 LOC = "B16";
+### C2  on J2
+#NET "FMC_DP0_M2C_N"                 LOC = "C15";
+### C7  on J2
+#NET "FMC_DP0_M2C_P"                 LOC = "D15";
+### C6  on J2
+#NET "FMC_GBTCLK0_M2C_N"             LOC = "F12";
+### D5  on J2
+#NET "FMC_GBTCLK0_M2C_P"             LOC = "E12";
+### D4  on J2
+### NET "IIC_SCL_MAIN"               LOC = "T21";   ## C30 on J2 (this signal goes to multiple destinations, see below)
+### NET "IIC_SDA_MAIN"               LOC = "R22";   ## C31 on J2 (this signal goes to multiple destinations, see below)
+#NET "FMC_PRSNT_M2C_L"               LOC = "Y16";
+### H2  on J2
+#NET "FMC_PWR_GOOD_FLASH_RST_B"      LOC = "V13";
+### D1  on J2, 1 of Q2 (LED DS1 driver), U1 AB2 FPGA_PROG (through series R260 DNP), 44 of U25
+###
+#NET "FPGA_AWAKE"                    LOC = "V19";
+### 2   on DS7 LED
+#NET "FPGA_CCLK"                     LOC = "Y20";
+### 7   on J17
+#NET "FPGA_CMP_CLK"                  LOC = "V17";
+### 3   on J3
+#NET "FPGA_CMP_CS_B"                 LOC = "V18";
+### 4   on J3
+#NET "FPGA_CMP_MOSI"                 LOC = "W18";
+### 2   on J3
+#
+### NET "FPGA_D0_DIN_MISO_MISO1"     LOC = "AA20";  ## this pin is part of the FLASH_nn group
+### NET "FPGA_D1_MISO2"              LOC = "R13";   ## this pin is part of the FLASH_nn group
+### NET "FPGA_D2_MISO3"              LOC = "T14";   ## this pin is part of the FLASH_nn group
+#
+#NET "FPGA_DONE"                     LOC = "AB21";
+### 2   on DS2 LED
+#NET "FPGA_HSWAPEN"                  LOC = "C3";
+### 1   on R125 100 ohm to GND
+#NET "FPGA_INIT_B"                   LOC = "Y4";
+### 1   on DS17 (through sereis R69 75 ohm), 78 on U17
+#NET "FPGA_M0_CMP_MISO"              LOC = "AA21";
+### 1   on SW1 DIP switch (active-high), 1 on J3
+#NET "FPGA_M1"                       LOC = "Y19";
+### 2   on SW1 DIP switch (active-high)
+#NET "FPGA_MOSI_CSI_B_MISO0"         LOC = "AB20";
+### 15  on U32, 5 on J17
+#NET "FPGA_ONCHIP_TERM1"             LOC = "M7";
+### 1   on R124 DNP to GND
+#NET "FPGA_ONCHIP_TERM2"             LOC = "K7";
+### 1   on R126 100 ohm to GND
+#NET "FPGA_PROG_B"                   LOC = "AB2";
+### 1   on SW3 pushbutton (active-high) 1 on J17, 2 on J48, 2 on R260 DNP connected to NET "FMC_PWR_GOOD_FLASH_RST_B"
+#NET "FPGA_SUSPEND"                  LOC = "AA22";
+### 2   on J47
+#NET "FPGA_TCK"                      LOC = "A21";
+### 80  on U17
+#NET "FPGA_TDI"                      LOC = "E18";
+### 82  on U17
+#NET "FPGA_TMS"                      LOC = "D20";
+### 85  on U17
+#NET "FPGA_VBATT"                    LOC = "T16";
+### 1   on B2 (battery), 2 on D11 (charging circuit)
+#NET "FPGA_VTEMP"                    LOC = "Y3";
+### 2   on R207 150 ohm to VCC1V5
+###
+#NET "GPIO_BUTTON0"                  LOC = "F3";
+### 2   on SW4 pushbutton (active-high)
+#NET "GPIO_BUTTON1"                  LOC = "G6";
+### 2   on SW7 pushbutton (active-high)
+#NET "GPIO_BUTTON2"                  LOC = "F5";
+### 2   on SW5 pushbutton (active-high)
+#NET "GPIO_BUTTON3"                  LOC = "C1";
+### 2   on SW8 pushbutton (active-high)
+###
+#NET "GPIO_HEADER_0_LS"              LOC = "G7";
+### 1   on U52 (level shifter, U52.20 <-> GPIO_HEADER_0 <-> series R280 200 ohm <-> 1 on J55
+#NET "GPIO_HEADER_1_LS"              LOC = "H6";
+### 3   on U52 (level shifter, U52.18 <-> GPIO_HEADER_0 <-> series R281 200 ohm <-> 2 on J55
+#NET "GPIO_HEADER_2_LS"              LOC = "D1";
+### 4   on U52 (level shifter, U52.17 <-> GPIO_HEADER_0 <-> series R282 200 ohm <-> 3 on J55
+#NET "GPIO_HEADER_3_LS"              LOC = "R7";
+### 5   on U52 (level shifter, U52.16 <-> GPIO_HEADER_0 <-> series R283 200 ohm <-> 4 on J55
+###
+#NET "GPIO_LED_0"                    LOC = "D17";
+### 2   on DS3 LED
+#NET "GPIO_LED_1"                    LOC = "AB4";
+### 2   on DS4 LED
+#NET "GPIO_LED_2"                    LOC = "D21";
+### 2   on DS5 LED
+#NET "GPIO_LED_3"                    LOC = "W15";
+### 2   on DS6 LED
+###
+#NET "GPIO_SWITCH_0"                 LOC = "C18";
+### 1   on S2 DIP switch (active-high)
+#NET "GPIO_SWITCH_1"                 LOC = "Y6";
+### 2   on S2 DIP switch (active-high)
+#NET "GPIO_SWITCH_2"                 LOC = "W6";
+### 3   on S2 DIP switch (active-high)
+#NET "GPIO_SWITCH_3"                 LOC = "E4";
+### 4   on S2 DIP switch (active-high)
+###
+#NET "IIC_SCL_DVI"                   LOC = "W13";
+### 15  on U31, 2 on Q7 (level shifter, Q7.3 <-> IIC_CLK_DVI_F <-> series ferrite F9 220 ohm <-> 6 on P3
+#NET "IIC_SDA_DVI"                   LOC = "AA4";
+### 14  on U31, 2 on Q8 (level shifter, Q7.3 <-> IIC_SDA_DVI_F <-> series ferrite F8 220 ohm <-> 7 on P3
+#NET "IIC_SCL_MAIN"                  LOC = "T21";
+### C30 on J2
+#NET "IIC_SDA_MAIN"                  LOC = "R22";
+### C31 on J2
+#NET "IIC_SCL_SFP"                   LOC = "E5";
+### 5   on P2
+#NET "IIC_SDA_SFP"                   LOC = "E6";
+### 4   on P2
+###
+#NET "MEM1_A0"                       LOC = "K2";
+### N3  on U42
+#NET "MEM1_A1"                       LOC = "K1";
+### P7  on U42
+#NET "MEM1_A2"                       LOC = "K5";
+### P3  on U42
+#NET "MEM1_A3"                       LOC = "M6";
+### N2  on U42
+#NET "MEM1_A4"                       LOC = "H3";
+### P8  on U42
+#NET "MEM1_A5"                       LOC = "M3";
+### P2  on U42
+#NET "MEM1_A6"                       LOC = "L4";
+### R8  on U42
+#NET "MEM1_A7"                       LOC = "K6";
+### R2  on U42
+#NET "MEM1_A8"                       LOC = "G3";
+### T8  on U42
+#NET "MEM1_A9"                       LOC = "G1";
+### R3  on U42
+#NET "MEM1_A10"                      LOC = "J4";
+### L7  on U42
+#NET "MEM1_A11"                      LOC = "E1";
+### R7  on U42
+#NET "MEM1_A12"                      LOC = "F1";
+### N7  on U42
+#NET "MEM1_A13"                      LOC = "J6";
+### T3  on U42
+#NET "MEM1_A14"                      LOC = "H5";
+### T7  on U42
+#NET "MEM1_BA0"                      LOC = "J3";
+### M2  on U42
+#NET "MEM1_BA1"                      LOC = "J1";
+### N8  on U42
+#NET "MEM1_BA2"                      LOC = "H1";
+### M3  on U42
+#NET "MEM1_CAS_B"                    LOC = "M4";
+### K3  on U42
+#NET "MEM1_CKE"                      LOC = "F2";
+### K9  on U42
+#NET "MEM1_CLK_N"                    LOC = "K3";
+### K7  on U42
+#NET "MEM1_CLK_P"                    LOC = "K4";
+### J7  on U42
+#NET "MEM1_DQ0"                      LOC = "R3";
+### G2  on U42
+#NET "MEM1_DQ1"                      LOC = "R1";
+### H3  on U42
+#NET "MEM1_DQ2"                      LOC = "P2";
+### E3  on U42
+#NET "MEM1_DQ3"                      LOC = "P1";
+### F2  on U42
+#NET "MEM1_DQ4"                      LOC = "L3";
+### H7  on U42
+#NET "MEM1_DQ5"                      LOC = "L1";
+### H8  on U42
+#NET "MEM1_DQ6"                      LOC = "M2";
+### F7  on U42
+#NET "MEM1_DQ7"                      LOC = "M1";
+### F8  on U42
+#NET "MEM1_DQ8"                      LOC = "T2";
+### C2  on U42
+#NET "MEM1_DQ9"                      LOC = "T1";
+### C3  on U42
+#NET "MEM1_DQ10"                     LOC = "U3";
+### A2  on U42
+#NET "MEM1_DQ11"                     LOC = "U1";
+### D7  on U42
+#NET "MEM1_DQ12"                     LOC = "W3";
+### A3  on U42
+#NET "MEM1_DQ13"                     LOC = "W1";
+### C8  on U42
+#NET "MEM1_DQ14"                     LOC = "Y2";
+### B8  on U42
+#NET "MEM1_DQ15"                     LOC = "Y1";
+### A7  on U42
+#NET "MEM1_LDM"                      LOC = "N4";
+### E7  on U42
+#NET "MEM1_LDQS_N"                   LOC = "N1";
+### G3  on U42
+#NET "MEM1_LDQS_P"                   LOC = "N3";
+### F3  on U42
+#NET "MEM1_ODT"                      LOC = "L6";
+### K1  on U42
+#NET "MEM1_RAS_B"                    LOC = "M5";
+### J3  on U42
+#NET "MEM1_RESET_B"                  LOC = "E3";
+### T2  on U42
+#NET "MEM1_UDM"                      LOC = "P3";
+### D3  on U42
+#NET "MEM1_UDQS_N"                   LOC = "V1";
+### B7  on U42
+#NET "MEM1_UDQS_P"                   LOC = "V2";
+### C7  on U42
+#NET "MEM1_WE_B"                     LOC = "H2";
+### L3  on U42
+###
+#NET "PCIE_250M_N"                   LOC = "B10";
+### 1   on series C301 0.1uF, C300 pin 2 -> PCIE_250M_MGT1_C_N -> 17 on U48
+#NET "PCIE_250M_P"                   LOC = "A10";
+### 1   on series C300 0.1uF, C300 pin 2 -> PCIE_250M_MGT1_C_P -> 18 on U48
+#NET "PCIE_PERST_B_LS"               LOC = "J7";
+### 6   on U52 (level shifter, U52.20 <-> PCIE_PERST_B <-> series R55 15 ohm <-> A11 on P4
+#NET "PCIE_RX0_N"                    LOC = "C7";
+### B15 on P4
+#NET "PCIE_RX0_P"                    LOC = "D7";
+### B14 on P4
+#NET "PCIE_TX0_N"                    LOC = "A6";
+### 2   on series C26 0.1uF, C26 pin 1 -> PCIE_TX0_C_N -> A17 of P4
+#NET "PCIE_TX0_P"                    LOC = "B6";
+### 2   on series C27 0.1uF, C26 pin 1 -> PCIE_TX0_C_P -> A16 of P4
+###
+#NET "PHY_COL"                       LOC = "M16";
+### 114 on U46
+#NET "PHY_CRS"                       LOC = "N15";
+### 115 on U46
+#NET "PHY_INT"                       LOC = "J20";
+### 32  on U46
+#NET "PHY_MDC"                       LOC = "R19";
+### 35  on U46
+#NET "PHY_MDIO"                      LOC = "V20";
+### 33  on U46
+#NET "PHY_RESET"                     LOC = "J22";
+### 36  on U46
+#NET "PHY_RXCLK"                     LOC = "P20";
+### 7   on U46
+#NET "PHY_RXCTL_RXDV"                LOC = "T22";
+### 4   on U46
+#NET "PHY_RXD0"                      LOC = "P19";
+### 3   on U46
+#NET "PHY_RXD1"                      LOC = "Y22";
+### 128 on U46
+#NET "PHY_RXD2"                      LOC = "Y21";
+### 126 on U46
+#NET "PHY_RXD3"                      LOC = "W22";
+### 125 on U46
+#NET "PHY_RXD4"                      LOC = "W20";
+### 124 on U46
+#NET "PHY_RXD5"                      LOC = "V22";
+### 123 on U46
+#NET "PHY_RXD6"                      LOC = "V21";
+### 121 on U46
+#NET "PHY_RXD7"                      LOC = "U22";
+### 120 on U46
+#NET "PHY_RXER"                      LOC = "U20";
+### 8   on U46
+#NET "PHY_TXCLK"                     LOC = "L20";
+### 10  on U46
+#NET "PHY_TXCTL_TXEN"                LOC = "T8";
+### 16  on U46
+#NET "PHY_TXC_GTXCLK"                LOC = "AB7";
+### 14  on U46
+#NET "PHY_TXD0"                      LOC = "U10";
+### 18  on U46
+#NET "PHY_TXD1"                      LOC = "T10";
+### 19  on U46
+#NET "PHY_TXD2"                      LOC = "AB8";
+### 20  on U46
+#NET "PHY_TXD3"                      LOC = "AA8";
+### 24  on U46
+#NET "PHY_TXD4"                      LOC = "AB9";
+### 25  on U46
+#NET "PHY_TXD5"                      LOC = "Y9";
+### 26  on U46
+#NET "PHY_TXD6"                      LOC = "Y12";
+### 28  on U46
+#NET "PHY_TXD7"                      LOC = "W12";
+### 29  on U46
+#NET "PHY_TXER"                      LOC = "U8";
+### 13  on U46
+###
+#NET "PMBUS_ALERT"                   LOC = "D3";
+### 35  on U26, 35 on U27
+#NET "PMBUS_CLK"                     LOC = "W10";
+### 19  on U26, 19 on U27
+#NET "PMBUS_CTRL"                    LOC = "H16";
+### 36  on U26, 36 on U27
+#NET "PMBUS_DATA"                    LOC = "Y10";
+### 20  on U26, 20 on U27
+###
+#NET "SFPCLK_QO_N"                   LOC = "B12";
+### 2   on series C298 0.1uF, C298 pin 1 <- SFPCLK_QO_C_N <- 6 of U47
+#NET "SFPCLK_QO_P"                   LOC = "A12";
+### 2   on series C299 0.1uF, C299 pin 1 <- SFPCLK_QO_C_P <- 7 of U47
+#NET "SFP_LOS"                       LOC = "T17";
+### 8   on P2, 1 on J14
+#NET "SFP_RX_N"                      LOC = "C13";
+### 12  on P2
+#NET "SFP_RX_P"                      LOC = "D13";
+### 13  on P2
+#NET "SFP_TX_DISABLE_FPGA"           LOC = "Y8";
+### 3   on P2, 1 on J44
+#NET "SFP_TX_N"                      LOC = "A14";
+### 19  on P2
+#NET "SFP_TX_P"                      LOC = "B14";
+### 18  on P2
+###
+#NET "SMA_REFCLK_N"                  LOC = "D11";
+###
+#NET "SMA_REFCLK_P"                  LOC = "C11";
+###
+#NET "SMA_RX_N"                      LOC = "C9";
+###
+#NET "SMA_RX_P"                      LOC = "D9";
+###
+#NET "SMA_TX_N"                      LOC = "A8";
+###
+#NET "SMA_TX_P"                      LOC = "B8";
+###
+###
+#NET "SPI_CS_B"                      LOC = "AA3";
+###
+###
+#NET "SYSACE_CFGTDI"                 LOC = "G17";
+###
+#NET "SYSACE_D0_LS"                  LOC = "N6";
+###
+#NET "SYSACE_D1_LS"                  LOC = "N7";
+###
+#NET "SYSACE_D2_LS"                  LOC = "U4";
+###
+#NET "SYSACE_D3_LS"                  LOC = "T4";
+###
+#NET "SYSACE_D4_LS"                  LOC = "P6";
+###
+#NET "SYSACE_D5_LS"                  LOC = "P7";
+###
+#NET "SYSACE_D6_LS"                  LOC = "T3";
+###
+#NET "SYSACE_D7_LS"                  LOC = "R4";
+###
+#NET "SYSACE_MPA00_LS"               LOC = "V5";
+###
+#NET "SYSACE_MPA01_LS"               LOC = "V3";
+###
+#NET "SYSACE_MPA02_LS"               LOC = "P5";
+###
+#NET "SYSACE_MPA03_LS"               LOC = "P4";
+###
+#NET "SYSACE_MPA04_LS"               LOC = "H4";
+###
+#NET "SYSACE_MPA05_LS"               LOC = "G4";
+###
+#NET "SYSACE_MPA06_LS"               LOC = "D2";
+###
+#NET "SYSACE_MPBRDY_LS"              LOC = "AA1";
+###
+#NET "SYSACE_MPCE_LS"                LOC = "W4";
+###
+#NET "SYSACE_MPIRQ_LS"               LOC = "AA2";
+###
+#NET "SYSACE_MPOE_LS"                LOC = "T6";
+###
+#NET "SYSACE_MPWE_LS"                LOC = "T5";
+###
+###
+###
+
+###
+#NET "USB_1_CTS"                     LOC = "F18";
+###
+#NET "USB_1_RTS"                     LOC = "F19";
+###
+#NET "USB_1_RX"                      LOC = "B21";
+###
+#NET "USB_1_TX"                      LOC = "H17";
+###
+
+##
+#NET "USER_SMA_CLOCK_N"              LOC = "M19";
+##
+#NET "USER_SMA_CLOCK_P"              LOC = "M20";
+##
+#NET "USER_SMA_GPIO_N"               LOC = "A3";
+##
+#NET "USER_SMA_GPIO_P"               LOC = "B3";
+##
+
+#--------------------
+#END UNUSED BOARD PINS
+#--------------------
+
+
+#--------------------
+#BEGIN BOARD PINS
+#--------------------
+
+NET "CPU_RESET" LOC = H8;
+### 2  on SW6 pushbutton (active-high)
+NET "SYSCLK_N" LOC = K22;
+###
+NET "SYSCLK_P" LOC = K21;
+
+#--------------------
+#END BOARD PINS
+#--------------------
+
+
+#--------------------
+#BEGIN UNUSED 1553B CCA PINS
+#--------------------
+#NET "EXP_IO_7"                    	LOC = "AB16";
+### H32 on J2
+#NET "EXP_IO_3"                    	LOC = "AA16";
+### H31 on J2
+#NET "EXP_IO_4"                    	LOC = "U15";
+### G31 on J2
+#NET "EXP_IO_0"                    	LOC = "T15";
+### G30 on J2
+#NET "EXP_IO_13"                    	LOC = "AB15";
+### H35 on J2
+#NET "EXP_IO_11"                    	LOC = "Y15";
+### H34 on J2
+#NET "EXP_IO_12"                    	LOC = "V15";
+### G34 on J2
+#NET "EXP_IO_8"                    	LOC = "U16";
+### G33 on J2
+#NET "EXP_IO_5"                    	LOC = "Y18";
+### H38 on J2
+#NET "EXP_IO_9"                    	LOC = "W17";
+### H37 on J2
+#NET "EXP_IO_6"                    	LOC = "AB17";
+### G37 on J2
+#NET "EXP_IO_10"                    	LOC = "Y17";
+### G36 on J2
+#NET "ACKIRQ"                    		LOC = "V11";
+### H25 on J2
+#NET "nIRQ"                    		LOC = "W8";
+#NET "EXP_IO_1"                    	LOC = "AB10";
+## C27 on J2
+#NET "EXP_IO_2"                    	LOC = "U13";
+## D27 on J2
+#--------------------
+#END UNUSED 1553B CCA PINS
+#--------------------
+
+
+
+#--------------------
+#BEGIN 1553B CCA PINS
+#--------------------
+
+### G25 on J2
+NET "nRT1MC8"                    	LOC = "V7";
+## G24 on J2
+NET "MTPKRDY"                    	LOC = "V9";
+## D24 on J2
+
+NET "MTRUN"                    		LOC = "G8";
+## H7  on J2
+NET "RT1ENA"                    		LOC = "F7";
+## D14 on J2
+NET "BCTRIG"                    		LOC = "F17";
+## D18 on J2
+NET "TXINHB"                    		LOC = "A5";
+## G19 on J2
+NET "TXINHA"                 			LOC = "Y11";
+## D20 on J2
+NET "ACTIVE"                 			LOC = "U12";
+## C23 on J2
+NET "READY"                    		LOC = "T11";
+## H23 on J2
+
+## G7  on J2
+NET "ADDRESS[14]" LOC = F10;
+## G6  on J2
+NET "BWID" LOC = G9;
+## D9  on J2
+NET "ADDRESS[13]" LOC = F15;
+## D8  on J2
+NET "ADDRESS[15]" LOC = F14;
+## H8  on J2
+NET "ADDRESS[11]" LOC = F9;
+## G10 on J2
+NET "ADDRESS[8]" LOC = A18;
+## G9  on J2
+NET "ADDRESS[10]" LOC = B18;
+## H11 on J2
+NET "ADDRESS[5]" LOC = A19;
+## H10 on J2
+NET "ADDRESS[7]" LOC = C19;
+## D12 on J2
+NET "ADDRESS[4]" LOC = A4;
+## D11 on J2
+NET "ADDRESS[9]" LOC = C4;
+## C11 on J2
+NET "ADDRESS[6]" LOC = D5;
+## C10 on J2
+NET "ADDRESS[12]" LOC = D4;
+## H14 on J2
+NET "HWAIT" LOC = A2;
+## H13 on J2
+NET "nWE" LOC = B2;
+## G13 on J2
+NET "nMR" LOC = A20;
+## G12 on J2
+NET "ADDRESS[3]" LOC = B20;
+## D15 on J2
+NET "ADDRESS[1]" LOC = F8;
+
+NET "ADDRESS[0]" LOC = H11;
+## C15 on J2
+## C14 on J2
+NET "ADDRESS[2]" LOC = H10;
+#NET "DATA(12)"                    			LOC = "G15";
+## H17 on J2
+#NET "DATA(14)"                    			LOC = "H14";
+## H16 on J2
+#NET "DATA(13)"                    			LOC = "G13";
+## G16 on J2
+## G15 on J2
+NET "nOE" LOC = H13;
+
+## D17 on J2
+NET "nCE" LOC = G16;
+#NET "DATA(11)"                    			LOC = "A17";
+## C19 on J2
+#NET "DATA(15)"                    			LOC = "C17";
+## C18 on J2
+#NET "DATA(8)"                    			LOC = "D19";
+## H20 on J2
+#NET "DATA(9)"                    			LOC = "D18";
+## H19 on J2
+
+#NET "DATA(10)"                    			LOC = "C5";
+NET "NET_GND" LOC = C5;
+## G18 on J2
+## D21 on J2
+NET "DATA[7]" LOC = AB11;
+
+NET "WPOL" LOC = W14;
+
+## C22 on J2
+NET "DATA[3]" LOC = T12;
+
+## H22 on J2
+NET "DATA[5]" LOC = R11;
+## G22 on J2
+NET "DATA[4]" LOC = R8;
+## G21 on J2
+NET "DATA[6]" LOC = R9;
+## H26 on J2
+NET "DATA[2]" LOC = W11;
+
+## H28 on J2
+## G27 on J2
+NET "BTYPE" LOC = AA14;
+
+## D26 on J2
+NET "DATA[1]" LOC = U14;
+
+## C26 on J2
+NET "DATA[0]" LOC = AA10;
+
+NET "RT1SSF"                    		LOC = "U9";
+## D23 on J2
+NET "BCENA"                    		LOC = "AB14";
+## H29 on J2
+NET "TEST"                    		LOC = "Y14";
+## G28 on J2
+
+#------------------
+#END 1553B CCA PINS
+#------------------
+
+#Notes:
+#- pullup and pulldown resistors which branch from nets are not included
+#- pullup and pulldown resistors to a single point power or GND are included
+#- series resistors are included
+#- DNP = do not populate, no component will be installed on the PCB at this locationÿÿÿ
+
+
+NET "SYSCLK_N" IOSTANDARD = LVDS_25;
+NET "SYSCLK_P" IOSTANDARD = LVDS_25;
+
+###
+#NET "USER_CLOCK"                    LOC = "AB13";
+
+# PlanAhead Generated physical constraints 
+
+
+PIN "XLXI_105/clkout3_buf.O" CLOCK_DEDICATED_ROUTE = FALSE;

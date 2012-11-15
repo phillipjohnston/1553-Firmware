@@ -1,0 +1,9 @@
+Storage Target: Xilinx Flash/PROM
+Storage Family: Platform Flash
+xcf01s          [1 M]
+FF
+System
+C:\Users\Phillip\Dropbox\workspace\class_projects\MS1553_Interface\XilinxProject\
+
+MCS
+No

@@ -63,9 +63,9 @@ use IEEE.STD_LOGIC_1164.ALL;
 ENTITY Latch8Bit IS
    PORT
    (
-		data    : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
-      enable : IN STD_LOGIC;
-      q               : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
+		data    : IN STD_LOGIC_VECTOR(7 DOWNTO 0) := "11111111";
+      enable : IN STD_LOGIC := '1';
+      q               : OUT STD_LOGIC_VECTOR(7 DOWNTO 0) := "11111111"
    );
 END Latch8Bit;
 

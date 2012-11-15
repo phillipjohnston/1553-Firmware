@@ -1,16 +1,16 @@
 Release 13.4 - xst O.87xd (nt)
 Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
---> Parameter TMPDIR set to C:/Users/Phillip/Downloads/MS1553_Interface/MS1553_Interface/xst/projnav.tmp
+--> Parameter TMPDIR set to C:/Users/Phillip/Dropbox/workspace/class_projects/MS1553_Interface/XilinxProject/xst/projnav.tmp
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.41 secs
+Total CPU time to Xst completion: 0.34 secs
  
---> Parameter xsthdpdir set to C:/Users/Phillip/Downloads/MS1553_Interface/MS1553_Interface/xst
+--> Parameter xsthdpdir set to C:/Users/Phillip/Dropbox/workspace/class_projects/MS1553_Interface/XilinxProject/xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.42 secs
+Total CPU time to Xst completion: 0.34 secs
  
 --> Reading design: holt_mem_trans.prj
 
@@ -40,35 +40,38 @@ INFO:Xst - Part-select index evaluated to out of bound value may lead to incorre
 =========================================================================
 *                          HDL Parsing                                  *
 =========================================================================
-Parsing VHDL file "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\DelayModule.vhd" into library work
+Parsing VHDL file "C:\Users\Phillip\Dropbox\workspace\class_projects\MS1553_Interface\XilinxProject\DelayModule.vhd" into library work
 Parsing entity <DelayModule>.
 Parsing architecture <Behavioral> of entity <delaymodule>.
-Parsing VHDL file "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\mem_trans_writer.vhd" into library work
+Parsing VHDL file "C:\Users\Phillip\Dropbox\workspace\class_projects\MS1553_Interface\XilinxProject\mem_trans_writer.vhd" into library work
 Parsing entity <mem_trans_writer>.
 Parsing architecture <Behavioral> of entity <mem_trans_writer>.
-Parsing VHDL file "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\mem_trans_reader.vhd" into library work
+Parsing VHDL file "C:\Users\Phillip\Dropbox\workspace\class_projects\MS1553_Interface\XilinxProject\mem_trans_reader.vhd" into library work
 Parsing entity <mem_trans_reader>.
 Parsing architecture <Behavioral> of entity <mem_trans_reader>.
-Parsing VHDL file "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\Latch8Bit.vhd" into library work
+Parsing VHDL file "C:\Users\Phillip\Dropbox\workspace\class_projects\MS1553_Interface\XilinxProject\Latch8Bit.vhd" into library work
 Parsing entity <Latch8Bit>.
 Parsing architecture <Behavioral> of entity <latch8bit>.
-Parsing VHDL file "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\Latch16Bit.vhd" into library work
+Parsing VHDL file "C:\Users\Phillip\Dropbox\workspace\class_projects\MS1553_Interface\XilinxProject\Latch16Bit.vhd" into library work
 Parsing entity <Latch16Bit>.
 Parsing architecture <Behavioral> of entity <latch16bit>.
-Parsing VHDL file "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\Latch.vhd" into library work
+Parsing VHDL file "C:\Users\Phillip\Dropbox\workspace\class_projects\MS1553_Interface\XilinxProject\Latch.vhd" into library work
 Parsing entity <Latch>.
 Parsing architecture <Behavioral> of entity <latch>.
-Parsing VHDL file "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\holt_mem_trans.vhd" into library work
+Parsing VHDL file "C:\Users\Phillip\Dropbox\workspace\class_projects\MS1553_Interface\XilinxProject\holt_mem_trans.vhd" into library work
 Parsing entity <holt_mem_trans>.
 Parsing architecture <Behavioral> of entity <holt_mem_trans>.
+Parsing VHDL file "C:\Users\Phillip\Dropbox\workspace\class_projects\MS1553_Interface\XilinxProject\ipcore_dir\Clock\example_design\Clock_exdes.vhd" into library work
+Parsing entity <Clock_exdes>.
+Parsing architecture <xilinx> of entity <clock_exdes>.
 
 
-Total REAL time to Xst completion: 13.00 secs
-Total CPU time to Xst completion: 13.01 secs
+Total REAL time to Xst completion: 10.00 secs
+Total CPU time to Xst completion: 10.45 secs
  
 --> 
 
-Total memory usage is 158188 kilobytes
+Total memory usage is 166124 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    0 (   0 filtered)

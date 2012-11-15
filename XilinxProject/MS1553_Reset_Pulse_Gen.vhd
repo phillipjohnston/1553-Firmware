@@ -53,7 +53,7 @@ begin
 
 	ResetOut <= reset;
 
-	PROCESS(ResetGo, HAVE_WE_RESET, WE_ARE_RESETTING) IS
+	PROCESS(ResetGo, HAVE_WE_RESET, WE_ARE_RESETTING, flag) IS
 	BEGIN
 		IF(ResetGo = '1' AND HAVE_WE_RESET = '0')
 		THEN
@@ -70,21 +70,10 @@ begin
 			delay_en <= '0';
 			WE_ARE_RESETTING <= '0';
 		END IF;
-	END PROCESS;
-
-	PROCESS(flag, HAVE_WE_RESET, WE_ARE_RESETTING) IS
-	BEGIN
-		IF(flag = '1' AND HAVE_WE_RESET = '0')
+		
+		IF(flag = '1' and flag'event AND WE_ARE_RESETTING = '1') --AND HAVE_WE_RESET = '0') --and clock = '1' and clock'event)
 		THEN
-			--reset <= '0';
 			HAVE_WE_RESET <= '1';
-		ELSIF(HAVE_WE_RESET = '1')
-		THEN
-			--reset <= '0';
-			HAVE_WE_RESET <= '1';
-		ELSE
-			--reset <= '1';
-			HAVE_WE_RESET <= '0';
 		END IF;
 	END PROCESS;
 	

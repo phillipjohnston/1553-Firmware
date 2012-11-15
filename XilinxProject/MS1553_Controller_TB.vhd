@@ -1,4 +1,4 @@
--- Vhdl test bench created from schematic C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\MS1553_Controller.sch - Tue Nov 06 12:07:03 2012
+-- Vhdl test bench created from schematic C:\Users\Phillip\Dropbox\workspace\class_projects\MS1553_Interface\XilinxProject\MS1553_Controller.sch - Wed Nov 07 21:46:05 2012
 --
 -- Notes: 
 -- 1) This testbench template has been automatically generated using types
@@ -23,14 +23,6 @@ ARCHITECTURE behavioral OF MS1553_Controller_MS1553_Controller_sch_tb IS
 
    COMPONENT MS1553_Controller
    PORT( nMR	:	OUT	STD_LOGIC; 
-          TXINHA	:	OUT	STD_LOGIC; 
-          TXINHB	:	OUT	STD_LOGIC; 
-          MTSTOFF	:	OUT	STD_LOGIC; 
-          AUTOEN	:	OUT	STD_LOGIC; 
-          EECOPY	:	OUT	STD_LOGIC; 
-          BENDI	:	OUT	STD_LOGIC; 
-          RAMEDC	:	OUT	STD_LOGIC; 
-          TEST	:	OUT	STD_LOGIC; 
           BWID	:	OUT	STD_LOGIC; 
           Address	:	IN	STD_LOGIC_VECTOR (15 DOWNTO 0); 
           BTYPE	:	OUT	STD_LOGIC; 
@@ -50,14 +42,6 @@ ARCHITECTURE behavioral OF MS1553_Controller_MS1553_Controller_sch_tb IS
    END COMPONENT;
 
    SIGNAL nMR	:	STD_LOGIC;
-   SIGNAL TXINHA	:	STD_LOGIC;
-   SIGNAL TXINHB	:	STD_LOGIC;
-   SIGNAL MTSTOFF	:	STD_LOGIC;
-   SIGNAL AUTOEN	:	STD_LOGIC;
-   SIGNAL EECOPY	:	STD_LOGIC;
-   SIGNAL BENDI	:	STD_LOGIC;
-   SIGNAL RAMEDC	:	STD_LOGIC;
-   SIGNAL TEST	:	STD_LOGIC;
    SIGNAL BWID	:	STD_LOGIC;
    SIGNAL Address	:	STD_LOGIC_VECTOR (15 DOWNTO 0);
    SIGNAL BTYPE	:	STD_LOGIC;
@@ -75,21 +59,15 @@ ARCHITECTURE behavioral OF MS1553_Controller_MS1553_Controller_sch_tb IS
    SIGNAL DATA_CHIP	:	STD_LOGIC_VECTOR (7 DOWNTO 0);
    SIGNAL HOLT_ADDR	:	STD_LOGIC_VECTOR (15 DOWNTO 0);
 	
+	
+		
 	-- Clock period definitions
-   constant CLOCK_period : time := 10 ns;
+   constant clock_period : time := 10 ns;	
 
 BEGIN
 
    UUT: MS1553_Controller PORT MAP(
 		nMR => nMR, 
-		TXINHA => TXINHA, 
-		TXINHB => TXINHB, 
-		MTSTOFF => MTSTOFF, 
-		AUTOEN => AUTOEN, 
-		EECOPY => EECOPY, 
-		BENDI => BENDI, 
-		RAMEDC => RAMEDC, 
-		TEST => TEST, 
 		BWID => BWID, 
 		Address => Address, 
 		BTYPE => BTYPE, 
@@ -107,7 +85,7 @@ BEGIN
 		DATA_CHIP => DATA_CHIP, 
 		HOLT_ADDR => HOLT_ADDR
    );
-
+	
 	-- Clock process definitions
    CLOCK_process :process
    begin
@@ -172,7 +150,7 @@ BEGIN
 		nWR <= '1';
 		nRD <= '0';
 		
-		wait for 50 ns;
+		wait for 200 ns;
 		DATA_CHIP <= "00111100";
 
 		wait for 300 ns;
@@ -196,7 +174,6 @@ BEGIN
 		ADDRESS(15 DOWNTO 0) <= "0000000000000000";
 		
 		--DATA_CHIP <= "ZZZZZZZZ";
-		
 		
       WAIT; -- will wait forever
    END PROCESS;

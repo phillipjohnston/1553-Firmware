@@ -1,0 +1,4 @@
+vhdtdtfi -lib work sfr_8_output.vhd -prj MS1553_Interface -o sfr_8_output.spl -module sfr_8_output -template C:/Xilinx/14.1/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan6 -w sfr_8_output.spl C:/Users/Phillip/Dropbox/workspace/class_projects/MS1553_Interface/XilinxProject/sfr_8_output.sym 
+vhdtdtfi -lib work sfr_8_output.vhd -lib work SFR_CONFIG.vhd -prj MS1553_Interface -o sfr_8_output.spl -module sfr_8_output -template C:/Xilinx/14.1/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan6 -w sfr_8_output.spl C:/Users/Phillip/Dropbox/workspace/class_projects/MS1553_Interface/XilinxProject/sfr_8_output.sym 

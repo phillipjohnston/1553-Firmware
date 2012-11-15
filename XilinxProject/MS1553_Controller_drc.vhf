@@ -7,11 +7,11 @@
 -- \   \   \/     Version : 13.4
 --  \   \         Application : sch2hdl
 --  /   /         Filename : MS1553_Controller_drc.vhf
--- /___/   /\     Timestamp : 11/06/2012 19:15:02
+-- /___/   /\     Timestamp : 11/07/2012 19:33:14
 -- \   \  /  \ 
 --  \___\/\___\ 
 --
---Command: C:\Xilinx\13.4\ISE_DS\ISE\bin\nt\unwrapped\sch2hdl.exe -intstyle ise -family spartan6 -flat -suppress -vhdl MS1553_Controller_drc.vhf -w C:/Users/Phillip/Downloads/MS1553_Interface/MS1553_Interface/MS1553_Controller.sch
+--Command: C:\Xilinx\13.4\ISE_DS\ISE\bin\nt\unwrapped\sch2hdl.exe -sympath C:/Users/Phillip/Dropbox/workspace/class_projects/MS1553_Interface/XilinxProject/ipcore_dir -intstyle ise -family spartan6 -flat -suppress -vhdl MS1553_Controller_drc.vhf -w C:/Users/Phillip/Dropbox/workspace/class_projects/MS1553_Interface/XilinxProject/MS1553_Controller.sch
 --Design Name: MS1553_Controller
 --Device: spartan6
 --Purpose:
@@ -33,22 +33,14 @@ entity MS1553_Controller is
           nIOM       : in    std_logic; 
           nRD        : in    std_logic; 
           nWR        : in    std_logic; 
-          AUTOEN     : out   std_logic; 
-          BENDI      : out   std_logic; 
           BTYPE      : out   std_logic; 
           BWID       : out   std_logic; 
-          EECOPY     : out   std_logic; 
           HOLT_ADDR  : out   std_logic_vector (15 downto 0); 
           IDATA      : out   std_logic_vector (7 downto 0); 
-          MTSTOFF    : out   std_logic; 
           nCE        : out   std_logic; 
           nMR        : out   std_logic; 
           nOE        : out   std_logic; 
           nWE        : out   std_logic; 
-          RAMEDC     : out   std_logic; 
-          TEST       : out   std_logic; 
-          TXINHA     : out   std_logic; 
-          TXINHB     : out   std_logic; 
           WPOL       : out   std_logic; 
           DATA_CHIP  : inout std_logic_vector (7 downto 0));
 end MS1553_Controller;
@@ -56,9 +48,6 @@ end MS1553_Controller;
 architecture BEHAVIORAL of MS1553_Controller is
    signal XLXN_1     : std_logic;
    signal XLXN_2     : std_logic;
-   signal XLXN_6     : std_logic;
-   signal XLXN_7     : std_logic;
-   signal XLXN_8     : std_logic;
    signal XLXN_11    : std_logic;
    signal XLXN_12    : std_logic;
    signal XLXN_13    : std_logic_vector (7 downto 0);
@@ -69,22 +58,11 @@ architecture BEHAVIORAL of MS1553_Controller is
    signal XLXN_19    : std_logic;
    signal XLXN_20    : std_logic;
    component holt_initializer
-      port ( RESET           : in    std_logic; 
-             IS_BIG_ENDIAN   : in    std_logic; 
-             MEM_TEST_EN     : in    std_logic; 
-             RAM_ERR_CORR_EN : in    std_logic; 
-             nMR             : out   std_logic; 
-             TXINHA          : out   std_logic; 
-             TXINHB          : out   std_logic; 
-             MTSTOFF         : out   std_logic; 
-             AUTOEN          : out   std_logic; 
-             EECOPY          : out   std_logic; 
-             BENDI           : out   std_logic; 
-             RAMEDC          : out   std_logic; 
-             TEST            : out   std_logic; 
-             BWID            : out   std_logic; 
-             BTYPE           : out   std_logic; 
-             WPOL            : out   std_logic);
+      port ( RESET : in    std_logic; 
+             nMR   : out   std_logic; 
+             BWID  : out   std_logic; 
+             BTYPE : out   std_logic; 
+             WPOL  : out   std_logic);
    end component;
    
    component holt_mem_trans
@@ -99,34 +77,31 @@ architecture BEHAVIORAL of MS1553_Controller is
              nOE           : out   std_logic; 
              nWE           : out   std_logic; 
              nCE           : out   std_logic; 
+             DATA_VALID_0  : out   std_logic; 
+             DATA_VALID_1  : out   std_logic; 
              ADDRESS_OUT   : out   std_logic_vector (15 downto 0); 
              DATA_RETURN_0 : out   std_logic_vector (7 downto 0); 
-             DATA_RETURN_1 : out   std_logic_vector (7 downto 0); 
-             DATA_VALID_0  : out   std_logic; 
-             DATA_VALID_1  : out   std_logic);
+             DATA_RETURN_1 : out   std_logic_vector (7 downto 0));
    end component;
    
    component MS1553_master
-      port ( ALE               : in    std_logic; 
-             nWR               : in    std_logic; 
-             nRD               : in    std_logic; 
-             nIOM              : in    std_logic; 
-             CLOCK             : in    std_logic; 
-             ADDRESS           : in    std_logic_vector (15 downto 0); 
-             DATA_IN_0         : in    std_logic_vector (7 downto 0); 
-             DATA_IN_1         : in    std_logic_vector (7 downto 0); 
-             nREAD             : out   std_logic; 
-             nWRITE            : out   std_logic; 
-             RESET_IC          : out   std_logic; 
-             IS_BIG_ENDIAN     : out   std_logic; 
-             MEM_TEST_EN       : out   std_logic; 
-             RAM_ERROR_CORR_EN : out   std_logic; 
-             ADDRESS_TO_CHIP   : out   std_logic_vector (15 downto 0); 
-             DATA_OUT_0        : out   std_logic_vector (7 downto 0); 
-             DATA_OUT_1        : out   std_logic_vector (7 downto 0); 
-             IDATA             : out   std_logic_vector (7 downto 0); 
-             DATA_VALID_0      : in    std_logic; 
-             DATA_VALID_1      : in    std_logic);
+      port ( ALE             : in    std_logic; 
+             nWR             : in    std_logic; 
+             nRD             : in    std_logic; 
+             nIOM            : in    std_logic; 
+             CLOCK           : in    std_logic; 
+             DATA_VALID_0    : in    std_logic; 
+             DATA_VALID_1    : in    std_logic; 
+             ADDRESS         : in    std_logic_vector (15 downto 0); 
+             DATA_IN_0       : in    std_logic_vector (7 downto 0); 
+             DATA_IN_1       : in    std_logic_vector (7 downto 0); 
+             nREAD           : out   std_logic; 
+             nWRITE          : out   std_logic; 
+             RESET_IC        : out   std_logic; 
+             ADDRESS_TO_CHIP : out   std_logic_vector (15 downto 0); 
+             DATA_OUT_0      : out   std_logic_vector (7 downto 0); 
+             DATA_OUT_1      : out   std_logic_vector (7 downto 0); 
+             IDATA           : out   std_logic_vector (7 downto 0));
    end component;
    
    component MS1553_Reset_Pulse_Gen
@@ -137,21 +112,10 @@ architecture BEHAVIORAL of MS1553_Controller is
    
 begin
    XLXI_2 : holt_initializer
-      port map (IS_BIG_ENDIAN=>XLXN_6,
-                MEM_TEST_EN=>XLXN_7,
-                RAM_ERR_CORR_EN=>XLXN_8,
-                RESET=>XLXN_2,
-                AUTOEN=>AUTOEN,
-                BENDI=>BENDI,
+      port map (RESET=>XLXN_2,
                 BTYPE=>BTYPE,
                 BWID=>BWID,
-                EECOPY=>EECOPY,
-                MTSTOFF=>MTSTOFF,
                 nMR=>nMR,
-                RAMEDC=>RAMEDC,
-                TEST=>TEST,
-                TXINHA=>TXINHA,
-                TXINHB=>TXINHB,
                 WPOL=>WPOL);
    
    XLXI_3 : holt_mem_trans
@@ -187,11 +151,8 @@ begin
                 DATA_OUT_0(7 downto 0)=>XLXN_13(7 downto 0),
                 DATA_OUT_1(7 downto 0)=>XLXN_14(7 downto 0),
                 IDATA(7 downto 0)=>IDATA(7 downto 0),
-                IS_BIG_ENDIAN=>XLXN_6,
-                MEM_TEST_EN=>XLXN_7,
                 nREAD=>XLXN_11,
                 nWRITE=>XLXN_12,
-                RAM_ERROR_CORR_EN=>XLXN_8,
                 RESET_IC=>XLXN_1);
    
    XLXI_5 : MS1553_Reset_Pulse_Gen

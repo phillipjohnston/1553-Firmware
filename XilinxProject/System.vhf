@@ -1,17 +1,17 @@
 --------------------------------------------------------------------------------
--- Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+-- Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
 --------------------------------------------------------------------------------
 --   ____  ____ 
 --  /   /\/   / 
 -- /___/  \  /    Vendor: Xilinx 
--- \   \   \/     Version : 13.4
+-- \   \   \/     Version : 14.1
 --  \   \         Application : sch2hdl
 --  /   /         Filename : System.vhf
--- /___/   /\     Timestamp : 11/06/2012 20:19:40
+-- /___/   /\     Timestamp : 11/14/2012 21:10:10
 -- \   \  /  \ 
 --  \___\/\___\ 
 --
---Command: sch2hdl -intstyle ise -family spartan6 -flat -suppress -vhdl C:/Users/Phillip/Downloads/MS1553_Interface/MS1553_Interface/System.vhf -w C:/Users/Phillip/Downloads/MS1553_Interface/MS1553_Interface/System.sch
+--Command: sch2hdl -sympath C:/Users/Phillip/Dropbox/workspace/class_projects/MS1553_Interface/XilinxProject/ipcore_dir -intstyle ise -family spartan6 -flat -suppress -vhdl C:/Users/Phillip/Dropbox/workspace/class_projects/MS1553_Interface/XilinxProject/System.vhf -w C:/Users/Phillip/Dropbox/workspace/class_projects/MS1553_Interface/XilinxProject/System.sch
 --Design Name: System
 --Device: spartan6
 --Purpose:
@@ -33,19 +33,14 @@ entity MS1553_Controller_MUSER_System is
           nIOM       : in    std_logic; 
           nRD        : in    std_logic; 
           nWR        : in    std_logic; 
-          AUTOEN     : out   std_logic; 
-          BENDI      : out   std_logic; 
           BTYPE      : out   std_logic; 
           BWID       : out   std_logic; 
-          EECOPY     : out   std_logic; 
           HOLT_ADDR  : out   std_logic_vector (15 downto 0); 
           IDATA      : out   std_logic_vector (7 downto 0); 
-          MTSTOFF    : out   std_logic; 
           nCE        : out   std_logic; 
           nMR        : out   std_logic; 
           nOE        : out   std_logic; 
           nWE        : out   std_logic; 
-          RAMEDC     : out   std_logic; 
           WPOL       : out   std_logic; 
           DATA_CHIP  : inout std_logic_vector (7 downto 0));
 end MS1553_Controller_MUSER_System;
@@ -53,9 +48,6 @@ end MS1553_Controller_MUSER_System;
 architecture BEHAVIORAL of MS1553_Controller_MUSER_System is
    signal XLXN_1     : std_logic;
    signal XLXN_2     : std_logic;
-   signal XLXN_6     : std_logic;
-   signal XLXN_7     : std_logic;
-   signal XLXN_8     : std_logic;
    signal XLXN_11    : std_logic;
    signal XLXN_12    : std_logic;
    signal XLXN_13    : std_logic_vector (7 downto 0);
@@ -66,19 +58,11 @@ architecture BEHAVIORAL of MS1553_Controller_MUSER_System is
    signal XLXN_19    : std_logic;
    signal XLXN_20    : std_logic;
    component holt_initializer
-      port ( RESET           : in    std_logic; 
-             IS_BIG_ENDIAN   : in    std_logic; 
-             MEM_TEST_EN     : in    std_logic; 
-             RAM_ERR_CORR_EN : in    std_logic; 
-             nMR             : out   std_logic; 
-             MTSTOFF         : out   std_logic; 
-             AUTOEN          : out   std_logic; 
-             EECOPY          : out   std_logic; 
-             BENDI           : out   std_logic; 
-             RAMEDC          : out   std_logic; 
-             BWID            : out   std_logic; 
-             BTYPE           : out   std_logic; 
-             WPOL            : out   std_logic);
+      port ( RESET : in    std_logic; 
+             nMR   : out   std_logic; 
+             BWID  : out   std_logic; 
+             BTYPE : out   std_logic; 
+             WPOL  : out   std_logic);
    end component;
    
    component holt_mem_trans
@@ -93,34 +77,31 @@ architecture BEHAVIORAL of MS1553_Controller_MUSER_System is
              nOE           : out   std_logic; 
              nWE           : out   std_logic; 
              nCE           : out   std_logic; 
+             DATA_VALID_0  : out   std_logic; 
+             DATA_VALID_1  : out   std_logic; 
              ADDRESS_OUT   : out   std_logic_vector (15 downto 0); 
              DATA_RETURN_0 : out   std_logic_vector (7 downto 0); 
-             DATA_RETURN_1 : out   std_logic_vector (7 downto 0); 
-             DATA_VALID_0  : out   std_logic; 
-             DATA_VALID_1  : out   std_logic);
+             DATA_RETURN_1 : out   std_logic_vector (7 downto 0));
    end component;
    
    component MS1553_master
-      port ( ALE               : in    std_logic; 
-             nWR               : in    std_logic; 
-             nRD               : in    std_logic; 
-             nIOM              : in    std_logic; 
-             CLOCK             : in    std_logic; 
-             ADDRESS           : in    std_logic_vector (15 downto 0); 
-             DATA_IN_0         : in    std_logic_vector (7 downto 0); 
-             DATA_IN_1         : in    std_logic_vector (7 downto 0); 
-             nREAD             : out   std_logic; 
-             nWRITE            : out   std_logic; 
-             RESET_IC          : out   std_logic; 
-             IS_BIG_ENDIAN     : out   std_logic; 
-             MEM_TEST_EN       : out   std_logic; 
-             RAM_ERROR_CORR_EN : out   std_logic; 
-             ADDRESS_TO_CHIP   : out   std_logic_vector (15 downto 0); 
-             DATA_OUT_0        : out   std_logic_vector (7 downto 0); 
-             DATA_OUT_1        : out   std_logic_vector (7 downto 0); 
-             IDATA             : out   std_logic_vector (7 downto 0); 
-             DATA_VALID_0      : in    std_logic; 
-             DATA_VALID_1      : in    std_logic);
+      port ( ALE             : in    std_logic; 
+             nWR             : in    std_logic; 
+             nRD             : in    std_logic; 
+             nIOM            : in    std_logic; 
+             CLOCK           : in    std_logic; 
+             DATA_VALID_0    : in    std_logic; 
+             DATA_VALID_1    : in    std_logic; 
+             ADDRESS         : in    std_logic_vector (15 downto 0); 
+             DATA_IN_0       : in    std_logic_vector (7 downto 0); 
+             DATA_IN_1       : in    std_logic_vector (7 downto 0); 
+             nREAD           : out   std_logic; 
+             nWRITE          : out   std_logic; 
+             RESET_IC        : out   std_logic; 
+             ADDRESS_TO_CHIP : out   std_logic_vector (15 downto 0); 
+             DATA_OUT_0      : out   std_logic_vector (7 downto 0); 
+             DATA_OUT_1      : out   std_logic_vector (7 downto 0); 
+             IDATA           : out   std_logic_vector (7 downto 0));
    end component;
    
    component MS1553_Reset_Pulse_Gen
@@ -131,18 +112,10 @@ architecture BEHAVIORAL of MS1553_Controller_MUSER_System is
    
 begin
    XLXI_2 : holt_initializer
-      port map (IS_BIG_ENDIAN=>XLXN_6,
-                MEM_TEST_EN=>XLXN_7,
-                RAM_ERR_CORR_EN=>XLXN_8,
-                RESET=>XLXN_2,
-                AUTOEN=>AUTOEN,
-                BENDI=>BENDI,
+      port map (RESET=>XLXN_2,
                 BTYPE=>BTYPE,
                 BWID=>BWID,
-                EECOPY=>EECOPY,
-                MTSTOFF=>MTSTOFF,
                 nMR=>nMR,
-                RAMEDC=>RAMEDC,
                 WPOL=>WPOL);
    
    XLXI_3 : holt_mem_trans
@@ -178,11 +151,8 @@ begin
                 DATA_OUT_0(7 downto 0)=>XLXN_13(7 downto 0),
                 DATA_OUT_1(7 downto 0)=>XLXN_14(7 downto 0),
                 IDATA(7 downto 0)=>IDATA(7 downto 0),
-                IS_BIG_ENDIAN=>XLXN_6,
-                MEM_TEST_EN=>XLXN_7,
                 nREAD=>XLXN_11,
                 nWRITE=>XLXN_12,
-                RAM_ERROR_CORR_EN=>XLXN_8,
                 RESET_IC=>XLXN_1);
    
    XLXI_5 : MS1553_Reset_Pulse_Gen
@@ -201,41 +171,67 @@ library UNISIM;
 use UNISIM.Vcomponents.ALL;
 
 entity System is
-   port ( FAST_CLOCK    : in    std_logic; 
+   port ( ACTIVE        : in    std_logic; 
+          CPU_RESET     : in    std_logic; 
           HWAIT         : in    std_logic; 
-          AUTOEN        : out   std_logic; 
-          BENDI         : out   std_logic; 
+          MTPKRDY       : in    std_logic; 
+          nRT1MC8       : in    std_logic; 
+          READY         : in    std_logic; 
+          SYSCLK_N      : in    std_logic; 
+          SYSCLK_P      : in    std_logic; 
+          ADDRESS       : out   std_logic_vector (15 downto 0); 
+          BCENA         : out   std_logic; 
+          BCTRIG        : out   std_logic; 
           BTYPE         : out   std_logic; 
           BWID          : out   std_logic; 
-          EECOPY        : out   std_logic; 
-          HOLT_ADDR_BUS : out   std_logic_vector (15 downto 0); 
-          MTSTOFF       : out   std_logic; 
+          CHIPSCOPE_CLK : out   std_logic; 
+          MTRUN         : out   std_logic; 
           nCE           : out   std_logic; 
+          NET_GND       : out   std_logic; 
           nMR           : out   std_logic; 
           nOE           : out   std_logic; 
           nWE           : out   std_logic; 
-          RAMEDC        : out   std_logic; 
+          RT1ENA        : out   std_logic; 
+          RT1SSF        : out   std_logic; 
+          TEST          : out   std_logic; 
+          TXINHA        : out   std_logic; 
+          TXINHB        : out   std_logic; 
           WPOL          : out   std_logic; 
-          HOLT_DATA_BUS : inout std_logic_vector (7 downto 0));
+          DATA          : inout std_logic_vector (7 downto 0));
 end System;
 
 architecture BEHAVIORAL of System is
-   signal XLXN_1                       : std_logic;
-   signal XLXN_2                       : std_logic;
-   signal XLXN_3                       : std_logic;
-   signal XLXN_4                       : std_logic;
-   signal XLXN_5                       : std_logic_vector (15 downto 0);
-   signal XLXN_14                      : std_logic_vector (7 downto 0);
-   signal XLXI_1_HOLD_openSignal       : std_logic;
-   signal XLXI_1_INTR_openSignal       : std_logic;
-   signal XLXI_1_READY_openSignal      : std_logic;
-   signal XLXI_1_RESETINBAR_openSignal : std_logic;
-   signal XLXI_1_RST55_openSignal      : std_logic;
-   signal XLXI_1_RST65_openSignal      : std_logic;
-   signal XLXI_1_RST75_openSignal      : std_logic;
-   signal XLXI_1_SID_openSignal        : std_logic;
-   signal XLXI_1_TRAP_openSignal       : std_logic;
-   signal XLXI_1_X1_openSignal         : std_logic;
+   attribute BOX_TYPE         : string ;
+   attribute IOSTANDARD       : string ;
+   attribute IBUF_DELAY_VALUE : string ;
+   attribute IFD_DELAY_VALUE  : string ;
+   signal ADDR_OUT_8085     : std_logic_vector (15 downto 0);
+   signal ALE               : std_logic;
+   signal CPU_RESET_BUF     : std_logic;
+   signal CPU_RESET_BUF_INV : std_logic;
+   signal FAST_CLOCK        : std_logic;
+   signal HWAIT_BUF         : std_logic;
+   signal IDATA             : std_logic_vector (7 downto 0);
+   signal MEM_ADDR          : std_logic_vector (15 downto 0);
+   signal MEM_DATA          : std_logic_vector (7 downto 0);
+   signal MEM_DATA_IN       : std_logic_vector (7 downto 0);
+   signal MEM_ENA           : std_logic;
+   signal MEM_WEA           : std_logic;
+   signal nIOM              : std_logic;
+   signal nRD               : std_logic;
+   signal nWR               : std_logic;
+   signal RE                : std_logic;
+   signal SEL_SFR           : std_logic_vector (15 downto 0);
+   signal SLOW_CLOCK        : std_logic;
+   signal WE                : std_logic;
+   signal XLXN_118          : std_logic;
+   signal XLXN_120          : std_logic;
+   signal XLXN_121          : std_logic;
+   signal XLXN_122          : std_logic;
+   signal XLXN_123          : std_logic;
+   signal XLXN_124          : std_logic;
+   signal XLXN_125          : std_logic;
+   signal XLXN_126          : std_logic;
    component I8085_c
       port ( X1          : in    std_logic; 
              SID         : in    std_logic; 
@@ -272,11 +268,6 @@ architecture BEHAVIORAL of System is
              HWAIT      : in    std_logic; 
              DATA_CHIP  : inout std_logic_vector (7 downto 0); 
              nMR        : out   std_logic; 
-             MTSTOFF    : out   std_logic; 
-             AUTOEN     : out   std_logic; 
-             EECOPY     : out   std_logic; 
-             BENDI      : out   std_logic; 
-             RAMEDC     : out   std_logic; 
              BWID       : out   std_logic; 
              BTYPE      : out   std_logic; 
              WPOL       : out   std_logic; 
@@ -287,55 +278,276 @@ architecture BEHAVIORAL of System is
              HOLT_ADDR  : out   std_logic_vector (15 downto 0));
    end component;
    
+   component Memory
+      port ( addra : in    std_logic_vector (15 downto 0); 
+             dina  : in    std_logic_vector (7 downto 0); 
+             ena   : in    std_logic; 
+             wea   : in    std_logic_vector (0 downto 0); 
+             clka  : in    std_logic; 
+             douta : out   std_logic_vector (7 downto 0));
+   end component;
+   
+   component VCC
+      port ( P : out   std_logic);
+   end component;
+   attribute BOX_TYPE of VCC : component is "BLACK_BOX";
+   
+   component GND
+      port ( G : out   std_logic);
+   end component;
+   attribute BOX_TYPE of GND : component is "BLACK_BOX";
+   
+   component Mem8085_Controller
+      port ( ALE         : in    std_logic; 
+             nWR         : in    std_logic; 
+             nRD         : in    std_logic; 
+             nIOM        : in    std_logic; 
+             ADDRESS_IN  : in    std_logic_vector (15 downto 0); 
+             ENA         : out   std_logic; 
+             WEA         : out   std_logic; 
+             ADDRESS_OUT : out   std_logic_vector (15 downto 0); 
+             DATA_OUT    : out   std_logic_vector (7 downto 0));
+   end component;
+   
+   component tri_buf_8
+      port ( EN   : in    std_logic; 
+             DIN  : in    std_logic_vector (7 downto 0); 
+             DOUT : out   std_logic_vector (7 downto 0));
+   end component;
+   
+   component INV
+      port ( I : in    std_logic; 
+             O : out   std_logic);
+   end component;
+   attribute BOX_TYPE of INV : component is "BLACK_BOX";
+   
+   component SFR_Address_Decoder
+      port ( ADDR : in    std_logic_vector (15 downto 0); 
+             SEL  : out   std_logic_vector (15 downto 0));
+   end component;
+   
+   component sfr_8_output
+      port ( RE     : in    std_logic; 
+             WE     : in    std_logic; 
+             clock  : in    std_logic; 
+             clear  : in    std_logic; 
+             CS     : in    std_logic; 
+             DIN    : in    std_logic_vector (7 downto 0); 
+             DOUT   : out   std_logic_vector (7 downto 0); 
+             BCENA  : out   std_logic; 
+             RT1ENA : out   std_logic; 
+             RT1SSF : out   std_logic; 
+             TXINHA : out   std_logic; 
+             TXINHB : out   std_logic);
+   end component;
+   
+   component sfr_8_input
+      port ( RE      : in    std_logic; 
+             CS      : in    std_logic; 
+             clock   : in    std_logic; 
+             DOUT    : out   std_logic_vector (7 downto 0); 
+             ACTIVE  : in    std_logic; 
+             MTPKRDY : in    std_logic; 
+             READY   : in    std_logic; 
+             nRT1MC8 : in    std_logic);
+   end component;
+   
+   component sfr_8_output_pulse
+      port ( RE     : in    std_logic; 
+             WE     : in    std_logic; 
+             clock  : in    std_logic; 
+             clear  : in    std_logic; 
+             CS     : in    std_logic; 
+             DIN    : in    std_logic_vector (7 downto 0); 
+             MTRUN  : out   std_logic; 
+             BCTRIG : out   std_logic; 
+             TEST   : out   std_logic; 
+             DOUT   : out   std_logic_vector (7 downto 0));
+   end component;
+   
+   component IBUF
+      port ( I : in    std_logic; 
+             O : out   std_logic);
+   end component;
+   attribute IOSTANDARD of IBUF : component is "DEFAULT";
+   attribute IBUF_DELAY_VALUE of IBUF : component is "0";
+   attribute IFD_DELAY_VALUE of IBUF : component is "AUTO";
+   attribute BOX_TYPE of IBUF : component is "BLACK_BOX";
+   
+   component Clock
+      port ( clk_in1_p : in    std_logic; 
+             clk_in1_n : in    std_logic; 
+             clk_out1  : out   std_logic; 
+             clk_out2  : out   std_logic; 
+             clk_out3  : out   std_logic; 
+             reset     : in    std_logic; 
+             locked    : out   std_logic);
+   end component;
+   
 begin
    XLXI_1 : I8085_c
-      port map (HOLD=>XLXI_1_HOLD_openSignal,
-                ID(7 downto 0)=>XLXN_14(7 downto 0),
-                INTR=>XLXI_1_INTR_openSignal,
-                READY=>XLXI_1_READY_openSignal,
-                RESETINBAR=>XLXI_1_RESETINBAR_openSignal,
-                RST55=>XLXI_1_RST55_openSignal,
-                RST65=>XLXI_1_RST65_openSignal,
-                RST75=>XLXI_1_RST75_openSignal,
-                SID=>XLXI_1_SID_openSignal,
-                TRAP=>XLXI_1_TRAP_openSignal,
-                X1=>XLXI_1_X1_openSignal,
-                ADDRESS_OUT(15 downto 0)=>XLXN_5(15 downto 0),
-                ALE=>XLXN_1,
+      port map (HOLD=>XLXN_126,
+                ID(7 downto 0)=>IDATA(7 downto 0),
+                INTR=>XLXN_125,
+                READY=>XLXN_118,
+                RESETINBAR=>CPU_RESET_BUF,
+                RST55=>XLXN_124,
+                RST65=>XLXN_123,
+                RST75=>XLXN_122,
+                SID=>XLXN_120,
+                TRAP=>XLXN_121,
+                X1=>SLOW_CLOCK,
+                ADDRESS_OUT(15 downto 0)=>ADDR_OUT_8085(15 downto 0),
+                ALE=>ALE,
                 CLKOUT=>open,
                 HLDA=>open,
                 INTABAR=>open,
-                IOMBAR=>XLXN_4,
-                RDBAR=>XLXN_3,
+                IOMBAR=>nIOM,
+                RDBAR=>nRD,
                 RESETOUT=>open,
                 SOD=>open,
                 S0=>open,
                 S1=>open,
-                WRBAR=>XLXN_2);
+                WRBAR=>nWR);
    
    XLXI_2 : MS1553_Controller_MUSER_System
-      port map (Address(15 downto 0)=>XLXN_5(15 downto 0),
-                ALE=>XLXN_1,
+      port map (Address(15 downto 0)=>ADDR_OUT_8085(15 downto 0),
+                ALE=>ALE,
                 FAST_CLOCK=>FAST_CLOCK,
-                HWAIT=>HWAIT,
-                nIOM=>XLXN_4,
-                nRD=>XLXN_3,
-                nWR=>XLXN_2,
-                AUTOEN=>AUTOEN,
-                BENDI=>BENDI,
+                HWAIT=>HWAIT_BUF,
+                nIOM=>nIOM,
+                nRD=>nRD,
+                nWR=>nWR,
                 BTYPE=>BTYPE,
                 BWID=>BWID,
-                EECOPY=>EECOPY,
-                HOLT_ADDR(15 downto 0)=>HOLT_ADDR_BUS(15 downto 0),
-                IDATA(7 downto 0)=>XLXN_14(7 downto 0),
-                MTSTOFF=>MTSTOFF,
+                HOLT_ADDR(15 downto 0)=>ADDRESS(15 downto 0),
+                IDATA(7 downto 0)=>IDATA(7 downto 0),
                 nCE=>nCE,
                 nMR=>nMR,
                 nOE=>nOE,
                 nWE=>nWE,
-                RAMEDC=>RAMEDC,
                 WPOL=>WPOL,
-                DATA_CHIP(7 downto 0)=>HOLT_DATA_BUS(7 downto 0));
+                DATA_CHIP(7 downto 0)=>DATA(7 downto 0));
+   
+   XLXI_9 : Memory
+      port map (addra(15 downto 0)=>MEM_ADDR(15 downto 0),
+                clka=>SLOW_CLOCK,
+                dina(7 downto 0)=>MEM_DATA_IN(7 downto 0),
+                ena=>MEM_ENA,
+                wea(0)=>MEM_WEA,
+                douta(7 downto 0)=>MEM_DATA(7 downto 0));
+   
+   XLXI_10 : VCC
+      port map (P=>XLXN_118);
+   
+   XLXI_12 : GND
+      port map (G=>XLXN_120);
+   
+   XLXI_13 : GND
+      port map (G=>XLXN_121);
+   
+   XLXI_14 : GND
+      port map (G=>XLXN_122);
+   
+   XLXI_15 : GND
+      port map (G=>XLXN_123);
+   
+   XLXI_16 : GND
+      port map (G=>XLXN_124);
+   
+   XLXI_17 : GND
+      port map (G=>XLXN_125);
+   
+   XLXI_18 : GND
+      port map (G=>XLXN_126);
+   
+   XLXI_19 : Mem8085_Controller
+      port map (ADDRESS_IN(15 downto 0)=>ADDR_OUT_8085(15 downto 0),
+                ALE=>ALE,
+                nIOM=>nIOM,
+                nRD=>nRD,
+                nWR=>nWR,
+                ADDRESS_OUT(15 downto 0)=>MEM_ADDR(15 downto 0),
+                DATA_OUT(7 downto 0)=>MEM_DATA_IN(7 downto 0),
+                ENA=>MEM_ENA,
+                WEA=>MEM_WEA);
+   
+   XLXI_68 : tri_buf_8
+      port map (DIN(7 downto 0)=>MEM_DATA(7 downto 0),
+                EN=>MEM_ENA,
+                DOUT(7 downto 0)=>IDATA(7 downto 0));
+   
+   XLXI_92 : GND
+      port map (G=>NET_GND);
+   
+   XLXI_93 : INV
+      port map (I=>nWR,
+                O=>WE);
+   
+   XLXI_94 : INV
+      port map (I=>nRD,
+                O=>RE);
+   
+   XLXI_96 : SFR_Address_Decoder
+      port map (ADDR(15 downto 0)=>ADDR_OUT_8085(15 downto 0),
+                SEL(15 downto 0)=>SEL_SFR(15 downto 0));
+   
+   XLXI_98 : sfr_8_output
+      port map (clear=>CPU_RESET_BUF_INV,
+                clock=>SLOW_CLOCK,
+                CS=>SEL_SFR(0),
+                DIN(7 downto 0)=>ADDR_OUT_8085(7 downto 0),
+                RE=>RE,
+                WE=>WE,
+                BCENA=>BCENA,
+                DOUT(7 downto 0)=>IDATA(7 downto 0),
+                RT1ENA=>RT1ENA,
+                RT1SSF=>RT1SSF,
+                TXINHA=>TXINHA,
+                TXINHB=>TXINHB);
+   
+   XLXI_99 : sfr_8_input
+      port map (ACTIVE=>ACTIVE,
+                clock=>SLOW_CLOCK,
+                CS=>SEL_SFR(1),
+                MTPKRDY=>MTPKRDY,
+                nRT1MC8=>nRT1MC8,
+                RE=>RE,
+                READY=>READY,
+                DOUT(7 downto 0)=>IDATA(7 downto 0));
+   
+   XLXI_100 : sfr_8_output_pulse
+      port map (clear=>CPU_RESET_BUF_INV,
+                clock=>SLOW_CLOCK,
+                CS=>SEL_SFR(2),
+                DIN(7 downto 0)=>ADDR_OUT_8085(7 downto 0),
+                RE=>RE,
+                WE=>WE,
+                BCTRIG=>BCTRIG,
+                DOUT(7 downto 0)=>IDATA(7 downto 0),
+                MTRUN=>MTRUN,
+                TEST=>TEST);
+   
+   XLXI_101 : IBUF
+      port map (I=>CPU_RESET,
+                O=>CPU_RESET_BUF);
+   
+   XLXI_104 : IBUF
+      port map (I=>HWAIT,
+                O=>HWAIT_BUF);
+   
+   XLXI_105 : Clock
+      port map (clk_in1_n=>SYSCLK_N,
+                clk_in1_p=>SYSCLK_P,
+                reset=>CPU_RESET_BUF_INV,
+                clk_out1=>FAST_CLOCK,
+                clk_out2=>SLOW_CLOCK,
+                clk_out3=>CHIPSCOPE_CLK,
+                locked=>open);
+   
+   XLXI_108 : INV
+      port map (I=>CPU_RESET_BUF,
+                O=>CPU_RESET_BUF_INV);
    
 end BEHAVIORAL;
 

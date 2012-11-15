@@ -1,0 +1,2 @@
+vhdl work "DelayModule.vhd"
+vhdl work "MS1553_Reset_Pulse_Gen.vhd"

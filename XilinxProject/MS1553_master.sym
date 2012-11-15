@@ -1,27 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <symbol version="7" name="MS1553_master">
     <symboltype>BLOCK</symboltype>
-    <timestamp>2012-11-7T0:10:50</timestamp>
+    <timestamp>2012-11-8T0:31:35</timestamp>
     <pin polarity="Input" x="0" y="32" name="ALE" />
     <pin polarity="Input" x="0" y="224" name="nWR" />
     <pin polarity="Input" x="0" y="288" name="nRD" />
     <pin polarity="Input" x="0" y="352" name="nIOM" />
     <pin polarity="Input" x="0" y="-416" name="CLOCK" />
+    <pin polarity="Input" x="0" y="544" name="DATA_VALID_0" />
+    <pin polarity="Input" x="0" y="608" name="DATA_VALID_1" />
     <pin polarity="Input" x="0" y="-288" name="ADDRESS(15:0)" />
     <pin polarity="Input" x="0" y="416" name="DATA_IN_0(7:0)" />
     <pin polarity="Input" x="0" y="480" name="DATA_IN_1(7:0)" />
     <pin polarity="Output" x="608" y="32" name="nREAD" />
     <pin polarity="Output" x="608" y="224" name="nWRITE" />
     <pin polarity="Output" x="608" y="-416" name="RESET_IC" />
-    <pin polarity="Output" x="608" y="-352" name="IS_BIG_ENDIAN" />
-    <pin polarity="Output" x="608" y="-288" name="MEM_TEST_EN" />
-    <pin polarity="Output" x="608" y="-224" name="RAM_ERROR_CORR_EN" />
     <pin polarity="Output" x="608" y="-160" name="ADDRESS_TO_CHIP(15:0)" />
     <pin polarity="Output" x="608" y="288" name="DATA_OUT_0(7:0)" />
     <pin polarity="Output" x="608" y="352" name="DATA_OUT_1(7:0)" />
     <pin polarity="Output" x="608" y="160" name="IDATA(7:0)" />
-    <pin polarity="Input" x="0" y="544" name="DATA_VALID_0" />
-    <pin polarity="Input" x="0" y="608" name="DATA_VALID_1" />
     <graph>
         <attrtext style="alignment:BCENTER;fontsize:56;fontname:Arial" attrname="SymbolName" x="304" y="-456" type="symbol" />
         <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="32" type="pin ALE" />
@@ -29,22 +26,19 @@
         <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="288" type="pin nRD" />
         <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="352" type="pin nIOM" />
         <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-416" type="pin CLOCK" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="544" type="pin DATA_VALID_0" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="608" type="pin DATA_VALID_1" />
         <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-288" type="pin ADDRESS(15:0)" />
         <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="416" type="pin DATA_IN_0(7:0)" />
         <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="480" type="pin DATA_IN_1(7:0)" />
         <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="536" y="32" type="pin nREAD" />
         <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="536" y="224" type="pin nWRITE" />
         <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="536" y="-416" type="pin RESET_IC" />
-        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="536" y="-352" type="pin IS_BIG_ENDIAN" />
-        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="536" y="-288" type="pin MEM_TEST_EN" />
-        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="536" y="-224" type="pin RAM_ERROR_CORR_EN" />
         <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="536" y="-160" type="pin ADDRESS_TO_CHIP(15:0)" />
         <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="536" y="288" type="pin DATA_OUT_0(7:0)" />
         <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="536" y="352" type="pin DATA_OUT_1(7:0)" />
         <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="536" y="160" type="pin IDATA(7:0)" />
-        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="544" type="pin DATA_VALID_0" />
         <line x2="0" y1="544" y2="544" x1="64" />
-        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="608" type="pin DATA_VALID_1" />
         <line x2="0" y1="608" y2="608" x1="64" />
         <line x2="0" y1="224" y2="224" x1="64" />
         <line x2="0" y1="288" y2="288" x1="64" />
@@ -66,9 +60,6 @@
         <rect width="64" x="0" y="-300" height="24" />
         <line x2="0" y1="-288" y2="-288" x1="64" />
         <line x2="608" y1="-416" y2="-416" x1="544" />
-        <line x2="608" y1="-352" y2="-352" x1="544" />
-        <line x2="608" y1="-288" y2="-288" x1="544" />
-        <line x2="608" y1="-224" y2="-224" x1="544" />
         <rect width="64" x="544" y="-172" height="24" />
         <line x2="608" y1="-160" y2="-160" x1="544" />
         <rect width="480" x="64" y="-448" height="1088" />

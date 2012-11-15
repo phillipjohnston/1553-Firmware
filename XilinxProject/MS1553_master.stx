@@ -1,16 +1,16 @@
 Release 13.4 - xst O.87xd (nt)
 Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
---> Parameter TMPDIR set to C:/Users/Phillip/Downloads/MS1553_Interface/MS1553_Interface/xst/projnav.tmp
+--> Parameter TMPDIR set to C:/Users/Phillip/Dropbox/workspace/class_projects/MS1553_Interface/XilinxProject/xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 0.29 secs
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.42 secs
  
---> Parameter xsthdpdir set to C:/Users/Phillip/Downloads/MS1553_Interface/MS1553_Interface/xst
+--> Parameter xsthdpdir set to C:/Users/Phillip/Dropbox/workspace/class_projects/MS1553_Interface/XilinxProject/xst
 
 
-Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 0.30 secs
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.42 secs
  
 --> Reading design: MS1553_master.prj
 
@@ -40,23 +40,26 @@ INFO:Xst - Part-select index evaluated to out of bound value may lead to incorre
 =========================================================================
 *                          HDL Parsing                                  *
 =========================================================================
-Parsing VHDL file "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\Latch8Bit.vhd" into library work
+Parsing VHDL file "C:\Users\Phillip\Dropbox\workspace\class_projects\MS1553_Interface\XilinxProject\Latch8Bit.vhd" into library work
 Parsing entity <Latch8Bit>.
 Parsing architecture <Behavioral> of entity <latch8bit>.
-Parsing VHDL file "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\Latch16Bit.vhd" into library work
+Parsing VHDL file "C:\Users\Phillip\Dropbox\workspace\class_projects\MS1553_Interface\XilinxProject\Latch16Bit.vhd" into library work
 Parsing entity <Latch16Bit>.
 Parsing architecture <Behavioral> of entity <latch16bit>.
-Parsing VHDL file "C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\MS1553_master.vhd" into library work
+Parsing VHDL file "C:\Users\Phillip\Dropbox\workspace\class_projects\MS1553_Interface\XilinxProject\MS1553_master.vhd" into library work
 Parsing entity <MS1553_master>.
 Parsing architecture <Behavioral> of entity <ms1553_master>.
+Parsing VHDL file "C:\Users\Phillip\Dropbox\workspace\class_projects\MS1553_Interface\XilinxProject\ipcore_dir\Clock\example_design\Clock_exdes.vhd" into library work
+Parsing entity <Clock_exdes>.
+Parsing architecture <xilinx> of entity <clock_exdes>.
 
 
-Total REAL time to Xst completion: 9.00 secs
-Total CPU time to Xst completion: 8.24 secs
+Total REAL time to Xst completion: 12.00 secs
+Total CPU time to Xst completion: 12.54 secs
  
 --> 
 
-Total memory usage is 157676 kilobytes
+Total memory usage is 166188 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    0 (   0 filtered)

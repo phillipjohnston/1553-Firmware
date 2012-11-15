@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <symbol version="7" name="MS1553_Reset_Pulse_Gen">
     <symboltype>BLOCK</symboltype>
-    <timestamp>2012-11-5T20:42:56</timestamp>
+    <timestamp>2012-11-7T20:43:45</timestamp>
     <pin polarity="Input" x="0" y="-96" name="ResetGo" />
     <pin polarity="Input" x="0" y="-32" name="clock" />
     <pin polarity="Output" x="384" y="-96" name="ResetOut" />

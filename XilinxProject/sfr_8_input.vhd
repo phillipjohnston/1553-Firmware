@@ -29,35 +29,35 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity sfr_8_input is
-    Port ( DIO : inout  STD_LOGIC_VECTOR (7 downto 0);
+entity sfr_8_input_old is
+    Port ( DOUT : out  STD_LOGIC_VECTOR (7 downto 0);
            RE : in  STD_LOGIC;
            CS : in  STD_LOGIC;
            clock : in  STD_LOGIC;
            Q : in  STD_LOGIC_VECTOR(7 DOWNTO 0) );
-end sfr_8_input;
+end sfr_8_input_old;
 
-architecture Behavioral of sfr_8_input is
+architecture Behavioral of sfr_8_input_old is
 
 	signal Q_internal : std_logic_vector(7 downto 0);
+	signal re_cs : std_logic_vector(1 DOWNTO 0);
 
 begin
 
+	re_cs <= RE & CS;
+	
+	with re_cs select
+			DOUT <= 	Q_internal when  "11",
+						"ZZZZZZZZ" when others;
+
 	process(clock)
 	begin
+	
+
 			
 		if (clock='1' and clock'event) then
 		
 			Q_internal <= Q;
-			
-			IF RE = '1' AND CS = '1' THEN 
-				DIO <= Q_internal;
-			ELSE
-				DIO <= "ZZZZZZZZ";
-			END IF;
-			
-		
-			
 			
 		end if;
 	end process;

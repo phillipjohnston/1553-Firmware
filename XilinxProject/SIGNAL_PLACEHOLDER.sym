@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<symbol version="7" name="SIGNAL_PLACEHOLDER">
+    <symboltype>BLOCK</symboltype>
+    <timestamp>2012-11-8T1:37:55</timestamp>
+    <pin polarity="Output" x="384" y="-800" name="EXP_IO_1" />
+    <pin polarity="Output" x="384" y="-736" name="EXP_IO_2" />
+    <pin polarity="Output" x="384" y="-672" name="EXP_IO_3" />
+    <pin polarity="Output" x="384" y="-608" name="EXP_IO_4" />
+    <pin polarity="Output" x="384" y="-544" name="EXP_IO_5" />
+    <pin polarity="Output" x="384" y="-480" name="EXP_IO_6" />
+    <pin polarity="Output" x="384" y="-416" name="EXP_IO_7" />
+    <pin polarity="Output" x="384" y="-352" name="EXP_IO_8" />
+    <pin polarity="Output" x="384" y="-288" name="EXP_IO_9" />
+    <pin polarity="Output" x="384" y="-224" name="EXP_IO_10" />
+    <pin polarity="Output" x="384" y="-160" name="EXP_IO_11" />
+    <pin polarity="Output" x="384" y="-96" name="EXP_IO_12" />
+    <pin polarity="Output" x="384" y="-32" name="EXP_IO_13" />
+    <graph>
+        <rect width="256" x="64" y="-832" height="832" />
+        <attrtext style="alignment:BCENTER;fontsize:56;fontname:Arial" attrname="SymbolName" x="192" y="-840" type="symbol" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="312" y="-800" type="pin EXP_IO_1" />
+        <line x2="384" y1="-800" y2="-800" x1="320" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="312" y="-736" type="pin EXP_IO_2" />
+        <line x2="384" y1="-736" y2="-736" x1="320" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="312" y="-672" type="pin EXP_IO_3" />
+        <line x2="384" y1="-672" y2="-672" x1="320" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="312" y="-608" type="pin EXP_IO_4" />
+        <line x2="384" y1="-608" y2="-608" x1="320" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="312" y="-544" type="pin EXP_IO_5" />
+        <line x2="384" y1="-544" y2="-544" x1="320" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="312" y="-480" type="pin EXP_IO_6" />
+        <line x2="384" y1="-480" y2="-480" x1="320" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="312" y="-416" type="pin EXP_IO_7" />
+        <line x2="384" y1="-416" y2="-416" x1="320" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="312" y="-352" type="pin EXP_IO_8" />
+        <line x2="384" y1="-352" y2="-352" x1="320" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="312" y="-288" type="pin EXP_IO_9" />
+        <line x2="384" y1="-288" y2="-288" x1="320" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="312" y="-224" type="pin EXP_IO_10" />
+        <line x2="384" y1="-224" y2="-224" x1="320" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="312" y="-160" type="pin EXP_IO_11" />
+        <line x2="384" y1="-160" y2="-160" x1="320" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="312" y="-96" type="pin EXP_IO_12" />
+        <line x2="384" y1="-96" y2="-96" x1="320" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="312" y="-32" type="pin EXP_IO_13" />
+        <line x2="384" y1="-32" y2="-32" x1="320" />
+    </graph>
+</symbol>

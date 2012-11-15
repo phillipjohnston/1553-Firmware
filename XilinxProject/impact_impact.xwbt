@@ -1,0 +1,8 @@
+INTSTYLE=impact
+INFILE=C:\Users\Phillip\Dropbox\workspace\class_projects\MS1553_Interface\XilinxProject\impact.xsl
+OUTFILE=C:\Users\Phillip\Dropbox\workspace\class_projects\MS1553_Interface\XilinxProject\impact.xsl
+FAMILY=Multiple
+PART=Multiple
+WORKINGDIR=C:\Users\Phillip\Dropbox\workspace\class_projects\MS1553_Interface\XilinxProject
+LICENSE=iMPACT
+USER_INFO=iMPACT

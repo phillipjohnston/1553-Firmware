@@ -1,0 +1,12 @@
+[Inputs]
+ALE
+nWR
+nRD
+nIOM
+=ADDRESS_IN[15:0]=
+[Outputs]
+ENA
+WEA
+=ADDRESS_OUT[15:0]=
+=DATA_OUT[7:0]=
+[BiDir]

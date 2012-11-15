@@ -14,3 +14,7 @@ vhdtdtfi -lib work Latch8Bit.vhd -lib work Latch16Bit.vhd -lib work MS1553_maste
 spl2sym -intstyle ise -family spartan6 MS1553_master.spl C:/Users/Phillip/Downloads/MS1553_Interface/MS1553_Interface/MS1553_master.sym 
 vhdtdtfi -lib work Latch8Bit.vhd -lib work Latch16Bit.vhd -lib work MS1553_master.vhd -prj MS1553_Interface -o MS1553_master.spl -module MS1553_master -template C:/Xilinx/13.4/ISE_DS/ISE//data/splfile.tft -deleteonerror 
 spl2sym -intstyle ise -family spartan6 MS1553_master.spl C:/Users/Phillip/Downloads/MS1553_Interface/MS1553_Interface/MS1553_master.sym 
+vhdtdtfi -lib work Latch8Bit.vhd -lib work Latch16Bit.vhd -lib work MS1553_master.vhd -prj MS1553_Interface -o MS1553_master.spl -module MS1553_master -template C:/Xilinx/13.4/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan6 -w MS1553_master.spl C:/Users/Phillip/Dropbox/workspace/class_projects/MS1553_Interface/XilinxProject/MS1553_master.sym 
+vhdtdtfi -lib work Latch8Bit.vhd -lib work Latch16Bit.vhd -lib work MS1553_master.vhd -prj MS1553_Interface -o MS1553_master.spl -module MS1553_master -template C:/Xilinx/13.4/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan6 -w MS1553_master.spl C:/Users/Phillip/Dropbox/workspace/class_projects/MS1553_Interface/XilinxProject/MS1553_master.sym 

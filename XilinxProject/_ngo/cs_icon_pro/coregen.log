@@ -1,0 +1,68 @@
+INFO:encore:314 - Created non-GUI application for batch mode execution.
+Wrote CGP file for project 'coregen'.
+INFO:sim:172 - Generating IP...
+Resolving generic values...
+Finished resolving generic values.
+Generating IP...
+Gathering HDL files for icon_pro root...
+Creating XST project for icon_pro...
+Creating XST script file for icon_pro...
+Creating XST instantiation file for icon_pro...
+Running XST for icon_pro...
+XST: HDL Parsing
+XST: HDL Elaboration
+XST: HDL Synthesis
+XST: Advanced HDL Synthesis
+XST: Low Level Synthesis
+XST: Design Summary
+Generating VHDL wrapper
+Not generating Verilog wrapper
+Creating ISE instantiation template for icon_pro...
+Skipping Verilog instantiation template for icon_pro...
+Finished Generation.
+Generating IP instantiation template...
+INFO:sim:949 - Finished generation of ASY schematic symbol.
+Generating metadata file...
+Generating ISE project...
+XCO file found: icon_pro.xco
+XMDF file found: icon_pro_xmdf.tcl
+WARNING:coreutil - WARNING:TclTasksC:project_006: Exception detected while
+   executing [project set].
+   Type [help project set] for more information.
+
+       while executing
+   "project set $key $value"
+       ("foreach" body line 5)
+       invoked from within
+   "foreach {xco_key ise_key} $xco2ise_key_mapping {
+         set key     $ise_key
+         set value   [set xcovals($xco_key)]
+
+         project set $key $value
+    ..."
+       (procedure "xco2ise" line 24)
+       invoked from within
+   "xco2ise $xcofile"
+       (procedure "core2ise" line 49)
+       invoked from within
+   "core2ise $corename"
+       invoked from within
+   "if {[info exists argc]} {
+      if {$argc==1} {
+         set corename [lindex $argv 0]
+         core2ise $corename
+      } elseif {$argc==2} {
+         set corepath ..."
+       (file "C:\Xilinx\14.1\ISE_DS\ISE\coregen\tcl\core2ise.tcl" line 250)
+ERROR:coreutil:1012 - Command
+   'C:\Xilinx\14.1\ISE_DS\ISE\bin\nt\unwrapped\xtclsh.exe
+   "C:\Xilinx\14.1\ISE_DS\ISE\coregen\tcl\core2ise.tcl" "./tmp/_cg/" "icon_pro"
+   ' returned a non-zero exit code '1'
+WARNING:sim:968 - ISE project './tmp/_cg/icon_pro.xise' will not be released.
+WARNING:sim - ISE file could not be generated.
+Generating README file...
+Generating FLIST file...
+INFO:sim:948 - Finished FLIST file generation.
+Moving files to output directory...
+Finished moving files to output directory
+Saved CGP file for project 'coregen'.

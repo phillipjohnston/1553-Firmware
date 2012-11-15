@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=C:\Users\Phillip\Dropbox\workspace\class_projects\MS1553_Interface\XilinxProject\System.ncd
+OUTFILE=C:\Users\Phillip\Dropbox\workspace\class_projects\MS1553_Interface\XilinxProject\System.bit
+FAMILY=Spartan6
+PART=xc6slx45t-3fgg484
+WORKINGDIR=C:\Users\Phillip\Dropbox\workspace\class_projects\MS1553_Interface\XilinxProject
+LICENSE=ISE
+USER_INFO=210692152_0_0_928

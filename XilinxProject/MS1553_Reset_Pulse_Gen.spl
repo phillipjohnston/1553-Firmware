@@ -1,0 +1,6 @@
+[Inputs]
+ResetGo
+clock
+[Outputs]
+ResetOut
+[BiDir]

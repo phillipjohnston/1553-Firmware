@@ -1,0 +1,2 @@
+vhdl work "Latch8Bit.vhd"
+vhdl work "ipcore_dir/Clock/example_design/Clock_exdes.vhd"

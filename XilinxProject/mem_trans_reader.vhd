@@ -37,7 +37,6 @@ entity mem_trans_reader is
 		CLOCK : IN STD_LOGIC;
 		
 		ADDRESS : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
-		DATA : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
 		D0_LATCH : OUT STD_LOGIC;
 		D1_LATCH : OUT STD_LOGIC;
 		OE : OUT STD_LOGIC;
@@ -83,9 +82,8 @@ begin
 				CE <= '0';
 				OE_int <= '0';
 				delay_en <= '0';
+				delay_needed <= "0000000000000000";
 				ADDRESS <= "ZZZZZZZZZZZZZZZZ";
-				--DATA_VALID <= '0';
-				DATA <= "ZZZZZZZZ";
 				
 				IF(OK_TO_BEGIN_RD = '1')
 				THEN
@@ -100,9 +98,7 @@ begin
 				OE_int <= '1';
 				delay_en <= '1';
 				delay_needed <= TNSR;
-				--DATA_VALID <= '0';
 				READING_STATE <= "010";
-				DATA <= "ZZZZZZZZ";
 
 			WHEN "010" =>
 				IF(flag = '1') THEN
@@ -111,8 +107,7 @@ begin
 					ADDRESS(15 DOWNTO 1) <= ADDRESS_IN(15 DOWNTO 1);
 					ADDRESS(0) <= '1';
 					delay_en <= '1';
-					delay_needed <= TINACT;
-					--DATA_VALID <= '0';					
+					delay_needed <= TINACT;			
 					READING_STATE <= "011";
 				ELSE
 					ADDRESS <= ADDRESS_IN;
@@ -120,7 +115,6 @@ begin
 					OE_int <= '1';
 					delay_en <= '1';
 					delay_needed <= TNSR;
-					--DATA_VALID <= '0';
 					READING_STATE <= "010";
 				END IF;
 			
@@ -132,8 +126,7 @@ begin
 					ADDRESS(15 DOWNTO 1) <= ADDRESS_IN(15 DOWNTO 1);
 					ADDRESS(0) <= '1';
 					delay_en <= '1';
-					delay_needed <= TSRS;
-					--DATA_VALID <= '0';					
+					delay_needed <= TSRS;			
 					READING_STATE <= "100";
 				ELSE
 					CE <= '1';
@@ -141,7 +134,6 @@ begin
 					ADDRESS(15 DOWNTO 1) <= ADDRESS_IN(15 DOWNTO 1);
 					ADDRESS(0) <= '1';
 					delay_en <= '1';
-					--DATA_VALID <= '0';
 					delay_needed <= TINACT;	
 					READING_STATE <= "011";
 				END IF;
@@ -150,11 +142,9 @@ begin
 				IF(flag = '1')
 				THEN
 					ADDRESS <= "0000000000000000";
-					DATA <= "ZZZZZZZZ";
 					CE <= '0';
 					OE_int <= '0';
 					delay_en <= '0';
-					--DATA_VALID <= '1';
 					delay_needed <= "0000000000000000";
 					READING_STATE <= "110";
 				ELSE
@@ -163,8 +153,7 @@ begin
 					ADDRESS(15 DOWNTO 1) <= ADDRESS_IN(15 DOWNTO 1);
 					ADDRESS(0) <= '1';
 					delay_en <= '1';
-					delay_needed <= TSRS;
-					--DATA_VALID <= '0';					
+					delay_needed <= TSRS;				
 					READING_STATE <= "100";
 				END IF;
 				
@@ -172,31 +161,25 @@ begin
 				IF(nRD = '0')
 				THEN
 					ADDRESS <= "0000000000000000";
-					DATA <= "ZZZZZZZZ";
 					CE <= '0';
 					OE_int <= '0';
 					delay_en <= '0';
-					--DATA_VALID <= '0';
 					delay_needed <= "0000000000000000";
 					READING_STATE <= "110";
 				ELSE
 					ADDRESS <= "0000000000000000";
-					DATA <= "ZZZZZZZZ";
 					CE <= '0';
 					OE_int <= '0';
 					delay_en <= '0';
-					--DATA_VALID <= '1';
 					delay_needed <= "0000000000000000";
 					READING_STATE <= "000";
 				END IF;
 				
 			WHEN OTHERS =>
 				ADDRESS <= "0000000000000000";
-				DATA <= "ZZZZZZZZ";
 				CE <= '0';
 				OE_int <= '0';
 				delay_en <= '0';
-				--DATA_VALID <= '0';
 				delay_needed <= "0000000000000000";
 				READING_STATE <= "000";
 		END CASE;	
@@ -210,8 +193,8 @@ begin
 		
 		IF(OE_int_LAST = '1' AND OE_int = '0')
 		THEN
-			--D0_LATCH logic
-			--D1_LATCH logic
+			D0_LATCH <= '0';
+			D1_LATCH <= '1';
 			IF(READING_STATE = "011")
 			THEN
 				D0_LATCH <= '1';

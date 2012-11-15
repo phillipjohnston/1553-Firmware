@@ -59,9 +59,6 @@ architecture Behavioral of holt_mem_trans is
 	SIGNAL WE : STD_LOGIC := '0';
 	SIGNAL OE : STD_LOGIC := '0';
 	
-	--SIGNAL HOLT_DATA_0 : STD_LOGIC_VECTOR(7 DOWNTO 0) := "00000000";
-	--SIGNAL HOLT_DATA_1 : STD_LOGIC_VECTOR(7 DOWNTO 0) := "00000000";
-	
 	SIGNAL PROC_DATA_0 : STD_LOGIC_VECTOR(7 DOWNTO 0) := "00000000";
 	SIGNAL PROC_DATA_1 : STD_LOGIC_VECTOR(7 DOWNTO 0) := "00000000";
 	
@@ -72,9 +69,9 @@ architecture Behavioral of holt_mem_trans is
 	SIGNAL rADDR : STD_LOGIC_VECTOR(15 DOWNTO 0) := "0000000000000000";
 	SIGNAL wADDR : STD_LOGIC_VECTOR(15 DOWNTO 0) := "0000000000000000";
 	
-	SIGNAL rDATA , wDATA : STD_LOGIC_VECTOR(7 DOWNTO 0) := "ZZZZZZZZ";
+	SIGNAL wDATA : STD_LOGIC_VECTOR(7 DOWNTO 0) := "ZZZZZZZZ";
 	
-	SIGNAL h_d0_en, h_d1_en, p_d0_en, p_d1_en, addr_en : STD_LOGIC := '0';
+	SIGNAL h_d0_en, h_d1_en, p_d0_en, p_d1_en, addr_en : STD_LOGIC := '1';
 	
 	SIGNAL rd_int, wr_int : STD_LOGIC := '0';
 	
@@ -130,7 +127,6 @@ architecture Behavioral of holt_mem_trans is
 			CLOCK : IN STD_LOGIC;
 			
 			ADDRESS : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
-			DATA : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
 			D0_LATCH : OUT STD_LOGIC;
 			D1_LATCH : OUT STD_LOGIC;
 			OE : OUT STD_LOGIC;
@@ -141,30 +137,33 @@ architecture Behavioral of holt_mem_trans is
 begin
 	
 	reader: mem_trans_reader port map(HOLT_ADDR, OK_TO_BEGIN_RD, nRD, CLOCK,
-												 rADDR, rDATA, h_d0_en, h_d1_en, OE, rCE);
+												 rADDR, h_d0_en, h_d1_en, OE, rCE);
 	writer: mem_trans_writer port map (HOLT_ADDR, PROC_DATA_0, PROC_DATA_1, OK_TO_BEGIN_WR, nWR, CLOCK,
 												  wADDR, wDATA, WE, wCE);
-	
-	nCE <= NOT rCE WHEN rd_int = '0' ELSE NOT wCE;
-	ADDRESS_OUT <= rADDR WHEN rd_int = '0' ELSE wADDR;
-	
-	DATA <= rDATA when rd_int = '0' ELSE 
-			  wDATA when wr_int = '0' ELSE
-			  "ZZZZZZZZ";
-	
-	DATA_VALID_0 <= h_d0_en;
-	DATA_VALID_1 <= h_d1_en;
-	
+												  
 	--Latches
-	h_data0_L : Latch8Bit port map(DATA, h_d0_en, DATA_RETURN_0);
-	h_data1_L : Latch8Bit port map(DATA, h_d1_en, DATA_RETURN_1);
+	--h_data0_L : Latch8Bit port map(DATA, h_d0_en, DATA_RETURN_0);
+	--h_data1_L : Latch8Bit port map(DATA, h_d1_en, DATA_RETURN_1);
 	
+	DATA_RETURN_0 <= DATA;
+	DATA_RETURN_1 <= DATA;
+
 	p_data0_L : Latch8Bit port map(DATA_IN_0, p_d0_en, PROC_DATA_0);
 	p_data1_L : Latch8Bit port map(DATA_IN_1, p_d1_en, PROC_DATA_1);
 	addr_L : Latch16Bit port map(addr, addr_en, HOLT_ADDR);
 	
 	rd_L : Latch port map(nRD, addr_en, rd_int);
 	wr_L : Latch port map(nWR, addr_en, wr_int);
+	
+	nCE <= NOT rCE WHEN rd_int = '0' ELSE NOT wCE;
+	ADDRESS_OUT <= rADDR WHEN rd_int = '0' ELSE wADDR;
+	
+	--DATA <= rDATA when rd_int = '0' ELSE 
+	DATA <= wDATA when wr_int = '0' ELSE
+			  "ZZZZZZZZ";
+	
+	DATA_VALID_0 <= h_d0_en;
+	DATA_VALID_1 <= h_d1_en;
 	
 	nWE <= NOT WE;
 	nOE <= NOT OE;

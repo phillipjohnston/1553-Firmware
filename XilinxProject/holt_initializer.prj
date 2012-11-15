@@ -1,0 +1,2 @@
+vhdl work "holt_initializer.vhd"
+vhdl work "ipcore_dir/Clock/example_design/Clock_exdes.vhd"

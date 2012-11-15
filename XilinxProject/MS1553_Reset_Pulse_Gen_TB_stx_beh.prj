@@ -1,0 +1,3 @@
+vhdl isim_temp "DelayModule.vhd"
+vhdl isim_temp "MS1553_Reset_Pulse_Gen.vhd"
+vhdl isim_temp "MS1553_Reset_Pulse_Gen_TB.vhd"

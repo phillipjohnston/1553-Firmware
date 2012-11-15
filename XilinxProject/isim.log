@@ -1,6 +1,6 @@
 ISim log file
-Running: C:\Users\Phillip\Downloads\MS1553_Interface\MS1553_Interface\MS1553_Controller_MS1553_Controller_sch_tb_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -wdb C:/Users/Phillip/Downloads/MS1553_Interface/MS1553_Interface/MS1553_Controller_MS1553_Controller_sch_tb_isim_beh.wdb 
-ISim O.87xd (signature 0x2f00eba5)
+Running: C:\Users\Phillip\Dropbox\workspace\class_projects\MS1553_Interface\XilinxProject\System_System_sch_tb_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -wdb C:/Users/Phillip/Dropbox/workspace/class_projects/MS1553_Interface/XilinxProject/System_System_sch_tb_isim_beh.wdb 
+ISim P.15xf (signature 0xc3576ebc)
 This is a Full version of ISim.
 Time resolution is 1 ps
 # onerror resume
@@ -14,63 +14,73 @@ Simulator is doing circuit initialization process.
 Finished circuit initialization process.
 # run 1.00us
 # run 1.00us
-ISim O.87xd (signature 0x2f00eba5)
-This is a Full version of ISim.
-# run 1000 ns
-Simulator is doing circuit initialization process.
-Stopped at time : 0 fs : File "C:/Users/Phillip/Downloads/MS1553_Interface/MS1553_Interface/MS1553_master.vhd" Line 181
-# run 1.00us
-Finished circuit initialization process.
 # run 1.00us
 # run 1.00us
-# restart
-# run 1.00us
-Simulator is doing circuit initialization process.
-Stopped at time : 0 fs : File "C:/Users/Phillip/Downloads/MS1553_Interface/MS1553_Interface/MS1553_master.vhd" Line 181
-# run 1.00us
-Finished circuit initialization process.
-Stopped at time : 0 fs : File "C:/Users/Phillip/Downloads/MS1553_Interface/MS1553_Interface/MS1553_master.vhd" Line 181
-# run 1.00us
-Stopped at time : 100 ns : File "C:/Users/Phillip/Downloads/MS1553_Interface/MS1553_Interface/MS1553_master.vhd" Line 181
-# run 1.00us
-Stopped at time : 200 ns : File "C:/Users/Phillip/Downloads/MS1553_Interface/MS1553_Interface/MS1553_master.vhd" Line 181
-# run 1.00us
-Stopped at time : 500 ns : File "C:/Users/Phillip/Downloads/MS1553_Interface/MS1553_Interface/MS1553_master.vhd" Line 181
 # run 1.00us
 # run 1.00us
-Stopped at time : 1500 ns : File "C:/Users/Phillip/Downloads/MS1553_Interface/MS1553_Interface/MS1553_master.vhd" Line 181
 # run 1.00us
 # run 1.00us
-Stopped at time : 2085 ns : File "C:/Users/Phillip/Downloads/MS1553_Interface/MS1553_Interface/MS1553_master.vhd" Line 176
 # run 1.00us
-Stopped at time : 2085 ns : File "C:/Users/Phillip/Downloads/MS1553_Interface/MS1553_Interface/MS1553_master.vhd" Line 176
 # run 1.00us
-ISim O.87xd (signature 0x2f00eba5)
-This is a Full version of ISim.
-# run 1000 ns
-Simulator is doing circuit initialization process.
-Finished circuit initialization process.
+# run 1.00us
+# run 1.00us
+# run 1.00us
+# run 1.00us
+# run 1.00us
+# run 1.00us
 # restart
 # run 1.00us
 Simulator is doing circuit initialization process.
 Finished circuit initialization process.
 # run 1.00us
 # run 1.00us
-ISim O.87xd (signature 0x2f00eba5)
-This is a Full version of ISim.
-# run 1000 ns
-Simulator is doing circuit initialization process.
-Finished circuit initialization process.
+# run 1.00us
+# run 1.00us
+# run 1.00us
+# run 1.00us
+# run 1.00us
+# run 1.00us
+# run 1.00us
+# run 1.00us
 # restart
 # run 1.00us
 Simulator is doing circuit initialization process.
 Finished circuit initialization process.
 # run 1.00us
 # run 1.00us
-ISim O.87xd (signature 0x2f00eba5)
-This is a Full version of ISim.
-# run 1000 ns
+# run 1.00us
+# run 1.00us
+# run 1.00us
+# run 1.00us
+# run 1.00us
+# run 1.00us
+# run 1.00us
+# run 1.00us
+# run 1.00us
+# run 1.00us
+# run 1.00us
+# run 1.00us
+# run 1.00us
+# restart
+# run 1.00us
 Simulator is doing circuit initialization process.
 Finished circuit initialization process.
+# run 1.00us
+# run 1.00us
+# run 1.00us
+# run 1.00us
+# run 1.00us
+# run 1.00us
+# run 1.00us
+# run 1.00us
+# run 1.00us
+# run 1.00us
+# run 1.00us
+# run 1.00us
+# run 1.00us
+# run 1.00us
+# run 1.00us
+# run 1.00us
+# run 1.00us
 # run 1.00us
 # run 1.00us

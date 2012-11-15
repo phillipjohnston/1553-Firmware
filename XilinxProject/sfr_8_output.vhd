@@ -29,46 +29,51 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity sfr_8_output is
-    Port ( DIO : inout  STD_LOGIC_VECTOR (7 downto 0);
+entity sfr_8_output_old is
+    Port ( DIN: IN STD_LOGIC_VECTOR (7 DOWNTO 0);
            RE : in  STD_LOGIC;
            WE : in  STD_LOGIC;
            clock : in  STD_LOGIC;
            clear : in  STD_LOGIC;
            CS : in  STD_LOGIC;
-           Q : out  STD_LOGIC_VECTOR (7 downto 0));
-end sfr_8_output;
+           Q : out  STD_LOGIC_VECTOR (7 downto 0);
+			  DOUT : OUT STD_LOGIC_VECTOR (7 DOWNTO 0));
+end sfr_8_output_old;
 
-architecture Behavioral of sfr_8_output is
+architecture Behavioral of sfr_8_output_old is
 
 	signal Q_internal : std_logic_vector(7 downto 0);
+	signal re_cs : std_logic_vector(1 downto 0);
+	constant initial_state : std_logic_vector(7 downto 0) := "00000000";
 
 begin
 
+	
+	re_cs <= RE & CS;
+	
+	with re_cs select
+		DOUT <= Q_internal when "11",
+					"ZZZZZZZZ" when others;
+	
+	Q <= Q_internal;
+	
+	
 
-process(clock, clear)
-	begin
+	process(WE,clear)
+		begin
+		
 		if clear = '1' then
-			Q_internal <= "00000000";
+			Q_internal <= initial_state;
 			
-		elsif (clock='1' and clock'event) then
-			
-			IF RE = '1' AND CS = '1' THEN 
-				DIO <= Q_internal;
-			ELSE
-				DIO <= "ZZZZZZZZ";
-			END IF;
-			
-			IF WE = '1' AND CS = '1' THEN
-				Q_internal <= DIO;
-			END IF;
+		elsIF WE = '0'  AND WE'EVENT AND CS = '1' THEN
+			Q_internal <= DIN;
+				
 		
 			
 			
 		end if;
 	end process;
 	
-	Q <= Q_internal;
 
 end Behavioral;
 

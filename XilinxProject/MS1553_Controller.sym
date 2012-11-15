@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <symbol version="7" name="MS1553_Controller">
     <symboltype>BLOCK</symboltype>
-    <timestamp>2012-11-7T1:14:17</timestamp>
+    <timestamp>2012-11-8T0:33:19</timestamp>
     <pin polarity="Input" x="0" y="-1120" name="Address(15:0)" />
     <pin polarity="Input" x="0" y="-944" name="FAST_CLOCK" />
     <pin polarity="Input" x="0" y="-768" name="ALE" />
@@ -11,11 +11,6 @@
     <pin polarity="Input" x="0" y="-64" name="HWAIT" />
     <pin polarity="BiDirectional" x="496" y="-32" name="DATA_CHIP(7:0)" />
     <pin polarity="Output" x="496" y="-1120" name="nMR" />
-    <pin polarity="Output" x="496" y="-928" name="MTSTOFF" />
-    <pin polarity="Output" x="496" y="-864" name="AUTOEN" />
-    <pin polarity="Output" x="496" y="-800" name="EECOPY" />
-    <pin polarity="Output" x="496" y="-736" name="BENDI" />
-    <pin polarity="Output" x="496" y="-672" name="RAMEDC" />
     <pin polarity="Output" x="496" y="-544" name="BWID" />
     <pin polarity="Output" x="496" y="-480" name="BTYPE" />
     <pin polarity="Output" x="496" y="-416" name="WPOL" />
@@ -35,11 +30,6 @@
         <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-64" type="pin HWAIT" />
         <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="424" y="-32" type="pin DATA_CHIP(7:0)" />
         <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="424" y="-1120" type="pin nMR" />
-        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="424" y="-928" type="pin MTSTOFF" />
-        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="424" y="-864" type="pin AUTOEN" />
-        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="424" y="-800" type="pin EECOPY" />
-        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="424" y="-736" type="pin BENDI" />
-        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="424" y="-672" type="pin RAMEDC" />
         <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="424" y="-544" type="pin BWID" />
         <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="424" y="-480" type="pin BTYPE" />
         <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="424" y="-416" type="pin WPOL" />
@@ -58,11 +48,6 @@
         <line x2="0" y1="-240" y2="-240" x1="64" />
         <line x2="0" y1="-64" y2="-64" x1="64" />
         <line x2="496" y1="-1120" y2="-1120" x1="432" />
-        <line x2="496" y1="-928" y2="-928" x1="432" />
-        <line x2="496" y1="-864" y2="-864" x1="432" />
-        <line x2="496" y1="-800" y2="-800" x1="432" />
-        <line x2="496" y1="-736" y2="-736" x1="432" />
-        <line x2="496" y1="-672" y2="-672" x1="432" />
         <line x2="496" y1="-544" y2="-544" x1="432" />
         <line x2="496" y1="-480" y2="-480" x1="432" />
         <line x2="496" y1="-416" y2="-416" x1="432" />

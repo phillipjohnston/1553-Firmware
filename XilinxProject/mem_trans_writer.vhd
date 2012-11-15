@@ -73,10 +73,13 @@ begin
 		CASE WRITING_STATE IS
 			WHEN "000" =>
 				--Not Begun
+				ADDRESS <= "0000000000000000";
 				WRITING_STATE <= "000";
 				CE <= '0';
 				WE <= '0';
 				delay_en <= '0';
+				delay_needed <= "0000000000000000";
+				DATA <= "ZZZZZZZZ";
 				
 				IF(OK_TO_BEGIN_WR = '1')
 				THEN
@@ -182,10 +185,13 @@ begin
 				END IF;
 				
 			WHEN OTHERS =>
+				ADDRESS <= "0000000000000000";
+				DATA <= "ZZZZZZZZ";
 				WRITING_STATE <= "000";
 				CE <= '0';
 				WE <= '0';
 				delay_en <= '0';
+				delay_needed <= "0000000000000000";
 		END CASE;
 	END PROCESS;
 	

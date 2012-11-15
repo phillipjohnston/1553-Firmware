@@ -1,0 +1,6 @@
+vhdtdtfi -lib work sfr_8_output_pulse.vhd -prj MS1553_Interface -o sfr_8_output_pulse.spl -module sfr_8_output_pulse -template C:/Xilinx/14.1/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan6 -w sfr_8_output_pulse.spl C:/Users/Phillip/Dropbox/workspace/class_projects/MS1553_Interface/XilinxProject/sfr_8_output_pulse.sym 
+vhdtdtfi -lib work SFR_TRIG.vhd -prj MS1553_Interface -o sfr_8_output_pulse.spl -module sfr_8_output_pulse -template C:/Xilinx/14.1/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan6 -w sfr_8_output_pulse.spl C:/Users/Phillip/Dropbox/workspace/class_projects/MS1553_Interface/XilinxProject/sfr_8_output_pulse.sym 
+vhdtdtfi -lib work SFR_TRIG.vhd -prj MS1553_Interface -o sfr_8_output_pulse.spl -module sfr_8_output_pulse -template C:/Xilinx/14.1/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan6 -w sfr_8_output_pulse.spl C:/Users/Phillip/Dropbox/workspace/class_projects/MS1553_Interface/XilinxProject/sfr_8_output_pulse.sym 

@@ -1,0 +1,2 @@
+vhdtdtfi -lib work SFR_STATUS.vhd -prj MS1553_Interface -o sfr_8_input.spl -module sfr_8_input -template C:/Xilinx/14.1/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan6 -w sfr_8_input.spl C:/Users/Phillip/Dropbox/workspace/class_projects/MS1553_Interface/XilinxProject/sfr_8_input.sym 
