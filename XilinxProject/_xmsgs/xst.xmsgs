@@ -89,31 +89,31 @@
 <msg type="warning" file="HDLCompiler" num="92" delta="old" >"C:\Users\Phillip\Dropbox\workspace\class_projects\MS1553_Interface\XilinxProject\SFR_CONFIG.vhd" Line 80: <arg fmt="%s" index="1">cs</arg> should be on the sensitivity list of the process
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="634" delta="new" >"C:\Users\Phillip\Dropbox\workspace\class_projects\MS1553_Interface\XilinxProject\SFR_STATUS.vhd" Line 48: Net &lt;<arg fmt="%s" index="1">Q[3]</arg>&gt; does not have a driver.
+<msg type="warning" file="HDLCompiler" num="634" delta="old" >"C:\Users\Phillip\Dropbox\workspace\class_projects\MS1553_Interface\XilinxProject\SFR_STATUS.vhd" Line 48: Net &lt;<arg fmt="%s" index="1">Q[3]</arg>&gt; does not have a driver.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">C:\Users\Phillip\Dropbox\workspace\class_projects\MS1553_Interface\XilinxProject\System.vhf</arg>&quot; line <arg fmt="%s" index="2">388</arg>: Output port &lt;<arg fmt="%s" index="3">RESETOUT</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">XLXI_1</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">C:\Users\Phillip\Dropbox\workspace\class_projects\MS1553_Interface\XilinxProject\System.vhf</arg>&quot; line <arg fmt="%s" index="2">388</arg>: Output port &lt;<arg fmt="%s" index="3">RESETOUT</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">XLXI_1</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">C:\Users\Phillip\Dropbox\workspace\class_projects\MS1553_Interface\XilinxProject\System.vhf</arg>&quot; line <arg fmt="%s" index="2">388</arg>: Output port &lt;<arg fmt="%s" index="3">SOD</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">XLXI_1</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">C:\Users\Phillip\Dropbox\workspace\class_projects\MS1553_Interface\XilinxProject\System.vhf</arg>&quot; line <arg fmt="%s" index="2">388</arg>: Output port &lt;<arg fmt="%s" index="3">SOD</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">XLXI_1</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">C:\Users\Phillip\Dropbox\workspace\class_projects\MS1553_Interface\XilinxProject\System.vhf</arg>&quot; line <arg fmt="%s" index="2">388</arg>: Output port &lt;<arg fmt="%s" index="3">INTABAR</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">XLXI_1</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">C:\Users\Phillip\Dropbox\workspace\class_projects\MS1553_Interface\XilinxProject\System.vhf</arg>&quot; line <arg fmt="%s" index="2">388</arg>: Output port &lt;<arg fmt="%s" index="3">INTABAR</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">XLXI_1</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">C:\Users\Phillip\Dropbox\workspace\class_projects\MS1553_Interface\XilinxProject\System.vhf</arg>&quot; line <arg fmt="%s" index="2">388</arg>: Output port &lt;<arg fmt="%s" index="3">S0</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">XLXI_1</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">C:\Users\Phillip\Dropbox\workspace\class_projects\MS1553_Interface\XilinxProject\System.vhf</arg>&quot; line <arg fmt="%s" index="2">388</arg>: Output port &lt;<arg fmt="%s" index="3">S0</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">XLXI_1</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">C:\Users\Phillip\Dropbox\workspace\class_projects\MS1553_Interface\XilinxProject\System.vhf</arg>&quot; line <arg fmt="%s" index="2">388</arg>: Output port &lt;<arg fmt="%s" index="3">S1</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">XLXI_1</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">C:\Users\Phillip\Dropbox\workspace\class_projects\MS1553_Interface\XilinxProject\System.vhf</arg>&quot; line <arg fmt="%s" index="2">388</arg>: Output port &lt;<arg fmt="%s" index="3">S1</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">XLXI_1</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">C:\Users\Phillip\Dropbox\workspace\class_projects\MS1553_Interface\XilinxProject\System.vhf</arg>&quot; line <arg fmt="%s" index="2">388</arg>: Output port &lt;<arg fmt="%s" index="3">CLKOUT</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">XLXI_1</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">C:\Users\Phillip\Dropbox\workspace\class_projects\MS1553_Interface\XilinxProject\System.vhf</arg>&quot; line <arg fmt="%s" index="2">388</arg>: Output port &lt;<arg fmt="%s" index="3">CLKOUT</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">XLXI_1</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">C:\Users\Phillip\Dropbox\workspace\class_projects\MS1553_Interface\XilinxProject\System.vhf</arg>&quot; line <arg fmt="%s" index="2">388</arg>: Output port &lt;<arg fmt="%s" index="3">HLDA</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">XLXI_1</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">C:\Users\Phillip\Dropbox\workspace\class_projects\MS1553_Interface\XilinxProject\System.vhf</arg>&quot; line <arg fmt="%s" index="2">388</arg>: Output port &lt;<arg fmt="%s" index="3">HLDA</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">XLXI_1</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">C:\Users\Phillip\Dropbox\workspace\class_projects\MS1553_Interface\XilinxProject\System.vhf</arg>&quot; line <arg fmt="%s" index="2">539</arg>: Output port &lt;<arg fmt="%s" index="3">LOCKED</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">XLXI_105</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">C:\Users\Phillip\Dropbox\workspace\class_projects\MS1553_Interface\XilinxProject\System.vhf</arg>&quot; line <arg fmt="%s" index="2">539</arg>: Output port &lt;<arg fmt="%s" index="3">LOCKED</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">XLXI_105</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
 <msg type="warning" file="Xst" num="647" delta="old" >Input &lt;<arg fmt="%s" index="1">HWAIT</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
@@ -308,13 +308,13 @@
 <msg type="warning" file="Xst" num="647" delta="old" >Input &lt;<arg fmt="%s" index="1">clock</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 </msg>
 
-<msg type="warning" file="Xst" num="653" delta="new" >Signal &lt;<arg fmt="%s" index="1">Q&lt;3:0&gt;</arg>&gt; is used but never assigned. This sourceless signal will be automatically connected to value <arg fmt="%s" index="2">GND</arg>.
+<msg type="warning" file="Xst" num="653" delta="old" >Signal &lt;<arg fmt="%s" index="1">Q&lt;3:0&gt;</arg>&gt; is used but never assigned. This sourceless signal will be automatically connected to value <arg fmt="%s" index="2">GND</arg>.
 </msg>
 
 <msg type="warning" file="Xst" num="647" delta="old" >Input &lt;<arg fmt="%s" index="1">clock</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 </msg>
 
-<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">Q_internal_0</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">XLXI_99</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">3 FFs/Latches</arg>, which will be removed : <arg fmt="%s" index="4">&lt;Q_internal_1&gt; &lt;Q_internal_2&gt; &lt;Q_internal_3&gt; </arg>
+<msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">Q_internal_0</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">XLXI_99</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">3 FFs/Latches</arg>, which will be removed : <arg fmt="%s" index="4">&lt;Q_internal_1&gt; &lt;Q_internal_2&gt; &lt;Q_internal_3&gt; </arg>
 </msg>
 
 <msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">q_15</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">addr_L</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
@@ -371,49 +371,49 @@
 <msg type="warning" file="Xst" num="1293" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">CHIP_DATA_0_6</arg>&gt; has a constant value of <arg fmt="%d" index="2">1</arg> in block &lt;<arg fmt="%s" index="3">XLXI_4</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
 </msg>
 
-<msg type="warning" file="Xst" num="1710" delta="new" >FF/Latch &lt;<arg fmt="%s" index="1">Q_internal_0</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">XLXI_99</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">Q_internal_0</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">XLXI_99</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
 </msg>
 
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Q_internal_0</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">XLXI_100</arg>&gt;.
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">Q_internal_0</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">XLXI_100</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Q_internal_1</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">XLXI_100</arg>&gt;.
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">Q_internal_1</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">XLXI_100</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Q_internal_2</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">XLXI_100</arg>&gt;.
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">Q_internal_2</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">XLXI_100</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Q_internal_3</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">XLXI_100</arg>&gt;.
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">Q_internal_3</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">XLXI_100</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Q_internal_5</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">XLXI_100</arg>&gt;.
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">Q_internal_5</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">XLXI_100</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Q_internal_0</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">sfr_8_output_pulse</arg>&gt;.
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">Q_internal_0</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">sfr_8_output_pulse</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Q_internal_1</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">sfr_8_output_pulse</arg>&gt;.
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">Q_internal_1</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">sfr_8_output_pulse</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Q_internal_2</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">sfr_8_output_pulse</arg>&gt;.
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">Q_internal_2</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">sfr_8_output_pulse</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Q_internal_3</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">sfr_8_output_pulse</arg>&gt;.
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">Q_internal_3</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">sfr_8_output_pulse</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">Q_internal_5</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">sfr_8_output_pulse</arg>&gt;.
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">Q_internal_5</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">sfr_8_output_pulse</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="1710" delta="new" >FF/Latch &lt;<arg fmt="%s" index="1">Q_internal_0</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">sfr_8_input</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">Q_internal_0</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">sfr_8_input</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
 </msg>
 
-<msg type="warning" file="Xst" num="1895" delta="new" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">Q_internal_1</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">sfr_8_input</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+<msg type="warning" file="Xst" num="1895" delta="old" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">Q_internal_1</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">sfr_8_input</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
 </msg>
 
-<msg type="warning" file="Xst" num="1895" delta="new" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">Q_internal_2</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">sfr_8_input</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+<msg type="warning" file="Xst" num="1895" delta="old" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">Q_internal_2</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">sfr_8_input</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
 </msg>
 
-<msg type="warning" file="Xst" num="1895" delta="new" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">Q_internal_3</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">sfr_8_input</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+<msg type="warning" file="Xst" num="1895" delta="old" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">Q_internal_3</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">sfr_8_input</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
 </msg>
 
 <msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">q_0</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">Latch16Bit</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;q_15&gt; </arg>

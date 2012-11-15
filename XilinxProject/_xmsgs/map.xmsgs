@@ -35,7 +35,7 @@ To see the details of these <arg fmt="%s" index="4">info</arg> messages, please 
 <msg type="info" file="Map" num="215" delta="old" >The Interim Design Summary has been generated in the MAP Report (.mrp).
 </msg>
 
-<msg type="info" file="Place" num="834" delta="new" >Only a subset of IOs are locked. Out of <arg fmt="%d" index="1">48</arg> IOs, <arg fmt="%d" index="2">47</arg> are locked and <arg fmt="%d" index="3">1</arg> are not locked. <arg fmt="%s" index="4">If you would like to print the names of these IOs, please set the environment variable XIL_PAR_DESIGN_CHECK_VERBOSE to 1.</arg> 
+<msg type="info" file="Place" num="834" delta="old" >Only a subset of IOs are locked. Out of <arg fmt="%d" index="1">48</arg> IOs, <arg fmt="%d" index="2">47</arg> are locked and <arg fmt="%d" index="3">1</arg> are not locked. <arg fmt="%s" index="4">If you would like to print the names of these IOs, please set the environment variable XIL_PAR_DESIGN_CHECK_VERBOSE to 1.</arg> 
 </msg>
 
 <msg type="warning" file="Place" num="1206" delta="old" >This design contains a global buffer instance, &lt;<arg fmt="%s" index="1">XLXI_105/clkout3_buf</arg>&gt;, driving the net, &lt;<arg fmt="%s" index="2">CHIPSCOPE_CLK_OBUF</arg>&gt;, that is driving the following (first <arg fmt="%d" index="3">30</arg>) non-clock load pins off chip.

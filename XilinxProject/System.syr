@@ -3,14 +3,14 @@ Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
 --> Parameter TMPDIR set to xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 1.33 secs
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.40 secs
  
 --> Parameter xsthdpdir set to xst
 
 
-Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 1.34 secs
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.41 secs
  
 --> Reading design: System.prj
 
@@ -904,14 +904,14 @@ Optimizing FSM <XLXI_1/FSM_2> on signal <MCYCLE[1:3]> with sequential encoding.
  101   | 100
 -------------------
 INFO:Xst:1901 - Instance XLXI_105/pll_base_inst in unit XLXI_105/pll_base_inst of type PLL_BASE has been replaced by PLL_ADV
-WARNING:Xst:2170 - Unit System : the following signal(s) form a combinatorial loop: nMR, XLXI_2/XLXI_5/WE_ARE_RESETTING_HAVE_WE_RESET_AND_907_o, XLXI_2/XLXN_2.
-WARNING:Xst:2170 - Unit mem_trans_reader : the following signal(s) form a combinatorial loop: delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_lut<0>, READING_STATE<0>1, READING_STATE<1>, flag, delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<2>, _n0233, OE_int, delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<4>, delay_inst/GND_19_o_count[31]_equal_4_o, delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<3>, READING_STATE<2>1, delay_needed<0>, READING_STATE<1>_mmx_out, delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<1>, delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<0>.
+WARNING:Xst:2170 - Unit System : the following signal(s) form a combinatorial loop: XLXI_2/XLXI_5/WE_ARE_RESETTING_HAVE_WE_RESET_AND_907_o, XLXI_2/XLXN_2, nMR.
+WARNING:Xst:2170 - Unit mem_trans_reader : the following signal(s) form a combinatorial loop: delay_needed<0>, READING_STATE<1>_mmx_out, delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<1>, delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<0>, delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_lut<0>, READING_STATE<0>1, READING_STATE<1>, flag, delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<2>, _n0233, OE_int, delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<4>, delay_inst/GND_19_o_count[31]_equal_4_o, delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<3>, READING_STATE<2>1.
 WARNING:Xst:2170 - Unit mem_trans_reader : the following signal(s) form a combinatorial loop: READING_STATE<0>1.
 WARNING:Xst:2170 - Unit mem_trans_reader : the following signal(s) form a combinatorial loop: READING_STATE<2>1.
-WARNING:Xst:2170 - Unit mem_trans_writer : the following signal(s) form a combinatorial loop: ADDRESS<15>, delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<1>, flag, WRITING_STATE<1>, delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<4>, WRITING_STATE<0>1, delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<0>, delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<3>, delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_lut<0>, delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<2>, delay_needed<0>, WRITING_STATE<2>1, _n0222, delay_inst/GND_19_o_count[31]_equal_4_o.
+WARNING:Xst:2170 - Unit mem_trans_writer : the following signal(s) form a combinatorial loop: delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<3>, delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_lut<0>, delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<2>, delay_needed<0>, WRITING_STATE<2>1, _n0222, delay_inst/GND_19_o_count[31]_equal_4_o, ADDRESS<15>, delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<1>, flag, WRITING_STATE<1>, delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<4>, WRITING_STATE<0>1, delay_inst/Mcompar_GND_19_o_count[31]_equal_4_o_cy<0>.
+WARNING:Xst:2170 - Unit mem_trans_writer : the following signal(s) form a combinatorial loop: WRITING_STATE<2>1.
 WARNING:Xst:2170 - Unit mem_trans_writer : the following signal(s) form a combinatorial loop: WRITING_STATE<1>.
 WARNING:Xst:2170 - Unit mem_trans_writer : the following signal(s) form a combinatorial loop: WRITING_STATE<0>1.
-WARNING:Xst:2170 - Unit mem_trans_writer : the following signal(s) form a combinatorial loop: WRITING_STATE<2>1.
 WARNING:Xst:2042 - Unit tri_buf_8: 8 internal tristates are replaced by logic (pull-up yes): DOUT<0>, DOUT<1>, DOUT<2>, DOUT<3>, DOUT<4>, DOUT<5>, DOUT<6>, DOUT<7>.
 WARNING:Xst:2042 - Unit sfr_8_output_pulse: 8 internal tristates are replaced by logic (pull-up yes): DOUT<0>, DOUT<1>, DOUT<2>, DOUT<3>, DOUT<4>, DOUT<5>, DOUT<6>, DOUT<7>.
 WARNING:Xst:2042 - Unit sfr_8_output: 8 internal tristates are replaced by logic (pull-up yes): DOUT<0>, DOUT<1>, DOUT<2>, DOUT<3>, DOUT<4>, DOUT<5>, DOUT<6>, DOUT<7>.
@@ -1573,12 +1573,12 @@ XLXI_105/pll_base_inst/CLKOUT1|    5.775|         |         |         |
 =========================================================================
 
 
-Total REAL time to Xst completion: 122.00 secs
-Total CPU time to Xst completion: 122.22 secs
+Total REAL time to Xst completion: 116.00 secs
+Total CPU time to Xst completion: 115.86 secs
  
 --> 
 
-Total memory usage is 295452 kilobytes
+Total memory usage is 311124 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :  177 (   0 filtered)

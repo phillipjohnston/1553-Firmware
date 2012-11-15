@@ -3,10 +3,10 @@
 <!--The data in this file is primarily intended for consumption by Xilinx tools.
 The structure and the elements are likely to change over the next few releases.
 This means code written to parse this file will need to be revisited each subsequent release.-->
-<application name="pn" timeStamp="Wed Nov 14 21:15:17 2012">
+<application name="pn" timeStamp="Thu Nov 15 15:30:54 2012">
 <section name="Project Information" visible="false">
 <property name="ProjectID" value="FA971BD640FE4CA39FC3BAB26ADDE92B" type="project"/>
-<property name="ProjectIteration" value="24" type="project"/>
+<property name="ProjectIteration" value="25" type="project"/>
 <property name="ProjectFile" value="C:/Users/Phillip/Dropbox/workspace/class_projects/MS1553_Interface/XilinxProject/MS1553_Interface.xise" type="project"/>
 <property name="ProjectCreationTimestamp" value="2012-11-05T16:10:05" type="project"/>
 </section>
@@ -29,7 +29,7 @@ This means code written to parse this file will need to be revisited each subseq
 <property name="PROP_VHDLSourceAnalysisStandard" value="VHDL-200X" type="process"/>
 <property name="PROP_intProjectCreationTimestamp" value="2012-11-05T16:10:05" type="design"/>
 <property name="PROP_intWbtProjectID" value="FA971BD640FE4CA39FC3BAB26ADDE92B" type="design"/>
-<property name="PROP_intWbtProjectIteration" value="24" type="process"/>
+<property name="PROP_intWbtProjectIteration" value="25" type="process"/>
 <property name="PROP_intWorkingDirLocWRTProjDir" value="Same" type="design"/>
 <property name="PROP_intWorkingDirUsed" value="No" type="design"/>
 <property name="PROP_lockPinsUcfFile" value="changed" type="process"/>

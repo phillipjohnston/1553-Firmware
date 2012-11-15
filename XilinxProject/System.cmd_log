@@ -166,3 +166,8 @@ map -intstyle ise -p xc6slx45t-fgg484-3 -w -logic_opt off -ol high -t 1 -xt 0 -r
 par -w -intstyle ise -ol high -mt off System_map.ncd System.ncd System.pcf 
 trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml System.twx System.ncd -o System.twr System.pcf -ucf System.ucf 
 bitgen -intstyle ise -f System.ut System.ncd 
+xst -intstyle ise -ifn "C:/Users/Phillip/Dropbox/workspace/class_projects/MS1553_Interface/XilinxProject/System.xst" -ofn "C:/Users/Phillip/Dropbox/workspace/class_projects/MS1553_Interface/XilinxProject/System.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc System.ucf -p xc6slx45t-fgg484-3 System_cs.ngc System.ngd  
+map -intstyle ise -p xc6slx45t-fgg484-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o System_map.ncd System.ngd System.pcf 
+par -w -intstyle ise -ol high -mt off System_map.ncd System.ncd System.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml System.twx System.ncd -o System.twr System.pcf -ucf System.ucf 
