@@ -6,7 +6,6 @@
         <trait edittrait="all:0" />
     </attr>
     <netlist>
-        <signal name="CPU_RESET" />
         <signal name="nMR" />
         <signal name="BWID" />
         <signal name="BTYPE" />
@@ -16,7 +15,6 @@
         <signal name="nOE" />
         <signal name="ADDRESS(15:0)" />
         <signal name="DATA(7:0)" />
-        <signal name="HWAIT" />
         <signal name="XLXN_118" />
         <signal name="XLXN_120" />
         <signal name="XLXN_121" />
@@ -64,8 +62,8 @@
         <signal name="MTPKRDY" />
         <signal name="READY" />
         <signal name="nRT1MC8" />
-        <signal name="XLXN_150" />
-        <port polarity="Input" name="CPU_RESET" />
+        <signal name="CPU_RESET" />
+        <signal name="HWAIT" />
         <port polarity="Output" name="nMR" />
         <port polarity="Output" name="BWID" />
         <port polarity="Output" name="BTYPE" />
@@ -75,7 +73,6 @@
         <port polarity="Output" name="nOE" />
         <port polarity="Output" name="ADDRESS(15:0)" />
         <port polarity="BiDirectional" name="DATA(7:0)" />
-        <port polarity="Input" name="HWAIT" />
         <port polarity="Output" name="NET_GND" />
         <port polarity="Input" name="SYSCLK_P" />
         <port polarity="Input" name="SYSCLK_N" />
@@ -92,6 +89,8 @@
         <port polarity="Input" name="MTPKRDY" />
         <port polarity="Input" name="READY" />
         <port polarity="Input" name="nRT1MC8" />
+        <port polarity="Input" name="CPU_RESET" />
+        <port polarity="Input" name="HWAIT" />
         <blockdef name="I8085_c">
             <timestamp>2012-11-7T20:44:41</timestamp>
             <rect width="384" x="64" y="-768" height="768" />
@@ -358,11 +357,6 @@
             <blockpin signalname="MEM_ADDR(15:0)" name="ADDRESS_OUT(15:0)" />
             <blockpin signalname="MEM_DATA_IN(7:0)" name="DATA_OUT(7:0)" />
         </block>
-        <block symbolname="tri_buf_8" name="XLXI_68">
-            <blockpin signalname="MEM_ENA" name="EN" />
-            <blockpin signalname="MEM_DATA(7:0)" name="DIN(7:0)" />
-            <blockpin signalname="IDATA(7:0)" name="DOUT(7:0)" />
-        </block>
         <block symbolname="gnd" name="XLXI_92">
             <blockpin signalname="NET_GND" name="G" />
         </block>
@@ -404,22 +398,6 @@
             <blockpin signalname="TEST" name="TEST" />
             <blockpin signalname="IDATA(7:0)" name="DOUT(7:0)" />
         </block>
-        <block symbolname="ibuf" name="XLXI_101">
-            <blockpin signalname="CPU_RESET" name="I" />
-            <blockpin signalname="CPU_RESET_BUF" name="O" />
-        </block>
-        <block symbolname="ibuf" name="XLXI_104">
-            <blockpin signalname="HWAIT" name="I" />
-            <blockpin signalname="HWAIT_BUF" name="O" />
-        </block>
-        <block symbolname="Memory" name="XLXI_9">
-            <blockpin signalname="MEM_ADDR(15:0)" name="addra(15:0)" />
-            <blockpin signalname="MEM_DATA_IN(7:0)" name="dina(7:0)" />
-            <blockpin signalname="MEM_ENA" name="ena" />
-            <blockpin signalname="MEM_WEA" name="wea(0:0)" />
-            <blockpin signalname="SLOW_CLOCK" name="clka" />
-            <blockpin signalname="MEM_DATA(7:0)" name="douta(7:0)" />
-        </block>
         <block symbolname="Clock" name="XLXI_105">
             <blockpin signalname="SYSCLK_P" name="clk_in1_p" />
             <blockpin signalname="SYSCLK_N" name="clk_in1_n" />
@@ -428,10 +406,6 @@
             <blockpin signalname="CHIPSCOPE_CLK" name="clk_out3" />
             <blockpin signalname="CPU_RESET_BUF_INV" name="reset" />
             <blockpin name="locked" />
-        </block>
-        <block symbolname="inv" name="XLXI_108">
-            <blockpin signalname="CPU_RESET_BUF" name="I" />
-            <blockpin signalname="CPU_RESET_BUF_INV" name="O" />
         </block>
         <block symbolname="sfr_8_input" name="XLXI_99">
             <blockpin signalname="RE" name="RE" />
@@ -442,6 +416,31 @@
             <blockpin signalname="MTPKRDY" name="MTPKRDY" />
             <blockpin signalname="READY" name="READY" />
             <blockpin signalname="nRT1MC8" name="nRT1MC8" />
+        </block>
+        <block symbolname="ibuf" name="XLXI_101">
+            <blockpin signalname="CPU_RESET" name="I" />
+            <blockpin signalname="CPU_RESET_BUF" name="O" />
+        </block>
+        <block symbolname="ibuf" name="XLXI_104">
+            <blockpin signalname="HWAIT" name="I" />
+            <blockpin signalname="HWAIT_BUF" name="O" />
+        </block>
+        <block symbolname="inv" name="XLXI_108">
+            <blockpin signalname="CPU_RESET_BUF" name="I" />
+            <blockpin signalname="CPU_RESET_BUF_INV" name="O" />
+        </block>
+        <block symbolname="tri_buf_8" name="XLXI_68">
+            <blockpin signalname="MEM_ENA" name="EN" />
+            <blockpin signalname="MEM_DATA(7:0)" name="DIN(7:0)" />
+            <blockpin signalname="IDATA(7:0)" name="DOUT(7:0)" />
+        </block>
+        <block symbolname="Memory" name="XLXI_9">
+            <blockpin signalname="MEM_ADDR(15:0)" name="addra(15:0)" />
+            <blockpin signalname="MEM_DATA_IN(7:0)" name="dina(7:0)" />
+            <blockpin signalname="MEM_ENA" name="ena" />
+            <blockpin signalname="MEM_WEA" name="wea(0:0)" />
+            <blockpin signalname="SLOW_CLOCK" name="clka" />
+            <blockpin signalname="MEM_DATA(7:0)" name="douta(7:0)" />
         </block>
     </netlist>
     <sheet sheetnum="1" width="3520" height="2720">
@@ -619,44 +618,6 @@
             <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="304" y="1664" type="branch" />
             <wire x2="320" y1="1664" y2="1664" x1="304" />
         </branch>
-        <instance x="432" y="2080" name="XLXI_68" orien="R0">
-        </instance>
-        <branch name="IDATA(7:0)">
-            <attrtext style="alignment:SOFT-LEFT;fontsize:28;fontname:Arial" attrname="Name" x="880" y="1984" type="branch" />
-            <wire x2="880" y1="1984" y2="1984" x1="816" />
-        </branch>
-        <branch name="MEM_ENA">
-            <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="400" y="1984" type="branch" />
-            <wire x2="432" y1="1984" y2="1984" x1="400" />
-        </branch>
-        <branch name="MEM_DATA(7:0)">
-            <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="400" y="2048" type="branch" />
-            <wire x2="432" y1="2048" y2="2048" x1="400" />
-        </branch>
-        <branch name="MEM_ADDR(15:0)">
-            <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="272" y="2272" type="branch" />
-            <wire x2="320" y1="2272" y2="2272" x1="272" />
-        </branch>
-        <branch name="MEM_DATA_IN(7:0)">
-            <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="272" y="2304" type="branch" />
-            <wire x2="320" y1="2304" y2="2304" x1="272" />
-        </branch>
-        <branch name="MEM_ENA">
-            <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="272" y="2336" type="branch" />
-            <wire x2="320" y1="2336" y2="2336" x1="272" />
-        </branch>
-        <branch name="MEM_WEA">
-            <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="272" y="2400" type="branch" />
-            <wire x2="320" y1="2400" y2="2400" x1="272" />
-        </branch>
-        <branch name="SLOW_CLOCK">
-            <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="272" y="2464" type="branch" />
-            <wire x2="320" y1="2464" y2="2464" x1="272" />
-        </branch>
-        <branch name="MEM_DATA(7:0)">
-            <attrtext style="alignment:SOFT-LEFT;fontsize:28;fontname:Arial" attrname="Name" x="960" y="2272" type="branch" />
-            <wire x2="960" y1="2272" y2="2272" x1="896" />
-        </branch>
         <instance x="3312" y="2640" name="XLXI_92" orien="R0" />
         <branch name="NET_GND">
             <wire x2="3376" y1="2480" y2="2512" x1="3376" />
@@ -752,30 +713,6 @@
             <attrtext style="alignment:SOFT-LEFT;fontsize:28;fontname:Arial" attrname="Name" x="2064" y="2016" type="branch" />
             <wire x2="2064" y1="2016" y2="2016" x1="2000" />
         </branch>
-        <instance x="1440" y="2512" name="XLXI_101" orien="R0" />
-        <branch name="CPU_RESET">
-            <wire x2="1440" y1="2480" y2="2480" x1="1392" />
-        </branch>
-        <branch name="CPU_RESET_BUF">
-            <attrtext style="alignment:SOFT-TCENTER;fontsize:28;fontname:Arial" attrname="Name" x="1728" y="2480" type="branch" />
-            <wire x2="1648" y1="2368" y2="2368" x1="1584" />
-            <wire x2="1584" y1="2368" y2="2416" x1="1584" />
-            <wire x2="1728" y1="2416" y2="2416" x1="1584" />
-            <wire x2="1728" y1="2416" y2="2480" x1="1728" />
-            <wire x2="1728" y1="2480" y2="2480" x1="1664" />
-        </branch>
-        <iomarker fontsize="28" x="1392" y="2480" name="CPU_RESET" orien="R180" />
-        <instance x="1440" y="2624" name="XLXI_104" orien="R0" />
-        <branch name="HWAIT_BUF">
-            <attrtext style="alignment:SOFT-LEFT;fontsize:28;fontname:Arial" attrname="Name" x="1744" y="2592" type="branch" />
-            <wire x2="1744" y1="2592" y2="2592" x1="1664" />
-        </branch>
-        <branch name="HWAIT">
-            <wire x2="1440" y1="2592" y2="2592" x1="1392" />
-        </branch>
-        <iomarker fontsize="28" x="1392" y="2592" name="HWAIT" orien="R180" />
-        <instance x="320" y="2192" name="XLXI_9" orien="R0">
-        </instance>
         <instance x="304" y="944" name="XLXI_105" orien="R0">
         </instance>
         <branch name="SYSCLK_P">
@@ -803,11 +740,6 @@
             <wire x2="992" y1="1216" y2="1216" x1="912" />
         </branch>
         <iomarker fontsize="28" x="992" y="1216" name="CHIPSCOPE_CLK" orien="R0" />
-        <instance x="1648" y="2400" name="XLXI_108" orien="R0" />
-        <branch name="CPU_RESET_BUF_INV">
-            <attrtext style="alignment:SOFT-LEFT;fontsize:28;fontname:Arial" attrname="Name" x="1904" y="2368" type="branch" />
-            <wire x2="1904" y1="2368" y2="2368" x1="1872" />
-        </branch>
         <branch name="IDATA(7:0)">
             <attrtext style="alignment:SOFT-LEFT;fontsize:28;fontname:Arial" attrname="Name" x="3104" y="1776" type="branch" />
             <wire x2="3104" y1="1776" y2="1776" x1="3056" />
@@ -880,5 +812,72 @@
         <iomarker fontsize="28" x="2448" y="1968" name="READY" orien="R270" />
         <iomarker fontsize="28" x="2624" y="1904" name="MTPKRDY" orien="R180" />
         <iomarker fontsize="28" x="2608" y="1840" name="ACTIVE" orien="R180" />
+        <instance x="2560" y="2432" name="XLXI_101" orien="R0" />
+        <branch name="CPU_RESET">
+            <wire x2="2560" y1="2400" y2="2400" x1="2512" />
+        </branch>
+        <branch name="CPU_RESET_BUF">
+            <attrtext style="alignment:SOFT-TCENTER;fontsize:28;fontname:Arial" attrname="Name" x="2848" y="2400" type="branch" />
+            <wire x2="2768" y1="2288" y2="2288" x1="2704" />
+            <wire x2="2704" y1="2288" y2="2336" x1="2704" />
+            <wire x2="2848" y1="2336" y2="2336" x1="2704" />
+            <wire x2="2848" y1="2336" y2="2400" x1="2848" />
+            <wire x2="2848" y1="2400" y2="2400" x1="2784" />
+        </branch>
+        <instance x="2560" y="2544" name="XLXI_104" orien="R0" />
+        <branch name="HWAIT_BUF">
+            <attrtext style="alignment:SOFT-LEFT;fontsize:28;fontname:Arial" attrname="Name" x="2864" y="2512" type="branch" />
+            <wire x2="2864" y1="2512" y2="2512" x1="2784" />
+        </branch>
+        <branch name="HWAIT">
+            <wire x2="2560" y1="2512" y2="2512" x1="2512" />
+        </branch>
+        <instance x="2768" y="2320" name="XLXI_108" orien="R0" />
+        <branch name="CPU_RESET_BUF_INV">
+            <attrtext style="alignment:SOFT-LEFT;fontsize:28;fontname:Arial" attrname="Name" x="3024" y="2288" type="branch" />
+            <wire x2="3024" y1="2288" y2="2288" x1="2992" />
+        </branch>
+        <iomarker fontsize="28" x="2512" y="2400" name="CPU_RESET" orien="R180" />
+        <iomarker fontsize="28" x="2512" y="2512" name="HWAIT" orien="R180" />
+        <branch name="IDATA(7:0)">
+            <attrtext style="alignment:SOFT-LEFT;fontsize:28;fontname:Arial" attrname="Name" x="2064" y="2480" type="branch" />
+            <wire x2="2064" y1="2480" y2="2480" x1="2000" />
+        </branch>
+        <branch name="MEM_ENA">
+            <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="1584" y="2480" type="branch" />
+            <wire x2="1616" y1="2480" y2="2480" x1="1584" />
+        </branch>
+        <branch name="MEM_DATA(7:0)">
+            <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="1584" y="2544" type="branch" />
+            <wire x2="1616" y1="2544" y2="2544" x1="1584" />
+        </branch>
+        <instance x="1616" y="2576" name="XLXI_68" orien="R0">
+        </instance>
+        <branch name="MEM_ADDR(15:0)">
+            <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="320" y="1984" type="branch" />
+            <wire x2="368" y1="1984" y2="1984" x1="320" />
+        </branch>
+        <branch name="MEM_DATA_IN(7:0)">
+            <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="320" y="2016" type="branch" />
+            <wire x2="368" y1="2016" y2="2016" x1="320" />
+        </branch>
+        <branch name="MEM_ENA">
+            <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="320" y="2048" type="branch" />
+            <wire x2="368" y1="2048" y2="2048" x1="320" />
+        </branch>
+        <branch name="MEM_WEA">
+            <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="320" y="2112" type="branch" />
+            <wire x2="368" y1="2112" y2="2112" x1="320" />
+        </branch>
+        <branch name="SLOW_CLOCK">
+            <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="320" y="2176" type="branch" />
+            <wire x2="368" y1="2176" y2="2176" x1="320" />
+        </branch>
+        <branch name="MEM_DATA(7:0)">
+            <attrtext style="alignment:SOFT-LEFT;fontsize:28;fontname:Arial" attrname="Name" x="1008" y="1984" type="branch" />
+            <wire x2="1008" y1="1984" y2="1984" x1="944" />
+        </branch>
+        <instance x="368" y="1904" name="XLXI_9" orien="R0">
+        </instance>
     </sheet>
 </drawing>

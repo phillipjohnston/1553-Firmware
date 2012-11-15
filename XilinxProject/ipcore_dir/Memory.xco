@@ -1,7 +1,7 @@
 ##############################################################
 #
 # Xilinx Core Generator version 14.1
-# Date: Mon Nov 12 22:16:16 2012
+# Date: Thu Nov 15 20:18:58 2012
 #
 ##############################################################
 #
@@ -46,7 +46,7 @@ CSET axi_id_width=4
 CSET axi_slave_type=Memory_Slave
 CSET axi_type=AXI4_Full
 CSET byte_size=9
-CSET coe_file=C:\Users\Phillip\Dropbox\workspace\Motorola-Hex-to-Xilinx-COE-Converter\HOLT_A~1.coe
+CSET coe_file=C:\Users\Phillip\Dropbox\workspace\class_projects\MS1553_Interface\TestCOEFiles\HOLT_A~1.coe
 CSET collision_warnings=ALL
 CSET component_name=Memory
 CSET disable_collision_warnings=false
@@ -103,4 +103,4 @@ CSET write_width_b=8
 MISC pkg_timestamp=2012-03-28T15:19:06Z
 # END Extra information
 GENERATE
-# CRC: efa39eee
+# CRC: 6f0e195d
