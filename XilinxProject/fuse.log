@@ -16,10 +16,10 @@ Parsing VHDL file "C:/Users/Phillip/Dropbox/workspace/class_projects/MS1553_Inte
 Parsing VHDL file "C:/Users/Phillip/Dropbox/workspace/class_projects/MS1553_Interface/XilinxProject/holt_initializer.vhd" into library work
 Parsing VHDL file "C:/Users/Phillip/Dropbox/workspace/class_projects/MS1553_Interface/XilinxProject/convers_c.vhd" into library work
 Parsing VHDL file "C:/Users/Phillip/Dropbox/workspace/class_projects/MS1553_Interface/XilinxProject/tri_buf_8.vhd" into library work
+Parsing VHDL file "C:/Users/Phillip/Dropbox/workspace/class_projects/MS1553_Interface/XilinxProject/SFR_TRIG.vhd" into library work
+Parsing VHDL file "C:/Users/Phillip/Dropbox/workspace/class_projects/MS1553_Interface/XilinxProject/SFR_STATUS.vhd" into library work
+Parsing VHDL file "C:/Users/Phillip/Dropbox/workspace/class_projects/MS1553_Interface/XilinxProject/SFR_CONFIG.vhd" into library work
 Parsing VHDL file "C:/Users/Phillip/Dropbox/workspace/class_projects/MS1553_Interface/XilinxProject/SFR_Address_Decoder.vhd" into library work
-Parsing VHDL file "C:/Users/Phillip/Dropbox/workspace/class_projects/MS1553_Interface/XilinxProject/sfr_8_output_pulse.vhd" into library work
-Parsing VHDL file "C:/Users/Phillip/Dropbox/workspace/class_projects/MS1553_Interface/XilinxProject/sfr_8_output.vhd" into library work
-Parsing VHDL file "C:/Users/Phillip/Dropbox/workspace/class_projects/MS1553_Interface/XilinxProject/sfr_8_input.vhd" into library work
 Parsing VHDL file "C:/Users/Phillip/Dropbox/workspace/class_projects/MS1553_Interface/XilinxProject/MS1553_Controller.vhf" into library work
 Parsing VHDL file "C:/Users/Phillip/Dropbox/workspace/class_projects/MS1553_Interface/XilinxProject/Mem8085_Controller.vhd" into library work
 Parsing VHDL file "C:/Users/Phillip/Dropbox/workspace/class_projects/MS1553_Interface/XilinxProject/ipcore_dir/Clock/example_design/Clock_exdes.vhd" into library work
@@ -79,8 +79,8 @@ Compiling architecture behavioral of entity System [system_default]
 Compiling architecture obufds_v of entity OBUFDS [\OBUFDS("DONT_CARE","DEFAULT","S...]
 Compiling architecture behavioral of entity system_system_sch_tb
 Time Resolution for simulation is 1ps.
-Waiting for 37 sub-compilation(s) to finish...
+Waiting for 41 sub-compilation(s) to finish...
 Compiled 84 VHDL Units
 Built simulation executable C:/Users/Phillip/Dropbox/workspace/class_projects/MS1553_Interface/XilinxProject/System_System_sch_tb_isim_beh.exe
-Fuse Memory Usage: 101852 KB
-Fuse CPU Usage: 10249 ms
+Fuse Memory Usage: 100816 KB
+Fuse CPU Usage: 11543 ms
