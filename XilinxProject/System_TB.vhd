@@ -143,6 +143,7 @@ BEGIN
    BEGIN
 		CPU_RESET <= '0';
 		
+		
 		wait for 200 ns;
 		
 		CPU_RESET <= '1';

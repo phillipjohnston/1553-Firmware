@@ -1,5 +1,0 @@
-[Inputs]
-=ADDR[15:0]=
-[Outputs]
-=SEL[15:0]=
-[BiDir]
