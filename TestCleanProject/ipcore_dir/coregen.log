@@ -1,0 +1,58 @@
+INFO:sim:172 - Generating IP...
+Applying current project options...
+Finished applying current project options.
+WARNING:sim - A core named 'Clock' already exists in the project. Output
+   products for this core may be overwritten.
+Resolving generics for 'Clock'...
+WARNING:sim - A core named 'Clock' already exists in the project. Output
+   products for this core may be overwritten.
+Applying external generics to 'Clock'...
+Delivering associated files for 'Clock'...
+Delivered 3 files into directory
+C:/Users/Phillip/Dropbox/workspace/class_projects/MS1553_Interface/XilinxProject
+/ipcore_dir/tmp/_cg/Clock
+Delivered 1 file into directory
+C:/Users/Phillip/Dropbox/workspace/class_projects/MS1553_Interface/XilinxProject
+/ipcore_dir/tmp/_cg/Clock
+Generating ASY schematic symbol...
+Loading device for application Rf_Device from file '6slx45t.nph' in environment
+C:\Xilinx\14.1\ISE_DS\ISE\.
+INFO:sim:949 - Finished generation of ASY schematic symbol.
+Generating SYM schematic symbol for 'Clock'...
+Generating ISE project...
+XCO file found: Clock.xco
+XMDF file found: Clock_xmdf.tcl
+Adding
+C:/Users/Phillip/Dropbox/workspace/class_projects/MS1553_Interface/XilinxProject
+/ipcore_dir/tmp/_cg/Clock/Clock.ucf -view all -origin_type created
+Adding
+C:/Users/Phillip/Dropbox/workspace/class_projects/MS1553_Interface/XilinxProject
+/ipcore_dir/tmp/_cg/Clock/example_design/Clock_exdes.vhd -view all -origin_type
+created
+INFO:HDLCompiler:1061 - Parsing VHDL file
+   "C:/Users/Phillip/Dropbox/workspace/class_projects/MS1553_Interface/XilinxPro
+   ject/ipcore_dir/tmp/_cg/Clock/example_design/Clock_exdes.vhd" into library
+   work
+INFO:ProjectMgmt - Parsing design hierarchy completed successfully.
+Adding
+C:/Users/Phillip/Dropbox/workspace/class_projects/MS1553_Interface/XilinxProject
+/ipcore_dir/tmp/_cg/Clock.asy -view all -origin_type imported
+Adding
+C:/Users/Phillip/Dropbox/workspace/class_projects/MS1553_Interface/XilinxProject
+/ipcore_dir/tmp/_cg/Clock.vhd -view all -origin_type created
+INFO:HDLCompiler:1061 - Parsing VHDL file
+   "C:/Users/Phillip/Dropbox/workspace/class_projects/MS1553_Interface/XilinxPro
+   ject/ipcore_dir/tmp/_cg/Clock.vhd" into library work
+INFO:ProjectMgmt - Parsing design hierarchy completed successfully.
+Adding
+C:/Users/Phillip/Dropbox/workspace/class_projects/MS1553_Interface/XilinxProject
+/ipcore_dir/tmp/_cg/Clock.vho -view all -origin_type imported
+WARNING:coreutil - WARNING: This core does not have a top level called "/Clock"
+   WARNING: Top level has been set to "/Clock_exdes"
+Generating README file...
+Generating FLIST file...
+INFO:sim:948 - Finished FLIST file generation.
+Launching README viewer...
+Moving files to output directory...
+Finished moving files to output directory
+Wrote CGP file for project 'Clock'.
