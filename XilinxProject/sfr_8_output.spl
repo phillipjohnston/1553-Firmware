@@ -1,0 +1,15 @@
+[Inputs]
+RE
+WE
+clock
+clear
+CS
+=DIN[7:0]=
+[Outputs]
+BCENA
+RT1ENA
+RT1SSF
+TXINHA
+TXINHB
+=DOUT[7:0]=
+[BiDir]
