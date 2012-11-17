@@ -1,2 +1,0 @@
-vhdtdtfi -lib work DelayModule.vhd -lib work MS1553_Reset_Pulse_Gen.vhd -prj MS1553_Interface -o MS1553_Reset_Pulse_Gen.spl -module MS1553_Reset_Pulse_Gen -template C:/Xilinx/13.4/ISE_DS/ISE//data/splfile.tft -deleteonerror 
-spl2sym -intstyle ise -family spartan6 -w MS1553_Reset_Pulse_Gen.spl C:/Users/Phillip/Dropbox/workspace/class_projects/MS1553_Interface/XilinxProject/MS1553_Reset_Pulse_Gen.sym 

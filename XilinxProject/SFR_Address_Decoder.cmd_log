@@ -1,2 +1,0 @@
-vhdtdtfi -lib work SFR_Address_Decoder.vhd -prj MS1553_Interface -o SFR_Address_Decoder.spl -module SFR_Address_Decoder -template C:/Xilinx/14.1/ISE_DS/ISE//data/splfile.tft -deleteonerror 
-spl2sym -intstyle ise -family spartan6 -w SFR_Address_Decoder.spl C:/Users/Phillip/Dropbox/workspace/class_projects/MS1553_Interface/XilinxProject/SFR_Address_Decoder.sym 

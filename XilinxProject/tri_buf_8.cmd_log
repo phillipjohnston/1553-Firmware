@@ -1,4 +1,0 @@
-vhdtdtfi -lib work tri_buf_8.vhd -prj MS1553_Interface -o tri_buf_8.spl -module tri_buf_8 -template C:/Xilinx/13.4/ISE_DS/ISE//data/splfile.tft -deleteonerror 
-spl2sym -intstyle ise -family spartan6 -w tri_buf_8.spl C:/Users/Phillip/Dropbox/workspace/class_projects/MS1553_Interface/XilinxProject/tri_buf_8.sym 
-vhdtdtfi -lib work tri_buf_8.vhd -prj MS1553_Interface -o tri_buf_8.spl -module tri_buf_8 -template C:/Xilinx/13.4/ISE_DS/ISE//data/splfile.tft -deleteonerror 
-spl2sym -intstyle ise -family spartan6 -w tri_buf_8.spl C:/Users/Phillip/Dropbox/workspace/class_projects/MS1553_Interface/XilinxProject/tri_buf_8.sym 
