@@ -1,12 +1,9 @@
-#################
-## Eclipse
-#################
-
 *.log
 *.html
 *.xmsgs
 *.xreport
-
+*.cmd_log
+*.schlog
 
 
 ############
