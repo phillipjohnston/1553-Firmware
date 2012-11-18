@@ -67,12 +67,10 @@ architecture Behavioral of MS1553_master is
 	signal ADDR_TEMP : STD_LOGIC_VECTOR(15 DOWNTO 0) := "0000000000000000";
 	signal PROC_DATA_0 : STD_LOGIC_VECTOR(7 DOWNTO 0) := "00000000";
 	signal PROC_DATA_1 : STD_LOGIC_VECTOR(7 DOWNTO 0) := "00000000";
-	signal CHIP_DATA_0 : STD_LOGIC_VECTOR(7 DOWNTO 0) := "11111111";
-	signal CHIP_DATA_1 : STD_LOGIC_VECTOR(7 DOWNTO 0) := "11111111";
-	signal ADDR_UPPER : STD_LOGIC_VECTOR(7 DOWNTO 0) := "00000000";
-	signal ADDR_LOWER : STD_LOGIC_VECTOR(7 DOWNTO 0) := "00000000";
+	signal CHIP_DATA_0 : STD_LOGIC_VECTOR(7 DOWNTO 0) := "00000000";
+	signal CHIP_DATA_1 : STD_LOGIC_VECTOR(7 DOWNTO 0) := "00000000";
 	signal nWR_INT, nRD_INT : STD_LOGIC := '0';
-	signal pd0_en, pd1_en, au_en, al_en, nwr_en, nrd_en : STD_LOGIC := '0'; --cd0_en, cd1_en,
+	signal pd0_en, pd1_en, addr_en, nwr_en, nrd_en : STD_LOGIC := '0'; --cd0_en, cd1_en,
 	
 	SIGNAL RELEASE_DATA : STD_LOGIC := '0';
 	SIGNAL DATA_WAS_VALID_1 : STD_LOGIC := '0';
@@ -114,19 +112,12 @@ begin
 	CHIP_DATA_1 <= DATA_IN_1 WHEN DATA_VALID_1 = '1';
 	
 	ADDR_TEMP <= ADDRESS WHEN ALE = '1';
-	ADDRESS_TO_CHIP(15 DOWNTO 8) <= ADDR_UPPER WHEN au_en = '1';
-	ADDRESS_TO_CHIP(7 DOWNTO 0) <= ADDR_LOWER WHEN al_en = '1';
+	ADDRESS_TO_CHIP(15 DOWNTO 8) <= ADDR_TEMP WHEN addr_en = '1';
 	
 	RESET_IC <= '1'; 
 	
 	nWRITE <= nWR;
 	nREAD <= nRD;
-	
-	--For use aside from latched values
-	--ADDR_TEMP <= ADDRESS WHEN ALE = '1';
-	
-	ADDR_UPPER <= ADDRESS(15 DOWNTO 8);
-	ADDR_LOWER <= ADDRESS(7 DOWNTO 0);
 	
 	PROC_DATA_0 <= ADDRESS(7 DOWNTO 0);
 	PROC_DATA_1 <= ADDRESS(7 DOWNTO 0);
@@ -134,57 +125,13 @@ begin
 	pd0_en <= '1' WHEN ALE = '0' AND ADDR_TEMP(15) = '1' and ADDR_TEMP(0) = '0' AND nWR = '0' ELSE '0';
 	pd1_en <= '1' WHEN ALE = '0' AND ADDR_TEMP(15) = '1' AND ADDR_TEMP(0) = '1' AND nWR = '0' ELSE '0';
 	
-	--cd0_en <= '1' WHEN DATA_VALID_0 = '1' ELSE '0';
-	--cd1_en <= '1' WHEN DATA_VALID_1 = '1' ELSE '0';
-	
 	--We only latch the upper address value
-	au_en <= '1' WHEN ALE = '1' AND ADDR_TEMP(15) = '1' AND ADDR_TEMP(0) = '0' ELSE '0';
-	al_en <= '1' WHEN ALE = '1' AND ADDR_TEMP(15) = '1' AND ADDR_TEMP(0) = '0' ELSE '0';
-	
-	--latch wr/rd on first addr.
-	--nwr_en <= '1' WHEN ALE = '0' AND ADDR_TEMP(15) = '1' ELSE '0';
-	--nrd_en <= '1' WHEN ALE = '0' AND ADDR_TEMP(15) = '1' ELSE '0';
+	addr_en <= '1' WHEN ALE = '1' AND ADDR_TEMP(15) = '1' AND ADDR_TEMP(0) = '0' ELSE '0';
 	
 	--ADD LOGIC FOR IDATA OUT
 	IDATA <= CHIP_DATA_0 WHEN ADDR_TEMP(15) = '1' AND ADDR_TEMP(0) = '0' AND nRD = '0' ELSE --AND(DATA_VALID_0 = '1' OR DATA_WAS_VALID_0 = '1') ELSE
 				CHIP_DATA_1 WHEN ADDR_TEMP(15) = '1' AND ADDR_TEMP(0) = '1' AND nRD = '0' ELSE --AND (DATA_VALID_1 = '1' OR DATA_WAS_VALID_1 = '1') ELSE
-				"ZZZZZZZZ";
-				
---	PROCESS(DATA_VALID_0, nRD, ADDR_TEMP, DATA_WAS_VALID_0)
---	BEGIN
---		IF(DATA_VALID_0 = '1' AND nRD = '0' AND ADDR_TEMP(0) = '0')
---		THEN
---			DATA_WAS_VALID_0 <= '1';
---		ELSIF(DATA_WAS_VALID_0 = '1' AND nRD = '0' AND ADDR_TEMP(0) = '0')
---		THEN
---			DATA_WAS_VALID_0 <= '1';
---		ELSE
---			DATA_WAS_VALID_0 <= '0';
---		END IF;	
---	END PROCESS;
---	
---	PROCESS(DATA_VALID_1, nRD, ADDR_TEMP, DATA_WAS_VALID_1)
---	BEGIN
---		IF(DATA_VALID_1 = '1' AND ADDR_TEMP(0) = '1')
---		THEN
---			DATA_WAS_VALID_1 <= '1';
---		ELSIF(DATA_VALID_1 = '1' AND ADDR_TEMP(0) = '0')
---		THEN
---			DATA_WAS_VALID_1 <= '1';
---		ELSIF(DATA_WAS_VALID_1 = '1' AND ADDR_TEMP(0) = '0')
---		THEN
---			DATA_WAS_VALID_1 <= '1';
---		ELSIF(DATA_WAS_VALID_1 = '1' AND ADDR_TEMP(0) = '1')
---		THEN
---			DATA_WAS_VALID_1 <= '1';
---		ELSIF(DATA_WAS_VALID_1 = '1' AND ALE = '0' AND nRD = '1')
---		THEN
---			DATA_WAS_VALID_1 <= '0';
---		ELSE
---			DATA_WAS_VALID_1 <= '0';
---		END IF;	
---	END PROCESS;
-	
+				"ZZZZZZZZ";	
 
 end Behavioral;
 
