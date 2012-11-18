@@ -4,6 +4,9 @@
 *.xreport
 *.cmd_log
 *.schlog
+*.exe
+*.ncd
+*.jhd
 
 
 ############
