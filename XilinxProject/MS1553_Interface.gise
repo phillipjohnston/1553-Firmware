@@ -22,6 +22,7 @@
   <sourceproject xmlns="http://www.xilinx.com/XMLSchema" xil_pn:fileType="FILE_XISE" xil_pn:name="MS1553_Interface.xise"/>
 
   <files xmlns="http://www.xilinx.com/XMLSchema">
+    <file xil_pn:fileType="FILE_SYMBOL" xil_pn:name="SFR_Address_Decoder.sym" xil_pn:origination="imported"/>
     <file xil_pn:fileType="FILE_NCD" xil_pn:name="System_guide.ncd" xil_pn:origination="imported"/>
     <file xil_pn:fileType="FILE_ASY" xil_pn:name="ipcore_dir/Clock.asy" xil_pn:origination="imported"/>
     <file xil_pn:fileType="FILE_VHDL" xil_pn:name="ipcore_dir/Clock.vhd" xil_pn:origination="imported">

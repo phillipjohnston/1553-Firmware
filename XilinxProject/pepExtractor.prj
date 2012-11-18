@@ -1,1 +1,2 @@
-work	"SFR_STATUS.vhd"
+work	"Latch16Bit.vhd"
+work	"SFR_Address_Decoder.vhd"

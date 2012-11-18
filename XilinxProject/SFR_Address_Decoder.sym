@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <symbol version="7" name="SFR_Address_Decoder">
     <symboltype>BLOCK</symboltype>
-    <timestamp>2012-11-12T13:8:52</timestamp>
+    <timestamp>2012-11-18T0:56:32</timestamp>
     <pin polarity="Input" x="0" y="-32" name="ADDR(15:0)" />
     <pin polarity="Output" x="384" y="-32" name="SEL(15:0)" />
+    <pin polarity="Input" x="0" y="32" name="ALE" />
     <graph>
         <attrtext style="alignment:BCENTER;fontsize:56;fontname:Arial" attrname="SymbolName" x="192" y="-72" type="symbol" />
         <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="-32" type="pin ADDR(15:0)" />
         <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="312" y="-32" type="pin SEL(15:0)" />
-        <rect width="256" x="64" y="-64" height="64" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="32" type="pin ALE" />
+        <line x2="0" y1="32" y2="32" x1="64" />
         <rect width="64" x="0" y="-44" height="24" />
         <line x2="0" y1="-32" y2="-32" x1="64" />
         <rect width="64" x="320" y="-44" height="24" />
         <line x2="384" y1="-32" y2="-32" x1="320" />
+        <rect width="256" x="64" y="-64" height="128" />
     </graph>
 </symbol>

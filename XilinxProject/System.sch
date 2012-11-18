@@ -64,7 +64,6 @@
         <signal name="nRT1MC8" />
         <signal name="CPU_RESET" />
         <signal name="HWAIT" />
-        <signal name="XLXN_178" />
         <port polarity="Output" name="nMR" />
         <port polarity="Output" name="BWID" />
         <port polarity="Output" name="BTYPE" />
@@ -206,12 +205,13 @@
             <circle r="16" cx="144" cy="-32" />
         </blockdef>
         <blockdef name="SFR_Address_Decoder">
-            <timestamp>2012-11-12T13:8:52</timestamp>
-            <rect width="256" x="64" y="-64" height="64" />
+            <timestamp>2012-11-18T0:56:32</timestamp>
+            <line x2="0" y1="32" y2="32" x1="64" />
             <rect width="64" x="0" y="-44" height="24" />
             <line x2="0" y1="-32" y2="-32" x1="64" />
             <rect width="64" x="320" y="-44" height="24" />
             <line x2="384" y1="-32" y2="-32" x1="320" />
+            <rect width="256" x="64" y="-64" height="128" />
         </blockdef>
         <blockdef name="sfr_8_output">
             <timestamp>2012-11-15T1:38:43</timestamp>
@@ -372,6 +372,7 @@
         <block symbolname="SFR_Address_Decoder" name="XLXI_96">
             <blockpin signalname="ADDR_OUT_8085(15:0)" name="ADDR(15:0)" />
             <blockpin signalname="SEL_SFR(15:0)" name="SEL(15:0)" />
+            <blockpin signalname="ALE" name="ALE" />
         </block>
         <block symbolname="sfr_8_output" name="XLXI_98">
             <blockpin signalname="RE" name="RE" />
@@ -876,5 +877,9 @@
         <instance x="368" y="1904" name="XLXI_9" orien="R0">
         </instance>
         <iomarker fontsize="28" x="2608" y="1968" name="READY" orien="R180" />
+        <branch name="ALE">
+            <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="1504" y="576" type="branch" />
+            <wire x2="1520" y1="576" y2="576" x1="1504" />
+        </branch>
     </sheet>
 </drawing>
