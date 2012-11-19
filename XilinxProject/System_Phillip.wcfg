@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="C:/Users/Phillip/Dropbox/workspace/class_projects/MS1553_Interface/XilinxProject/System_System_sch_tb_isim_beh.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="conversion" />
+            <top_module name="numeric_std" />
+            <top_module name="std_logic_1164" />
+            <top_module name="std_logic_arith" />
+            <top_module name="std_logic_signed" />
+            <top_module name="std_logic_textio" />
+            <top_module name="std_logic_unsigned" />
+            <top_module name="system_system_sch_tb" />
+            <top_module name="textio" />
+            <top_module name="vcomponents" />
+            <top_module name="vital_primitives" />
+            <top_module name="vital_timing" />
+            <top_module name="vpkg" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="20" />
+   <wvobject fp_name="/system_system_sch_tb/cpu_reset" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">cpu_reset</obj_property>
+      <obj_property name="ObjectShortName">cpu_reset</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/nmr" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">nmr</obj_property>
+      <obj_property name="ObjectShortName">nmr</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/bwid" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">bwid</obj_property>
+      <obj_property name="ObjectShortName">bwid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/btype" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">btype</obj_property>
+      <obj_property name="ObjectShortName">btype</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/wpol" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">wpol</obj_property>
+      <obj_property name="ObjectShortName">wpol</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/nce" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">nce</obj_property>
+      <obj_property name="ObjectShortName">nce</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/nwe" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">nwe</obj_property>
+      <obj_property name="ObjectShortName">nwe</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/noe" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">noe</obj_property>
+      <obj_property name="ObjectShortName">noe</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/address" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">address[15:0]</obj_property>
+      <obj_property name="ObjectShortName">address[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/data" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">data[7:0]</obj_property>
+      <obj_property name="ObjectShortName">data[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/sysclk_p" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">sysclk_p</obj_property>
+      <obj_property name="ObjectShortName">sysclk_p</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/sysclk_n" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">sysclk_n</obj_property>
+      <obj_property name="ObjectShortName">sysclk_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/chipscope_clk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">chipscope_clk</obj_property>
+      <obj_property name="ObjectShortName">chipscope_clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/XLXI_1/ale" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">ale</obj_property>
+      <obj_property name="ObjectShortName">ale</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/XLXI_1/address_out" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">address_out[15:0]</obj_property>
+      <obj_property name="ObjectShortName">address_out[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/XLXI_1/id" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">id[7:0]</obj_property>
+      <obj_property name="ObjectShortName">id[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/XLXI_1/wrbar" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">wrbar</obj_property>
+      <obj_property name="ObjectShortName">wrbar</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/XLXI_1/rdbar" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">rdbar</obj_property>
+      <obj_property name="ObjectShortName">rdbar</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/nwe" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">nwe</obj_property>
+      <obj_property name="ObjectShortName">nwe</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/noe" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">noe</obj_property>
+      <obj_property name="ObjectShortName">noe</obj_property>
+   </wvobject>
+</wave_config>
