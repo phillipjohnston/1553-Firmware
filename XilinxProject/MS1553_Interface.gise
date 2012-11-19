@@ -35,6 +35,7 @@
       <branch xil_pn:name="Implementation"/>
       <branch xil_pn:name="BehavioralSim"/>
     </file>
+    <file xil_pn:fileType="FILE_SYMBOL" xil_pn:name="ipcore_dir/Memory.sym" xil_pn:origination="imported"/>
     <file xil_pn:fileType="FILE_SYMBOL" xil_pn:name="sfr_8_input.sym" xil_pn:origination="imported"/>
     <file xil_pn:fileType="FILE_SYMBOL" xil_pn:name="sfr_8_output.sym" xil_pn:origination="imported"/>
     <file xil_pn:fileType="FILE_SYMBOL" xil_pn:name="sfr_8_output_pulse.sym" xil_pn:origination="imported"/>
