@@ -60,6 +60,10 @@ begin
 	Q(6) <= MTPKRDY;
 	Q(5) <= READY;
 	Q(4) <= nRT1MC8;
+	Q(3) <= '0';
+	Q(2) <= '0';
+	Q(1) <= '0';
+	Q(0) <= '0';
 
 	process(clock)
 	begin
