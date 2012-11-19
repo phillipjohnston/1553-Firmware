@@ -1,0 +1,26 @@
+#######################################
+#                                     #
+# README for MS1553_Firmware Project  #
+#                                     #
+#######################################
+
+
+
+***Overview for MS1553_Controller Module:
+
+Interfacing with it:  
+
+it will only respond if bit 15 = '1'.  Additionally, reads and writes have to happen in 8-bit pairs, which is fine since we're using 16 bit values and they will do back to back reads/writes.  It will only initiate the read/write sequence if it detects bit 0 as '0', because this byte must come first on the Holt IC chip.  So Write/read 1 = 1xxxxxxxxxxxxxxx0 and write/read 2 = 1xxxxxxxxxxxxxxx1 (in practice, we just assume that the second one will be xxx1)
+
+Fast_clock is necessary due to timing in the modules.  I've been testing with 100MHz.
+
+ALE, nWR, nRD, nIOM:  come from the 8085.  I don't think I've added IOM yet.
+
+
+The rundown:
+
+The MS1553_master monitors addresses, ALE, and the read/write signals.  When it detects an address with the MSB set to '1', it notes that as an address going to the Holt chip and latches it in, as well as starting the read/write process.  (Also, it only captures addresses with the LSB '0', which is appropriate for talking with the holt chip.  Since all reads/writes should be doubled, this isn't a problem).
+
+The holt_mem_trans module is responsible for communicating with the chip.  If a write is happening, we wait for both bytes to come from the 8085, and then we write both to the Holt chip back-to-back.  For reads, we read both bytes at once.  The first byte is available on IDATA as it comes in, and the second byte is pre-fetched for when the 8085 asks for it.  (It has two sub modules that handle the sending/receiving:  a reader and writer)
+
+The holt_initializer controls necessary hardware pins and sends out the reset signal to the board. When the master reset signal is generated, the MS1553_master will forward it to a reset pulse generator.  This pulse generator creates a reset pulse that happens only once per power cycle for the chip.  
