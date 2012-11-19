@@ -64,6 +64,7 @@
         <signal name="nRT1MC8" />
         <signal name="CPU_RESET" />
         <signal name="HWAIT" />
+        <signal name="CLOCK_8085" />
         <port polarity="Output" name="nMR" />
         <port polarity="Output" name="BWID" />
         <port polarity="Output" name="BTYPE" />
@@ -146,14 +147,14 @@
             <line x2="496" y1="-32" y2="-32" x1="432" />
         </blockdef>
         <blockdef name="Memory">
-            <timestamp>2012-11-8T2:13:35</timestamp>
+            <timestamp>2012-11-19T17:19:16</timestamp>
+            <rect width="512" x="32" y="32" height="1344" />
             <line x2="32" y1="80" y2="80" style="linewidth:W" x1="0" />
             <line x2="32" y1="112" y2="112" style="linewidth:W" x1="0" />
             <line x2="32" y1="144" y2="144" x1="0" />
             <line x2="32" y1="208" y2="208" style="linewidth:W" x1="0" />
             <line x2="32" y1="272" y2="272" x1="0" />
             <line x2="544" y1="80" y2="80" style="linewidth:W" x1="576" />
-            <rect width="512" x="32" y="32" height="348" />
         </blockdef>
         <blockdef name="vcc">
             <timestamp>2000-1-1T10:10:10</timestamp>
@@ -319,7 +320,7 @@
             <blockpin signalname="nRD" name="RDBAR" />
             <blockpin name="S1" />
             <blockpin signalname="nIOM" name="IOMBAR" />
-            <blockpin name="CLKOUT" />
+            <blockpin signalname="CLOCK_8085" name="CLKOUT" />
             <blockpin name="HLDA" />
             <blockpin signalname="ADDR_OUT_8085(15:0)" name="ADDRESS_OUT(15:0)" />
         </block>
@@ -377,7 +378,7 @@
         <block symbolname="sfr_8_output" name="XLXI_98">
             <blockpin signalname="RE" name="RE" />
             <blockpin signalname="WE" name="WE" />
-            <blockpin signalname="SLOW_CLOCK" name="clock" />
+            <blockpin signalname="CLOCK_8085" name="clock" />
             <blockpin signalname="CPU_RESET_BUF_INV" name="clear" />
             <blockpin signalname="SEL_SFR(0)" name="CS" />
             <blockpin signalname="ADDR_OUT_8085(7:0)" name="DIN(7:0)" />
@@ -391,7 +392,7 @@
         <block symbolname="sfr_8_output_pulse" name="XLXI_100">
             <blockpin signalname="RE" name="RE" />
             <blockpin signalname="WE" name="WE" />
-            <blockpin signalname="SLOW_CLOCK" name="clock" />
+            <blockpin signalname="CLOCK_8085" name="clock" />
             <blockpin signalname="CPU_RESET_BUF_INV" name="clear" />
             <blockpin signalname="SEL_SFR(2)" name="CS" />
             <blockpin signalname="ADDR_OUT_8085(7:0)" name="DIN(7:0)" />
@@ -412,7 +413,7 @@
         <block symbolname="sfr_8_input" name="XLXI_99">
             <blockpin signalname="RE" name="RE" />
             <blockpin signalname="SEL_SFR(1)" name="CS" />
-            <blockpin signalname="SLOW_CLOCK" name="clock" />
+            <blockpin signalname="CLOCK_8085" name="clock" />
             <blockpin signalname="IDATA(7:0)" name="DOUT(7:0)" />
             <blockpin signalname="ACTIVE" name="ACTIVE" />
             <blockpin signalname="MTPKRDY" name="MTPKRDY" />
@@ -441,7 +442,7 @@
             <blockpin signalname="MEM_DATA_IN(7:0)" name="dina(7:0)" />
             <blockpin signalname="MEM_ENA" name="ena" />
             <blockpin signalname="MEM_WEA" name="wea(0:0)" />
-            <blockpin signalname="SLOW_CLOCK" name="clka" />
+            <blockpin signalname="CLOCK_8085" name="clka" />
             <blockpin signalname="MEM_DATA(7:0)" name="douta(7:0)" />
         </block>
     </netlist>
@@ -666,7 +667,7 @@
             <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="1568" y="880" type="branch" />
             <wire x2="1616" y1="880" y2="880" x1="1568" />
         </branch>
-        <branch name="SLOW_CLOCK">
+        <branch name="CLOCK_8085">
             <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="1568" y="944" type="branch" />
             <wire x2="1616" y1="944" y2="944" x1="1568" />
         </branch>
@@ -694,7 +695,7 @@
             <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="1568" y="1760" type="branch" />
             <wire x2="1616" y1="1760" y2="1760" x1="1568" />
         </branch>
-        <branch name="SLOW_CLOCK">
+        <branch name="CLOCK_8085">
             <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="1568" y="1824" type="branch" />
             <wire x2="1616" y1="1824" y2="1824" x1="1568" />
         </branch>
@@ -754,7 +755,7 @@
             <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="2624" y="1584" type="branch" />
             <wire x2="2672" y1="1584" y2="1584" x1="2624" />
         </branch>
-        <branch name="SLOW_CLOCK">
+        <branch name="CLOCK_8085">
             <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="2624" y="1648" type="branch" />
             <wire x2="2640" y1="1648" y2="1648" x1="2624" />
             <wire x2="2672" y1="1648" y2="1648" x1="2640" />
@@ -866,7 +867,7 @@
             <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="320" y="2112" type="branch" />
             <wire x2="368" y1="2112" y2="2112" x1="320" />
         </branch>
-        <branch name="SLOW_CLOCK">
+        <branch name="CLOCK_8085">
             <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="320" y="2176" type="branch" />
             <wire x2="368" y1="2176" y2="2176" x1="320" />
         </branch>
@@ -880,6 +881,10 @@
         <branch name="ALE">
             <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="1504" y="576" type="branch" />
             <wire x2="1520" y1="576" y2="576" x1="1504" />
+        </branch>
+        <branch name="CLOCK_8085">
+            <attrtext style="alignment:SOFT-LEFT;fontsize:28;fontname:Arial" attrname="Name" x="880" y="736" type="branch" />
+            <wire x2="880" y1="736" y2="736" x1="848" />
         </branch>
     </sheet>
 </drawing>
