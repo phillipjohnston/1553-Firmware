@@ -57,43 +57,9 @@ architecture Behavioral of MS1553_master is
 	signal ADDR_TEMP : STD_LOGIC_VECTOR(15 DOWNTO 0) := "0000000000000000";
 	signal CHIP_DATA_0 : STD_LOGIC_VECTOR(7 DOWNTO 0) := "00000000";
 	signal CHIP_DATA_1 : STD_LOGIC_VECTOR(7 DOWNTO 0) := "00000000";
-	signal pd0_en, pd1_en, addr_en, nwr_en, nrd_en : STD_LOGIC := '0'; --cd0_en, cd1_en,
-	
-	SIGNAL RELEASE_DATA : STD_LOGIC := '0';
-	SIGNAL DATA_WAS_VALID_1 : STD_LOGIC := '0';
-	SIGNAL DATA_WAS_VALID_0 : STD_LOGIC := '0';
-	
-	SIGNAL ID_S : STD_LOGIC_VECTOR(1 DOWNTO 0) := "00";
-	
-	COMPONENT Latch8Bit IS
-			Port(
-				data   : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
-				enable : IN STD_LOGIC;
-				q      : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
-			);
-	END COMPONENT;
-	
-	COMPONENT Latch IS
-		Port( data : IN STD_LOGIC;
-				enable : IN STD_LOGIC;
-					 q : out STD_LOGIC
-					 );
-	END COMPONENT;
-	
-	
-	COMPONENT Latch16Bit IS
-		PORT
-		(
-			data    : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
-			enable : IN STD_LOGIC;
-			q               : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
-		);
-	END COMPONENT;
+	signal addr_en : STD_LOGIC := '0';
 	
 begin
-
-	--pd0_L : Latch8Bit port map (ADDRESS(7 DOWNTO 0), pd0_en, DATA_OUT_0);
-	--pd1_L : Latch8Bit port map (ADDRESS(7 DOWNTO 0), pd1_en, DATA_OUT_1);
 	
 	DATA_OUT_0 <= ADDRESS(7 DOWNTO 0);
 	DATA_OUT_1 <= ADDRESS(7 DOWNTO 0);
@@ -111,9 +77,6 @@ begin
 	
 	nWRITE <= nWR WHEN ADDR_TEMP(15) = '1' ELSE '1';
 	nREAD <= nRD WHEN ADDR_TEMP(15) = '1' ELSE '1';
-	
-	--pd0_en <= '1' WHEN ALE = '0' AND ADDR_TEMP(15) = '1' and ADDR_TEMP(0) = '0' AND nWR = '0' ELSE '0';
-	--pd1_en <= '1' WHEN ALE = '0' AND ADDR_TEMP(15) = '1' AND ADDR_TEMP(0) = '1' AND nWR = '0' ELSE '0';
 	
 	--We only latch the upper address value
 	addr_en <= '1' WHEN ALE = '1' AND ADDRESS(15) = '1' ELSE '0'; --AND ADDRESS(0) = '0' ELSE '0';
