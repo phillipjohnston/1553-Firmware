@@ -21,7 +21,7 @@
          </top_modules>
       </db_ref>
    </db_ref_list>
-   <WVObjectSize size="20" />
+   <WVObjectSize size="23" />
    <wvobject fp_name="/system_system_sch_tb/cpu_reset" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">cpu_reset</obj_property>
       <obj_property name="ObjectShortName">cpu_reset</obj_property>
@@ -54,13 +54,27 @@
       <obj_property name="ElementShortName">noe</obj_property>
       <obj_property name="ObjectShortName">noe</obj_property>
    </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/XLXI_1/s0" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">s0</obj_property>
+      <obj_property name="ObjectShortName">s0</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/XLXI_1/s1" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">s1</obj_property>
+      <obj_property name="ObjectShortName">s1</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/XLXI_1/iombar" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">iombar</obj_property>
+      <obj_property name="ObjectShortName">iombar</obj_property>
+   </wvobject>
    <wvobject fp_name="/system_system_sch_tb/address" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">address[15:0]</obj_property>
       <obj_property name="ObjectShortName">address[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/system_system_sch_tb/data" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">data[7:0]</obj_property>
       <obj_property name="ObjectShortName">data[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/system_system_sch_tb/sysclk_p" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">sysclk_p</obj_property>
