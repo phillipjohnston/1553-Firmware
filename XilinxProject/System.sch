@@ -308,7 +308,7 @@
             <blockpin signalname="XLXN_124" name="RST55" />
             <blockpin signalname="XLXN_125" name="INTR" />
             <blockpin signalname="XLXN_118" name="READY" />
-            <blockpin signalname="CPU_RESET_BUF" name="RESETINBAR" />
+            <blockpin signalname="CPU_RESET_BUF_INV" name="RESETINBAR" />
             <blockpin signalname="XLXN_126" name="HOLD" />
             <blockpin signalname="IDATA(7:0)" name="ID(7:0)" />
             <blockpin name="RESETOUT" />
@@ -407,7 +407,7 @@
             <blockpin signalname="FAST_CLOCK" name="clk_out1" />
             <blockpin signalname="SLOW_CLOCK" name="clk_out2" />
             <blockpin signalname="CHIPSCOPE_CLK" name="clk_out3" />
-            <blockpin signalname="CPU_RESET_BUF_INV" name="reset" />
+            <blockpin signalname="CPU_RESET_BUF" name="reset" />
             <blockpin name="locked" />
         </block>
         <block symbolname="sfr_8_input" name="XLXI_99">
@@ -482,7 +482,7 @@
         </branch>
         <instance x="336" y="896" name="XLXI_1" orien="R0">
         </instance>
-        <branch name="CPU_RESET_BUF">
+        <branch name="CPU_RESET_BUF_INV">
             <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="304" y="672" type="branch" />
             <wire x2="336" y1="672" y2="672" x1="304" />
         </branch>
@@ -734,7 +734,7 @@
         </branch>
         <iomarker fontsize="28" x="256" y="1056" name="SYSCLK_P" orien="R180" />
         <iomarker fontsize="28" x="256" y="1088" name="SYSCLK_N" orien="R180" />
-        <branch name="CPU_RESET_BUF_INV">
+        <branch name="CPU_RESET_BUF">
             <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="208" y="1296" type="branch" />
             <wire x2="256" y1="1296" y2="1296" x1="208" />
             <wire x2="304" y1="1296" y2="1296" x1="256" />

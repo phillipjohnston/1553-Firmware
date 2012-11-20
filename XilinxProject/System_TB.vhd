@@ -141,12 +141,12 @@ BEGIN
 -- *** Test Bench - User Defined Section ***
    tb : PROCESS
    BEGIN
-		CPU_RESET <= '0';
+		CPU_RESET <= '1';
 		
 		
 		wait for 200 ns;
 		
-		CPU_RESET <= '1';
+		CPU_RESET <= '0';
 	
       WAIT; -- will wait forever
    END PROCESS;
