@@ -34,6 +34,7 @@
         <signal name="HOLT_ADDR(15:0)" />
         <signal name="XLXN_19" />
         <signal name="XLXN_20" />
+        <signal name="XLXN_21" />
         <port polarity="Output" name="nMR" />
         <port polarity="Output" name="BWID" />
         <port polarity="Input" name="Address(15:0)" />
@@ -61,7 +62,8 @@
             <rect width="256" x="64" y="-576" height="1088" />
         </blockdef>
         <blockdef name="holt_mem_trans">
-            <timestamp>2012-11-7T20:44:3</timestamp>
+            <timestamp>2012-11-20T4:42:10</timestamp>
+            <line x2="0" y1="864" y2="864" x1="64" />
             <line x2="576" y1="736" y2="736" x1="512" />
             <line x2="576" y1="800" y2="800" x1="512" />
             <rect width="64" x="0" y="596" height="24" />
@@ -85,10 +87,11 @@
             <line x2="0" y1="-32" y2="-32" x1="64" />
             <rect width="64" x="512" y="-44" height="24" />
             <line x2="576" y1="-32" y2="-32" x1="512" />
-            <rect width="448" x="64" y="-64" height="896" />
+            <rect width="448" x="64" y="-64" height="960" />
         </blockdef>
         <blockdef name="MS1553_master">
-            <timestamp>2012-11-8T0:31:35</timestamp>
+            <timestamp>2012-11-20T4:42:19</timestamp>
+            <line x2="608" y1="736" y2="736" x1="544" />
             <line x2="0" y1="544" y2="544" x1="64" />
             <line x2="0" y1="608" y2="608" x1="64" />
             <line x2="0" y1="224" y2="224" x1="64" />
@@ -113,7 +116,7 @@
             <line x2="608" y1="-416" y2="-416" x1="544" />
             <rect width="64" x="544" y="-172" height="24" />
             <line x2="608" y1="-160" y2="-160" x1="544" />
-            <rect width="480" x="64" y="-448" height="1088" />
+            <rect width="480" x="64" y="-448" height="1216" />
         </blockdef>
         <blockdef name="MS1553_Reset_Pulse_Gen">
             <timestamp>2012-11-7T20:43:45</timestamp>
@@ -146,6 +149,7 @@
             <blockpin signalname="HOLT_ADDR(15:0)" name="ADDRESS_OUT(15:0)" />
             <blockpin signalname="XLXN_15(7:0)" name="DATA_RETURN_0(7:0)" />
             <blockpin signalname="XLXN_16(7:0)" name="DATA_RETURN_1(7:0)" />
+            <blockpin signalname="XLXN_21" name="ALE" />
         </block>
         <block symbolname="MS1553_master" name="XLXI_4">
             <blockpin signalname="ALE" name="ALE" />
@@ -165,6 +169,7 @@
             <blockpin signalname="XLXN_13(7:0)" name="DATA_OUT_0(7:0)" />
             <blockpin signalname="XLXN_14(7:0)" name="DATA_OUT_1(7:0)" />
             <blockpin signalname="IDATA(7:0)" name="IDATA(7:0)" />
+            <blockpin signalname="XLXN_21" name="ALE_OUT" />
         </block>
         <block symbolname="MS1553_Reset_Pulse_Gen" name="XLXI_5">
             <blockpin signalname="XLXN_1" name="ResetGo" />
@@ -360,5 +365,10 @@
         </branch>
         <instance x="288" y="1104" name="XLXI_4" orien="R0">
         </instance>
+        <branch name="XLXN_21">
+            <wire x2="1744" y1="1840" y2="1840" x1="896" />
+            <wire x2="1744" y1="1840" y2="2240" x1="1744" />
+            <wire x2="2576" y1="2240" y2="2240" x1="1744" />
+        </branch>
     </sheet>
 </drawing>
