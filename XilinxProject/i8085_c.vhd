@@ -52,6 +52,7 @@
 -- 15. Shen's M->2 code becuase it was going to M->1
 -- 16. Fixed the jump commands by adding a PC change in the M3 T3 for JMP, 
 -- 17. Fixed memory writing and memory writing status signals for many commands
+-- 18. Added high impedance out for ADDRESS/DATA and RDBAR/WRBAR for the prerequisite states
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -105,6 +106,9 @@ architecture BEHAVIOR of I8085_c is
     signal INTA : std_logic;
     signal EI_ENABLE, EI_FF : std_logic;
     signal BIMCB: std_logic;
+	 
+	 signal HLDA_STATE: std_logic; --S- for hold output
+	 signal HLDA_STATE_d: std_logic; --S- for hold output
 
     signal END_INST_flag: std_logic;					-- for inturrupt sampling
     signal SOD_FF: std_logic;
@@ -144,7 +148,9 @@ begin
             or
         ((((IGROUP = "00") and (DDD = "000")) and (SSS = "010"))    		-- STAX B
             or
-        (((IGROUP = "00") and (DDD = "010")) and (SSS = "010"))))    		-- STAX D
+        (((IGROUP = "00") and (DDD = "010")) and (SSS = "010")))			-- STAX D
+				or
+		  (((IGROUP = "01") and (DDD = "110")) and (SSS /= "110")))    		--MOV M, R --S-Missing
         then wrinm2 := '1';
         else wrinm2 := '0'; end if;
 
@@ -396,7 +402,8 @@ begin
                         DDD     <= ID(5 downto 3);     -- bits 5 downto 3 select destination register
                         SSS     <= ID(2 downto 0);     -- bits 2 downto 0 select source register
                     when others => null;
-                end case;  -- end of case TSTATES
+                end case;  -- end of case TSTATES					 
+					 
 --=========================================================================  -- save {M1,T7},{M1,T8},{M1,T9}
 	    elsif MCYCLE = "001" and (TSTATES = "0111" or TSTATES = "1000" or TSTATES = "1001") then
 		MCYCLE <= "010"; --S- Changed 001 to 010 to correct to the intention of the code
@@ -1827,6 +1834,35 @@ begin
                         end case; -- end of case SSS
                     when others => null;
                  end case; -- end of case IGROUP
+					  
+					  
+					  					 --S- Holding Tstates
+--					 Case TSTATES is
+--							when "0110" => --S- Added for hold ----------------------------------HOLD ADDED
+--								if HOLDFF = '1' then --S- 0110
+--									ADDRESS_OUT(15 downto 0) <= "ZZZZZZZZZZZZZZZZ"; --S- Added High Impedance out
+--									IOMBAR <= 'Z' ; --S- Added High Impedance out
+--								end if;								
+--							when "1000" => --S- Added for hold
+--								if HOLD = '1' then --S- 1000
+--									ADDRESS_OUT(15 downto 0) <= "ZZZZZZZZZZZZZZZZ"; --S- Added High Impedance out
+--									IOMBAR <= 'Z' ; --S- Added High Impedance out
+--								end if;
+--							when "1001" => --S- Added for hold
+--								ADDRESS_OUT(15 downto 0) <= "ZZZZZZZZZZZZZZZZ"; --S- Added High Impedance out
+--								IOMBAR <= 'Z' ; --S- Added High Impedance out ------------------------HOLD ADDED
+--							when others => null;
+--					 end case;
+
+					if HLDA_STATE = '1' then --S- 0110
+						ADDRESS_OUT(15 downto 0) <= "ZZZZZZZZZZZZZZZZ"; --S- Added High Impedance out
+						IOMBAR <= 'Z' ; --S- Added High Impedance out
+						HLDA <= '1';
+						HLDA_STATE_d <= '1';
+					else HLDA <= '0'; HLDA_STATE_d <= '0';
+					end if;
+					 
+					  
             end if; -- (MCYCLE = 1) ELSE (MCYCLE > 1)
 
 ---------------------------------------------------------------------------
@@ -1871,7 +1907,7 @@ begin
             if(DAD_inst = '0') then BIMCB <= '1'; else BIMCB <= '0'; end if;
         end if;
 
-		  if(RESETINBAR = '0') then --S- Added for status accuracy
+		  if(RESETINBAR = '0' OR HLDA_STATE_d = '1') then --S- Added for status accuracy
 			RDBAR <= 'Z'; --S- Added for status accuracy
 			WRBAR <= 'Z'; --S- Added for status accuracy
 			INTABAR <= '1'; --S- Added for status accuracy
@@ -1905,7 +1941,8 @@ P4: process(RESETINBAR,X1,TSTATES,MCYCLE,IGROUP,DDD,SSS,HOLDFF,HLTAFF,HOLD,WR_MO
     if(RESETINBAR = '0') then
         TSTATES <= "0000";
         HOLDFF <= '0';
-        HLDA <= '0';
+        --S-HLDA <= '0';
+		  HLDA_STATE <= '0'; --S- Hold variable
 	
     elsif((X1 = '1') and (X1'event)) then   -- X1 is the clock signal
         case TSTATES is 
@@ -1938,10 +1975,11 @@ P4: process(RESETINBAR,X1,TSTATES,MCYCLE,IGROUP,DDD,SSS,HOLDFF,HLTAFF,HOLD,WR_MO
 		    
           when "0011" =>
                     if (HOLDFF = '1') then
-                        if WR_MOD = '1' then 
-                             HLDA <= '1' ; --after 20 ns; -- CK_PERIOD
-                        else HLDA <= '1' ; --after 1 ns; 
-                        end if;
+--                        if WR_MOD = '1' then 
+--                             HLDA <= '1' ; --after 20 ns; -- CK_PERIOD
+--                        else HLDA <= '1' ; --after 1 ns; 
+--                        end if;
+								HLDA_STATE <= '1'; --S- Hold variable
                     end if;
                     if MCYCLE = "001" then TSTATES <= "0100"; 
                     elsif HOLDFF = '1' then TSTATES <= "1001"; --TT := 9;
@@ -1965,7 +2003,8 @@ P4: process(RESETINBAR,X1,TSTATES,MCYCLE,IGROUP,DDD,SSS,HOLDFF,HLTAFF,HOLD,WR_MO
                          end if;
                     elsif HOLDFF = '1' then
                         TSTATES <= "1001"; --TT  := 9;
-                        HLDA <= '1' ; --after 20 ns; -- CK_PERIOD
+                        --S-HLDA <= '1' ; --after 20 ns; -- CK_PERIOD
+								HLDA_STATE <= '1'; --S- Hold variable
                     else
                         TSTATES <= "0001"; --TT  := 1;
                     end if;
@@ -1974,8 +2013,9 @@ P4: process(RESETINBAR,X1,TSTATES,MCYCLE,IGROUP,DDD,SSS,HOLDFF,HLTAFF,HOLD,WR_MO
 
           when "0110" =>
                     if HOLDFF = '1' then
-			TSTATES <= "1001"; --TT := 9;
-			HLDA <= '1' ; --after 20 ns; -- CK_PERIOD
+								TSTATES <= "1001"; --TT := 9;
+								--S-HLDA <= '1' ; --after 20 ns; -- CK_PERIOD
+								HLDA_STATE <= '1'; --S- Hold variable
                     else TSTATES <= "0001"; --else TT := 1; 
                     end if;
 
@@ -1990,9 +2030,10 @@ P4: process(RESETINBAR,X1,TSTATES,MCYCLE,IGROUP,DDD,SSS,HOLDFF,HLTAFF,HOLD,WR_MO
 		    
           when "1001" =>
                     if not (HOLD = '1') then
-			TSTATES <= "0001";
-			HOLDFF <= '0';
-                        HLDA <= '0' ; --after 20 ns;
+								TSTATES <= "0001";
+								HOLDFF <= '0';
+                        --S-HLDA <= '0' ; --after 20 ns;
+								HLDA_STATE <= '0'; --S- Hold variable
                     end if;
 
 	  when others => null;
@@ -2061,9 +2102,9 @@ P7: process(RESETINBAR,X1,INTEFF,TSTATES,MCYCLE,END_INST_flag)
 	       or (END_INST_flag = '1')) then
                PRIO_ENCODE <= PIE;
            end if;
-	   if PRIO_ENCODE /= "111" then
-	       PRIO_ENCODE <= "111";
-	   end if;
+	   --S-if PRIO_ENCODE /= "111" then --S- Was not allowing interupts
+	       --S-PRIO_ENCODE <= "111";
+	   --S-end if;
            if(PRIO_ENCODE = "100") then
                INTA <= '1';
            else
