@@ -74,8 +74,6 @@ architecture Behavioral of holt_mem_trans is
 	
 	SIGNAL h_d0_en, h_d1_en, p_d0_en, p_d1_en, addr_en : STD_LOGIC := '1';
 	
-	--SIGNAL rd_int, wr_int : STD_LOGIC := '0';
-	
 	SIGNAL DATA_VALID_int : STD_LOGIC := '0';
 	
 	COMPONENT Latch IS
@@ -91,15 +89,6 @@ architecture Behavioral of holt_mem_trans is
 			data    : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
 			enable : IN STD_LOGIC;
 			q               : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
-		);
-	END COMPONENT;
-	
-	COMPONENT Latch16Bit IS
-		PORT
-		(
-			data    : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
-			enable : IN STD_LOGIC;
-			q               : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
 		);
 	END COMPONENT;
 	
@@ -137,9 +126,9 @@ architecture Behavioral of holt_mem_trans is
 	
 begin
 	
-	reader: mem_trans_reader port map(HOLT_ADDR, OK_TO_BEGIN_RD, nRD, CLOCK,
+	reader: mem_trans_reader port map(addr, OK_TO_BEGIN_RD, nRD, CLOCK,
 												 rADDR, h_d0_en, h_d1_en, OE, rCE);
-	writer: mem_trans_writer port map (HOLT_ADDR, PROC_DATA_0, PROC_DATA_1, OK_TO_BEGIN_WR, nWR, CLOCK,
+	writer: mem_trans_writer port map (addr, PROC_DATA_0, PROC_DATA_1, OK_TO_BEGIN_WR, nWR, CLOCK,
 												  wADDR, wDATA, WE, wCE);
 	
 	DATA_RETURN_0 <= DATA;
@@ -147,16 +136,11 @@ begin
 
 	p_data0_L : Latch8Bit port map(DATA_IN_0, p_d0_en, PROC_DATA_0);
 	p_data1_L : Latch8Bit port map(DATA_IN_1, p_d1_en, PROC_DATA_1);
-	addr_L : Latch16Bit port map(addr, addr_en, HOLT_ADDR);
-	
-	--rd_L : Latch port map(nRD, addr_en, rd_int);
-	--wr_L : Latch port map(nWR, addr_en, wr_int);
 	
 	nCE <= NOT rCE WHEN nRD = '0' ELSE NOT wCE;
 	ADDRESS_OUT <= rADDR WHEN nRD = '0' ELSE wADDR;
 	
-	--DATA <= rDATA when rd_int = '0' ELSE 
-	DATA <= wDATA when nWR = '0' ELSE
+	DATA <= wDATA when WE = '1' ELSE
 			  "ZZZZZZZZ";
 	
 	DATA_VALID_0 <= h_d0_en;
@@ -170,9 +154,6 @@ begin
 	
 	addr(14 DOWNTO 1) <= ADDRESS_IN(14 DOWNTO 1) WHEN ADDRESS_IN(15) = '1' ELSE "00000000000000";
 	
-	addr_en <= '1' WHEN ADDRESS_IN(15) = '1' AND ADDRESS_IN(0) = '0' ELSE '0';
-	
-	--OK_TO_BEGIN_WR <= '1' WHEN p_d1_en = '1' AND wr_int = '0' ELSE '0';
 	OK_TO_BEGIN_WR <= '1' WHEN ADDRESS_IN(15) = '1' AND ADDRESS_IN(0) = '1'
 								 AND nWR = '0' AND ALE = '0' ELSE '0';
 	OK_TO_BEGIN_RD <= '1' WHEN ADDRESS_IN(15) = '1' AND ADDRESS_IN(0) = '0' AND nRD = '0' ELSE '0';
@@ -198,7 +179,6 @@ begin
 			p_d1_en <= '0';
 		END IF;
 	END PROCESS;
-
 	
 end Behavioral;
 
