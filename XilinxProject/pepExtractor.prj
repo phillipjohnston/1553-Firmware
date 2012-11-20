@@ -1,2 +1,2 @@
-work	"Latch16Bit.vhd"
-work	"SFR_Address_Decoder.vhd"
+work	"Latch8Bit.vhd"
+work	"MS1553_master.vhd"
