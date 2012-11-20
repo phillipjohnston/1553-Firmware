@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <symbol version="7" name="MS1553_master">
     <symboltype>BLOCK</symboltype>
-    <timestamp>2012-11-8T0:31:35</timestamp>
+    <timestamp>2012-11-20T4:42:19</timestamp>
     <pin polarity="Input" x="0" y="32" name="ALE" />
     <pin polarity="Input" x="0" y="224" name="nWR" />
     <pin polarity="Input" x="0" y="288" name="nRD" />
@@ -19,6 +19,7 @@
     <pin polarity="Output" x="608" y="288" name="DATA_OUT_0(7:0)" />
     <pin polarity="Output" x="608" y="352" name="DATA_OUT_1(7:0)" />
     <pin polarity="Output" x="608" y="160" name="IDATA(7:0)" />
+    <pin polarity="Output" x="608" y="736" name="ALE_OUT" />
     <graph>
         <attrtext style="alignment:BCENTER;fontsize:56;fontname:Arial" attrname="SymbolName" x="304" y="-456" type="symbol" />
         <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="32" type="pin ALE" />
@@ -38,6 +39,8 @@
         <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="536" y="288" type="pin DATA_OUT_0(7:0)" />
         <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="536" y="352" type="pin DATA_OUT_1(7:0)" />
         <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="536" y="160" type="pin IDATA(7:0)" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="536" y="736" type="pin ALE_OUT" />
+        <line x2="608" y1="736" y2="736" x1="544" />
         <line x2="0" y1="544" y2="544" x1="64" />
         <line x2="0" y1="608" y2="608" x1="64" />
         <line x2="0" y1="224" y2="224" x1="64" />
@@ -62,6 +65,6 @@
         <line x2="608" y1="-416" y2="-416" x1="544" />
         <rect width="64" x="544" y="-172" height="24" />
         <line x2="608" y1="-160" y2="-160" x1="544" />
-        <rect width="480" x="64" y="-448" height="1088" />
+        <rect width="480" x="64" y="-448" height="1216" />
     </graph>
 </symbol>

@@ -29,6 +29,7 @@ entity holt_mem_trans is
 			DATA_IN_1: in STD_LOGIC_VECTOR(7 DOWNTO 0);
 			nRD : in STD_LOGIC;
 			nWR : in STD_LOGIC;
+			ALE : in STD_LOGIC;
 			
 			clock : in STD_LOGIC;
 			
@@ -62,9 +63,9 @@ architecture Behavioral of holt_mem_trans is
 	SIGNAL PROC_DATA_0 : STD_LOGIC_VECTOR(7 DOWNTO 0) := "00000000";
 	SIGNAL PROC_DATA_1 : STD_LOGIC_VECTOR(7 DOWNTO 0) := "00000000";
 	
-	SIGNAL HOLT_ADDR : STD_LOGIC_VECTOR(15 DOWNTO 0) := "0000000000000000";
-	
 	SIGNAL OK_TO_BEGIN_WR, OK_TO_BEGIN_RD : STD_LOGIC := '0';
+	
+	SIGNAL HOLT_ADDR : STD_LOGIC_VECTOR(15 DOWNTO 0) := "0000000000000000";
 	
 	SIGNAL rADDR : STD_LOGIC_VECTOR(15 DOWNTO 0) := "0000000000000000";
 	SIGNAL wADDR : STD_LOGIC_VECTOR(15 DOWNTO 0) := "0000000000000000";
@@ -73,7 +74,7 @@ architecture Behavioral of holt_mem_trans is
 	
 	SIGNAL h_d0_en, h_d1_en, p_d0_en, p_d1_en, addr_en : STD_LOGIC := '1';
 	
-	SIGNAL rd_int, wr_int : STD_LOGIC := '0';
+	--SIGNAL rd_int, wr_int : STD_LOGIC := '0';
 	
 	SIGNAL DATA_VALID_int : STD_LOGIC := '0';
 	
@@ -140,10 +141,6 @@ begin
 												 rADDR, h_d0_en, h_d1_en, OE, rCE);
 	writer: mem_trans_writer port map (HOLT_ADDR, PROC_DATA_0, PROC_DATA_1, OK_TO_BEGIN_WR, nWR, CLOCK,
 												  wADDR, wDATA, WE, wCE);
-												  
-	--Latches
-	--h_data0_L : Latch8Bit port map(DATA, h_d0_en, DATA_RETURN_0);
-	--h_data1_L : Latch8Bit port map(DATA, h_d1_en, DATA_RETURN_1);
 	
 	DATA_RETURN_0 <= DATA;
 	DATA_RETURN_1 <= DATA;
@@ -152,14 +149,14 @@ begin
 	p_data1_L : Latch8Bit port map(DATA_IN_1, p_d1_en, PROC_DATA_1);
 	addr_L : Latch16Bit port map(addr, addr_en, HOLT_ADDR);
 	
-	rd_L : Latch port map(nRD, addr_en, rd_int);
-	wr_L : Latch port map(nWR, addr_en, wr_int);
+	--rd_L : Latch port map(nRD, addr_en, rd_int);
+	--wr_L : Latch port map(nWR, addr_en, wr_int);
 	
-	nCE <= NOT rCE WHEN rd_int = '0' ELSE NOT wCE;
-	ADDRESS_OUT <= rADDR WHEN rd_int = '0' ELSE wADDR;
+	nCE <= NOT rCE WHEN nRD = '0' ELSE NOT wCE;
+	ADDRESS_OUT <= rADDR WHEN nRD = '0' ELSE wADDR;
 	
 	--DATA <= rDATA when rd_int = '0' ELSE 
-	DATA <= wDATA when wr_int = '0' ELSE
+	DATA <= wDATA when nWR = '0' ELSE
 			  "ZZZZZZZZ";
 	
 	DATA_VALID_0 <= h_d0_en;
@@ -172,15 +169,18 @@ begin
 	addr(0) <= '0';
 	
 	addr(14 DOWNTO 1) <= ADDRESS_IN(14 DOWNTO 1) WHEN ADDRESS_IN(15) = '1' ELSE "00000000000000";
-	addr_en <= '1' WHEN ADDRESS_IN(15) = '1' ELSE '0';
 	
-	OK_TO_BEGIN_WR <= '1' WHEN p_d1_en = '1' AND wr_int = '0' ELSE '0';
-	OK_TO_BEGIN_RD <= '1' WHEN ADDRESS_IN(15) = '1' AND ADDRESS_IN(0) = '0' AND rd_int = '0' ELSE '0';
+	addr_en <= '1' WHEN ADDRESS_IN(15) = '1' AND ADDRESS_IN(0) = '0' ELSE '0';
+	
+	--OK_TO_BEGIN_WR <= '1' WHEN p_d1_en = '1' AND wr_int = '0' ELSE '0';
+	OK_TO_BEGIN_WR <= '1' WHEN ADDRESS_IN(15) = '1' AND ADDRESS_IN(0) = '1'
+								 AND nWR = '0' AND ALE = '0' ELSE '0';
+	OK_TO_BEGIN_RD <= '1' WHEN ADDRESS_IN(15) = '1' AND ADDRESS_IN(0) = '0' AND nRD = '0' ELSE '0';
 	
 	--When to enable the latch for D-IN-2
-	PROCESS(DATA_IN_0)
+	PROCESS(DATA_IN_0, nWR, ALE)
 	BEGIN
-		IF(ADDRESS_IN(15) = '1' AND nWR = '0')
+		IF(ADDRESS_IN(15) = '1' AND ADDRESS_IN(0) = '0' AND nWR = '0' AND ALE = '0')
 		THEN
 			p_d0_en <= '1';
 		ELSE
@@ -189,9 +189,9 @@ begin
 	END PROCESS;
 	
 	--When to enable the latch for D-IN-1
-	PROCESS(DATA_IN_1)
+	PROCESS(DATA_IN_1, nWR, ALE)
 	BEGIN
-		IF(ADDRESS_IN(15) = '1' AND nWR = '0')
+		IF(ADDRESS_IN(15) = '1' AND ADDRESS_IN(0) = '1' AND nWR = '0' AND ALE = '0')
 		THEN
 			p_d1_en <= '1';
 		ELSE

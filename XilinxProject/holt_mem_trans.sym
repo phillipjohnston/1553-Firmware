@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <symbol version="7" name="holt_mem_trans">
     <symboltype>BLOCK</symboltype>
-    <timestamp>2012-11-7T20:44:3</timestamp>
+    <timestamp>2012-11-20T4:42:10</timestamp>
     <pin polarity="Input" x="0" y="480" name="nRD" />
     <pin polarity="Input" x="0" y="544" name="nWR" />
     <pin polarity="Input" x="0" y="224" name="clock" />
@@ -18,6 +18,7 @@
     <pin polarity="Output" x="576" y="-32" name="ADDRESS_OUT(15:0)" />
     <pin polarity="Output" x="576" y="608" name="DATA_RETURN_0(7:0)" />
     <pin polarity="Output" x="576" y="672" name="DATA_RETURN_1(7:0)" />
+    <pin polarity="Input" x="0" y="864" name="ALE" />
     <graph>
         <attrtext style="alignment:BCENTER;fontsize:56;fontname:Arial" attrname="SymbolName" x="288" y="-72" type="symbol" />
         <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="480" type="pin nRD" />
@@ -36,6 +37,8 @@
         <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="504" y="-32" type="pin ADDRESS_OUT(15:0)" />
         <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="504" y="608" type="pin DATA_RETURN_0(7:0)" />
         <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="504" y="672" type="pin DATA_RETURN_1(7:0)" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="72" y="864" type="pin ALE" />
+        <line x2="0" y1="864" y2="864" x1="64" />
         <line x2="576" y1="736" y2="736" x1="512" />
         <line x2="576" y1="800" y2="800" x1="512" />
         <rect width="64" x="0" y="596" height="24" />
@@ -59,6 +62,6 @@
         <line x2="0" y1="-32" y2="-32" x1="64" />
         <rect width="64" x="512" y="-44" height="24" />
         <line x2="576" y1="-32" y2="-32" x1="512" />
-        <rect width="448" x="64" y="-64" height="896" />
+        <rect width="448" x="64" y="-64" height="960" />
     </graph>
 </symbol>

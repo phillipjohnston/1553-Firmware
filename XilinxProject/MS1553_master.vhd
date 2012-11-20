@@ -20,15 +20,6 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx primitives in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
-
 entity MS1553_master is
 	PORT(
 		--From Processor
@@ -51,25 +42,21 @@ entity MS1553_master is
 		DATA_OUT_1 : out STD_LOGIC_VECTOR(7 DOWNTO 0);
 		nREAD : out STD_LOGIC;
 		nWRITE : out STD_LOGIC;
+		ALE_OUT : OUT STD_LOGIC;
 		
 		--To Initializer Block
 		RESET_IC: out STD_LOGIC;
-		--IS_BIG_ENDIAN: out STD_LOGIC;
-		--MEM_TEST_EN: out STD_LOGIC;
-		--RAM_ERROR_CORR_EN: out STD_LOGIC;
 		
 		--To Processor
 		IDATA : out STD_LOGIC_VECTOR(7 DOWNTO 0)
+		
 	);
 end MS1553_master;
 
 architecture Behavioral of MS1553_master is
 	signal ADDR_TEMP : STD_LOGIC_VECTOR(15 DOWNTO 0) := "0000000000000000";
-	signal PROC_DATA_0 : STD_LOGIC_VECTOR(7 DOWNTO 0) := "00000000";
-	signal PROC_DATA_1 : STD_LOGIC_VECTOR(7 DOWNTO 0) := "00000000";
 	signal CHIP_DATA_0 : STD_LOGIC_VECTOR(7 DOWNTO 0) := "00000000";
 	signal CHIP_DATA_1 : STD_LOGIC_VECTOR(7 DOWNTO 0) := "00000000";
-	signal nWR_INT, nRD_INT : STD_LOGIC := '0';
 	signal pd0_en, pd1_en, addr_en, nwr_en, nrd_en : STD_LOGIC := '0'; --cd0_en, cd1_en,
 	
 	SIGNAL RELEASE_DATA : STD_LOGIC := '0';
@@ -105,28 +92,31 @@ architecture Behavioral of MS1553_master is
 	
 begin
 
-	pd0_L : Latch8Bit port map (PROC_DATA_0, pd0_en, DATA_OUT_0);
-	pd1_L : Latch8Bit port map (PROC_DATA_1, pd1_en, DATA_OUT_1);
+	--pd0_L : Latch8Bit port map (ADDRESS(7 DOWNTO 0), pd0_en, DATA_OUT_0);
+	--pd1_L : Latch8Bit port map (ADDRESS(7 DOWNTO 0), pd1_en, DATA_OUT_1);
+	
+	DATA_OUT_0 <= ADDRESS(7 DOWNTO 0);
+	DATA_OUT_1 <= ADDRESS(7 DOWNTO 0);
 	
 	CHIP_DATA_0 <= DATA_IN_0 WHEN DATA_VALID_0 = '1';
 	CHIP_DATA_1 <= DATA_IN_1 WHEN DATA_VALID_1 = '1';
 	
 	ADDR_TEMP <= ADDRESS WHEN ALE = '1';
-	ADDRESS_TO_CHIP(15 DOWNTO 8) <= ADDR_TEMP WHEN addr_en = '1';
+	
+	ALE_OUT <= ALE;
+	
+	ADDRESS_TO_CHIP <= ADDR_TEMP WHEN addr_en = '1';
 	
 	RESET_IC <= '1'; 
 	
-	nWRITE <= nWR;
-	nREAD <= nRD;
+	nWRITE <= nWR WHEN ADDR_TEMP(15) = '1' ELSE '1';
+	nREAD <= nRD WHEN ADDR_TEMP(15) = '1' ELSE '1';
 	
-	PROC_DATA_0 <= ADDRESS(7 DOWNTO 0);
-	PROC_DATA_1 <= ADDRESS(7 DOWNTO 0);
-	
-	pd0_en <= '1' WHEN ALE = '0' AND ADDR_TEMP(15) = '1' and ADDR_TEMP(0) = '0' AND nWR = '0' ELSE '0';
-	pd1_en <= '1' WHEN ALE = '0' AND ADDR_TEMP(15) = '1' AND ADDR_TEMP(0) = '1' AND nWR = '0' ELSE '0';
+	--pd0_en <= '1' WHEN ALE = '0' AND ADDR_TEMP(15) = '1' and ADDR_TEMP(0) = '0' AND nWR = '0' ELSE '0';
+	--pd1_en <= '1' WHEN ALE = '0' AND ADDR_TEMP(15) = '1' AND ADDR_TEMP(0) = '1' AND nWR = '0' ELSE '0';
 	
 	--We only latch the upper address value
-	addr_en <= '1' WHEN ALE = '1' AND ADDR_TEMP(15) = '1' AND ADDR_TEMP(0) = '0' ELSE '0';
+	addr_en <= '1' WHEN ALE = '1' AND ADDRESS(15) = '1' ELSE '0'; --AND ADDRESS(0) = '0' ELSE '0';
 	
 	--ADD LOGIC FOR IDATA OUT
 	IDATA <= CHIP_DATA_0 WHEN ADDR_TEMP(15) = '1' AND ADDR_TEMP(0) = '0' AND nRD = '0' ELSE --AND(DATA_VALID_0 = '1' OR DATA_WAS_VALID_0 = '1') ELSE
