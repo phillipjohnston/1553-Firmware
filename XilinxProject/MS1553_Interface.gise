@@ -22,9 +22,15 @@
   <sourceproject xmlns="http://www.xilinx.com/XMLSchema" xil_pn:fileType="FILE_XISE" xil_pn:name="MS1553_Interface.xise"/>
 
   <files xmlns="http://www.xilinx.com/XMLSchema">
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_VHDL" xil_pn:name="MS1553_Controller.vhf"/>
     <file xil_pn:fileType="FILE_SYMBOL" xil_pn:name="MS1553_master.sym" xil_pn:origination="imported"/>
     <file xil_pn:fileType="FILE_SYMBOL" xil_pn:name="SFR_Address_Decoder.sym" xil_pn:origination="imported"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_VHDL" xil_pn:name="System.vhf"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="System_System_sch_tb_beh.prj"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="System_System_sch_tb_isim_beh.exe"/>
+    <file xil_pn:fileType="FILE_ISIM_MISC" xil_pn:name="System_System_sch_tb_isim_beh.wdb"/>
     <file xil_pn:fileType="FILE_NCD" xil_pn:name="System_guide.ncd" xil_pn:origination="imported"/>
+    <file xil_pn:fileType="FILE_LOG" xil_pn:name="fuse.log"/>
     <file xil_pn:fileType="FILE_SYMBOL" xil_pn:name="holt_mem_trans.sym" xil_pn:origination="imported"/>
     <file xil_pn:fileType="FILE_ASY" xil_pn:name="ipcore_dir/Clock.asy" xil_pn:origination="imported"/>
     <file xil_pn:fileType="FILE_VHDL" xil_pn:name="ipcore_dir/Clock.vhd" xil_pn:origination="imported">
@@ -38,13 +44,137 @@
       <branch xil_pn:name="BehavioralSim"/>
     </file>
     <file xil_pn:fileType="FILE_SYMBOL" xil_pn:name="ipcore_dir/Memory.sym" xil_pn:origination="imported"/>
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="isim"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_CMD" xil_pn:name="isim.cmd"/>
     <file xil_pn:fileType="FILE_SYMBOL" xil_pn:name="sfr_8_input.sym" xil_pn:origination="imported"/>
     <file xil_pn:fileType="FILE_SYMBOL" xil_pn:name="sfr_8_output.sym" xil_pn:origination="imported"/>
     <file xil_pn:fileType="FILE_SYMBOL" xil_pn:name="sfr_8_output_pulse.sym" xil_pn:origination="imported"/>
     <file xil_pn:fileType="FILE_SYMBOL" xil_pn:name="tri_buf_8.sym" xil_pn:origination="imported"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_INI" xil_pn:name="xilinxsim.ini"/>
   </files>
 
   <transforms xmlns="http://www.xilinx.com/XMLSchema">
+    <transform xil_pn:end_ts="1353389265" xil_pn:in_ck="-366131825017859490" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1353389265">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="OutputChanged"/>
+      <outfile xil_pn:name="DelayModule.vhd"/>
+      <outfile xil_pn:name="Latch.vhd"/>
+      <outfile xil_pn:name="Latch16Bit.vhd"/>
+      <outfile xil_pn:name="Latch8Bit.vhd"/>
+      <outfile xil_pn:name="MEM_SEL_ENA.vhd"/>
+      <outfile xil_pn:name="MS1553_Controller_TB.vhd"/>
+      <outfile xil_pn:name="MS1553_Reset_Pulse_Gen.vhd"/>
+      <outfile xil_pn:name="MS1553_Reset_Pulse_Gen_TB.vhd"/>
+      <outfile xil_pn:name="MS1553_master.vhd"/>
+      <outfile xil_pn:name="MS1553_master_TB.vhd"/>
+      <outfile xil_pn:name="Mem8085_Controller.vhd"/>
+      <outfile xil_pn:name="SFR_Address_Decoder.vhd"/>
+      <outfile xil_pn:name="SFR_CONFIG.vhd"/>
+      <outfile xil_pn:name="SFR_STATUS.vhd"/>
+      <outfile xil_pn:name="SFR_TRIG.vhd"/>
+      <outfile xil_pn:name="System_TB.vhd"/>
+      <outfile xil_pn:name="convers_c.vhd"/>
+      <outfile xil_pn:name="holt_initializer.vhd"/>
+      <outfile xil_pn:name="holt_initializer_TB.vhd"/>
+      <outfile xil_pn:name="holt_mem_trans.vhd"/>
+      <outfile xil_pn:name="i8085_c.vhd"/>
+      <outfile xil_pn:name="i8085_testbench.vhd"/>
+      <outfile xil_pn:name="mem_trans_reader.vhd"/>
+      <outfile xil_pn:name="mem_trans_writer.vhd"/>
+      <outfile xil_pn:name="sfr8input_testbench.vhd"/>
+      <outfile xil_pn:name="sfr_8_input.vhd"/>
+      <outfile xil_pn:name="sfr_8_output.vhd"/>
+      <outfile xil_pn:name="sfr_8_output_pulse.vhd"/>
+      <outfile xil_pn:name="sfr_8_outputpulse_testbench.vhd"/>
+      <outfile xil_pn:name="srf8_output_testbench.vhd"/>
+      <outfile xil_pn:name="tri_buf_8.vhd"/>
+    </transform>
+    <transform xil_pn:end_ts="1353389265" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="-485926970387652681" xil_pn:start_ts="1353389265">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1353389270" xil_pn:in_ck="3180090168961018574" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="-3185794803335620939" xil_pn:start_ts="1353389265">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="MS1553_Controller.vhf"/>
+      <outfile xil_pn:name="System.vhf"/>
+    </transform>
+    <transform xil_pn:end_ts="1353389271" xil_pn:in_ck="-5467467483282385453" xil_pn:name="TRAN_regenerateCoresSim" xil_pn:prop_ck="-2361169685954782061" xil_pn:start_ts="1353389270">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="ipcore_dir/Clock.vhd"/>
+      <outfile xil_pn:name="ipcore_dir/Clock/example_design/Clock_exdes.vhd"/>
+      <outfile xil_pn:name="ipcore_dir/Memory.ngc"/>
+      <outfile xil_pn:name="ipcore_dir/Memory.vhd"/>
+    </transform>
+    <transform xil_pn:end_ts="1353389271" xil_pn:in_ck="8078629205768527917" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1353389271">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="OutputChanged"/>
+      <outfile xil_pn:name="DelayModule.vhd"/>
+      <outfile xil_pn:name="Latch.vhd"/>
+      <outfile xil_pn:name="Latch16Bit.vhd"/>
+      <outfile xil_pn:name="Latch8Bit.vhd"/>
+      <outfile xil_pn:name="MEM_SEL_ENA.vhd"/>
+      <outfile xil_pn:name="MS1553_Controller.vhf"/>
+      <outfile xil_pn:name="MS1553_Controller_TB.vhd"/>
+      <outfile xil_pn:name="MS1553_Reset_Pulse_Gen.vhd"/>
+      <outfile xil_pn:name="MS1553_Reset_Pulse_Gen_TB.vhd"/>
+      <outfile xil_pn:name="MS1553_master.vhd"/>
+      <outfile xil_pn:name="MS1553_master_TB.vhd"/>
+      <outfile xil_pn:name="Mem8085_Controller.vhd"/>
+      <outfile xil_pn:name="SFR_Address_Decoder.vhd"/>
+      <outfile xil_pn:name="SFR_CONFIG.vhd"/>
+      <outfile xil_pn:name="SFR_STATUS.vhd"/>
+      <outfile xil_pn:name="SFR_TRIG.vhd"/>
+      <outfile xil_pn:name="System.vhf"/>
+      <outfile xil_pn:name="System_TB.vhd"/>
+      <outfile xil_pn:name="convers_c.vhd"/>
+      <outfile xil_pn:name="holt_initializer.vhd"/>
+      <outfile xil_pn:name="holt_initializer_TB.vhd"/>
+      <outfile xil_pn:name="holt_mem_trans.vhd"/>
+      <outfile xil_pn:name="i8085_c.vhd"/>
+      <outfile xil_pn:name="i8085_testbench.vhd"/>
+      <outfile xil_pn:name="ipcore_dir/Clock.vhd"/>
+      <outfile xil_pn:name="ipcore_dir/Clock/example_design/Clock_exdes.vhd"/>
+      <outfile xil_pn:name="ipcore_dir/Memory.vhd"/>
+      <outfile xil_pn:name="mem_trans_reader.vhd"/>
+      <outfile xil_pn:name="mem_trans_writer.vhd"/>
+      <outfile xil_pn:name="sfr8input_testbench.vhd"/>
+      <outfile xil_pn:name="sfr_8_input.vhd"/>
+      <outfile xil_pn:name="sfr_8_output.vhd"/>
+      <outfile xil_pn:name="sfr_8_output_pulse.vhd"/>
+      <outfile xil_pn:name="sfr_8_outputpulse_testbench.vhd"/>
+      <outfile xil_pn:name="srf8_output_testbench.vhd"/>
+      <outfile xil_pn:name="tri_buf_8.vhd"/>
+    </transform>
+    <transform xil_pn:end_ts="1353389310" xil_pn:in_ck="8078629205768527917" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="-5040367080409080888" xil_pn:start_ts="1353389271">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="InputChanged"/>
+      <outfile xil_pn:name="System_System_sch_tb_beh.prj"/>
+      <outfile xil_pn:name="System_System_sch_tb_isim_beh.exe"/>
+      <outfile xil_pn:name="fuse.log"/>
+      <outfile xil_pn:name="isim"/>
+      <outfile xil_pn:name="xilinxsim.ini"/>
+    </transform>
+    <transform xil_pn:end_ts="1353389311" xil_pn:in_ck="-1920685089494335542" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="-2844522551569615179" xil_pn:start_ts="1353389310">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <outfile xil_pn:name="System_System_sch_tb_isim_beh.wdb"/>
+      <outfile xil_pn:name="isim.cmd"/>
+    </transform>
     <transform xil_pn:end_ts="1353388019" xil_pn:in_ck="3931658680340266639" xil_pn:name="TRAN_SubProjectAbstractToPreProxy" xil_pn:start_ts="1353388019">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
