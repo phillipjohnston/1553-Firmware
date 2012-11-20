@@ -1,4 +1,0 @@
-vhdl work "Latch8Bit.vhd"
-vhdl work "Latch16Bit.vhd"
-vhdl work "MS1553_master.vhd"
-vhdl work "ipcore_dir/Clock/example_design/Clock_exdes.vhd"
