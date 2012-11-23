@@ -32,25 +32,34 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity SFR_Address_Decoder is
     Port ( ADDR : in  STD_LOGIC_VECTOR (15 downto 0);
 			  ALE : in STD_LOGIC;
-           SEL : out  STD_LOGIC_VECTOR (15 downto 0));
+			  WR : in STD_LOGIC;
+			  RD : in STD_LOGIC;
+           SEL : out  STD_LOGIC_VECTOR (15 downto 0)
+			  
+			  );
+			  
 end SFR_Address_Decoder;
 
 architecture Behavioral of SFR_Address_Decoder is
 
 	constant base_addr : STD_LOGIC_VECTOR(7 DOWNTO 0):= "01111111";
 	SIGNAL ADDR_LATCHED : STD_LOGIC_VECTOR(15 DOWNTO 0) := "0000000000000000";
+	SIGNAL wrorrd_event : STD_LOGIC;
 	
 	COMPONENT Latch16Bit IS
 		PORT(
 			data    : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
 			enable : IN STD_LOGIC;
+			clk	: IN STD_LOGIC;
 			q   : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
 		);
 	END COMPONENT;
+	
 
 begin
 
-	addr_L : Latch16Bit port map (ADDR, ALE, ADDR_LATCHED);
+	wrorrd_event <= WR OR RD;
+	addr_L : Latch16Bit port map (data=>ADDR, enable => ALE, clk => wrorrd_event,q => ADDR_LATCHED);
 
 	WITH ADDR_LATCHED SELECT
 		SEL <= 	X"0001" 		WHEN base_addr & "00000000",

@@ -208,13 +208,13 @@
 #NET "FPGA_VTEMP"                    LOC = "Y3";
 ### 2   on R207 150 ohm to VCC1V5
 ###
-#NET "GPIO_BUTTON0"                  LOC = "F3";
+NET "GPIO_BUTTON0"                  LOC = "F3";
 ### 2   on SW4 pushbutton (active-high)
-#NET "GPIO_BUTTON1"                  LOC = "G6";
+NET "GPIO_BUTTON1"                  LOC = "G6";
 ### 2   on SW7 pushbutton (active-high)
-#NET "GPIO_BUTTON2"                  LOC = "F5";
+NET "GPIO_BUTTON2"                  LOC = "F5";
 ### 2   on SW5 pushbutton (active-high)
-#NET "GPIO_BUTTON3"                  LOC = "C1";
+NET "GPIO_BUTTON3"                  LOC = "C1";
 ### 2   on SW8 pushbutton (active-high)
 ###
 #NET "GPIO_HEADER_0_LS"              LOC = "G7";
@@ -226,13 +226,13 @@
 #NET "GPIO_HEADER_3_LS"              LOC = "R7";
 ### 5   on U52 (level shifter, U52.16 <-> GPIO_HEADER_0 <-> series R283 200 ohm <-> 4 on J55
 ###
-#NET "GPIO_LED_0"                    LOC = "D17";
+NET "GPIO_LED_0"                    LOC = "D17";
 ### 2   on DS3 LED
-#NET "GPIO_LED_1"                    LOC = "AB4";
+NET "GPIO_LED_1"                    LOC = "AB4";
 ### 2   on DS4 LED
-#NET "GPIO_LED_2"                    LOC = "D21";
+NET "GPIO_LED_2"                    LOC = "D21";
 ### 2   on DS5 LED
-#NET "GPIO_LED_3"                    LOC = "W15";
+NET "GPIO_LED_3"                    LOC = "W15";
 ### 2   on DS6 LED
 ###
 #NET "GPIO_SWITCH_0"                 LOC = "C18";

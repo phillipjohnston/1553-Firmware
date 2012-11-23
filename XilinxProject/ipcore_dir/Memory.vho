@@ -47,6 +47,10 @@
 --        AXI_SLAVE
 --    AXILite_SLAVE_S_AXI
 --        AXILite_SLAVE
+--    BRAM_PORTA
+--        BRAM_PORTA
+--    BRAM_PORTB
+--        BRAM_PORTB
 
 -- The following code must appear in the VHDL architecture header:
 

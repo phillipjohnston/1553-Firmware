@@ -1,8 +1,8 @@
 INTSTYLE=impact
-INFILE=C:\Users\Phillip\Dropbox\workspace\class_projects\MS1553_Interface\XilinxProject\impact.xsl
-OUTFILE=C:\Users\Phillip\Dropbox\workspace\class_projects\MS1553_Interface\XilinxProject\impact.xsl
+INFILE=C:\Users\cmulady\Documents\GitHub\1553-Firmware\XilinxProject\impact.xsl
+OUTFILE=C:\Users\cmulady\Documents\GitHub\1553-Firmware\XilinxProject\impact.xsl
 FAMILY=Multiple
 PART=Multiple
-WORKINGDIR=C:\Users\Phillip\Dropbox\workspace\class_projects\MS1553_Interface\XilinxProject
+WORKINGDIR=C:\Users\cmulady\Documents\GitHub\1553-Firmware\XilinxProject
 LICENSE=iMPACT
 USER_INFO=iMPACT

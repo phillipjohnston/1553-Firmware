@@ -32,9 +32,10 @@ use IEEE.STD_LOGIC_1164.ALL;
 ENTITY Latch16Bit IS
    PORT
    (
-		data    : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+		data   : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
       enable : IN STD_LOGIC;
-      q               : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
+		clk	 : IN STD_LOGIC;
+      q      : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
    );
 END Latch16Bit;
 
@@ -42,12 +43,13 @@ END Latch16Bit;
 ARCHITECTURE Behavioral OF Latch16Bit IS
 BEGIN
 
-latch_p : PROCESS (enable, data)
+latch_p : PROCESS (enable, clk)
       BEGIN
-         IF (enable = '1') THEN
+         IF (enable = '1' AND clk'EVENT AND clk = '1') THEN
             q <= data;
          END IF;
       END PROCESS latch_p;
+		
 END Behavioral;
 
 
