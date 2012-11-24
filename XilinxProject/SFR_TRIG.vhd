@@ -19,6 +19,7 @@
 ----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.numeric_std.all;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -47,10 +48,12 @@ architecture Behavioral of sfr_8_output_pulse is
 
 	signal Q_internal : std_logic_vector(7 downto 0);
 	signal re_cs : std_logic_vector(1 downto 0);
+	signal we_or_re : std_logic;
 
 begin
 
 	re_cs <= RE & CS;
+	we_or_re <= WE OR RE;
 	
 	with re_cs select
 		DOUT <= 	"00000000" when "11",
@@ -61,18 +64,27 @@ begin
 	TEST <= Q_internal(4);	
 	
 
-process(WE, clear, CS)
+process(we_or_re, clear)
+	variable COUNT : unsigned (7 DOWNTO 0) := "00000000";
 	begin
 		if clear = '1' then
 			Q_internal <= "00000000";
 			
-		elsif (WE = '0' and WE'event) then
+		elsif (we_or_re'event and we_or_re = '0') then
 				if(CS='1') then
 					Q_internal <= DIN;
+					COUNT := "00000000";
+				elsif (CS = '0' AND COUNT < "00000100" ) then
+					--Q_internal <= "00000000";
+					COUNT := COUNT + 1;
+				elsif (COUNT = "00000100") then
+					COUNT := "00000000";
+					Q_internal <= "00000000";
+					
 				end if;
 				
-		elsif (CS = '0' and CS'event) then
-				Q_internal <= "00000000";
+		--elsif (CS = '0' and CS'event) then
+				--Q_internal <= "00000000";--
 
 		
 

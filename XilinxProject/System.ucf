@@ -217,13 +217,13 @@ NET "GPIO_BUTTON2"                  LOC = "F5";
 NET "GPIO_BUTTON3"                  LOC = "C1";
 ### 2   on SW8 pushbutton (active-high)
 ###
-#NET "GPIO_HEADER_0_LS"              LOC = "G7";
+NET "GPIO_HEADER_0_LS"              LOC = "G7";
 ### 1   on U52 (level shifter, U52.20 <-> GPIO_HEADER_0 <-> series R280 200 ohm <-> 1 on J55
-#NET "GPIO_HEADER_1_LS"              LOC = "H6";
+NET "GPIO_HEADER_1_LS"              LOC = "H6";
 ### 3   on U52 (level shifter, U52.18 <-> GPIO_HEADER_0 <-> series R281 200 ohm <-> 2 on J55
-#NET "GPIO_HEADER_2_LS"              LOC = "D1";
+NET "GPIO_HEADER_2_LS"              LOC = "D1";
 ### 4   on U52 (level shifter, U52.17 <-> GPIO_HEADER_0 <-> series R282 200 ohm <-> 3 on J55
-#NET "GPIO_HEADER_3_LS"              LOC = "R7";
+NET "GPIO_HEADER_3_LS"              LOC = "R7";
 ### 5   on U52 (level shifter, U52.16 <-> GPIO_HEADER_0 <-> series R283 200 ohm <-> 4 on J55
 ###
 NET "GPIO_LED_0"                    LOC = "D17";
