@@ -45,6 +45,7 @@ architecture Behavioral of SFR_Address_Decoder is
 	constant base_addr : STD_LOGIC_VECTOR(7 DOWNTO 0):= "01111111";
 	SIGNAL ADDR_LATCHED : STD_LOGIC_VECTOR(15 DOWNTO 0) := "0000000000000000";
 	SIGNAL wrorrd_event : STD_LOGIC;
+	SIGNAL activate : STD_LOGIC;
 	
 	COMPONENT Latch16Bit IS
 		PORT(
@@ -59,25 +60,26 @@ architecture Behavioral of SFR_Address_Decoder is
 begin
 
 	wrorrd_event <= WR OR RD;
+	activate <= NOT ((ALE AND (NOT RD  AND NOT WR))); 
 	addr_L : Latch16Bit port map (data=>ADDR, enable => ALE, clk => wrorrd_event,q => ADDR_LATCHED);
 
-	WITH ADDR_LATCHED SELECT
-		SEL <= 	X"0001" 		WHEN base_addr & "00000000",
-					X"0002" 		WHEN base_addr & "00000001",
-					X"0004"		WHEN base_addr & "00000010",
-					X"0008"		WHEN base_addr & "00000011",
-					X"0010"		WHEN base_addr & "00000100",
-					X"0020"		WHEN base_addr & "00000101",
-					X"0040"		WHEN base_addr & "00000110",
-					X"0080"		WHEN base_addr & "00000111",
-					X"0100"		WHEN base_addr & "00001000",
-					X"0200"		WHEN base_addr & "00001001",
-					X"0400"		WHEN base_addr & "00001010",
-					X"0800"		WHEN base_addr & "00001011",
-					X"1000"		WHEN base_addr & "00001100",
-					X"2000"		WHEN base_addr & "00001101",
-					X"4000"		WHEN base_addr & "00001110",
-					X"8000"		WHEN base_addr & "00001111",
+	WITH ADDR_LATCHED&activate SELECT
+		SEL <= 	X"0001" 		WHEN base_addr & "00000000" & '1',
+					X"0002" 		WHEN base_addr & "00000001" & '1',
+					X"0004"		WHEN base_addr & "00000010" & '1',
+					X"0008"		WHEN base_addr & "00000011" & '1',
+					X"0010"		WHEN base_addr & "00000100" & '1',
+					X"0020"		WHEN base_addr & "00000101" & '1',
+					X"0040"		WHEN base_addr & "00000110" & '1',
+					X"0080"		WHEN base_addr & "00000111" & '1',
+					X"0100"		WHEN base_addr & "00001000" & '1',
+					X"0200"		WHEN base_addr & "00001001" & '1',
+					X"0400"		WHEN base_addr & "00001010" & '1',
+					X"0800"		WHEN base_addr & "00001011" & '1',
+					X"1000"		WHEN base_addr & "00001100" & '1',
+					X"2000"		WHEN base_addr & "00001101" & '1',
+					X"4000"		WHEN base_addr & "00001110" & '1',
+					X"8000"		WHEN base_addr & "00001111" & '1',
 					X"0000" 		WHEN OTHERS;
 		
 

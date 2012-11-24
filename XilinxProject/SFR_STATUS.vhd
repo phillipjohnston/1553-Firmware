@@ -52,8 +52,8 @@ begin
 
 	re_cs <= RE & CS;
 	
-	with re_cs select
-			DOUT <= 	Q_internal when  "11",
+	with CS select
+			DOUT <= 	Q_internal when  '1',
 						"ZZZZZZZZ" when others;
 						
 	Q(7) <= ACTIVE;
