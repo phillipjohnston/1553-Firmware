@@ -64,7 +64,10 @@ entity i8085_Connect is
 			  DATA_h_ack  : out  STD_LOGIC;
 			  
 			  --Out to i8085
-           IDATA_out : out  STD_LOGIC_VECTOR (7 downto 0) := "ZZZZZZZZ"
+           IDATA_out : out  STD_LOGIC_VECTOR (7 downto 0) := "ZZZZZZZZ";
+			  
+			  --debugs
+			  STATE_o : out STD_LOGIC_VECTOR (1 DOWNTO 0)
 			  
 			  );
 end i8085_Connect;
@@ -78,6 +81,7 @@ architecture Behavioral of i8085_Connect is
 	signal DATA_i_vout_1_temp : STD_LOGIC := '0';
    signal DATA_i_out_0_temp : STD_LOGIC_VECTOR(7 downto 0);
    signal DATA_i_out_1_temp : STD_LOGIC_VECTOR(7 downto 0);
+	signal addr_lat_en : STD_LOGIC;
 	
 	COMPONENT Latch16Bit IS
 	PORT(
@@ -92,17 +96,24 @@ architecture Behavioral of i8085_Connect is
 begin
 
 	--Latching the 8085 address for Holt_Connect, High Z otherwise
+	addr_lat_en <= ALE AND add_i8085(15);
 	wrorrd_event <= NOT(nWR AND nRD);
-	addr_L : Latch16Bit port map (data=>add_i8085, enable => ALE, clk => wrorrd_event,q => addr_temp);
+--	addr_L : Latch16Bit port map (data=>add_i8085, enable => ALE, clk => wrorrd_event,q => addr_temp);
+	addr_L : Latch16Bit port map (data=>add_i8085, enable => addr_lat_en, clk => wrorrd_event,q => addr_temp);
 	address_latched <= addr_temp WHEN add_i8085(15) = '1' ELSE "ZZZZZZZZZZZZZZZZ";
 	--High Z for data out when no need
 	IDATA_out <= data_temp WHEN add_i8085(15) = '1' ELSE "ZZZZZZZZ";
 	
 	--Other Temps
-	DATA_i_vout_0 <= DATA_i_vout_0_temp WHEN add_i8085(15) = '1' ELSE '0';
-	DATA_i_vout_1 <= DATA_i_vout_1_temp WHEN add_i8085(15) = '1' ELSE '0';
-	DATA_i_out_0 <= DATA_i_out_0_temp WHEN add_i8085(15) = '1' ELSE x"00";
-	DATA_i_out_1 <= DATA_i_out_1_temp WHEN add_i8085(15) = '1' ELSE x"00";
+--	DATA_i_vout_0 <= DATA_i_vout_0_temp WHEN add_i8085(15) = '1' ELSE '0';
+--	DATA_i_vout_1 <= DATA_i_vout_1_temp WHEN add_i8085(15) = '1' ELSE '0';
+--	DATA_i_out_0 <= DATA_i_out_0_temp WHEN add_i8085(15) = '1' ELSE x"00";
+--	DATA_i_out_1 <= DATA_i_out_1_temp WHEN add_i8085(15) = '1' ELSE x"00";
+
+	DATA_i_vout_0 <= DATA_i_vout_0_temp; 
+	DATA_i_vout_1 <= DATA_i_vout_1_temp; 
+	DATA_i_out_0 <= DATA_i_out_0_temp;
+	DATA_i_out_1 <= DATA_i_out_1_temp;
 	
 	
 	--Enable Holt_Connect outputs by add_i8085(15)
@@ -115,10 +126,14 @@ begin
 	write_p : PROCESS(nWR, reset, DATA_i_ack, add_i8085(15) )
 		variable STATE : STD_LOGIC_VECTOR(1 DOWNTO 0) := "00";
 	BEGIN
+	
+		STATE_o <= STATE; 
 		
 		--Reset Non add_i8085(15) enabled stuff
 		IF(reset = '1') THEN
 			STATE := "00";
+			DATA_i_vout_0_temp <= '0';
+			DATA_i_vout_1_temp <= '0';
 		END IF;
 			--As soon as read is ready take it and wait for the next, setting valid bit as it is sent out
 		CASE STATE IS
@@ -132,21 +147,23 @@ begin
 					DATA_i_vout_0_temp <= '1';
 				END IF;
 			WHEN "01" => --Place second 8bits and valid flag
-				IF( add_i8085(15) = '0' ) THEN --Reset on bad add_i8085(15)
-					STATE := "00";
-					DATA_i_vout_0_temp <= '0';
-					DATA_i_vout_1_temp <= '0';
-				ELSIF( (nWR = '1') and (nWR'event) ) THEN
+				--IF( add_i8085(15) = '0' ) THEN --Reset on bad add_i8085(15)
+--					STATE := "00";
+--					DATA_i_vout_0_temp <= '0';
+--					DATA_i_vout_1_temp <= '0';
+--				ELSIF( (nWR = '1') and (nWR'event) ) THEN
+				IF( (nWR = '1') and (nWR'event) and add_i8085(15) = '1') THEN
 					DATA_i_out_1_temp <= add_i8085(7 downto 0);
 					STATE := "10";
 					DATA_i_vout_1_temp <= '1';
 				END IF;
 			WHEN "10" => --When acknowledged, turn off validy and reset
-				IF( add_i8085(15) = '0' ) THEN --Reset on bad add_i8085(15)
-					STATE := "00";
-					DATA_i_vout_0_temp <= '0';
-					DATA_i_vout_1_temp <= '0';
-				ELSIF( (DATA_i_ack = '1') and (DATA_i_ack'event) ) THEN
+--				IF( add_i8085(15) = '0' ) THEN --Reset on bad add_i8085(15)
+--					STATE := "00";
+--					DATA_i_vout_0_temp <= '0';
+--					DATA_i_vout_1_temp <= '0';
+--				ELSIF( (DATA_i_ack = '1') and (DATA_i_ack'event) ) THEN
+			IF( (DATA_i_ack = '1') and (DATA_i_ack'event) and add_i8085(15) = '1') THEN
 					STATE := "00";
 					DATA_i_vout_0_temp <= '0';
 					DATA_i_vout_1_temp <= '0';

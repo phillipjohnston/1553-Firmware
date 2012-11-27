@@ -108,6 +108,11 @@
         <signal name="DATA_h_v_1" />
         <signal name="DATA_h_v_0" />
         <signal name="nIRQ" />
+        <signal name="RESET_OUT" />
+        <signal name="nRESET_OUT" />
+        <signal name="XLXN_167" />
+        <signal name="XLXN_166" />
+        <signal name="state_out(2:0)" />
         <port polarity="Output" name="NET_GND" />
         <port polarity="Input" name="SYSCLK_P" />
         <port polarity="Input" name="SYSCLK_N" />
@@ -345,8 +350,9 @@
             <line x2="384" y1="-32" y2="-32" x1="320" />
         </blockdef>
         <blockdef name="i8085_Connect">
-            <timestamp>2012-11-27T11:18:51</timestamp>
-            <rect width="432" x="64" y="-704" height="704" />
+            <timestamp>2012-11-27T15:35:20</timestamp>
+            <rect width="64" x="496" y="20" height="24" />
+            <line x2="560" y1="32" y2="32" x1="496" />
             <line x2="0" y1="-672" y2="-672" x1="64" />
             <line x2="0" y1="-608" y2="-608" x1="64" />
             <line x2="0" y1="-544" y2="-544" x1="64" />
@@ -375,6 +381,7 @@
             <line x2="560" y1="-160" y2="-160" x1="496" />
             <rect width="64" x="496" y="-108" height="24" />
             <line x2="560" y1="-96" y2="-96" x1="496" />
+            <rect width="432" x="64" y="-704" height="832" />
         </blockdef>
         <blockdef name="bufg">
             <timestamp>2000-1-1T10:10:10</timestamp>
@@ -423,6 +430,33 @@
             <rect width="64" x="592" y="-44" height="24" />
             <line x2="656" y1="-32" y2="-32" x1="592" />
         </blockdef>
+        <blockdef name="and2">
+            <timestamp>2000-1-1T10:10:10</timestamp>
+            <line x2="64" y1="-64" y2="-64" x1="0" />
+            <line x2="64" y1="-128" y2="-128" x1="0" />
+            <line x2="192" y1="-96" y2="-96" x1="256" />
+            <arc ex="144" ey="-144" sx="144" sy="-48" r="48" cx="144" cy="-96" />
+            <line x2="64" y1="-48" y2="-48" x1="144" />
+            <line x2="144" y1="-144" y2="-144" x1="64" />
+            <line x2="64" y1="-48" y2="-144" x1="64" />
+        </blockdef>
+        <blockdef name="cb4ce">
+            <timestamp>2000-1-1T10:10:10</timestamp>
+            <rect width="256" x="64" y="-512" height="448" />
+            <line x2="64" y1="-32" y2="-32" x1="0" />
+            <line x2="64" y1="-128" y2="-128" x1="0" />
+            <line x2="320" y1="-256" y2="-256" x1="384" />
+            <line x2="320" y1="-320" y2="-320" x1="384" />
+            <line x2="320" y1="-384" y2="-384" x1="384" />
+            <line x2="320" y1="-448" y2="-448" x1="384" />
+            <line x2="64" y1="-128" y2="-144" x1="80" />
+            <line x2="80" y1="-112" y2="-128" x1="64" />
+            <line x2="320" y1="-128" y2="-128" x1="384" />
+            <line x2="64" y1="-32" y2="-32" x1="192" />
+            <line x2="192" y1="-64" y2="-32" x1="192" />
+            <line x2="64" y1="-192" y2="-192" x1="0" />
+            <line x2="320" y1="-192" y2="-192" x1="384" />
+        </blockdef>
         <block symbolname="I8085_c" name="XLXI_1">
             <blockpin signalname="SLOW_CLOCK" name="X1" />
             <blockpin signalname="XLXN_120" name="SID" />
@@ -432,7 +466,7 @@
             <blockpin signalname="XLXN_124" name="RST55" />
             <blockpin signalname="XLXN_125" name="INTR" />
             <blockpin signalname="XLXN_118" name="READY" />
-            <blockpin signalname="CPU_RESET_BUF_INV" name="RESETINBAR" />
+            <blockpin signalname="nRESET_OUT" name="RESETINBAR" />
             <blockpin signalname="XLXN_126" name="HOLD" />
             <blockpin signalname="IDATA(7:0)" name="ID(7:0)" />
             <blockpin name="RESETOUT" />
@@ -490,7 +524,7 @@
             <blockpin signalname="RE" name="RE" />
             <blockpin signalname="WE" name="WE" />
             <blockpin signalname="CLOCK_8085" name="clock" />
-            <blockpin signalname="CPU_RESET_BUF" name="clear" />
+            <blockpin signalname="RESET_OUT" name="clear" />
             <blockpin signalname="SEL_SFR(0)" name="CS" />
             <blockpin signalname="ADDR_OUT_8085(7:0)" name="DIN(7:0)" />
             <blockpin signalname="IDATA(7:0)" name="DOUT(7:0)" />
@@ -504,7 +538,7 @@
             <blockpin signalname="RE" name="RE" />
             <blockpin signalname="WE" name="WE" />
             <blockpin signalname="CLOCK_8085" name="clock" />
-            <blockpin signalname="CPU_RESET_BUF" name="clear" />
+            <blockpin signalname="RESET_OUT" name="clear" />
             <blockpin signalname="SEL_SFR(2)" name="CS" />
             <blockpin signalname="ADDR_OUT_8085(7:0)" name="DIN(7:0)" />
             <blockpin signalname="MTRUN" name="MTRUN" />
@@ -595,7 +629,7 @@
             <blockpin signalname="RE" name="RE" />
             <blockpin signalname="WE" name="WE" />
             <blockpin signalname="CLOCK_8085" name="clock" />
-            <blockpin signalname="CPU_RESET_BUF" name="clear" />
+            <blockpin signalname="RESET_OUT" name="clear" />
             <blockpin signalname="SEL_SFR(4)" name="CS" />
             <blockpin signalname="ADDR_OUT_8085(7:0)" name="DIN(7:0)" />
             <blockpin signalname="IDATA(7:0)" name="DOUT(7:0)" />
@@ -641,7 +675,7 @@
             <blockpin signalname="BTNS_IN(3)" name="O" />
         </block>
         <block symbolname="i8085_Connect" name="XLXI_171">
-            <blockpin signalname="CPU_RESET_BUF" name="reset" />
+            <blockpin signalname="RESET_OUT" name="reset" />
             <blockpin signalname="FAST_CLOCK" name="fast_clk" />
             <blockpin signalname="ALE" name="ALE" />
             <blockpin signalname="nWR" name="nWR" />
@@ -662,6 +696,7 @@
             <blockpin signalname="DATA_i_out_0(7:0)" name="DATA_i_out_0(7:0)" />
             <blockpin signalname="DATA_i_out_1(7:0)" name="DATA_i_out_1(7:0)" />
             <blockpin signalname="IDATA(7:0)" name="IDATA_out(7:0)" />
+            <blockpin signalname="state_out(2:0)" name="STATE_o(2:0)" />
         </block>
         <block symbolname="bufg" name="XLXI_176">
             <blockpin signalname="XLXN_164" name="I" />
@@ -678,9 +713,9 @@
             <blockpin signalname="DATA_i_vout_0" name="DATA_i_vo_0" />
             <blockpin signalname="DATA_i_vout_1" name="DATA_i_vo_1" />
             <blockpin signalname="DATA_h_ack" name="DATA_h_ack" />
-            <blockpin name="fast_clk" />
+            <blockpin signalname="FAST_CLOCK" name="fast_clk" />
             <blockpin signalname="SLOW_CLOCK" name="slow_clock" />
-            <blockpin signalname="CPU_RESET_BUF" name="reset" />
+            <blockpin signalname="RESET_OUT" name="reset" />
             <blockpin signalname="nIRQ" name="nIRQ" />
             <blockpin signalname="ADDR_LAT(15:0)" name="ADDRESS_LATCHED(15:0)" />
             <blockpin signalname="DATA_i_out_0(7:0)" name="DATA_i_o_0(7:0)" />
@@ -701,11 +736,34 @@
             <blockpin signalname="ADDRESS(15:0)" name="ADDRESS_HOLT(15:0)" />
             <blockpin signalname="DATA(15:0)" name="DATA_HOLT(15:0)" />
         </block>
+        <block symbolname="cb4ce" name="XLXI_184">
+            <blockpin signalname="XLXN_167" name="C" />
+            <blockpin signalname="XLXN_166" name="CE" />
+            <blockpin signalname="CPU_RESET_BUF" name="CLR" />
+            <blockpin name="CEO" />
+            <blockpin name="Q0" />
+            <blockpin name="Q1" />
+            <blockpin name="Q2" />
+            <blockpin name="Q3" />
+            <blockpin signalname="nRESET_OUT" name="TC" />
+        </block>
+        <block symbolname="and2" name="XLXI_182">
+            <blockpin signalname="RESET_OUT" name="I0" />
+            <blockpin signalname="SLOW_CLOCK" name="I1" />
+            <blockpin signalname="XLXN_167" name="O" />
+        </block>
+        <block symbolname="vcc" name="XLXI_180">
+            <blockpin signalname="XLXN_166" name="P" />
+        </block>
+        <block symbolname="inv" name="XLXI_181">
+            <blockpin signalname="nRESET_OUT" name="I" />
+            <blockpin signalname="RESET_OUT" name="O" />
+        </block>
     </netlist>
     <sheet sheetnum="1" width="7040" height="5440">
         <instance x="336" y="896" name="XLXI_1" orien="R0">
         </instance>
-        <branch name="CPU_RESET_BUF_INV">
+        <branch name="nRESET_OUT">
             <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="304" y="672" type="branch" />
             <wire x2="336" y1="672" y2="672" x1="304" />
         </branch>
@@ -828,7 +886,7 @@
             <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="1568" y="944" type="branch" />
             <wire x2="1616" y1="944" y2="944" x1="1568" />
         </branch>
-        <branch name="CPU_RESET_BUF">
+        <branch name="RESET_OUT">
             <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="1568" y="1008" type="branch" />
             <wire x2="1616" y1="1008" y2="1008" x1="1568" />
         </branch>
@@ -856,7 +914,7 @@
             <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="1568" y="1824" type="branch" />
             <wire x2="1616" y1="1824" y2="1824" x1="1568" />
         </branch>
-        <branch name="CPU_RESET_BUF">
+        <branch name="RESET_OUT">
             <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="1568" y="1888" type="branch" />
             <wire x2="1616" y1="1888" y2="1888" x1="1568" />
         </branch>
@@ -1116,7 +1174,7 @@
             <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="2592" y="2960" type="branch" />
             <wire x2="2704" y1="2960" y2="2960" x1="2592" />
         </branch>
-        <branch name="CPU_RESET_BUF">
+        <branch name="RESET_OUT">
             <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="2592" y="3024" type="branch" />
             <wire x2="2704" y1="3024" y2="3024" x1="2592" />
         </branch>
@@ -1234,7 +1292,7 @@
         <instance x="2000" y="3520" name="XLXI_170" orien="R0" />
         <instance x="2592" y="944" name="XLXI_171" orien="R0">
         </instance>
-        <branch name="CPU_RESET_BUF">
+        <branch name="RESET_OUT">
             <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="2528" y="272" type="branch" />
             <wire x2="2592" y1="272" y2="272" x1="2528" />
         </branch>
@@ -1346,7 +1404,7 @@
             <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="3728" y="720" type="branch" />
             <wire x2="3776" y1="720" y2="720" x1="3728" />
         </branch>
-        <branch name="CPU_RESET_BUF">
+        <branch name="RESET_OUT">
             <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="3728" y="784" type="branch" />
             <wire x2="3776" y1="784" y2="784" x1="3728" />
         </branch>
@@ -1435,5 +1493,49 @@
         </branch>
         <iomarker fontsize="28" x="3744" y="848" name="nIRQ" orien="R180" />
         <iomarker fontsize="28" x="4512" y="912" name="ACK_IRQ" orien="R0" />
+        <branch name="FAST_CLOCK">
+            <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="3744" y="656" type="branch" />
+            <wire x2="3776" y1="656" y2="656" x1="3744" />
+        </branch>
+        <instance x="672" y="4000" name="XLXI_184" orien="R0" />
+        <instance x="352" y="3968" name="XLXI_182" orien="R0" />
+        <instance x="576" y="3760" name="XLXI_180" orien="R0" />
+        <instance x="1120" y="3904" name="XLXI_181" orien="R0" />
+        <branch name="SLOW_CLOCK">
+            <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="320" y="3840" type="branch" />
+            <wire x2="352" y1="3840" y2="3840" x1="320" />
+        </branch>
+        <branch name="RESET_OUT">
+            <attrtext style="alignment:SOFT-BCENTER;fontsize:28;fontname:Arial" attrname="Name" x="1360" y="3872" type="branch" />
+            <wire x2="352" y1="3904" y2="3904" x1="336" />
+            <wire x2="336" y1="3904" y2="4016" x1="336" />
+            <wire x2="352" y1="4016" y2="4016" x1="336" />
+            <wire x2="1344" y1="4016" y2="4016" x1="352" />
+            <wire x2="1360" y1="4016" y2="4016" x1="1344" />
+            <wire x2="1360" y1="3872" y2="3872" x1="1344" />
+            <wire x2="1360" y1="3872" y2="4016" x1="1360" />
+        </branch>
+        <branch name="nRESET_OUT">
+            <attrtext style="alignment:SOFT-BCENTER;fontsize:28;fontname:Arial" attrname="Name" x="1104" y="3872" type="branch" />
+            <wire x2="1104" y1="3872" y2="3872" x1="1056" />
+            <wire x2="1120" y1="3872" y2="3872" x1="1104" />
+        </branch>
+        <branch name="CPU_RESET_BUF">
+            <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="640" y="3968" type="branch" />
+            <wire x2="672" y1="3968" y2="3968" x1="640" />
+        </branch>
+        <branch name="XLXN_167">
+            <wire x2="640" y1="3872" y2="3872" x1="608" />
+            <wire x2="672" y1="3872" y2="3872" x1="640" />
+        </branch>
+        <branch name="XLXN_166">
+            <wire x2="640" y1="3760" y2="3808" x1="640" />
+            <wire x2="672" y1="3808" y2="3808" x1="640" />
+        </branch>
+        <text style="fontsize:40;fontname:Arial" x="528" y="4076">POWER ON RESET MODULE</text>
+        <branch name="state_out(2:0)">
+            <attrtext style="alignment:SOFT-LEFT;fontsize:28;fontname:Arial" attrname="Name" x="3184" y="976" type="branch" />
+            <wire x2="3184" y1="976" y2="976" x1="3152" />
+        </branch>
     </sheet>
 </drawing>

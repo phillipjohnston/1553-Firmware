@@ -26,8 +26,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 -- Uncomment the following library declaration if instantiating
 -- any Xilinx primitives in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
+library UNISIM;
+use UNISIM.VComponents.all;
 
 entity Holt_Connect is
     Port ( ADDRESS_LATCHED : in  STD_LOGIC_VECTOR (15 downto 0);
@@ -77,6 +77,11 @@ architecture Behavioral of Holt_Connect is
 		SIGNAL DATA_i8085_H_LAT : STD_LOGIC_VECTOR(7 DOWNTO 0);
 		SIGNAL pre_ADDRESS_HOLT : STD_LOGIC_VECTOR(15 DOWNTO 0);
 		SIGNAL nSCLK : STD_LOGIC;
+		SIGNAL DAT_L_VAL_LAT : STD_LOGIC;
+		SIGNAL DAT_H_VAL_LAT : STD_LOGIC;
+		SIGNAL DATA_i_ACK_int : STD_LOGIC;
+		SIGNAL DATA_i_ACK_int_postlatch : STD_LOGIC;
+		SIGNAL nDAT_L_VAL,nDAT_H_VAL : STD_LOGIC;
 
 		COMPONENT Latch16Bit IS
 		PORT(
@@ -87,14 +92,26 @@ architecture Behavioral of Holt_Connect is
 		);
 		END COMPONENT;
 		
-		COMPONENT Latch8BitCE IS
+		COMPONENT Latch8BitCER IS
 		PORT(
 			data    : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
 			enable : IN STD_LOGIC;
 			clk	: IN STD_LOGIC;
+			rst : IN STD_LOGIC;
 			q   : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
 		);
 		END COMPONENT;
+		
+		COMPONENT FDCE IS
+		PORT(
+			D : in STD_LOGIC;
+			CE : in STD_LOGIC;
+			C : in STD_LOGIC;
+			CLR : in STD_LOGIC;
+			Q : out STD_LOGIC
+			);
+		END COMPONENT;
+			
 
 begin
 	
@@ -113,10 +130,21 @@ begin
 	--Writes--
 	
 	--As data comes in from i8085_Connect, latch it onto the DATA_HOLT bus
-	dat_input_i8085_L_lat: Latch8BitCE port map (data=>DATA_i_o_0, enable => DATA_i_vo_0, clk =>  nSCLK,q => DATA_i8085_L_LAT);
-	dat_input_i8085_H_lat: Latch8BitCE port map (data=>DATA_i_o_1, enable => DATA_i_vo_1, clk =>  nSCLK,q => DATA_i8085_H_LAT);
+	--latch in valid signal
+	dataL_val_lat : FDCE port map(D =>'1', CE=>DATA_i_vo_0, C=>nSCLK, CLR=> DATA_i_ACK_int_postlatch, Q=>DAT_L_VAL_LAT);
+	dataH_val_lat : FDCE port map(D =>'1', CE=>DATA_i_vo_1, C=>nSCLK, CLR=> DATA_i_ACK_int_postlatch, Q=>DAT_H_VAL_LAT);
+	--use latched valid signal to latch data
+
+	dat_input_i8085_L_lat: Latch8BitCER port map (data=>DATA_i_o_0, enable => DATA_i_vo_0, clk =>  DAT_L_VAL_LAT,rst => reset,q => DATA_i8085_L_LAT);
+	dat_input_i8085_H_lat: Latch8BitCER port map (data=>DATA_i_o_1, enable => DATA_i_vo_1, clk =>  DAT_L_VAL_LAT,rst => reset,q => DATA_i8085_H_LAT);
 	DATA_HOLT(7 DOWNTO 0) <= DATA_i8085_L_LAT;
 	DATA_HOLT(15 DOWNTO 8) <= DATA_i8085_H_LAT;
+	--ack once both valids are high
+	data_ack_lat : FDCE port map(D =>DATA_i_ack_int, CE=>'1', C=>FAST_CLK, CLR=> reset, Q=>DATA_i_ACK_int_postlatch);
+	DATA_i_ack_int <= DAT_H_VAL_LAT AND DAT_L_VAL_LAT;
+	DATA_i_ACK <= DATA_i_ACK_int_postlatch;
+	
+	
 	--Get first address and latch it onto the ADDRESS_HOLT bus
 	adr_input_i8085_lat: Latch16Bit port map (data=>ADDRESS_LATCHED, enable => '1', clk => DATA_i_vo_0,q => pre_ADDRESS_HOLT);
 	ADDRESS_HOLT(14 DOWNTO 1) <= pre_ADDRESS_HOLT(14 DOWNTO 1);
