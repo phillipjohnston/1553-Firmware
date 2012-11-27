@@ -1,1 +1,3 @@
+work	"Holt_Connect.vhd"
 work	"Latch16Bit.vhd"
+work	"Latch8BitCE.vhd"
