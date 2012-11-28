@@ -224,7 +224,7 @@ begin
 		ELSIF(fast_clk = '1' AND fast_clk'event) THEN
 		
 			--As soon as read is ready take it and wait for the next, setting valid bit as it is sent out
-			CASE WR_STATE IS
+			CASE WR_STATE IS --S- These states could sure use some comments
 				WHEN  s1 => --
 						nCEw <= '1';
 						nWE <= '1';
@@ -346,7 +346,7 @@ begin
 		ELSIF(fast_clk = '1' AND fast_clk'event) THEN
 		
 				--As soon as read is ready take it and wait for the next, setting valid bit as it is sent out
-			CASE RD_STATE IS
+			CASE RD_STATE IS --S- So many comment locations, so few comments
 				WHEN s1 => --
 					nCEr <= '1';
 					nOE_int <= '1';
