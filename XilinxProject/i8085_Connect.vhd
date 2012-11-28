@@ -83,8 +83,10 @@ architecture Behavioral of i8085_Connect is
 	signal IDATA_en 	: STD_LOGIC;
 	
 	--FMS stuff
-	type state_type is (s1,s2,s3,s4,s5);
-	signal state_w: state_type;
+	type state_type_w is (s1,s2,s3,s4,s5);
+	signal state_w : state_type_w;
+	type state_type_r is (s1,s2,s3,s4,s5,s6,s7,s8);
+	signal state_r : state_type_r;
 	
 	COMPONENT d_ff_8bit IS
 	PORT(
@@ -224,113 +226,102 @@ begin
 	--DFF_data_out : d_ff_8bit port map (a=>data_temp, en => IDATA_en, clk => fast_clk, d_ff_out => IDATA_out);
 	
 	read_p : PROCESS(reset,fast_clk)
-		variable STATE_R : STD_LOGIC_VECTOR(2 DOWNTO 0);
 	BEGIN
-		
-
-			--Waits for a valid signal, puts the data out then waits for the processer to stop reading, 
-				--then it puts out the second data, and waits for the processor to stop reading
-		CASE STATE_R IS
-			WHEN "000" => --On lower 8bit valid flag, show data
+		if(reset = '1') then
 			
-				data_temp <= x"00";
-				IDATA_en <= '0';
-				DATA_h_ack_temp <='0';
-				
-				IF(reset = '1') THEN
-					STATE_R := "000";
-				ELSIF( DATA_h_vin_0 = '1' AND add_i8085(15) = '1' ) THEN
-					STATE_R := "001";
-				ELSE
-					STATE_R := "000";
-				END IF;
-			WHEN "001" => --Connect data to tri and Wait for start of read
+			state_r <= s1;
 			
-				data_temp <= DATA_h_in_0;
-				IDATA_en <= '0';
-				DATA_h_ack_temp <='0';
-				
-				IF(reset = '1') THEN
-					STATE_R := "000";
-				ELSIF( nRD = '0' AND add_i8085(15) = '1' ) THEN 
-					STATE_R := "010";
-				ELSE
-					STATE_R := "001";
-				END IF;
-			WHEN "010" => --Enable the IDATA tristate and Wait for end of read
+			data_temp <= x"00";
+			IDATA_en <= '0';
+			DATA_h_ack_temp <='0';
 			
-				data_temp <= DATA_h_in_0;
-				IDATA_en <= '1';
-				DATA_h_ack_temp <='0';
+		ELSIF(fast_clk = '1' AND fast_clk'event) then
+				--Waits for a valid signal, puts the data out then waits for the processer to stop reading, 
+					--then it puts out the second data, and waits for the processor to stop reading
+			CASE STATE_R IS
+				WHEN s1 => --On lower 8bit valid flag, show data
 				
-				IF(reset = '1') THEN
-					STATE_R := "000";
-				ELSIF( nRD = '1' AND add_i8085(15) = '1' ) THEN
-					STATE_R := "011";
-				ELSE
-					STATE_R := "010";
-				END IF;
-			WHEN "011" => --End Data out, Wait for next data                      
-			
-				data_temp <= x"00";
-				IDATA_en <= '0';
-				DATA_h_ack_temp <='0';
-				
-				IF(reset = '1') THEN
-					STATE_R := "000";
-				ELSIF( DATA_h_vin_1 = '1' ) THEN
-					STATE_R := "100";
-				ELSE
-					STATE_R := "011";
-				END IF;
-			WHEN "100" => --COnnect data to tri, Wait for start of read                     
-			
-				data_temp <= DATA_h_in_1;
-				IDATA_en <= '0';
-				DATA_h_ack_temp <='0';
-				
-				IF(reset = '1') THEN
-					STATE_R := "000";
-				ELSIF( nRD = '0' AND add_i8085(15) = '1' ) THEN
-					STATE_R := "101";
-				ELSE
-					STATE_R := "100";
-				END IF;
-			WHEN "101" => --Enable IDATA tristate, Wait for end of read                     
-			
-				data_temp <= DATA_h_in_1;
-				IDATA_en <= '1';
-				DATA_h_ack_temp <='0';
-				
-				IF(reset = '1') THEN
-					STATE_R := "000";
-				ELSIF( nRD = '1' AND add_i8085(15) = '1' ) THEN
-					STATE_R := "110";
-				ELSE
-					STATE_R := "101";
-				END IF;
-			WHEN "110" => --SEnd out an Acknowledge then reset states               
-			
-				data_temp <= x"00";
-				IDATA_en <= '0';
-				DATA_h_ack_temp <='1';	
-				
-				STATE_R := "111";
-			WHEN "111" => --SEnd out an Acknowledge then reset states               
-			
-				data_temp <= x"00";
-				IDATA_en <= '0';
-				DATA_h_ack_temp <='1';	
-				
-				STATE_R := "000";
-
-			WHEN OTHERS =>
-				STATE_R := "000";
-				
-				data_temp <= x"00";
-				IDATA_en <= '0';
+					data_temp <= x"00";
+					IDATA_en <= '0';
+					DATA_h_ack_temp <='0';
 					
-		END CASE;
+					IF( DATA_h_vin_0 = '1' AND add_i8085(15) = '1' ) THEN
+						STATE_R <= s2;
+					ELSE
+						STATE_R <= s1;
+					END IF;
+				WHEN s2 => --Connect data to tri and Wait for start of read
+				
+					data_temp <= DATA_h_in_0;
+					IDATA_en <= '0';
+					DATA_h_ack_temp <='0';
+					
+					IF( nRD = '0' AND add_i8085(15) = '1' ) THEN 
+						STATE_R <= s3;
+					ELSE
+						STATE_R <= s2;
+					END IF;
+				WHEN s3 => --Enable the IDATA tristate and Wait for end of read
+				
+					data_temp <= DATA_h_in_0;
+					IDATA_en <= '1';
+					DATA_h_ack_temp <='0';
+					
+					IF( nRD = '1' AND add_i8085(15) = '1' ) THEN
+						STATE_R <= s4;
+					ELSE
+						STATE_R <= s3;
+					END IF;
+				WHEN s4 => --End Data out, Wait for next data                      
+				
+					data_temp <= x"00";
+					IDATA_en <= '0';
+					DATA_h_ack_temp <='0';
+					
+					IF( DATA_h_vin_1 = '1' ) THEN
+						STATE_R <= s5;
+					ELSE
+						STATE_R <= s4;
+					END IF;
+				WHEN s5 => --COnnect data to tri, Wait for start of read                     
+				
+					data_temp <= DATA_h_in_1;
+					IDATA_en <= '0';
+					DATA_h_ack_temp <='0';
+					
+					IF( nRD = '0' AND add_i8085(15) = '1' ) THEN
+						STATE_R <= s6;
+					ELSE
+						STATE_R <= s5;
+					END IF;
+				WHEN s6 => --Enable IDATA tristate, Wait for end of read                     
+				
+					data_temp <= DATA_h_in_1;
+					IDATA_en <= '1';
+					DATA_h_ack_temp <='0';
+					
+					IF( nRD = '1' AND add_i8085(15) = '1' ) THEN
+						STATE_R <= s7;
+					ELSE
+						STATE_R <= s6;
+					END IF;
+				WHEN s7 => --SEnd out an Acknowledge then reset states               
+				
+					data_temp <= x"00";
+					IDATA_en <= '0';
+					DATA_h_ack_temp <='1';	
+					
+					STATE_R <= s8;
+				WHEN s8 => --SEnd out an Acknowledge then reset states               
+				
+					data_temp <= x"00";
+					IDATA_en <= '0';
+					DATA_h_ack_temp <='1';	
+					
+					STATE_R <= s1;
+						
+			END CASE;
+		END IF;
 	
 	END PROCESS read_p;
 
