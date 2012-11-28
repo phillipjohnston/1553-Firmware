@@ -82,6 +82,10 @@ architecture Behavioral of i8085_Connect is
 	signal DATA_i_U_en 	: STD_LOGIC; 
 	signal IDATA_en 	: STD_LOGIC;
 	
+	--FMS stuff
+	type state_type is (s1,s2,s3,s4,s5);
+	signal state_w: state_type;
+	
 	COMPONENT d_ff_8bit IS
 	PORT(
 		a    		: IN STD_LOGIC_VECTOR(7 DOWNTO 0);
@@ -128,107 +132,88 @@ begin
 	DFF_data_i_U : d_ff_8bit port map (a=>add_i8085(7 downto 0), en => DATA_i_U_en, clk => fast_clk, d_ff_out => DATA_i_out_U);
 	
 	--Process that contains control signals
-	write_p : PROCESS(fast_clk)
-		variable STATE_W : STD_LOGIC_VECTOR(2 DOWNTO 0);
+	write_p : PROCESS(fast_clk, reset)
 	BEGIN
 		
+		if(reset = '1') then --ASYNC Reset
+			state_w <= s1;
+			
+			DATA_i_vout_L_temp <= '0';
+			DATA_i_vout_U_temp <= '0';
+						
+			DATA_i_L_en <= '0';
+			DATA_i_U_en <= '0';
+			
+		elsif(fast_clk = '1' AND fast_clk'event) then
 			--As soon as read is ready take it and wait for the next, setting valid bit as it is sent out
-		CASE STATE_W IS
-			WHEN "000" => --Turn off data validity and Wait for write data 0 then
-			
-				DATA_i_vout_L_temp <= '0';
-				DATA_i_vout_U_temp <= '0';
-							
-				DATA_i_L_en <= '0';
-				DATA_i_U_en <= '0';
+			CASE state_w IS
+				WHEN s1 => --Turn off data validity and Wait for write data 0 then
 				
-				IF(reset = '1') THEN 
-					STATE_W := "000";
-				ELSIF( nWR = '0' AND add_i8085(15) = '1' ) THEN		
-					STATE_W := "001";
-				ELSE
-					STATE_W := "000";
-				END IF;
-			WHEN "001" => --Enable dff for data 0 and Wait for stop write
-				
-				DATA_i_vout_L_temp <= '0';
-				DATA_i_vout_U_temp <= '0';
-							
-				DATA_i_L_en <= '1';
-				DATA_i_U_en <= '0';
-				
-				IF(reset = '1') THEN 
-					STATE_W := "000";
-				ELSIF( nWR = '1' AND add_i8085(15) = '1' ) THEN
-					STATE_W := "010";
-				ELSE
-					STATE_W := "001";
-				END IF;
-			WHEN "010" => --Disable DFF0 and Set Valid bit for data 0 and Wait for write data 1
-				
-				DATA_i_vout_L_temp <= '1';
-				DATA_i_vout_U_temp <= '0';
-							
-				DATA_i_L_en <= '0';
-				DATA_i_U_en <= '0';
+					DATA_i_vout_L_temp <= '0';
+					DATA_i_vout_U_temp <= '0';
+								
+					DATA_i_L_en <= '0';
+					DATA_i_U_en <= '0';
 					
-				IF(reset = '1') THEN 
-					STATE_W := "000";					
-				ELSIF( nWR = '0' AND add_i8085(15) = '1' ) THEN
-					STATE_W := "011";
-				ELSE
-					STATE_W := "010";					
-				END IF;
-			WHEN "011" => --Enable DFF for data 1 and Wait for stop write
-				DATA_i_vout_L_temp <= '1';
-				DATA_i_vout_U_temp <= '0';
-							
-				DATA_i_L_en <= '0';
-				DATA_i_U_en <= '1';
-				
-				IF(reset = '1') THEN 
-					STATE_W := "000";
-				ELSIF( nWR = '1' AND add_i8085(15) = '1' ) THEN
-					STATE_W := "100";
-				ELSE
-					STATE_W := "011";					
-				END IF;
-			WHEN "100" => --Disable DFF1 and Set Valid bit for data 1 and Wait for acknowledge
-				
-				DATA_i_vout_L_temp <= '1';
-				DATA_i_vout_U_temp <= '1';
-							
-				DATA_i_L_en <= '0';
-				DATA_i_U_en <= '0';
-				
-				IF(reset = '1') THEN 
-					STATE_W := "000";
-				ELSIF( DATA_i_ack = '1' ) THEN
-					STATE_W := "000";
-				ELSE
-					STATE_W := "100";					
-				END IF;
-			WHEN "101" | "110" | "111" => --Restart Case
-				--null;
-				STATE_W := "000";
-				
-				DATA_i_vout_L_temp <= '0';
-				DATA_i_vout_U_temp <= '0';
-				
-				DATA_i_L_en <= '0';
-				DATA_i_U_en <= '0';			
-			WHEN OTHERS => 
-				--null;
-			
-				STATE_W := "000";
-				
-				DATA_i_vout_L_temp <= '0';
-				DATA_i_vout_U_temp <= '0';
-				
-				DATA_i_L_en <= '0';
-				DATA_i_U_en <= '0';	
-				
-		END CASE;
+					IF( nWR = '0' AND add_i8085(15) = '1' ) THEN		
+						STATE_W <= s2;
+					ELSE
+						STATE_W <= s1;
+					END IF;
+				WHEN s2 => --Enable dff for data 0 and Wait for stop write
+					
+					DATA_i_vout_L_temp <= '0';
+					DATA_i_vout_U_temp <= '0';
+								
+					DATA_i_L_en <= '1';
+					DATA_i_U_en <= '0';
+					
+					IF( nWR = '1' AND add_i8085(15) = '1' ) THEN
+						STATE_W <= s3;
+					ELSE
+						STATE_W <= s2;
+					END IF;
+				WHEN s3 => --Disable DFF0 and Set Valid bit for data 0 and Wait for write data 1
+					
+					DATA_i_vout_L_temp <= '1';
+					DATA_i_vout_U_temp <= '0';
+								
+					DATA_i_L_en <= '0';
+					DATA_i_U_en <= '0';
+										
+					IF( nWR = '0' AND add_i8085(15) = '1' ) THEN
+						STATE_W <= s4;
+					ELSE
+						STATE_W <= s3;					
+					END IF;
+				WHEN s4 => --Enable DFF for data 1 and Wait for stop write
+					DATA_i_vout_L_temp <= '1';
+					DATA_i_vout_U_temp <= '0';
+								
+					DATA_i_L_en <= '0';
+					DATA_i_U_en <= '1';
+					
+					IF( nWR = '1' AND add_i8085(15) = '1' ) THEN
+						STATE_W <= s5;
+					ELSE
+						STATE_W <= s4;					
+					END IF;
+				WHEN s5 => --Disable DFF1 and Set Valid bit for data 1 and Wait for acknowledge
+					
+					DATA_i_vout_L_temp <= '1';
+					DATA_i_vout_U_temp <= '1';
+								
+					DATA_i_L_en <= '0';
+					DATA_i_U_en <= '0';
+					
+					IF( DATA_i_ack = '1' ) THEN
+						STATE_W <= s1;
+					ELSE
+						STATE_W <= s5;					
+					END IF;
+						
+			END CASE;
+		end if;
 	
 	END PROCESS write_p;
 	
