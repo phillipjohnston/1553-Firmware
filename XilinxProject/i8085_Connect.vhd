@@ -129,7 +129,7 @@ begin
 	
 	--Process that contains control signals
 	write_p : PROCESS(fast_clk)
-		variable STATE_W : STD_LOGIC_VECTOR(2 DOWNTO 0) := "000";
+		variable STATE_W : STD_LOGIC_VECTOR(2 DOWNTO 0);
 	BEGIN
 		
 			--As soon as read is ready take it and wait for the next, setting valid bit as it is sent out
@@ -208,14 +208,25 @@ begin
 				ELSE
 					STATE_W := "100";					
 				END IF;
-			WHEN OTHERS => --Restart Case
+			WHEN "101" | "110" | "111" => --Restart Case
+				--null;
 				STATE_W := "000";
 				
 				DATA_i_vout_L_temp <= '0';
 				DATA_i_vout_U_temp <= '0';
 				
 				DATA_i_L_en <= '0';
-				DATA_i_U_en <= '0';
+				DATA_i_U_en <= '0';			
+			WHEN OTHERS => 
+				--null;
+			
+				STATE_W := "000";
+				
+				DATA_i_vout_L_temp <= '0';
+				DATA_i_vout_U_temp <= '0';
+				
+				DATA_i_L_en <= '0';
+				DATA_i_U_en <= '0';	
 				
 		END CASE;
 	
@@ -228,7 +239,7 @@ begin
 	--DFF_data_out : d_ff_8bit port map (a=>data_temp, en => IDATA_en, clk => fast_clk, d_ff_out => IDATA_out);
 	
 	read_p : PROCESS(reset,fast_clk)
-		variable STATE_R : STD_LOGIC_VECTOR(2 DOWNTO 0) := "000";
+		variable STATE_R : STD_LOGIC_VECTOR(2 DOWNTO 0);
 	BEGIN
 		
 
