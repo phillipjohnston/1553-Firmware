@@ -128,7 +128,7 @@ begin
 	DFF_data_i_U : d_ff_8bit port map (a=>add_i8085(7 downto 0), en => DATA_i_U_en, clk => fast_clk, d_ff_out => DATA_i_out_U);
 	
 	--Process that contains control signals
-	write_p : PROCESS(fast_clk, reset)
+	write_p : PROCESS(fast_clk)
 		variable STATE_W : STD_LOGIC_VECTOR(2 DOWNTO 0) := "000";
 	BEGIN
 		
@@ -314,6 +314,13 @@ begin
 					STATE_R := "101";
 				END IF;
 			WHEN "110" => --SEnd out an Acknowledge then reset states               
+			
+				data_temp <= x"00";
+				IDATA_en <= '0';
+				DATA_h_ack_temp <='1';	
+				
+				STATE_R := "111";
+			WHEN "111" => --SEnd out an Acknowledge then reset states               
 			
 				data_temp <= x"00";
 				IDATA_en <= '0';
