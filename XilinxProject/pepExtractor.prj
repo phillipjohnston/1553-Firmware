@@ -1,2 +1,3 @@
-work	"Latch16Bit.vhd"
+work	"d_ff_16bit.vhd"
+work	"d_ff_8bit.vhd"
 work	"i8085_Connect.vhd"

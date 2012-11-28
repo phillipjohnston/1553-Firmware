@@ -163,11 +163,24 @@ BEGIN
 		GPIO_BUTTON1 <= '1';
 		GPIO_BUTTON2 <= '0';
 		GPIO_BUTTON3 <= '1';
+		hWAIT <= '0';
+		DATA <= "ZZZZZZZZZZZZZZZZ";
+		
 		
 		
 		wait for 200 ns;
 		
 		CPU_RESET <= '0';
+		
+		wait for 88.14 us;
+		DATA <= x"468A";
+		wait for 100 ns;
+		hWAIT <= '1';
+		wait for 500ns;
+		hWAIT <= '0';
+		
+
+		
 	
       WAIT; -- will wait forever
    END PROCESS;

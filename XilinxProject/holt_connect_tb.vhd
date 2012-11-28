@@ -68,7 +68,8 @@ ARCHITECTURE behavior OF holt_connect_tb IS
          nMR : OUT  std_logic;
          DATA_i_ack : OUT  std_logic;
          ACK_IRQ : OUT  std_logic;
-         nIRQ : IN  std_logic
+         nIRQ : IN  std_logic;
+			hWAIT : IN std_logic
         );
     END COMPONENT;
     
@@ -106,6 +107,7 @@ ARCHITECTURE behavior OF holt_connect_tb IS
    signal nMR : std_logic;
    signal DATA_i_ack : std_logic;
    signal ACK_IRQ : std_logic;
+	signal hWAIT : std_logic;
 
    -- Clock period definitions
    constant fast_clk_period : time := 10 ns;
@@ -142,7 +144,8 @@ BEGIN
           nMR => nMR,
           DATA_i_ack => DATA_i_ack,
           ACK_IRQ => ACK_IRQ,
-          nIRQ => nIRQ
+          nIRQ => nIRQ,
+			 hWAIT => hWAIT
         );
 
    -- Clock process definitions
@@ -170,26 +173,65 @@ BEGIN
 		reset<='1';
 		
 		--init signals
-		signal ADDRESS_LATCHED : std_logic_vector(15 downto 0) := (others => '0');
-		signal nWR_o : std_logic := '0';
-		signal nRD_o : std_logic := '0';
-		signal ALE_o : std_logic := '0';
-		signal DATA_i_o_0 : std_logic_vector(7 downto 0) := (others => '0');
-		signal DATA_i_o_1 : std_logic_vector(7 downto 0) := (others => '0');
-		signal DATA_i_vo_0 : std_logic := '0';
-		signal DATA_i_vo_1 : std_logic := '0';
-		signal DATA_h_ack : std_logic := '0';
-		signal fast_clk : std_logic := '0';
-		signal slow_clock : std_logic := '0';
-		signal reset : std_logic := '0';
-		signal nIRQ : std_logic := '0';
+		ADDRESS_LATCHED <= x"0000";
+		nWR_o <= '1';
+		nRD_o <= '1';
+		ALE_o <= '0';
+		DATA_i_o_0 <= x"00";
+		DATA_i_o_1 <= x"00";
+		DATA_i_vo_0 <= '0';
+		DATA_i_vo_1 <= '0';
+		DATA_h_ack <= '0';
+		hWAIT <= '0';
+
+		nIRQ <= '0';
 		
       wait for 400 ns;	
 		reset<='0';
 
       wait for fast_clk_period*10;
 
-      -- insert stimulus here 
+      -- stimulate!
+		wait for 10 us;
+		ADDRESS_LATCHED <= x"8004";
+		nWR_o <= '0';
+		wait for 1 us;
+		nWR_o <= '1';
+		DATA_i_o_0 <= x"13";
+		DATA_i_vo_0 <= '1';
+		
+		wait for 10 us;
+		ADDRESS_LATCHED <= x"8005";
+		wait for 1 us;
+		DATA_i_o_1 <= x"27";
+		DATA_i_vo_1 <= '1';
+		
+		wait for 4 us;
+		DATA_i_vo_0 <= '0';
+		DATA_i_vo_1 <= '0';
+		
+		-- stimulate!
+		wait for 10 us;
+		ADDRESS_LATCHED <= x"800A";
+		nRD_o <= '0';
+		wait for 1 us;
+		nRD_o <= '1';
+		wait for 1 us;
+		DATA_HOLT <= x"1735";
+		
+		wait for 10 us;
+		ADDRESS_LATCHED <= x"800B";
+		wait for 1 us;
+		
+		wait for 4 us;
+
+		
+		
+		
+		
+		
+		wait for 10 us;
+		ADDRESS_LATCHED <= x"8012";
 
       wait;
    end process;

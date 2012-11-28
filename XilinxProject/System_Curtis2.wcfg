@@ -21,7 +21,7 @@
          </top_modules>
       </db_ref>
    </db_ref_list>
-   <WVObjectSize size="86" />
+   <WVObjectSize size="87" />
    <wvobject fp_name="/system_system_sch_tb/cpu_reset" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">cpu_reset</obj_property>
       <obj_property name="ObjectShortName">cpu_reset</obj_property>
@@ -54,6 +54,14 @@
       <obj_property name="ElementShortName">noe</obj_property>
       <obj_property name="ObjectShortName">noe</obj_property>
    </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/fast_clock" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">fast_clock</obj_property>
+      <obj_property name="ObjectShortName">fast_clock</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/slow_clock" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">slow_clock</obj_property>
+      <obj_property name="ObjectShortName">slow_clock</obj_property>
+   </wvobject>
    <wvobject fp_name="/system_system_sch_tb/address" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">address[15:0]</obj_property>
       <obj_property name="ObjectShortName">address[15:0]</obj_property>
@@ -67,6 +75,11 @@
    <wvobject fp_name="/system_system_sch_tb/hwait" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">hwait</obj_property>
       <obj_property name="ObjectShortName">hwait</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/XLXI_178/data_holt_full_lat" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">data_holt_full_lat[15:0]</obj_property>
+      <obj_property name="ObjectShortName">data_holt_full_lat[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/system_system_sch_tb/net_gnd" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">net_gnd</obj_property>
@@ -167,13 +180,14 @@
       <obj_property name="BkColor">128 128 255</obj_property>
       <obj_property name="TextColor">230 230 230</obj_property>
    </wvobject>
-   <wvobject fp_name="/system_system_sch_tb/UUT/ale_out" type="logic" db_ref_id="1">
-      <obj_property name="ElementShortName">ale_out</obj_property>
-      <obj_property name="ObjectShortName">ale_out</obj_property>
-   </wvobject>
    <wvobject fp_name="/system_system_sch_tb/UUT/data_h_ack" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">data_h_ack</obj_property>
       <obj_property name="ObjectShortName">data_h_ack</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/XLXI_171/addr_temp" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">addr_temp[15:0]</obj_property>
+      <obj_property name="ObjectShortName">addr_temp[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/system_system_sch_tb/UUT/data_i_out_0" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">data_i_out_0[7:0]</obj_property>
@@ -185,21 +199,6 @@
       <obj_property name="ObjectShortName">data_i_out_1[7:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
    </wvobject>
-   <wvobject fp_name="/system_system_sch_tb/UUT/addr_lat" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">addr_lat[15:0]</obj_property>
-      <obj_property name="ObjectShortName">addr_lat[15:0]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/system_system_sch_tb/UUT/XLXI_171/addr_temp" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">addr_temp[15:0]</obj_property>
-      <obj_property name="ObjectShortName">addr_temp[15:0]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/system_system_sch_tb/UUT/XLXI_171/add_i8085" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">add_i8085[15:0]</obj_property>
-      <obj_property name="ObjectShortName">add_i8085[15:0]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-   </wvobject>
    <wvobject fp_name="/system_system_sch_tb/UUT/data_i_vout_0" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">data_i_vout_0</obj_property>
       <obj_property name="ObjectShortName">data_i_vout_0</obj_property>
@@ -208,9 +207,9 @@
       <obj_property name="ElementShortName">data_i_vout_1</obj_property>
       <obj_property name="ObjectShortName">data_i_vout_1</obj_property>
    </wvobject>
-   <wvobject fp_name="/system_system_sch_tb/UUT/state_out" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">state_out[2:0]</obj_property>
-      <obj_property name="ObjectShortName">state_out[2:0]</obj_property>
+   <wvobject fp_name="/system_system_sch_tb/UUT/addr_lat" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">addr_lat[15:0]</obj_property>
+      <obj_property name="ObjectShortName">addr_lat[15:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/system_system_sch_tb/UUT/fast_clock" type="logic" db_ref_id="1">
@@ -220,18 +219,6 @@
    <wvobject fp_name="/system_system_sch_tb/UUT/XLXI_171/data_i_ack" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">data_i_ack</obj_property>
       <obj_property name="ObjectShortName">data_i_ack</obj_property>
-   </wvobject>
-   <wvobject fp_name="/system_system_sch_tb/UUT/XLXI_171/nwr" type="logic" db_ref_id="1">
-      <obj_property name="ElementShortName">nwr</obj_property>
-      <obj_property name="ObjectShortName">nwr</obj_property>
-   </wvobject>
-   <wvobject fp_name="/system_system_sch_tb/UUT/XLXI_171/nrd" type="logic" db_ref_id="1">
-      <obj_property name="ElementShortName">nrd</obj_property>
-      <obj_property name="ObjectShortName">nrd</obj_property>
-   </wvobject>
-   <wvobject fp_name="/system_system_sch_tb/UUT/slow_clock" type="logic" db_ref_id="1">
-      <obj_property name="ElementShortName">slow_clock</obj_property>
-      <obj_property name="ObjectShortName">slow_clock</obj_property>
    </wvobject>
    <wvobject fp_name="/system_system_sch_tb/UUT/nrd_out" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">nrd_out</obj_property>
@@ -252,18 +239,6 @@
       <obj_property name="ObjectShortName">address_latched[15:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
    </wvobject>
-   <wvobject fp_name="/system_system_sch_tb/UUT/XLXI_178/nwr_o" type="logic" db_ref_id="1">
-      <obj_property name="ElementShortName">nwr_o</obj_property>
-      <obj_property name="ObjectShortName">nwr_o</obj_property>
-   </wvobject>
-   <wvobject fp_name="/system_system_sch_tb/UUT/XLXI_178/nrd_o" type="logic" db_ref_id="1">
-      <obj_property name="ElementShortName">nrd_o</obj_property>
-      <obj_property name="ObjectShortName">nrd_o</obj_property>
-   </wvobject>
-   <wvobject fp_name="/system_system_sch_tb/UUT/XLXI_178/ale_o" type="logic" db_ref_id="1">
-      <obj_property name="ElementShortName">ale_o</obj_property>
-      <obj_property name="ObjectShortName">ale_o</obj_property>
-   </wvobject>
    <wvobject fp_name="/system_system_sch_tb/UUT/XLXI_178/data_i_o_0" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">data_i_o_0[7:0]</obj_property>
       <obj_property name="ObjectShortName">data_i_o_0[7:0]</obj_property>
@@ -272,6 +247,21 @@
    <wvobject fp_name="/system_system_sch_tb/UUT/XLXI_178/data_i_o_1" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">data_i_o_1[7:0]</obj_property>
       <obj_property name="ObjectShortName">data_i_o_1[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/XLXI_178/pre_address_holt" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">pre_address_holt[15:0]</obj_property>
+      <obj_property name="ObjectShortName">pre_address_holt[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/XLXI_178/data_i8085_h_lat" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">data_i8085_h_lat[7:0]</obj_property>
+      <obj_property name="ObjectShortName">data_i8085_h_lat[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/XLXI_178/data_i8085_l_lat" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">data_i8085_l_lat[7:0]</obj_property>
+      <obj_property name="ObjectShortName">data_i8085_l_lat[7:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/system_system_sch_tb/UUT/XLXI_178/data_i_vo_0" type="logic" db_ref_id="1">
@@ -302,13 +292,25 @@
       <obj_property name="ElementShortName">fast_clk</obj_property>
       <obj_property name="ObjectShortName">fast_clk</obj_property>
    </wvobject>
-   <wvobject fp_name="/system_system_sch_tb/UUT/XLXI_178/slow_clock" type="logic" db_ref_id="1">
-      <obj_property name="ElementShortName">slow_clock</obj_property>
-      <obj_property name="ObjectShortName">slow_clock</obj_property>
-   </wvobject>
    <wvobject fp_name="/system_system_sch_tb/UUT/XLXI_178/reset" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">reset</obj_property>
       <obj_property name="ObjectShortName">reset</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/XLXI_178/nwr_o" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">nwr_o</obj_property>
+      <obj_property name="ObjectShortName">nwr_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/XLXI_178/ale_o" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">ale_o</obj_property>
+      <obj_property name="ObjectShortName">ale_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/XLXI_178/nrd_o" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">nrd_o</obj_property>
+      <obj_property name="ObjectShortName">nrd_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/XLXI_178/wrnotrd_status_lat" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">wrnotrd_status_lat</obj_property>
+      <obj_property name="ObjectShortName">wrnotrd_status_lat</obj_property>
    </wvobject>
    <wvobject fp_name="/system_system_sch_tb/UUT/XLXI_178/data_h_o_0" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">data_h_o_0[7:0]</obj_property>
@@ -327,6 +329,10 @@
    <wvobject fp_name="/system_system_sch_tb/UUT/XLXI_178/data_h_vo_1" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">data_h_vo_1</obj_property>
       <obj_property name="ObjectShortName">data_h_vo_1</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/XLXI_178/data_h_ack" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">data_h_ack</obj_property>
+      <obj_property name="ObjectShortName">data_h_ack</obj_property>
    </wvobject>
    <wvobject fp_name="/system_system_sch_tb/UUT/XLXI_178/address_holt" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">address_holt[15:0]</obj_property>

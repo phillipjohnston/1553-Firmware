@@ -1,0 +1,4 @@
+vhdl work "d_ff_8bit.vhd"
+vhdl work "d_ff_16bit.vhd"
+vhdl work "i8085_Connect.vhd"
+vhdl work "ipcore_dir/Clock/example_design/Clock_exdes.vhd"

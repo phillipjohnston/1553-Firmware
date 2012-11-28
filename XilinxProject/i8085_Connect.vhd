@@ -52,10 +52,10 @@ entity i8085_Connect is
            ALE_out : out  STD_LOGIC;
 			  
 			  --Data, held out for te Holt_Connect
-           DATA_i_out_0 : out  STD_LOGIC_VECTOR (7 downto 0);
-           DATA_i_out_1 : out  STD_LOGIC_VECTOR (7 downto 0);
-           DATA_i_vout_0 : out  STD_LOGIC :=  '0';
-           DATA_i_vout_1 : out  STD_LOGIC :=  '0';
+           DATA_i_out_L : out  STD_LOGIC_VECTOR (7 downto 0);
+           DATA_i_out_U : out  STD_LOGIC_VECTOR (7 downto 0);
+           DATA_i_vout_L : out  STD_LOGIC;
+           DATA_i_vout_U : out  STD_LOGIC;
 			  
 			  --From Holt_Connect, confirms write data transfer
 			  DATA_i_ack  : in  STD_LOGIC;
@@ -64,51 +64,56 @@ entity i8085_Connect is
 			  DATA_h_ack  : out  STD_LOGIC;
 			  
 			  --Out to i8085
-           IDATA_out : out  STD_LOGIC_VECTOR (7 downto 0) := "ZZZZZZZZ";
-			  
-			  --debugz
-			  STATE_o : OUT STD_LOGIC_VECTOR (2 DOWNTO 0)
+           IDATA_out : out  STD_LOGIC_VECTOR (7 downto 0)
 			  
 			  );
 end i8085_Connect;
 
 architecture Behavioral of i8085_Connect is
 
-	signal addr_temp : STD_LOGIC_VECTOR(15 DOWNTO 0) := x"0000";
-	SIGNAL wrorrd_event : STD_LOGIC;
-	signal data_temp : STD_LOGIC_VECTOR(7 DOWNTO 0) := x"00";
-	signal DATA_i_vout_0_temp : STD_LOGIC := '0';
-	signal DATA_i_vout_1_temp : STD_LOGIC := '0';
-   signal DATA_i_out_0_temp : STD_LOGIC_VECTOR(7 downto 0);
-   signal DATA_i_out_1_temp : STD_LOGIC_VECTOR(7 downto 0);
+	signal addr_temp 			: STD_LOGIC_VECTOR(15 DOWNTO 0);
+	signal data_temp 			: STD_LOGIC_VECTOR(7 DOWNTO 0);
+	signal DATA_i_vout_L_temp 	: STD_LOGIC;
+	signal DATA_i_vout_U_temp 	: STD_LOGIC;
+	signal DATA_h_ack_temp 		: STD_LOGIC;
 	
-	COMPONENT Latch16Bit IS
+	--DFF Enables
+	signal DATA_i_L_en 	: STD_LOGIC;
+	signal DATA_i_U_en 	: STD_LOGIC; 
+	signal IDATA_en 	: STD_LOGIC;
+	
+	COMPONENT d_ff_8bit IS
 	PORT(
-		data    : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
-		enable : IN STD_LOGIC;
-		clk	: IN STD_LOGIC;
-		q   : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
+		a    		: IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+		en 		: IN STD_LOGIC;
+		clk		: IN STD_LOGIC;
+		d_ff_out	: OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
+		);
+	END COMPONENT;
+	
+	COMPONENT d_ff_16bit IS
+	PORT(
+		a    		: IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+		en 		: IN STD_LOGIC;
+		clk		: IN STD_LOGIC;
+		d_ff_out	: OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
 		);
 	END COMPONENT;
 
 
 begin
 
-
-
 	--Latching the 8085 address for Holt_Connect, High Z otherwise
-	wrorrd_event <= NOT(nWR AND nRD);
-	addr_L : Latch16Bit port map (data=>add_i8085, enable => ALE, clk => wrorrd_event,q => addr_temp);
+	DFF_add : d_ff_16bit port map (a=>add_i8085, en => ALE, clk => fast_clk, d_ff_out => addr_temp);
+		
+	--High Z when no need
 	address_latched <= addr_temp WHEN add_i8085(15) = '1' ELSE "ZZZZZZZZZZZZZZZZ";
-	--High Z for data out when no need
-	IDATA_out <= data_temp WHEN add_i8085(15) = '1' ELSE "ZZZZZZZZ";
+	IDATA_out <= data_temp WHEN IDATA_en = '1' ELSE "ZZZZZZZZ";
 	
-	--Other Temps
-	DATA_i_vout_0 <= DATA_i_vout_0_temp WHEN add_i8085(15) = '1' ELSE '0';
-	DATA_i_vout_1 <= DATA_i_vout_1_temp WHEN add_i8085(15) = '1' ELSE '0';
-	DATA_i_out_0 <= DATA_i_out_0_temp WHEN add_i8085(15) = '1' ELSE x"00";
-	DATA_i_out_1 <= DATA_i_out_1_temp WHEN add_i8085(15) = '1' ELSE x"00";
-	
+	--Driving with temps
+	DATA_i_vout_L <= DATA_i_vout_L_temp;
+	DATA_i_vout_U <= DATA_i_vout_U_temp;
+	DATA_h_ack <= DATA_h_ack_temp;
 	
 	--Enable Holt_Connect outputs by add_i8085(15)
 	nWR_out <= nWR WHEN add_i8085(15) = '1' ELSE '1';
@@ -117,127 +122,217 @@ begin
 	
 	
 	--Obtain and validate data from the i8085 for Holt_Connect
-	write_p : PROCESS(nWR, reset, DATA_i_ack, add_i8085(15),fast_clk)
-		variable STATE : STD_LOGIC_VECTOR(2 DOWNTO 0) := "000";
-	BEGIN
 	
-		--debugz
-		STATE_o <= STATE;
+	--D_ff outputs, control verses state machine outputs
+	DFF_data_i_L : d_ff_8bit port map (a=>add_i8085(7 downto 0), en => DATA_i_L_en, clk => fast_clk, d_ff_out => DATA_i_out_L);
+	DFF_data_i_U : d_ff_8bit port map (a=>add_i8085(7 downto 0), en => DATA_i_U_en, clk => fast_clk, d_ff_out => DATA_i_out_U);
+	
+	--Process that contains control signals
+	write_p : PROCESS(fast_clk)
+		variable STATE_W : STD_LOGIC_VECTOR(2 DOWNTO 0) := "000";
+	BEGIN
 		
-		--Reset Non add_i8085(15) enabled stuff
-		IF(reset = '1') THEN
-			STATE := "000";
-			DATA_i_vout_0_temp <= '0';
-			DATA_i_vout_1_temp <= '0';
-		END IF;
 			--As soon as read is ready take it and wait for the next, setting valid bit as it is sent out
-		if(fast_clk'EVENT and fast_clk = '1') then 
+		CASE STATE_W IS
+			WHEN "000" => --Turn off data validity and Wait for write data 0 then
 			
-			if(add_i8085 = X"0000") then
-				STATE := "000";
-			end if;
-		
-			CASE STATE IS
-				WHEN "000" => --Reset state -> Place first 8bits and valid flag when good data in
-					IF(add_i8085(15) = '0' or add_i8085 = X"0000") THEN --Reset validity
-						DATA_i_vout_0_temp <= '0';
-						DATA_i_vout_1_temp <= '0';
---					ELSIF( (nWR = '1') and (nWR'event)) THEN
-					ELSIF( (nWR = '1') ) THEN
-						DATA_i_out_0_temp <= add_i8085(7 downto 0);
-						STATE := "001";
-						DATA_i_vout_0_temp <= '1';
-					END IF;
-				WHEN "001" => --wait for nwr to fall
-					IF( (nWR = '0') ) THEN
-						STATE := "010";
-					END IF;
-				WHEN "010" => --Place second 8bits and valid flag
-	--				IF( add_i8085(15) = '0' ) THEN --Reset on bad add_i8085(15)
-	--					STATE := "00";
-	--					DATA_i_vout_0_temp <= '0';
-	--					DATA_i_vout_1_temp <= '0';
-	--				ELSIF( (nWR = '1') and (nWR'event) ) THEN
-					IF( (nWR = '1') and add_i8085(15) = '1') THEN
-						DATA_i_out_1_temp <= add_i8085(7 downto 0);
-						STATE := "011";
-						DATA_i_vout_1_temp <= '1';
-					END IF;
+				DATA_i_vout_L_temp <= '0';
+				DATA_i_vout_U_temp <= '0';
+							
+				DATA_i_L_en <= '0';
+				DATA_i_U_en <= '0';
+				
+				IF(reset = '1') THEN 
+					STATE_W := "000";
+				ELSIF( nWR = '0' AND add_i8085(15) = '1' ) THEN		
+					STATE_W := "001";
+				ELSE
+					STATE_W := "000";
+				END IF;
+			WHEN "001" => --Enable dff for data 0 and Wait for stop write
+				
+				DATA_i_vout_L_temp <= '0';
+				DATA_i_vout_U_temp <= '0';
+							
+				DATA_i_L_en <= '1';
+				DATA_i_U_en <= '0';
+				
+				IF(reset = '1') THEN 
+					STATE_W := "000";
+				ELSIF( nWR = '1' AND add_i8085(15) = '1' ) THEN
+					STATE_W := "010";
+				ELSE
+					STATE_W := "001";
+				END IF;
+			WHEN "010" => --Disable DFF0 and Set Valid bit for data 0 and Wait for write data 1
+				
+				DATA_i_vout_L_temp <= '1';
+				DATA_i_vout_U_temp <= '0';
+							
+				DATA_i_L_en <= '0';
+				DATA_i_U_en <= '0';
 					
-				WHEN "011" => --wait for nwr to fall
-					IF( (nWR = '0')) THEN
-						STATE := "100";
-					END IF;
-				WHEN "100" => --When acknowledged, turn off validy and reset
-	--				IF( add_i8085(15) = '0' ) THEN --Reset on bad add_i8085(15)
-	--					STATE := "00";
-	--					DATA_i_vout_0_temp <= '0';
-	--					DATA_i_vout_1_temp <= '0';
-	--				ELSIF( (DATA_i_ack = '1') and (DATA_i_ack'event) ) THEN
-					IF( (DATA_i_ack = '1')) THEN
-						STATE := "000";
-						DATA_i_vout_0_temp <= '0';
-						DATA_i_vout_1_temp <= '0';
-					END IF;
-				WHEN OTHERS =>
-					STATE := "000";
-					DATA_i_vout_0_temp <= '0';
-					DATA_i_vout_1_temp <= '0';
-						
-			END CASE;
-		end if;
+				IF(reset = '1') THEN 
+					STATE_W := "000";					
+				ELSIF( nWR = '0' AND add_i8085(15) = '1' ) THEN
+					STATE_W := "011";
+				ELSE
+					STATE_W := "010";					
+				END IF;
+			WHEN "011" => --Enable DFF for data 1 and Wait for stop write
+				DATA_i_vout_L_temp <= '1';
+				DATA_i_vout_U_temp <= '0';
+							
+				DATA_i_L_en <= '0';
+				DATA_i_U_en <= '1';
+				
+				IF(reset = '1') THEN 
+					STATE_W := "000";
+				ELSIF( nWR = '1' AND add_i8085(15) = '1' ) THEN
+					STATE_W := "100";
+				ELSE
+					STATE_W := "011";					
+				END IF;
+			WHEN "100" => --Disable DFF1 and Set Valid bit for data 1 and Wait for acknowledge
+				
+				DATA_i_vout_L_temp <= '1';
+				DATA_i_vout_U_temp <= '1';
+							
+				DATA_i_L_en <= '0';
+				DATA_i_U_en <= '0';
+				
+				IF(reset = '1') THEN 
+					STATE_W := "000";
+				ELSIF( DATA_i_ack = '1' ) THEN
+					STATE_W := "000";
+				ELSE
+					STATE_W := "100";					
+				END IF;
+			WHEN OTHERS => --Restart Case
+				STATE_W := "000";
+				
+				DATA_i_vout_L_temp <= '0';
+				DATA_i_vout_U_temp <= '0';
+				
+				DATA_i_L_en <= '0';
+				DATA_i_U_en <= '0';
+				
+		END CASE;
 	
 	END PROCESS write_p;
 	
 	
 	--Take Data from the Holt_Connect and set it up for the i8085
-	read_p : PROCESS(nRD, reset, add_i8085(15), DATA_h_vin_0, DATA_h_vin_1 )
-		variable STATE : STD_LOGIC_VECTOR(1 DOWNTO 0) := "00";
+	--Work under process, fixing messsed up CASE, not rigerously tested
+	
+	--DFF_data_out : d_ff_8bit port map (a=>data_temp, en => IDATA_en, clk => fast_clk, d_ff_out => IDATA_out);
+	
+	read_p : PROCESS(reset,fast_clk)
+		variable STATE_R : STD_LOGIC_VECTOR(2 DOWNTO 0) := "000";
 	BEGIN
 		
-		--Reset Non add_i8085(15) enabled stuff
-		IF(reset = '1') THEN
-			STATE := "00";
-		END IF;
+
 			--Waits for a valid signal, puts the data out then waits for the processer to stop reading, 
 				--then it puts out the second data, and waits for the processor to stop reading
-		CASE STATE IS
-			WHEN "00" => --On first 8bit valid flag, show data
-				IF(add_i8085(15) = '0') THEN
-					data_temp <= "ZZZZZZZZ";
-				ELSIF( (DATA_h_vin_0 = '1') AND (DATA_h_vin_0'event) ) THEN
-					data_temp <= DATA_h_in_0;
-					STATE := "01";
+		CASE STATE_R IS
+			WHEN "000" => --On lower 8bit valid flag, show data
+			
+				data_temp <= x"00";
+				IDATA_en <= '0';
+				DATA_h_ack_temp <='0';
+				
+				IF(reset = '1') THEN
+					STATE_R := "000";
+				ELSIF( DATA_h_vin_0 = '1' AND add_i8085(15) = '1' ) THEN
+					STATE_R := "001";
+				ELSE
+					STATE_R := "000";
 				END IF;
-			WHEN "01" => --Hold the data until the i8085 stops reading
-				IF( add_i8085(15) = '0' ) THEN --Reset on bad add_i8085(15)
-					STATE := "00";
-					data_temp <= "ZZZZZZZZ";
-				ELSIF( (nRD = '1') and (nRD'event) ) THEN
-					data_temp <= "ZZZZZZZZ";
-					STATE := "10";
+			WHEN "001" => --Connect data to tri and Wait for start of read
+			
+				data_temp <= DATA_h_in_0;
+				IDATA_en <= '0';
+				DATA_h_ack_temp <='0';
+				
+				IF(reset = '1') THEN
+					STATE_R := "000";
+				ELSIF( nRD = '0' AND add_i8085(15) = '1' ) THEN 
+					STATE_R := "010";
+				ELSE
+					STATE_R := "001";
 				END IF;
-			WHEN "10" =>
-				IF( add_i8085(15) = '0' ) THEN --Reset on bad add_i8085(15)
-					STATE := "00";
-					data_temp <= "ZZZZZZZZ";
-				ELSIF( (DATA_h_vin_1 = '1') AND (DATA_h_vin_1'event) ) THEN
-					data_temp <= DATA_h_in_1;
-					STATE := "11";
+			WHEN "010" => --Enable the IDATA tristate and Wait for end of read
+			
+				data_temp <= DATA_h_in_0;
+				IDATA_en <= '1';
+				DATA_h_ack_temp <='0';
+				
+				IF(reset = '1') THEN
+					STATE_R := "000";
+				ELSIF( nRD = '1' AND add_i8085(15) = '1' ) THEN
+					STATE_R := "011";
+				ELSE
+					STATE_R := "010";
 				END IF;
-			WHEN "11" => --Hold the data until the i8085 stops reading, then wait for flag reset for safety
-				IF( add_i8085(15) = '0' ) THEN --Reset on bad add_i8085(15)
-					STATE := "00";
-					data_temp <= "ZZZZZZZZ";
-				ELSIF( (DATA_h_vin_0 = '0') AND (DATA_h_vin_1 = '0')) THEN
-					STATE := "00";
-					DATA_h_ack <= '0';
-				ELSIF( (nRD = '1') and (nRD'event) ) THEN
-					data_temp <= "ZZZZZZZZ";
-					DATA_h_ack <= '1';
+			WHEN "011" => --End Data out, Wait for next data                      
+			
+				data_temp <= x"00";
+				IDATA_en <= '0';
+				DATA_h_ack_temp <='0';
+				
+				IF(reset = '1') THEN
+					STATE_R := "000";
+				ELSIF( DATA_h_vin_1 = '1' ) THEN
+					STATE_R := "100";
+				ELSE
+					STATE_R := "011";
 				END IF;
+			WHEN "100" => --COnnect data to tri, Wait for start of read                     
+			
+				data_temp <= DATA_h_in_1;
+				IDATA_en <= '0';
+				DATA_h_ack_temp <='0';
+				
+				IF(reset = '1') THEN
+					STATE_R := "000";
+				ELSIF( nRD = '0' AND add_i8085(15) = '1' ) THEN
+					STATE_R := "101";
+				ELSE
+					STATE_R := "100";
+				END IF;
+			WHEN "101" => --Enable IDATA tristate, Wait for end of read                     
+			
+				data_temp <= DATA_h_in_1;
+				IDATA_en <= '1';
+				DATA_h_ack_temp <='0';
+				
+				IF(reset = '1') THEN
+					STATE_R := "000";
+				ELSIF( nRD = '1' AND add_i8085(15) = '1' ) THEN
+					STATE_R := "110";
+				ELSE
+					STATE_R := "101";
+				END IF;
+			WHEN "110" => --SEnd out an Acknowledge then reset states               
+			
+				data_temp <= x"00";
+				IDATA_en <= '0';
+				DATA_h_ack_temp <='1';	
+				
+				STATE_R := "111";
+			WHEN "111" => --SEnd out an Acknowledge then reset states               
+			
+				data_temp <= x"00";
+				IDATA_en <= '0';
+				DATA_h_ack_temp <='1';	
+				
+				STATE_R := "000";
+
 			WHEN OTHERS =>
-				STATE := "00";
+				STATE_R := "000";
+				
+				data_temp <= x"00";
+				IDATA_en <= '0';
 					
 		END CASE;
 	
