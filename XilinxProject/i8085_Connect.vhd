@@ -228,7 +228,7 @@ begin
 	--DFF_data_out : d_ff_8bit port map (a=>data_temp, en => IDATA_en, clk => fast_clk, d_ff_out => IDATA_out);
 	
 	read_p : PROCESS(reset,fast_clk)
-		variable STATE_R : STD_LOGIC_VECTOR(1 DOWNTO 0) := "00";
+		variable STATE_R : STD_LOGIC_VECTOR(2 DOWNTO 0) := "000";
 	BEGIN
 		
 
@@ -237,9 +237,9 @@ begin
 		CASE STATE_R IS
 			WHEN "000" => --On lower 8bit valid flag, show data
 			
-				data_temp <= x"000";
+				data_temp <= x"00";
 				IDATA_en <= '0';
-				DATA_h_ack_temp <='0'
+				DATA_h_ack_temp <='0';
 				
 				IF(reset = '1') THEN
 					STATE_R := "000";
@@ -252,7 +252,7 @@ begin
 			
 				data_temp <= DATA_h_in_0;
 				IDATA_en <= '0';
-				DATA_h_ack_temp <='0'
+				DATA_h_ack_temp <='0';
 				
 				IF(reset = '1') THEN
 					STATE_R := "000";
@@ -265,7 +265,7 @@ begin
 			
 				data_temp <= DATA_h_in_0;
 				IDATA_en <= '1';
-				DATA_h_ack_temp <='0'
+				DATA_h_ack_temp <='0';
 				
 				IF(reset = '1') THEN
 					STATE_R := "000";
@@ -278,7 +278,7 @@ begin
 			
 				data_temp <= x"00";
 				IDATA_en <= '0';
-				DATA_h_ack_temp <='0'
+				DATA_h_ack_temp <='0';
 				
 				IF(reset = '1') THEN
 					STATE_R := "000";
@@ -291,7 +291,7 @@ begin
 			
 				data_temp <= DATA_h_in_1;
 				IDATA_en <= '0';
-				DATA_h_ack_temp <='0'
+				DATA_h_ack_temp <='0';
 				
 				IF(reset = '1') THEN
 					STATE_R := "000";
@@ -304,7 +304,7 @@ begin
 			
 				data_temp <= DATA_h_in_1;
 				IDATA_en <= '1';
-				DATA_h_ack_temp <='0'
+				DATA_h_ack_temp <='0';
 				
 				IF(reset = '1') THEN
 					STATE_R := "000";
@@ -317,7 +317,7 @@ begin
 			
 				data_temp <= x"00";
 				IDATA_en <= '0';
-				DATA_h_ack_temp <='1'	
+				DATA_h_ack_temp <='1';	
 				
 				STATE_R := "000";
 
