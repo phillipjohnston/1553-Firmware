@@ -1,0 +1,4 @@
+vhdl work "DelayModule.vhd"
+vhdl work "MS1553_Reset_Pulse_Gen.vhd"
+vhdl work "MS1553_Reset_Pulse_Gen_TB.vhd"
+vhdl work "ipcore_dir/Clock/example_design/Clock_exdes.vhd"

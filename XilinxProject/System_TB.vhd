@@ -153,6 +153,7 @@ BEGIN
 		CLOCK_200MHZ <= '1';
 		wait for 2.5 ns;
 	END PROCESS;
+	
 
 -- *** Test Bench - User Defined Section ***
    tb : PROCESS
@@ -163,8 +164,8 @@ BEGIN
 		GPIO_BUTTON1 <= '1';
 		GPIO_BUTTON2 <= '0';
 		GPIO_BUTTON3 <= '1';
-		hWAIT <= '0';
 		DATA <= "ZZZZZZZZZZZZZZZZ";
+		hWAIT <= '0';
 		
 		
 		
@@ -172,12 +173,19 @@ BEGIN
 		
 		CPU_RESET <= '0';
 		
-		wait for 88.14 us;
-		DATA <= x"468A";
-		wait for 100 ns;
+		wait for 87.94 us;
+
+		wait for 20 ns;
 		hWAIT <= '1';
-		wait for 500ns;
+		wait for 130ns;
 		hWAIT <= '0';
+		DATA <= x"468A";
+		
+		wait for 5.303 us;
+		hWAIT <= '1';
+		wait for 130ns;
+		hWAIT <= '0';
+		
 		
 
 		

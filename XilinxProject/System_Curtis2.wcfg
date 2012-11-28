@@ -21,7 +21,7 @@
          </top_modules>
       </db_ref>
    </db_ref_list>
-   <WVObjectSize size="87" />
+   <WVObjectSize size="95" />
    <wvobject fp_name="/system_system_sch_tb/cpu_reset" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">cpu_reset</obj_property>
       <obj_property name="ObjectShortName">cpu_reset</obj_property>
@@ -264,6 +264,11 @@
       <obj_property name="ObjectShortName">data_i8085_l_lat[7:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
    </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/XLXI_171/idata_out" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">idata_out[7:0]</obj_property>
+      <obj_property name="ObjectShortName">idata_out[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
    <wvobject fp_name="/system_system_sch_tb/UUT/XLXI_178/data_i_vo_0" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">data_i_vo_0</obj_property>
       <obj_property name="ObjectShortName">data_i_vo_0</obj_property>
@@ -393,6 +398,39 @@
    <wvobject fp_name="/system_system_sch_tb/UUT/XLXI_178/pre_address_holt" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">pre_address_holt[15:0]</obj_property>
       <obj_property name="ObjectShortName">pre_address_holt[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider122" type="divider">
+      <obj_property name="label">i8085</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">128 128 255</obj_property>
+      <obj_property name="TextColor">230 230 230</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/XLXI_1/address_out" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">address_out[15:0]</obj_property>
+      <obj_property name="ObjectShortName">address_out[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/XLXI_1/ale" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">ale</obj_property>
+      <obj_property name="ObjectShortName">ale</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/XLXI_1/wrbar" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">wrbar</obj_property>
+      <obj_property name="ObjectShortName">wrbar</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/XLXI_1/rdbar" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">rdbar</obj_property>
+      <obj_property name="ObjectShortName">rdbar</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/XLXI_1/id" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">id[7:0]</obj_property>
+      <obj_property name="ObjectShortName">id[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/XLXI_1/acc" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">acc[7:0]</obj_property>
+      <obj_property name="ObjectShortName">acc[7:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
    </wvobject>
 </wave_config>

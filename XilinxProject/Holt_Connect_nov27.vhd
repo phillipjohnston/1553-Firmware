@@ -109,12 +109,6 @@ architecture Behavioral of Holt_Connect is
 		SIGNAL dat_valid_holt_lat1_val, dat_valid_holt_lat1_en : STD_LOGIC;
 		SIGNAL DATA_h_vo_0_int,DATA_h_vo_1_int : STD_LOGIC;
 		
-		--S- FMS stuff
-		type state_type_w is (s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11,s12,s13,s14,s15,s16);
-		signal wr_state : state_type_w := s16;
-		type state_type_r is (rdst_idle,rdst_go,rdst_wait_for_hwait_high,rdst_wait_for_hwait_low,rdst_latch,rdst_latch_2,rdst_done);
-		signal rd_state : state_type_r;
-		
 		
 		
 		--COMPONENTS
@@ -213,102 +207,98 @@ begin
 
 	--UGLY delay module for writing
 	wr_reset <= DATA_i_ack_int;
-	write_holt_p : PROCESS(fast_clk, wr_reset) --S- Made async reset FSM
+	write_holt_p : PROCESS(fast_clk, wr_reset)
+		variable WR_STATE : STD_LOGIC_VECTOR(3 DOWNTO 0) := "1111";
 	BEGIN
 		--Reset State and data validity
-		IF(wr_reset = '1') THEN  --S- I assume these are reset values
-			WR_STATE <= s1;
-			nCEw <= '1';
-			nWE <= '1';
-			data_tri_out <= '1';
-		ELSIF(fast_clk = '1' AND fast_clk'event) THEN
+		IF(wr_reset = '1') THEN 
+			WR_STATE := "0000";
+		END IF;
 		
 			--As soon as read is ready take it and wait for the next, setting valid bit as it is sent out
-			CASE WR_STATE IS --S- These states could sure use some comments
-				WHEN  s1 => --
-						nCEw <= '1';
-						nWE <= '1';
-						data_tri_out <= '1';
-						WR_STATE <=  s2;
-				WHEN  s2 => --
-						nCEw <= '1';
-						nWE <= '1';
-						data_tri_out <= '1';
-						WR_STATE <=  s3;
-				WHEN  s3 => --
-						nCEw <= '0';
-						nWE <= '0';
-						data_tri_out <= '1';
-						WR_STATE <=  s4;
-				WHEN  s4 => --
-						nCEw <= '0';
-						nWE <= '0';
-						data_tri_out <= '1';
-						WR_STATE <=  s5;
-				WHEN  s5 => --
-						nCEw <= '0';
-						nWE <= '0';
-						data_tri_out <= '1';
-						WR_STATE <=  s6;
-				WHEN  s6 => --
-						nCEw <= '0';
-						nWE <= '0';
-						data_tri_out <= '1';
-						WR_STATE <=  s7;
-				WHEN  s7 => --
-						nCEw <= '0';
-						nWE <= '0';
-						data_tri_out <= '1';
-						WR_STATE <=  s8;
-				WHEN  s8 => --
-						nCEw <= '0';
-						nWE <= '0';
-						data_tri_out <= '1';
-						WR_STATE <=  s9;
-				WHEN  s9 => --
-						nCEw <= '0';
-						nWE <= '0';
-						data_tri_out <= '1';
-						WR_STATE <=  s10;
-				WHEN  s10 => --
-						nCEw <= '0';
-						nWE <= '0';
-						data_tri_out <= '1';
-						WR_STATE <=  s11;
-				WHEN  s11 => --
-						nCEw <= '0';
-						nWE <= '0';
-						data_tri_out <= '1';
-						WR_STATE <=  s12;
-				WHEN  s12 => --
-						nCEw <= '0';
-						nWE <= '0';
-						data_tri_out <= '1';
-						WR_STATE <=  s13;
-				WHEN  s13 => --
-						nCEw <= '0';
-						nWE <= '0';
-						data_tri_out <= '1';
-						WR_STATE <=  s14;
-				WHEN  s14 => --
-						nCEw <= '0';
-						nWE <= '0';
-						data_tri_out <= '1';
-						WR_STATE <=  s15;
-				WHEN  s15 => --
-						nCEw <= '1';
-						nWE <= '1';
-						data_tri_out <= '1';
-						WR_STATE <=  s16;
-				WHEN  s16 => --Hold Here      --S- Was other, made state 16
-						nCEw <= '1';
-						nWE <= '1';
-						data_tri_out <= '0';
-						WR_STATE <=  s16;
-			END CASE;
-		
-		END IF;
-			
+		CASE WR_STATE IS
+			WHEN "0000" => --
+					nCEw <= '1';
+					nWE <= '1';
+					data_tri_out <= '1';
+					WR_STATE := "0001";
+			WHEN "0001" => --
+					nCEw <= '1';
+					nWE <= '1';
+					data_tri_out <= '1';
+					WR_STATE := "0010";
+			WHEN "0010" => --
+					nCEw <= '0';
+					nWE <= '0';
+					data_tri_out <= '1';
+					WR_STATE := "0011";
+			WHEN "0011" => --
+					nCEw <= '0';
+					nWE <= '0';
+					data_tri_out <= '1';
+					WR_STATE := "0100";
+			WHEN "0100" => --
+					nCEw <= '0';
+					nWE <= '0';
+					data_tri_out <= '1';
+					WR_STATE := "0101";
+			WHEN "0101" => --
+					nCEw <= '0';
+					nWE <= '0';
+					data_tri_out <= '1';
+					WR_STATE := "0110";
+			WHEN "0110" => --
+					nCEw <= '0';
+					nWE <= '0';
+					data_tri_out <= '1';
+					WR_STATE := "0111";
+			WHEN "0111" => --
+					nCEw <= '0';
+					nWE <= '0';
+					data_tri_out <= '1';
+					WR_STATE := "1000";
+			WHEN "1000" => --
+					nCEw <= '0';
+					nWE <= '0';
+					data_tri_out <= '1';
+					WR_STATE := "1001";
+			WHEN "1001" => --
+					nCEw <= '0';
+					nWE <= '0';
+					data_tri_out <= '1';
+					WR_STATE := "1010";
+			WHEN "1010" => --
+					nCEw <= '0';
+					nWE <= '0';
+					data_tri_out <= '1';
+					WR_STATE := "1011";
+			WHEN "1011" => --
+					nCEw <= '0';
+					nWE <= '0';
+					data_tri_out <= '1';
+					WR_STATE := "1100";
+			WHEN "1100" => --
+					nCEw <= '0';
+					nWE <= '0';
+					data_tri_out <= '1';
+					WR_STATE := "1101";
+			WHEN "1101" => --
+					nCEw <= '0';
+					nWE <= '0';
+					data_tri_out <= '1';
+					WR_STATE := "1110";
+			WHEN "1110" => --
+					nCEw <= '1';
+					nWE <= '1';
+					data_tri_out <= '1';
+					WR_STATE := "1111";
+			WHEN OTHERS => --Hold Here
+					nCEw <= '1';
+					nWE <= '1';
+					data_tri_out <= '0';
+					WR_STATE := "1111";
+		END CASE;
+	
 	END PROCESS write_holt_p;
 	
 	
@@ -318,102 +308,75 @@ begin
 	--READING LOGIC
 	
 	--Reads
---	dat_input_holt_lat_en <= NOT nOE_int and NOT hWAIT;
+	dat_input_holt_lat_en <= NOT nOE_int and NOT hWAIT;
 	dat_input_holt_lat: d_ff_16bit port map(a=>DATA_HOLT, en => dat_input_holt_lat_en, clk => fast_clk,d_ff_out => DATA_HOLT_FULL_LAT);
 	DATA_h_o_0 <= DATA_HOLT_FULL_LAT(7 downto 0);
 	DATA_h_o_1 <= DATA_HOLT_FULL_LAT(15 downto 8);
 	
 	--raise valid lines
---	dat_valid_holt_lat0_val <= NOT DATA_h_ack;
+	dat_valid_holt_lat0_val <= NOT DATA_h_ack;
 	dat_valid_holt_lat0_en <= dat_input_holt_lat_en OR DATA_h_vo_0_int;
---	dat_valid_holt_lat1_val <= NOT DATA_h_ack;
+	dat_valid_holt_lat1_val <= NOT DATA_h_ack;
 	dat_valid_holt_lat1_en <= dat_input_holt_lat_en OR DATA_h_vo_1_int;
-	dat_valid_holt_lat0: d_ff_1bit port map(a=>dat_input_holt_lat_en, en => dat_valid_holt_lat0_en, clk => fast_clk,d_ff_out => DATA_h_vo_0_int);
-	dat_valid_holt_lat1: d_ff_1bit port map(a=>dat_input_holt_lat_en, en => dat_valid_holt_lat1_en, clk => fast_clk,d_ff_out => DATA_h_vo_1_int);
+	dat_valid_holt_lat0: d_ff_1bit port map(a=>dat_valid_holt_lat0_val, en => dat_valid_holt_lat0_en, clk => fast_clk,d_ff_out => DATA_h_vo_0_int);
+	dat_valid_holt_lat1: d_ff_1bit port map(a=>dat_valid_holt_lat1_val, en => dat_valid_holt_lat1_en, clk => fast_clk,d_ff_out => DATA_h_vo_1_int);
 	DATA_h_vo_0 <= DATA_h_vo_0_int;
 	DATA_h_vo_1 <= DATA_h_vo_1_int;
 	
 	
-	--UGLY delay module for reading --S- Made it  asnyc reset FSM
---	rd_reset <= NOT nRD_o;
+	--UGLY delay module for reading
+	rd_reset <= NOT nRD_o;
 	read_holt_p : PROCESS(fast_clk, rd_reset)
+		variable RD_STATE : STD_LOGIC_VECTOR(3 DOWNTO 0) := "1111";
 	BEGIN
 		--Reset State and data validity
-		IF(reset = '1') THEN 	--S- I assumed these were reset values
-			RD_STATE <= rdst_idle;
-			nCEr <= '1';
-			nOE_int <= '1';
-			dat_input_holt_lat_en <= '0';
-
-		ELSIF(fast_clk = '1' AND fast_clk'event) THEN
-		
-				--As soon as read is ready take it and wait for the next, setting valid bit as it is sent out
-			CASE RD_STATE IS --S- So many comment locations, so few comments
-				WHEN rdst_idle =>
-					nCEr <= '1';
-					nOE_int <= '1';
-					dat_input_holt_lat_en <= '0';
-					if (nRD_o = '0') then
---					if (ALE_o = '1' and pre_ADDRESS_HOLT(15) = '1') then
-						RD_STATE <= rdst_go;
-					else
-						RD_STATE <= rdst_idle;
-					end if;
-					
-				WHEN rdst_go =>
-					nCEr <= '0';
-					nOE_int <= '0';
-					dat_input_holt_lat_en <= '0';
-					RD_STATE <= rdst_wait_for_hwait_high;
-					
-				WHEN rdst_wait_for_hwait_high =>
-					nCEr <= '0';
-					nOE_int <= '0';
-					dat_input_holt_lat_en <= '0';
-					if(hWAIT = '1') then
-						RD_STATE <= rdst_wait_for_hwait_low;
-					else
-						RD_STATE <= rdst_wait_for_hwait_high;
-					end if;
-					
-				WHEN rdst_wait_for_hwait_low=>
-					nCEr <= '0';
-					nOE_int <= '0';
-					dat_input_holt_lat_en <= '0';
-					if(hWAIT = '0') then
-						RD_STATE <= rdst_latch;
-					else
-						RD_STATE <= rdst_wait_for_hwait_low;
-					end if;
-					
-				WHEN rdst_latch=>
-					nCEr <= '0';
-					nOE_int <= '0';
-					dat_input_holt_lat_en <= '1';
-					RD_STATE <= rdst_latch_2;
-
-				WHEN rdst_latch_2=>
-					nCEr <= '0';
-					nOE_int <= '0';
-					dat_input_holt_lat_en <= '1';
-					RD_STATE <= rdst_done;
-					
-				WHEN rdst_done=> --wait for nrd to go high again
-					nCEr <= '1';
-					nOE_int <= '1';
-					dat_input_holt_lat_en <= '0';
-					if(nRD_o = '1') then
-						RD_STATE <= rdst_idle;
-					else
-						RD_STATE <= rdst_done;
-					end if;
-
-				
-
-			END CASE;
-		
+		IF(rd_reset = '1') THEN 
+			RD_STATE := "0000";
 		END IF;
 		
+			--As soon as read is ready take it and wait for the next, setting valid bit as it is sent out
+		CASE RD_STATE IS
+			WHEN "0000" => --
+				nCEr <= '1';
+				nOE_int <= '1';
+				RD_STATE := "0001";
+			WHEN "0001" => --
+				nCEr <= '0';
+				nOE_int <= '0';
+				RD_STATE := "0010";
+			WHEN "0010" => --
+				nCEr <= '0';
+				nOE_int <= '0';
+				RD_STATE := "0011";
+			WHEN "0011" => --
+				nCEr <= '0';
+				nOE_int <= '0';
+				RD_STATE := "0100";
+			WHEN "0100" => --
+				nCEr <= '0';
+				nOE_int <= '0';
+				RD_STATE := "0101";
+			WHEN "0101" => --
+				nCEr <= '0';
+				nOE_int <= '0';
+				RD_STATE := "0110";
+			WHEN "0110" => --
+				nCEr <= '0';
+				nOE_int <= '0';
+				IF (hWAIT = '1') then
+					RD_STATE := "0110";
+				else
+					RD_STATE := "1101";
+				end if;
+			WHEN "1101" => --
+				nCEr <= '1';
+				nOE_int <= '1';
+				RD_STATE := "1110";
+			WHEN OTHERS => --Hold Here
+				nCEr <= '1';
+				nOE_int <= '1';
+				RD_STATE := "1111";
+		END CASE;
 	
 	END PROCESS read_holt_p;
 	
