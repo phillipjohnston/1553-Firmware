@@ -112,7 +112,8 @@ architecture Behavioral of Holt_Connect is
 		--S- FMS stuff
 		type state_type_w is (s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11,s12,s13,s14,s15,s16);
 		signal wr_state : state_type_w := s16;
-		type state_type_r is (rdst_idle,rdst_go,rdst_wait_for_hwait_high,rdst_wait_for_hwait_low,rdst_latch,rdst_latch_2,rdst_done);
+--		type state_type_r is (rdst_idle,rdst_go,rdst_wait_for_hwait_high,rdst_wait_for_hwait_low,rdst_latch,rdst_latch_2,rdst_done);
+		type state_type_r is (rdst_idle,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12,r13,r_last);
 		signal rd_state : state_type_r;
 		
 		
@@ -353,59 +354,101 @@ begin
 					nCEr <= '1';
 					nOE_int <= '1';
 					dat_input_holt_lat_en <= '0';
-					if (nRD_o = '0') then
---					if (ALE_o = '1' and pre_ADDRESS_HOLT(15) = '1') then
-						RD_STATE <= rdst_go;
+					if (nRD_o = '0' and ALE_o = '1') then
+					--if (ALE_o = '1' and pre_ADDRESS_HOLT(15) = '1') then
+						RD_STATE <= r1;
 					else
 						RD_STATE <= rdst_idle;
 					end if;
 					
-				WHEN rdst_go =>
+				WHEN r1 =>
 					nCEr <= '0';
 					nOE_int <= '0';
 					dat_input_holt_lat_en <= '0';
-					RD_STATE <= rdst_wait_for_hwait_high;
-					
-				WHEN rdst_wait_for_hwait_high =>
+					RD_STATE <= r2;
+				
+				WHEN r2 =>
 					nCEr <= '0';
 					nOE_int <= '0';
 					dat_input_holt_lat_en <= '0';
-					if(hWAIT = '1') then
-						RD_STATE <= rdst_wait_for_hwait_low;
-					else
-						RD_STATE <= rdst_wait_for_hwait_high;
-					end if;
+					RD_STATE <= r3;
 					
-				WHEN rdst_wait_for_hwait_low=>
+				WHEN r3 =>
 					nCEr <= '0';
 					nOE_int <= '0';
 					dat_input_holt_lat_en <= '0';
-					if(hWAIT = '0') then
-						RD_STATE <= rdst_latch;
-					else
-						RD_STATE <= rdst_wait_for_hwait_low;
-					end if;
+					RD_STATE <= r4;
 					
-				WHEN rdst_latch=>
+				WHEN r4 =>
+					nCEr <= '0';
+					nOE_int <= '0';
+					dat_input_holt_lat_en <= '0';
+					RD_STATE <= r5;
+					
+				WHEN r5 =>
+					nCEr <= '0';
+					nOE_int <= '0';
+					dat_input_holt_lat_en <= '0';
+					RD_STATE <= r6;
+					
+				WHEN r6 =>
+					nCEr <= '0';
+					nOE_int <= '0';
+					dat_input_holt_lat_en <= '0';
+					RD_STATE <= r7;
+					
+				WHEN r7 =>
+					nCEr <= '0';
+					nOE_int <= '0';
+					dat_input_holt_lat_en <= '0';
+					RD_STATE <= r8;
+					
+				WHEN r8 =>
+					nCEr <= '0';
+					nOE_int <= '0';
+					dat_input_holt_lat_en <= '0';
+					RD_STATE <= r9;
+					
+				WHEN r9 =>
+					nCEr <= '0';
+					nOE_int <= '0';
+					dat_input_holt_lat_en <= '0';
+					RD_STATE <= r10;
+					
+				WHEN r10 =>
+					nCEr <= '0';
+					nOE_int <= '0';
+					dat_input_holt_lat_en <= '0';
+					RD_STATE <= r11;
+					
+				WHEN r11 =>
+					nCEr <= '0';
+					nOE_int <= '0';
+					dat_input_holt_lat_en <= '0';
+					RD_STATE <= r12;
+					
+				WHEN r12 =>
+					nCEr <= '0';
+					nOE_int <= '0';
+					dat_input_holt_lat_en <= '0';
+					RD_STATE <= r13;
+					
+				WHEN r13 =>
 					nCEr <= '0';
 					nOE_int <= '0';
 					dat_input_holt_lat_en <= '1';
-					RD_STATE <= rdst_latch_2;
+					RD_STATE <= r_last;
 
-				WHEN rdst_latch_2=>
+					
+				WHEN r_last => -- hold here until ale resets to 0
 					nCEr <= '0';
 					nOE_int <= '0';
-					dat_input_holt_lat_en <= '1';
-					RD_STATE <= rdst_done;
-					
-				WHEN rdst_done=> --wait for nrd to go high again
-					nCEr <= '1';
-					nOE_int <= '1';
 					dat_input_holt_lat_en <= '0';
-					if(nRD_o = '1') then
+					
+					iF (ALE_o = '0') then
 						RD_STATE <= rdst_idle;
 					else
-						RD_STATE <= rdst_done;
+						RD_STATE <= r_last;
 					end if;
 
 				

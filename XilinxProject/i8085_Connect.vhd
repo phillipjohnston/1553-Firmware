@@ -64,7 +64,8 @@ entity i8085_Connect is
 			  DATA_h_ack  : out  STD_LOGIC;
 			  
 			  --Out to i8085
-           IDATA_out : out  STD_LOGIC_VECTOR (7 downto 0)
+           IDATA_out : out  STD_LOGIC_VECTOR (7 downto 0);
+			  i8085_hold : out STD_LOGIC
 			  
 			  );
 end i8085_Connect;
@@ -73,24 +74,33 @@ architecture Behavioral of i8085_Connect is
 
 	signal addr_temp 			: STD_LOGIC_VECTOR(15 DOWNTO 0);
 	signal data_temp 			: STD_LOGIC_VECTOR(7 DOWNTO 0);
-	signal data_temp_en		: std_logic;
-	signal data_temp_val    : STD_LOGIC_VECTOR(7 DOWNTO 0);
 	signal DATA_i_vout_L_temp 	: STD_LOGIC;
 	signal DATA_i_vout_U_temp 	: STD_LOGIC;
 	signal DATA_h_ack_temp 		: STD_LOGIC;
+	signal data_temp_val : STD_LOGIC_VECTOR(7 DOWNTO 0);
 	
 	--DFF Enables
 	signal DATA_i_L_en 	: STD_LOGIC;
 	signal DATA_i_U_en 	: STD_LOGIC; 
 	signal IDATA_en 	: STD_LOGIC;
+	signal data_temp_en  : STD_LoGIC;
+	
 	
 	--FMS stuff
 	type state_type_w is (s1,s2,s3,s4,s5);
 	signal state_w : state_type_w;
 	type state_type_r is (s1,s2,s3,s4,s5,s6,s7,s8);
 	signal state_r : state_type_r;
+	type state_type_hold is (sth_idle,sth_hold,sth_progress);
+	signal state_h : state_type_hold;
+	
+	--hold-release signals
+	Signal hold_release_wr,hold_release_rd : STD_LOGIC;
+	
+	
 	
 	COMPONENT d_ff_8bit IS
+	
 	PORT(
 		a    		: IN STD_LOGIC_VECTOR(7 DOWNTO 0);
 		en 		: IN STD_LOGIC;
@@ -111,12 +121,15 @@ architecture Behavioral of i8085_Connect is
 
 begin
 
+	--can ignore or remove this
+	i8085_hold <= '0';
+
 	--Latching the 8085 address for Holt_Connect, High Z otherwise
 	DFF_add : d_ff_16bit port map (a=>add_i8085, en => ALE, clk => fast_clk, d_ff_out => addr_temp);
 		
 	--High Z when no need
 	address_latched <= addr_temp WHEN add_i8085(15) = '1' ELSE "ZZZZZZZZZZZZZZZZ";
-	IDATA_en <= '1' when NOT (ALE = '1' AND nRD = '1') and add_i8085(15) = '1' ELSE '0';
+	IDATA_en <= '1' WHEN NOT (ALE = '1' and nRD = '1') and add_i8085(15) = '1' ELSE '0';
 	IDATA_out <= data_temp WHEN IDATA_en = '1' ELSE "ZZZZZZZZ";
 	
 	--Driving with temps
@@ -226,7 +239,7 @@ begin
 	--Take Data from the Holt_Connect and set it up for the i8085
 	--Work under process, fixing messsed up CASE, not rigerously tested
 	
-	rd_data_out_ff : d_ff_8bit port map (a=>data_temp_val, en => data_temp_en, clk => fast_clk, d_ff_out => data_temp);
+	DFF_data_out : d_ff_8bit port map (a=>data_temp_val, en => data_temp_en, clk => fast_clk, d_ff_out => data_temp);
 	
 	read_p : PROCESS(reset,fast_clk)
 	BEGIN
@@ -246,10 +259,10 @@ begin
 			CASE STATE_R IS
 				WHEN s1 => --On lower 8bit valid flag, show data
 				
---					data_temp <= x"00";
+					--data_temp <= x"00";
+					--IDATA_en <= '0';
 					data_temp_val <= x"00";
 					data_temp_en <= '0';
---					IDATA_en <= '0';
 					DATA_h_ack_temp <='0';
 					
 					IF( DATA_h_vin_0 = '1' AND add_i8085(15) = '1' ) THEN
@@ -260,9 +273,9 @@ begin
 				WHEN s2 => --Connect data to tri and Wait for start of read
 				
 --					data_temp <= DATA_h_in_0;
+--					IDATA_en <= '0';
 					data_temp_val <= DATA_h_in_0;
 					data_temp_en <= '1';
---					IDATA_en <= '0';
 					DATA_h_ack_temp <='0';
 					
 					IF( nRD = '0' AND add_i8085(15) = '1' ) THEN 
@@ -273,9 +286,9 @@ begin
 				WHEN s3 => --Enable the IDATA tristate and Wait for end of read
 				
 --					data_temp <= DATA_h_in_0;
+--					IDATA_en <= '1';
 					data_temp_val <= DATA_h_in_0;
 					data_temp_en <= '1';
---					IDATA_en <= '1';
 					DATA_h_ack_temp <='0';
 					
 					IF( nRD = '1' AND add_i8085(15) = '1' ) THEN
@@ -286,9 +299,9 @@ begin
 				WHEN s4 => --End Data out, Wait for next data                      
 				
 --					data_temp <= x"00";
+--					IDATA_en <= '0';
 					data_temp_val <= x"00";
 					data_temp_en <= '0';
---					IDATA_en <= '0';
 					DATA_h_ack_temp <='0';
 					
 					IF( DATA_h_vin_1 = '1' ) THEN
@@ -299,9 +312,9 @@ begin
 				WHEN s5 => --COnnect data to tri, Wait for start of read                     
 				
 --					data_temp <= DATA_h_in_1;
+--					IDATA_en <= '0';
 					data_temp_val <= DATA_h_in_1;
 					data_temp_en <= '1';
---					IDATA_en <= '0';
 					DATA_h_ack_temp <='0';
 					
 					IF( nRD = '0' AND add_i8085(15) = '1' ) THEN
@@ -312,9 +325,9 @@ begin
 				WHEN s6 => --Enable IDATA tristate, Wait for end of read                     
 				
 --					data_temp <= DATA_h_in_1;
+--					IDATA_en <= '1';
 					data_temp_val <= DATA_h_in_1;
 					data_temp_en <= '1';
---					IDATA_en <= '1';
 					DATA_h_ack_temp <='0';
 					
 					IF( nRD = '1' AND add_i8085(15) = '1' ) THEN
@@ -325,18 +338,18 @@ begin
 				WHEN s7 => --SEnd out an Acknowledge then reset states               
 				
 --					data_temp <= x"00";
-					data_temp_en <= '0';
-					data_temp_val <= x"00";
 --					IDATA_en <= '0';
+					data_temp_val <= x"00";
+					data_temp_en <= '0';
 					DATA_h_ack_temp <='1';	
 					
 					STATE_R <= s8;
 				WHEN s8 => --SEnd out an Acknowledge then reset states               
 				
 --					data_temp <= x"00";
+--					IDATA_en <= '0';
 					data_temp_val <= x"00";
 					data_temp_en <= '0';
---					IDATA_en <= '0';
 					DATA_h_ack_temp <='1';	
 					
 					STATE_R <= s1;
@@ -345,6 +358,11 @@ begin
 		END IF;
 	
 	END PROCESS read_p;
+	
+
+
+	
+	
 
 end Behavioral;
 

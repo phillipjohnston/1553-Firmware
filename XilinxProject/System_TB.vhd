@@ -175,10 +175,7 @@ BEGIN
 		
 		wait for 87.94 us;
 
-		wait for 20 ns;
-		hWAIT <= '1';
-		wait for 130ns;
-		hWAIT <= '0';
+		wait for 117 ns;
 		DATA <= x"468A";
 		
 		wait for 5.303 us;

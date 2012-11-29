@@ -72,10 +72,6 @@
       <obj_property name="ObjectShortName">data[15:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
    </wvobject>
-   <wvobject fp_name="/system_system_sch_tb/hwait" type="logic" db_ref_id="1">
-      <obj_property name="ElementShortName">hwait</obj_property>
-      <obj_property name="ObjectShortName">hwait</obj_property>
-   </wvobject>
    <wvobject fp_name="/system_system_sch_tb/UUT/XLXI_178/data_holt_full_lat" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">data_holt_full_lat[15:0]</obj_property>
       <obj_property name="ObjectShortName">data_holt_full_lat[15:0]</obj_property>
@@ -432,5 +428,9 @@
       <obj_property name="ElementShortName">acc[7:0]</obj_property>
       <obj_property name="ObjectShortName">acc[7:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/XLXI_1/ready" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">ready</obj_property>
+      <obj_property name="ObjectShortName">ready</obj_property>
    </wvobject>
 </wave_config>

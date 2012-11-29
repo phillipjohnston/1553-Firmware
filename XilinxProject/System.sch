@@ -6,14 +6,12 @@
         <trait edittrait="all:0" />
     </attr>
     <netlist>
-        <signal name="XLXN_118" />
         <signal name="XLXN_120" />
         <signal name="XLXN_121" />
         <signal name="XLXN_122" />
         <signal name="XLXN_123" />
         <signal name="XLXN_124" />
         <signal name="XLXN_125" />
-        <signal name="XLXN_126" />
         <signal name="ADDR_OUT_8085(15:0)" />
         <signal name="nIOM" />
         <signal name="ALE" />
@@ -112,6 +110,9 @@
         <signal name="nRESET_OUT" />
         <signal name="XLXN_167" />
         <signal name="XLXN_166" />
+        <signal name="i8085_hold" />
+        <signal name="i8085_nhold" />
+        <signal name="XLXN_170" />
         <port polarity="Output" name="NET_GND" />
         <port polarity="Input" name="SYSCLK_P" />
         <port polarity="Input" name="SYSCLK_N" />
@@ -349,7 +350,8 @@
             <line x2="384" y1="-32" y2="-32" x1="320" />
         </blockdef>
         <blockdef name="i8085_Connect">
-            <timestamp>2012-11-28T5:25:5</timestamp>
+            <timestamp>2012-11-28T20:11:24</timestamp>
+            <line x2="560" y1="288" y2="288" x1="496" />
             <line x2="560" y1="32" y2="32" x1="496" />
             <line x2="560" y1="96" y2="96" x1="496" />
             <rect width="64" x="496" y="148" height="24" />
@@ -378,7 +380,7 @@
             <line x2="560" y1="-288" y2="-288" x1="496" />
             <rect width="64" x="496" y="-108" height="24" />
             <line x2="560" y1="-96" y2="-96" x1="496" />
-            <rect width="432" x="64" y="-704" height="1088" />
+            <rect width="432" x="64" y="-704" height="1152" />
         </blockdef>
         <blockdef name="bufg">
             <timestamp>2000-1-1T10:10:10</timestamp>
@@ -463,9 +465,9 @@
             <blockpin signalname="XLXN_123" name="RST65" />
             <blockpin signalname="XLXN_124" name="RST55" />
             <blockpin signalname="XLXN_125" name="INTR" />
-            <blockpin signalname="XLXN_118" name="READY" />
+            <blockpin signalname="i8085_nhold" name="READY" />
             <blockpin signalname="nRESET_OUT" name="RESETINBAR" />
-            <blockpin signalname="XLXN_126" name="HOLD" />
+            <blockpin signalname="XLXN_170" name="HOLD" />
             <blockpin signalname="IDATA(7:0)" name="ID(7:0)" />
             <blockpin name="RESETOUT" />
             <blockpin name="SOD" />
@@ -479,9 +481,6 @@
             <blockpin signalname="CLOCK_8085" name="CLKOUT" />
             <blockpin name="HLDA" />
             <blockpin signalname="ADDR_OUT_8085(15:0)" name="ADDRESS_OUT(15:0)" />
-        </block>
-        <block symbolname="vcc" name="XLXI_10">
-            <blockpin signalname="XLXN_118" name="P" />
         </block>
         <block symbolname="gnd" name="XLXI_12">
             <blockpin signalname="XLXN_120" name="G" />
@@ -500,9 +499,6 @@
         </block>
         <block symbolname="gnd" name="XLXI_17">
             <blockpin signalname="XLXN_125" name="G" />
-        </block>
-        <block symbolname="gnd" name="XLXI_18">
-            <blockpin signalname="XLXN_126" name="G" />
         </block>
         <block symbolname="Mem8085_Controller" name="XLXI_19">
             <blockpin signalname="ALE" name="ALE" />
@@ -687,13 +683,14 @@
             <blockpin signalname="nWR_out" name="nWR_out" />
             <blockpin signalname="nRD_out" name="nRD_out" />
             <blockpin signalname="ALE_out" name="ALE_out" />
-            <blockpin signalname="DATA_h_ack" name="DATA_h_ack" />
-            <blockpin signalname="ADDR_LAT(15:0)" name="address_latched(15:0)" />
-            <blockpin signalname="IDATA(7:0)" name="IDATA_out(7:0)" />
             <blockpin signalname="DATA_i_vout_0" name="DATA_i_vout_L" />
             <blockpin signalname="DATA_i_vout_1" name="DATA_i_vout_U" />
+            <blockpin signalname="DATA_h_ack" name="DATA_h_ack" />
+            <blockpin signalname="ADDR_LAT(15:0)" name="address_latched(15:0)" />
             <blockpin signalname="DATA_i_out_0(7:0)" name="DATA_i_out_L(7:0)" />
             <blockpin signalname="DATA_i_out_1(7:0)" name="DATA_i_out_U(7:0)" />
+            <blockpin signalname="IDATA(7:0)" name="IDATA_out(7:0)" />
+            <blockpin signalname="i8085_hold" name="i8085_hold" />
         </block>
         <block symbolname="bufg" name="XLXI_176">
             <blockpin signalname="XLXN_164" name="I" />
@@ -757,6 +754,13 @@
             <blockpin signalname="nRESET_OUT" name="I" />
             <blockpin signalname="RESET_OUT" name="O" />
         </block>
+        <block symbolname="gnd" name="XLXI_185">
+            <blockpin signalname="XLXN_170" name="G" />
+        </block>
+        <block symbolname="inv" name="XLXI_186">
+            <blockpin signalname="i8085_hold" name="I" />
+            <blockpin signalname="i8085_nhold" name="O" />
+        </block>
     </netlist>
     <sheet sheetnum="1" width="7040" height="5440">
         <instance x="336" y="896" name="XLXI_1" orien="R0">
@@ -765,10 +769,10 @@
             <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="304" y="672" type="branch" />
             <wire x2="336" y1="672" y2="672" x1="304" />
         </branch>
-        <branch name="XLXN_118">
-            <wire x2="336" y1="608" y2="608" x1="304" />
+        <branch name="i8085_nhold">
+            <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="256" y="608" type="branch" />
+            <wire x2="336" y1="608" y2="608" x1="256" />
         </branch>
-        <instance x="304" y="672" name="XLXI_10" orien="R270" />
         <branch name="XLXN_120">
             <wire x2="336" y1="224" y2="224" x1="304" />
         </branch>
@@ -793,10 +797,6 @@
             <wire x2="336" y1="544" y2="544" x1="304" />
         </branch>
         <instance x="176" y="480" name="XLXI_17" orien="R90" />
-        <branch name="XLXN_126">
-            <wire x2="336" y1="736" y2="736" x1="304" />
-        </branch>
-        <instance x="176" y="672" name="XLXI_18" orien="R90" />
         <branch name="ADDR_OUT_8085(15:0)">
             <attrtext style="alignment:SOFT-LEFT;fontsize:28;fontname:Arial" attrname="Name" x="896" y="864" type="branch" />
             <wire x2="896" y1="864" y2="864" x1="848" />
@@ -1556,5 +1556,22 @@
             <wire x2="3184" y1="1168" y2="1168" x1="3152" />
             <wire x2="3264" y1="1168" y2="1168" x1="3184" />
         </branch>
+        <branch name="i8085_hold">
+            <attrtext style="alignment:SOFT-LEFT;fontsize:28;fontname:Arial" attrname="Name" x="3264" y="1232" type="branch" />
+            <wire x2="3216" y1="1232" y2="1232" x1="3152" />
+            <wire x2="3224" y1="1232" y2="1232" x1="3216" />
+            <wire x2="3264" y1="1232" y2="1232" x1="3224" />
+            <wire x2="3216" y1="1232" y2="1312" x1="3216" />
+            <wire x2="3232" y1="1312" y2="1312" x1="3216" />
+        </branch>
+        <instance x="3232" y="1344" name="XLXI_186" orien="R0" />
+        <branch name="i8085_nhold">
+            <attrtext style="alignment:SOFT-LEFT;fontsize:28;fontname:Arial" attrname="Name" x="3488" y="1312" type="branch" />
+            <wire x2="3488" y1="1312" y2="1312" x1="3456" />
+        </branch>
+        <branch name="XLXN_170">
+            <wire x2="336" y1="736" y2="736" x1="304" />
+        </branch>
+        <instance x="176" y="672" name="XLXI_185" orien="R90" />
     </sheet>
 </drawing>
