@@ -3,7 +3,7 @@
    <wave_state>
    </wave_state>
    <db_ref_list>
-      <db_ref path="C:/Users/cmulady/Documents/GitHub/1553-Firmware/XilinxProject/System_System_sch_tb_isim_beh.wdb" id="1" type="auto">
+      <db_ref path="D:/Documents/GitHub/1553-Firmware/XilinxProject/System_System_sch_tb_isim_beh.wdb" id="1" type="auto">
          <top_modules>
             <top_module name="conversion" />
             <top_module name="numeric_std" />
@@ -21,7 +21,7 @@
          </top_modules>
       </db_ref>
    </db_ref_list>
-   <WVObjectSize size="95" />
+   <WVObjectSize size="97" />
    <wvobject fp_name="/system_system_sch_tb/cpu_reset" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">cpu_reset</obj_property>
       <obj_property name="ObjectShortName">cpu_reset</obj_property>
@@ -432,5 +432,15 @@
    <wvobject fp_name="/system_system_sch_tb/UUT/XLXI_1/ready" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">ready</obj_property>
       <obj_property name="ObjectShortName">ready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/XLXI_1/tstates" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">tstates[3:0]</obj_property>
+      <obj_property name="ObjectShortName">tstates[3:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/XLXI_1/mcycle" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">mcycle[2:0]</obj_property>
+      <obj_property name="ObjectShortName">mcycle[2:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
    </wvobject>
 </wave_config>

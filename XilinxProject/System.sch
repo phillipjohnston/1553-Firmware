@@ -113,6 +113,8 @@
         <signal name="i8085_hold" />
         <signal name="i8085_nhold" />
         <signal name="XLXN_170" />
+        <signal name="USER_CLK" />
+        <signal name="slower_clk" />
         <port polarity="Output" name="NET_GND" />
         <port polarity="Input" name="SYSCLK_P" />
         <port polarity="Input" name="SYSCLK_N" />
@@ -150,6 +152,7 @@
         <port polarity="BiDirectional" name="DATA(15:0)" />
         <port polarity="Output" name="ACK_IRQ" />
         <port polarity="Input" name="nIRQ" />
+        <port polarity="Input" name="USER_CLK" />
         <blockdef name="I8085_c">
             <timestamp>2012-11-7T20:44:41</timestamp>
             <rect width="384" x="64" y="-768" height="768" />
@@ -180,7 +183,7 @@
             <line x2="512" y1="-32" y2="-32" x1="448" />
         </blockdef>
         <blockdef name="Memory">
-            <timestamp>2012-11-28T17:47:42</timestamp>
+            <timestamp>2012-11-29T12:29:21</timestamp>
             <rect width="512" x="32" y="32" height="1344" />
             <line x2="32" y1="80" y2="80" style="linewidth:W" x1="0" />
             <line x2="32" y1="112" y2="112" style="linewidth:W" x1="0" />
@@ -457,8 +460,16 @@
             <line x2="64" y1="-192" y2="-192" x1="0" />
             <line x2="320" y1="-192" y2="-192" x1="384" />
         </blockdef>
+        <blockdef name="Clock_2">
+            <timestamp>2012-11-29T12:6:10</timestamp>
+            <rect width="544" x="32" y="32" height="1056" />
+            <line x2="32" y1="80" y2="80" x1="0" />
+            <line x2="32" y1="432" y2="432" x1="0" />
+            <line x2="576" y1="80" y2="80" x1="608" />
+            <line x2="576" y1="976" y2="976" x1="608" />
+        </blockdef>
         <block symbolname="I8085_c" name="XLXI_1">
-            <blockpin signalname="SLOW_CLOCK" name="X1" />
+            <blockpin signalname="slower_clk" name="X1" />
             <blockpin signalname="XLXN_120" name="SID" />
             <blockpin signalname="XLXN_121" name="TRAP" />
             <blockpin signalname="XLXN_122" name="RST75" />
@@ -761,6 +772,12 @@
             <blockpin signalname="i8085_hold" name="I" />
             <blockpin signalname="i8085_nhold" name="O" />
         </block>
+        <block symbolname="Clock_2" name="XLXI_187">
+            <blockpin signalname="USER_CLK" name="clk_in1" />
+            <blockpin signalname="CPU_RESET_BUF" name="reset" />
+            <blockpin signalname="slower_clk" name="clk_out1" />
+            <blockpin name="locked" />
+        </block>
     </netlist>
     <sheet sheetnum="1" width="7040" height="5440">
         <instance x="336" y="896" name="XLXI_1" orien="R0">
@@ -821,7 +838,7 @@
             <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="256" y="800" type="branch" />
             <wire x2="336" y1="800" y2="800" x1="256" />
         </branch>
-        <branch name="SLOW_CLOCK">
+        <branch name="slower_clk">
             <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="256" y="160" type="branch" />
             <wire x2="336" y1="160" y2="160" x1="256" />
         </branch>
@@ -1559,8 +1576,8 @@
         <branch name="i8085_hold">
             <attrtext style="alignment:SOFT-LEFT;fontsize:28;fontname:Arial" attrname="Name" x="3264" y="1232" type="branch" />
             <wire x2="3216" y1="1232" y2="1232" x1="3152" />
-            <wire x2="3224" y1="1232" y2="1232" x1="3216" />
-            <wire x2="3264" y1="1232" y2="1232" x1="3224" />
+            <wire x2="3232" y1="1232" y2="1232" x1="3216" />
+            <wire x2="3264" y1="1232" y2="1232" x1="3232" />
             <wire x2="3216" y1="1232" y2="1312" x1="3216" />
             <wire x2="3232" y1="1312" y2="1312" x1="3216" />
         </branch>
@@ -1573,5 +1590,20 @@
             <wire x2="336" y1="736" y2="736" x1="304" />
         </branch>
         <instance x="176" y="672" name="XLXI_185" orien="R90" />
+        <instance x="3984" y="1408" name="XLXI_187" orien="R0">
+        </instance>
+        <branch name="USER_CLK">
+            <wire x2="3936" y1="1488" y2="1488" x1="3888" />
+            <wire x2="3984" y1="1488" y2="1488" x1="3936" />
+        </branch>
+        <branch name="CPU_RESET_BUF">
+            <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="3936" y="1840" type="branch" />
+            <wire x2="3984" y1="1840" y2="1840" x1="3936" />
+        </branch>
+        <branch name="slower_clk">
+            <attrtext style="alignment:SOFT-LEFT;fontsize:28;fontname:Arial" attrname="Name" x="4656" y="1488" type="branch" />
+            <wire x2="4656" y1="1488" y2="1488" x1="4592" />
+        </branch>
+        <iomarker fontsize="28" x="3888" y="1488" name="USER_CLK" orien="R180" />
     </sheet>
 </drawing>
