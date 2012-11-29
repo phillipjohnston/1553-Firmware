@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<Interface Version="1" Minor="1">
+	<Ifc Id="ROOT" Top="1">
+		<Bus Id="ADDRESS">
+			<Port Id="0" Dir="OUT"/>
+			<Port Id="1" Dir="OUT"/>
+			<Port Id="2" Dir="OUT"/>
+			<Port Id="3" Dir="OUT"/>
+			<Port Id="4" Dir="OUT"/>
+			<Port Id="5" Dir="OUT"/>
+			<Port Id="6" Dir="OUT"/>
+			<Port Id="7" Dir="OUT"/>
+			<Port Id="8" Dir="OUT"/>
+			<Port Id="9" Dir="OUT"/>
+			<Port Id="10" Dir="OUT"/>
+			<Port Id="11" Dir="OUT"/>
+			<Port Id="12" Dir="OUT"/>
+			<Port Id="13" Dir="OUT"/>
+			<Port Id="14" Dir="OUT"/>
+			<Port Id="15" Dir="OUT"/>
+		</Bus>
+		<Bus Id="DATA">
+			<Port Id="0" Dir="INOUT"/>
+			<Port Id="1" Dir="INOUT"/>
+			<Port Id="2" Dir="INOUT"/>
+			<Port Id="3" Dir="INOUT"/>
+			<Port Id="4" Dir="INOUT"/>
+			<Port Id="5" Dir="INOUT"/>
+			<Port Id="6" Dir="INOUT"/>
+			<Port Id="7" Dir="INOUT"/>
+			<Port Id="8" Dir="INOUT"/>
+			<Port Id="9" Dir="INOUT"/>
+			<Port Id="10" Dir="INOUT"/>
+			<Port Id="11" Dir="INOUT"/>
+			<Port Id="12" Dir="INOUT"/>
+			<Port Id="13" Dir="INOUT"/>
+			<Port Id="14" Dir="INOUT"/>
+			<Port Id="15" Dir="INOUT"/>
+		</Bus>
+		<Port Id="ACTIVE" Dir="IN"/>
+		<Port Id="CPU_RESET" Dir="IN"/>
+		<Port Id="GPIO_BUTTON0" Dir="IN"/>
+		<Port Id="GPIO_BUTTON1" Dir="IN"/>
+		<Port Id="GPIO_BUTTON2" Dir="IN"/>
+		<Port Id="GPIO_BUTTON3" Dir="IN"/>
+		<Port Id="HWAIT" Dir="IN"/>
+		<Port Id="MTPKRDY" Dir="IN"/>
+		<Port Id="nIRQ" Dir="IN"/>
+		<Port Id="nRT1MC8" Dir="IN"/>
+		<Port Id="READY" Dir="IN"/>
+		<Port Id="SYSCLK_N" Dir="IN"/>
+		<Port Id="SYSCLK_P" Dir="IN"/>
+		<Port Id="USER_CLK" Dir="IN"/>
+		<Port Id="ACK_IRQ" Dir="OUT"/>
+		<Port Id="BCENA" Dir="OUT"/>
+		<Port Id="BCTRIG" Dir="OUT"/>
+		<Port Id="BTYPE" Dir="OUT"/>
+		<Port Id="BWID" Dir="OUT"/>
+		<Port Id="CHIPSCOPE_CLK" Dir="OUT"/>
+		<Port Id="GPIO_LED_0" Dir="OUT"/>
+		<Port Id="GPIO_LED_1" Dir="OUT"/>
+		<Port Id="GPIO_LED_2" Dir="OUT"/>
+		<Port Id="GPIO_LED_3" Dir="OUT"/>
+		<Port Id="MTRUN" Dir="OUT"/>
+		<Port Id="nCE" Dir="OUT"/>
+		<Port Id="NET_GND" Dir="OUT"/>
+		<Port Id="nMR" Dir="OUT"/>
+		<Port Id="nOE" Dir="OUT"/>
+		<Port Id="nWE" Dir="OUT"/>
+		<Port Id="RT1ENA" Dir="OUT"/>
+		<Port Id="RT1SSF" Dir="OUT"/>
+		<Port Id="TEST" Dir="OUT"/>
+		<Port Id="TXINHA" Dir="OUT"/>
+		<Port Id="TXINHB" Dir="OUT"/>
+		<Port Id="WPOL" Dir="OUT"/>
+		<DiffPair Pos="SYSCLK_P" Neg="SYSCLK_N"/>
+	</Ifc>
+</Interface>
+

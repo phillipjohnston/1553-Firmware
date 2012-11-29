@@ -208,13 +208,13 @@
 #NET "FPGA_VTEMP"                    LOC = "Y3";
 ### 2   on R207 150 ohm to VCC1V5
 ###
-NET "GPIO_BUTTON0"                  LOC = "F3";
+NET "GPIO_BUTTON0" LOC = F3;
 ### 2   on SW4 pushbutton (active-high)
-NET "GPIO_BUTTON1"                  LOC = "G6";
+NET "GPIO_BUTTON1" LOC = G6;
 ### 2   on SW7 pushbutton (active-high)
-NET "GPIO_BUTTON2"                  LOC = "F5";
+NET "GPIO_BUTTON2" LOC = F5;
 ### 2   on SW5 pushbutton (active-high)
-NET "GPIO_BUTTON3"                  LOC = "C1";
+NET "GPIO_BUTTON3" LOC = C1;
 ### 2   on SW8 pushbutton (active-high)
 ###
 #NET "GPIO_HEADER_0_LS"              LOC = "G7";
@@ -226,13 +226,13 @@ NET "GPIO_BUTTON3"                  LOC = "C1";
 #NET "GPIO_HEADER_3_LS"              LOC = "R7";
 ### 5   on U52 (level shifter, U52.16 <-> GPIO_HEADER_0 <-> series R283 200 ohm <-> 4 on J55
 ###
-NET "GPIO_LED_0"                    LOC = "D17";
+NET "GPIO_LED_0" LOC = D17;
 ### 2   on DS3 LED
-NET "GPIO_LED_1"                    LOC = "AB4";
+NET "GPIO_LED_1" LOC = AB4;
 ### 2   on DS4 LED
-NET "GPIO_LED_2"                    LOC = "D21";
+NET "GPIO_LED_2" LOC = D21;
 ### 2   on DS5 LED
-NET "GPIO_LED_3"                    LOC = "W15";
+NET "GPIO_LED_3" LOC = W15;
 ### 2   on DS6 LED
 ###
 #NET "GPIO_SWITCH_0"                 LOC = "C18";
@@ -600,24 +600,24 @@ NET "SYSCLK_P" LOC = K21;
 #--------------------
 
 ### G25 on J2
-NET "nRT1MC8"                    	LOC = "V7";
+NET "nRT1MC8" LOC = V7;
 ## G24 on J2
-NET "MTPKRDY"                    	LOC = "V9";
+NET "MTPKRDY" LOC = V9;
 ## D24 on J2
 
-NET "MTRUN"                    		LOC = "G8";
+NET "MTRUN" LOC = G8;
 ## H7  on J2
-NET "RT1ENA"                    		LOC = "F7";
+NET "RT1ENA" LOC = F7;
 ## D14 on J2
-NET "BCTRIG"                    		LOC = "F17";
+NET "BCTRIG" LOC = F17;
 ## D18 on J2
-NET "TXINHB"                    		LOC = "A5";
+NET "TXINHB" LOC = A5;
 ## G19 on J2
-NET "TXINHA"                 			LOC = "Y11";
+NET "TXINHA" LOC = Y11;
 ## D20 on J2
-NET "ACTIVE"                 			LOC = "U12";
+NET "ACTIVE" LOC = U12;
 ## C23 on J2
-NET "READY"                    		LOC = "T11";
+NET "READY" LOC = T11;
 ## H23 on J2
 
 ## G7  on J2
@@ -682,7 +682,6 @@ NET "nCE" LOC = G16;
 ## H19 on J2
 
 #NET "DATA(10)"                    			LOC = "C5";
-NET "NET_GND" LOC = C5;
 ## G18 on J2
 ## D21 on J2
 NET "DATA[7]" LOC = AB11;
@@ -711,11 +710,11 @@ NET "DATA[1]" LOC = U14;
 ## C26 on J2
 NET "DATA[0]" LOC = AA10;
 
-NET "RT1SSF"                    		LOC = "U9";
+NET "RT1SSF" LOC = U9;
 ## D23 on J2
-NET "BCENA"                    		LOC = "AB14";
+NET "BCENA" LOC = AB14;
 ## H29 on J2
-NET "TEST"                    		LOC = "Y14";
+NET "TEST" LOC = Y14;
 ## G28 on J2
 
 #------------------
@@ -726,7 +725,7 @@ NET "TEST"                    		LOC = "Y14";
 #- pullup and pulldown resistors which branch from nets are not included
 #- pullup and pulldown resistors to a single point power or GND are included
 #- series resistors are included
-#- DNP = do not populate, no component will be installed on the PCB at this locationÿÿÿ
+#- DNP = do not populate, no component will be installed on the PCB at this location
 
 
 NET "SYSCLK_N" IOSTANDARD = LVDS_25;
@@ -735,10 +734,23 @@ NET "SYSCLK_P" IOSTANDARD = LVDS_25;
 ###
 #NET "USER_CLOCK"                    LOC = "AB13";
 
-# PlanAhead Generated physical constraints 
 
 
 PIN "XLXI_105/clkout3_buf.O" CLOCK_DEDICATED_ROUTE = FALSE;
- PIN "XLXI_105/clkout2_buf.O" CLOCK_DEDICATED_ROUTE = FALSE;
- PIN "XLXI_177.O" CLOCK_DEDICATED_ROUTE = FALSE; 
- PIN "XLXI_105/clkout1_buf.O" CLOCK_DEDICATED_ROUTE = FALSE; 
+PIN "XLXI_105/clkout2_buf.O" CLOCK_DEDICATED_ROUTE = FALSE;
+PIN "XLXI_177.O" CLOCK_DEDICATED_ROUTE = FALSE;
+PIN "XLXI_105/clkout1_buf.O" CLOCK_DEDICATED_ROUTE = FALSE;
+
+
+NET "USER_CLK" LOC = AB13;
+
+# PlanAhead Generated physical constraints 
+
+NET "DATA[8]" LOC = D19;
+NET "DATA[9]" LOC = D18;
+NET "DATA[10]" LOC = C5;
+NET "DATA[11]" LOC = A17;
+NET "DATA[12]" LOC = G15;
+NET "DATA[13]" LOC = G13;
+NET "DATA[14]" LOC = H14;
+NET "DATA[15]" LOC = C17;
