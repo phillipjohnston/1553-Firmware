@@ -185,6 +185,8 @@ BEGIN
 		CPU_RESET <= '0';
 		
 		wait for 87.94 us;
+		
+		wait for 89.9 us;
 
 		wait for 117 ns;
 		DATA <= x"468A";

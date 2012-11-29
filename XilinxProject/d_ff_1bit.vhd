@@ -33,6 +33,7 @@ entity d_ff_1bit is
     Port ( a : in  STD_LOGIC;
            en : in  STD_LOGIC;
            clk : in  STD_LOGIC;
+			  rst : in STD_LOGIC;
            d_ff_out : out  STD_LOGIC);
 end d_ff_1bit;
 
@@ -42,9 +43,11 @@ architecture Behavioral of d_ff_1bit is
 
 begin
 
-	process(clk)
+	process(clk,rst)
 	begin 
-		if (rising_edge(clk) and en = '1') then
+		if(rst = '1') then
+			q_sig <= '0';
+		elsif (rising_edge(clk) and en = '1') then
 			q_sig <= a;
 		end if;
 	end process;

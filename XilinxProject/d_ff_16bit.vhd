@@ -33,6 +33,7 @@ entity d_ff_16bit is
     Port ( a : in  STD_LOGIC_VECTOR (15 downto 0);
            en : in  STD_LOGIC;
            clk : in  STD_LOGIC;
+			  rst : in STD_LOGIC;
            d_ff_out : out  STD_LOGIC_VECTOR (15 downto 0));
 end d_ff_16bit;
 
@@ -42,9 +43,11 @@ architecture Behavioral of d_ff_16bit is
 
 begin
 
-	process(clk)
-	begin 
-		if (rising_edge(clk) and en = '1') then
+	process(clk,rst)
+	begin
+		if(rst = '1') then
+			q_sig <= x"0000";
+		elsif(rising_edge(clk) and en = '1') then
 			q_sig <= a;
 		end if;
 	end process;

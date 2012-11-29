@@ -123,6 +123,7 @@ architecture Behavioral of Holt_Connect is
 		Port (  a : in  STD_LOGIC_VECTOR (7 downto 0);
 				  en : in  STD_LOGIC;
 				  clk : in  STD_LOGIC;
+				  rst : in STD_LOGIC;
 				  d_ff_out : out  STD_LOGIC_VECTOR (7 downto 0));
 		end COMPONENT;
 		
@@ -130,6 +131,7 @@ architecture Behavioral of Holt_Connect is
 		Port (  a : in  STD_LOGIC_VECTOR (15 downto 0);
 				  en : in  STD_LOGIC;
 				  clk : in  STD_LOGIC;
+				  rst : in STD_LOGIC;
 				  d_ff_out : out  STD_LOGIC_VECTOR (15 downto 0));
 		end COMPONENT;
 		
@@ -137,6 +139,7 @@ architecture Behavioral of Holt_Connect is
 		Port ( a : in  STD_LOGIC;
            en : in  STD_LOGIC;
            clk : in  STD_LOGIC;
+			  rst : in STD_LOGIC;
            d_ff_out : out  STD_LOGIC);
 		end COMPONENT;
 		
@@ -176,7 +179,7 @@ begin
 	--Read or Write Status
 	wrnotrd_status <= NOT nWR_o and nRD_o;--wr=1 rd=0
 	wrnotrd_en <= NOT (nWR_o and nRD_o);
-	wrnotrd_dff : d_ff_1bit port map(a =>wrnotrd_status, en=>wrnotrd_en, clk=>fast_clk, d_ff_out=>wrnotrd_status_lat);
+	wrnotrd_dff : d_ff_1bit port map(a =>wrnotrd_status, en=>wrnotrd_en, clk=>fast_clk, rst => reset, d_ff_out=>wrnotrd_status_lat);
 	
 	
 	
@@ -185,7 +188,7 @@ begin
 	--CLOCKING IN THE ADDRESS
 
 	--Get first address and latch it onto the ADDRESS_HOLT bus
-	adr_input_i8085_lat: d_ff_16bit port map (a=>ADDRESS_LATCHED, en => ALE_o, clk => fast_clk,d_ff_out => pre_ADDRESS_HOLT);
+	adr_input_i8085_lat: d_ff_16bit port map (a=>ADDRESS_LATCHED, en => ALE_o, clk => fast_clk, rst => reset, d_ff_out => pre_ADDRESS_HOLT);
 	ADDRESS_HOLT(14 DOWNTO 1) <= pre_ADDRESS_HOLT(14 DOWNTO 1);
 	ADDRESS_HOLT(15) <= '0';
 	ADDRESS_HOLT(0) <= '0';
@@ -197,15 +200,15 @@ begin
 	
 	--use  valid signal to en latch data
 	dat_in_L_en <= DATA_i_vo_0;-- and ADDRESS_LATCHED(15) and NOT ADDRESS_LATCHED(0);
-	dat_input_i8085_L_lat: d_ff_8bit port map (a=>DATA_i_o_0, en => dat_in_L_en, clk => fast_clk,d_ff_out => DATA_i8085_L_LAT);
+	dat_input_i8085_L_lat: d_ff_8bit port map (a=>DATA_i_o_0, en => dat_in_L_en, clk => fast_clk, rst => reset, d_ff_out => DATA_i8085_L_LAT);
 	dat_in_H_en <= DATA_i_vo_1; --and ADDRESS_LATCHED(15) and ADDRESS_LATCHED(1);
-	dat_input_i8085_H_lat: d_ff_8bit port map (a=>DATA_i_o_1, en => dat_in_H_en, clk => fast_clk,d_ff_out => DATA_i8085_H_LAT);
+	dat_input_i8085_H_lat: d_ff_8bit port map (a=>DATA_i_o_1, en => dat_in_H_en, clk => fast_clk, rst => reset, d_ff_out => DATA_i8085_H_LAT);
 	DATA_HOLT(15 DOWNTO 8) <= DATA_i8085_H_LAT WHEN data_tri_out='1' ELSE "ZZZZZZZZ";
 	DATA_HOLT(7 DOWNTO 0) <= DATA_i8085_L_LAT WHEN data_tri_out='1' ELSE "ZZZZZZZZ";
 		
 	
 	--ack once both valids are high
-	data_ack_lat : d_ff_1bit port map(a =>DATA_i_ack_int, en=>DATA_i_ack_en, clk=>fast_clk, d_ff_out=>DATA_i_ACK_int_post_lat);
+	data_ack_lat : d_ff_1bit port map(a =>DATA_i_ack_int, en=>DATA_i_ack_en, clk=>fast_clk, rst => reset, d_ff_out=>DATA_i_ACK_int_post_lat);
 	DATA_i_ack_en <= '1';
 	DATA_i_ack_int <= DATA_i_vo_0 AND DATA_i_vo_1; 
 	DATA_i_ACK <= DATA_i_ACK_int_post_lat;
@@ -320,7 +323,7 @@ begin
 	
 	--Reads
 --	dat_input_holt_lat_en <= NOT nOE_int and NOT hWAIT;
-	dat_input_holt_lat: d_ff_16bit port map(a=>DATA_HOLT, en => dat_input_holt_lat_en, clk => fast_clk,d_ff_out => DATA_HOLT_FULL_LAT);
+	dat_input_holt_lat: d_ff_16bit port map(a=>DATA_HOLT, en => dat_input_holt_lat_en, clk => fast_clk, rst => reset, d_ff_out => DATA_HOLT_FULL_LAT);
 	DATA_h_o_0 <= DATA_HOLT_FULL_LAT(7 downto 0);
 	DATA_h_o_1 <= DATA_HOLT_FULL_LAT(15 downto 8);
 	
@@ -329,8 +332,8 @@ begin
 	dat_valid_holt_lat0_en <= dat_input_holt_lat_en OR DATA_h_vo_0_int;
 --	dat_valid_holt_lat1_val <= NOT DATA_h_ack;
 	dat_valid_holt_lat1_en <= dat_input_holt_lat_en OR DATA_h_vo_1_int;
-	dat_valid_holt_lat0: d_ff_1bit port map(a=>dat_input_holt_lat_en, en => dat_valid_holt_lat0_en, clk => fast_clk,d_ff_out => DATA_h_vo_0_int);
-	dat_valid_holt_lat1: d_ff_1bit port map(a=>dat_input_holt_lat_en, en => dat_valid_holt_lat1_en, clk => fast_clk,d_ff_out => DATA_h_vo_1_int);
+	dat_valid_holt_lat0: d_ff_1bit port map(a=>dat_input_holt_lat_en, en => dat_valid_holt_lat0_en, clk => fast_clk, rst => reset, d_ff_out => DATA_h_vo_0_int);
+	dat_valid_holt_lat1: d_ff_1bit port map(a=>dat_input_holt_lat_en, en => dat_valid_holt_lat1_en, clk => fast_clk, rst => reset, d_ff_out => DATA_h_vo_1_int);
 	DATA_h_vo_0 <= DATA_h_vo_0_int;
 	DATA_h_vo_1 <= DATA_h_vo_1_int;
 	

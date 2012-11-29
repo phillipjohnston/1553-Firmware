@@ -105,6 +105,7 @@ architecture Behavioral of i8085_Connect is
 		a    		: IN STD_LOGIC_VECTOR(7 DOWNTO 0);
 		en 		: IN STD_LOGIC;
 		clk		: IN STD_LOGIC;
+		rst		: IN STD_LOGIC;
 		d_ff_out	: OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
 		);
 	END COMPONENT;
@@ -114,6 +115,7 @@ architecture Behavioral of i8085_Connect is
 		a    		: IN STD_LOGIC_VECTOR(15 DOWNTO 0);
 		en 		: IN STD_LOGIC;
 		clk		: IN STD_LOGIC;
+		rst		: IN STD_LOGIC;
 		d_ff_out	: OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
 		);
 	END COMPONENT;
@@ -125,7 +127,7 @@ begin
 	i8085_hold <= '0';
 
 	--Latching the 8085 address for Holt_Connect, High Z otherwise
-	DFF_add : d_ff_16bit port map (a=>add_i8085, en => ALE, clk => fast_clk, d_ff_out => addr_temp);
+	DFF_add : d_ff_16bit port map (a=>add_i8085, en => ALE, clk => fast_clk, rst => reset, d_ff_out => addr_temp);
 		
 	--High Z when no need
 	address_latched <= addr_temp WHEN add_i8085(15) = '1' ELSE "ZZZZZZZZZZZZZZZZ";
@@ -146,8 +148,8 @@ begin
 	--Obtain and validate data from the i8085 for Holt_Connect
 	
 	--D_ff outputs, control verses state machine outputs
-	DFF_data_i_L : d_ff_8bit port map (a=>add_i8085(7 downto 0), en => DATA_i_L_en, clk => fast_clk, d_ff_out => DATA_i_out_L);
-	DFF_data_i_U : d_ff_8bit port map (a=>add_i8085(7 downto 0), en => DATA_i_U_en, clk => fast_clk, d_ff_out => DATA_i_out_U);
+	DFF_data_i_L : d_ff_8bit port map (a=>add_i8085(7 downto 0), en => DATA_i_L_en, clk => fast_clk, rst => reset, d_ff_out => DATA_i_out_L);
+	DFF_data_i_U : d_ff_8bit port map (a=>add_i8085(7 downto 0), en => DATA_i_U_en, clk => fast_clk, rst => reset, d_ff_out => DATA_i_out_U);
 	
 	--Process that contains control signals
 	write_p : PROCESS(fast_clk, reset)
@@ -239,7 +241,7 @@ begin
 	--Take Data from the Holt_Connect and set it up for the i8085
 	--Work under process, fixing messsed up CASE, not rigerously tested
 	
-	DFF_data_out : d_ff_8bit port map (a=>data_temp_val, en => data_temp_en, clk => fast_clk, d_ff_out => data_temp);
+	DFF_data_out : d_ff_8bit port map (a=>data_temp_val, en => data_temp_en, clk => fast_clk, rst => reset, d_ff_out => data_temp);
 	
 	read_p : PROCESS(reset,fast_clk)
 	BEGIN
