@@ -183,7 +183,7 @@
             <line x2="512" y1="-32" y2="-32" x1="448" />
         </blockdef>
         <blockdef name="Memory">
-            <timestamp>2012-11-29T12:29:21</timestamp>
+            <timestamp>2012-11-29T14:38:51</timestamp>
             <rect width="512" x="32" y="32" height="1344" />
             <line x2="32" y1="80" y2="80" style="linewidth:W" x1="0" />
             <line x2="32" y1="112" y2="112" style="linewidth:W" x1="0" />
@@ -308,15 +308,15 @@
             <line x2="64" y1="-32" y2="-32" x1="0" />
         </blockdef>
         <blockdef name="Clock">
-            <timestamp>2012-11-12T22:55:41</timestamp>
-            <rect width="544" x="32" y="32" height="364" />
+            <timestamp>2012-11-29T14:36:19</timestamp>
+            <rect width="544" x="32" y="32" height="1056" />
             <line x2="32" y1="112" y2="112" x1="0" />
             <line x2="32" y1="144" y2="144" x1="0" />
+            <line x2="32" y1="432" y2="432" x1="0" />
             <line x2="576" y1="80" y2="80" x1="608" />
             <line x2="576" y1="176" y2="176" x1="608" />
             <line x2="576" y1="272" y2="272" x1="608" />
-            <line x2="32" y1="352" y2="352" x1="0" />
-            <line x2="576" y1="352" y2="352" x1="608" />
+            <line x2="576" y1="976" y2="976" x1="608" />
         </blockdef>
         <blockdef name="obuf">
             <timestamp>2009-3-20T10:10:10</timestamp>
@@ -554,10 +554,10 @@
         <block symbolname="Clock" name="XLXI_105">
             <blockpin signalname="SYSCLK_P" name="clk_in1_p" />
             <blockpin signalname="SYSCLK_N" name="clk_in1_n" />
+            <blockpin name="reset" />
             <blockpin signalname="XLXN_164" name="clk_out1" />
             <blockpin signalname="XLXN_165" name="clk_out2" />
             <blockpin signalname="CHIPSCOPE_CLK" name="clk_out3" />
-            <blockpin signalname="CPU_RESET_BUF" name="reset" />
             <blockpin name="locked" />
         </block>
         <block symbolname="sfr_8_input" name="XLXI_99">

@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="D:/Documents/GitHub/1553-Firmware/XilinxProject/System_System_sch_tb_isim_par.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="numeric_std" />
+            <top_module name="std_logic_1164" />
+            <top_module name="std_logic_arith" />
+            <top_module name="std_logic_signed" />
+            <top_module name="std_logic_textio" />
+            <top_module name="std_logic_unsigned" />
+            <top_module name="system_system_sch_tb" />
+            <top_module name="textio" />
+            <top_module name="vcomponents" />
+            <top_module name="vcomponents" />
+            <top_module name="vital_primitives" />
+            <top_module name="vital_timing" />
+            <top_module name="vpackage" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="76" />
+   <wvobject fp_name="/system_system_sch_tb/cpu_reset" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">cpu_reset</obj_property>
+      <obj_property name="ObjectShortName">cpu_reset</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/nmr" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">nmr</obj_property>
+      <obj_property name="ObjectShortName">nmr</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/bwid" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">bwid</obj_property>
+      <obj_property name="ObjectShortName">bwid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/btype" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">btype</obj_property>
+      <obj_property name="ObjectShortName">btype</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/wpol" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">wpol</obj_property>
+      <obj_property name="ObjectShortName">wpol</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/nce" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">nce</obj_property>
+      <obj_property name="ObjectShortName">nce</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/nwe" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">nwe</obj_property>
+      <obj_property name="ObjectShortName">nwe</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/noe" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">noe</obj_property>
+      <obj_property name="ObjectShortName">noe</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/address" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">address[15:0]</obj_property>
+      <obj_property name="ObjectShortName">address[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/data" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">data[15:0]</obj_property>
+      <obj_property name="ObjectShortName">data[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/hwait" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">hwait</obj_property>
+      <obj_property name="ObjectShortName">hwait</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/net_gnd" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">net_gnd</obj_property>
+      <obj_property name="ObjectShortName">net_gnd</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/sysclk_p" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">sysclk_p</obj_property>
+      <obj_property name="ObjectShortName">sysclk_p</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/sysclk_n" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">sysclk_n</obj_property>
+      <obj_property name="ObjectShortName">sysclk_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/chipscope_clk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">chipscope_clk</obj_property>
+      <obj_property name="ObjectShortName">chipscope_clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/mtrun" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">mtrun</obj_property>
+      <obj_property name="ObjectShortName">mtrun</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/xlxi_1_acc" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">xlxi_1_acc[7:0]</obj_property>
+      <obj_property name="ObjectShortName">xlxi_1_acc[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/idata" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">idata[7:0]</obj_property>
+      <obj_property name="ObjectShortName">idata[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/bctrig" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">bctrig</obj_property>
+      <obj_property name="ObjectShortName">bctrig</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/test" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">test</obj_property>
+      <obj_property name="ObjectShortName">test</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/bcena" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">bcena</obj_property>
+      <obj_property name="ObjectShortName">bcena</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/rt1ena" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">rt1ena</obj_property>
+      <obj_property name="ObjectShortName">rt1ena</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/rt1ssf" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">rt1ssf</obj_property>
+      <obj_property name="ObjectShortName">rt1ssf</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/txinha" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">txinha</obj_property>
+      <obj_property name="ObjectShortName">txinha</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/txinhb" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">txinhb</obj_property>
+      <obj_property name="ObjectShortName">txinhb</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/active" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">active</obj_property>
+      <obj_property name="ObjectShortName">active</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/mtpkrdy" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">mtpkrdy</obj_property>
+      <obj_property name="ObjectShortName">mtpkrdy</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/ready" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">ready</obj_property>
+      <obj_property name="ObjectShortName">ready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/nrt1mc8" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">nrt1mc8</obj_property>
+      <obj_property name="ObjectShortName">nrt1mc8</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/nirq" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">nirq</obj_property>
+      <obj_property name="ObjectShortName">nirq</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/gpio_button0" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">gpio_button0</obj_property>
+      <obj_property name="ObjectShortName">gpio_button0</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/gpio_button1" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">gpio_button1</obj_property>
+      <obj_property name="ObjectShortName">gpio_button1</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/gpio_button2" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">gpio_button2</obj_property>
+      <obj_property name="ObjectShortName">gpio_button2</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/gpio_button3" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">gpio_button3</obj_property>
+      <obj_property name="ObjectShortName">gpio_button3</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/clock_200mhz" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clock_200mhz</obj_property>
+      <obj_property name="ObjectShortName">clock_200mhz</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/clock_27mhz" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clock_27mhz</obj_property>
+      <obj_property name="ObjectShortName">clock_27mhz</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/gpio_led_0" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">gpio_led_0</obj_property>
+      <obj_property name="ObjectShortName">gpio_led_0</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/gpio_led_1" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">gpio_led_1</obj_property>
+      <obj_property name="ObjectShortName">gpio_led_1</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/gpio_led_2" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">gpio_led_2</obj_property>
+      <obj_property name="ObjectShortName">gpio_led_2</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/gpio_led_3" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">gpio_led_3</obj_property>
+      <obj_property name="ObjectShortName">gpio_led_3</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/active" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">active</obj_property>
+      <obj_property name="ObjectShortName">active</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/cpu_reset" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">cpu_reset</obj_property>
+      <obj_property name="ObjectShortName">cpu_reset</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/gpio_button0" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">gpio_button0</obj_property>
+      <obj_property name="ObjectShortName">gpio_button0</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/gpio_button1" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">gpio_button1</obj_property>
+      <obj_property name="ObjectShortName">gpio_button1</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/gpio_button2" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">gpio_button2</obj_property>
+      <obj_property name="ObjectShortName">gpio_button2</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/gpio_button3" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">gpio_button3</obj_property>
+      <obj_property name="ObjectShortName">gpio_button3</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/hwait" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">hwait</obj_property>
+      <obj_property name="ObjectShortName">hwait</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/mtpkrdy" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">mtpkrdy</obj_property>
+      <obj_property name="ObjectShortName">mtpkrdy</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/nirq" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">nirq</obj_property>
+      <obj_property name="ObjectShortName">nirq</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/nrt1mc8" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">nrt1mc8</obj_property>
+      <obj_property name="ObjectShortName">nrt1mc8</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/ready" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">ready</obj_property>
+      <obj_property name="ObjectShortName">ready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/sysclk_n" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">sysclk_n</obj_property>
+      <obj_property name="ObjectShortName">sysclk_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/sysclk_p" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">sysclk_p</obj_property>
+      <obj_property name="ObjectShortName">sysclk_p</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/user_clk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">user_clk</obj_property>
+      <obj_property name="ObjectShortName">user_clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/ack_irq" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">ack_irq</obj_property>
+      <obj_property name="ObjectShortName">ack_irq</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/bcena" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">bcena</obj_property>
+      <obj_property name="ObjectShortName">bcena</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/bctrig" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">bctrig</obj_property>
+      <obj_property name="ObjectShortName">bctrig</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/btype" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">btype</obj_property>
+      <obj_property name="ObjectShortName">btype</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/bwid" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">bwid</obj_property>
+      <obj_property name="ObjectShortName">bwid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/chipscope_clk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">chipscope_clk</obj_property>
+      <obj_property name="ObjectShortName">chipscope_clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/gpio_led_0" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">gpio_led_0</obj_property>
+      <obj_property name="ObjectShortName">gpio_led_0</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/gpio_led_1" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">gpio_led_1</obj_property>
+      <obj_property name="ObjectShortName">gpio_led_1</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/gpio_led_2" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">gpio_led_2</obj_property>
+      <obj_property name="ObjectShortName">gpio_led_2</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/gpio_led_3" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">gpio_led_3</obj_property>
+      <obj_property name="ObjectShortName">gpio_led_3</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/mtrun" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">mtrun</obj_property>
+      <obj_property name="ObjectShortName">mtrun</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/nce" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">nce</obj_property>
+      <obj_property name="ObjectShortName">nce</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/net_gnd" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">net_gnd</obj_property>
+      <obj_property name="ObjectShortName">net_gnd</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/nmr" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">nmr</obj_property>
+      <obj_property name="ObjectShortName">nmr</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/noe" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">noe</obj_property>
+      <obj_property name="ObjectShortName">noe</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/nwe" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">nwe</obj_property>
+      <obj_property name="ObjectShortName">nwe</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/rt1ena" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">rt1ena</obj_property>
+      <obj_property name="ObjectShortName">rt1ena</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/rt1ssf" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">rt1ssf</obj_property>
+      <obj_property name="ObjectShortName">rt1ssf</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/test" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">test</obj_property>
+      <obj_property name="ObjectShortName">test</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/txinha" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">txinha</obj_property>
+      <obj_property name="ObjectShortName">txinha</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/txinhb" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">txinhb</obj_property>
+      <obj_property name="ObjectShortName">txinhb</obj_property>
+   </wvobject>
+   <wvobject fp_name="/system_system_sch_tb/UUT/wpol" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">wpol</obj_property>
+      <obj_property name="ObjectShortName">wpol</obj_property>
+   </wvobject>
+</wave_config>

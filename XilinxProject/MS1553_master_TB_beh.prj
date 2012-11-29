@@ -1,4 +1,2 @@
-vhdl work "Latch8Bit.vhd"
-vhdl work "Latch.vhd"
 vhdl work "MS1553_master.vhd"
 vhdl work "MS1553_master_TB.vhd"

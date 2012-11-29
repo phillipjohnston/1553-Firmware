@@ -448,7 +448,7 @@ begin
 					nOE_int <= '0';
 					dat_input_holt_lat_en <= '0';
 					
-					iF (ALE_o = '0') then
+					iF (DATA_h_ack = '1' OR ALE_o = '0') then
 						RD_STATE <= rdst_idle;
 					else
 						RD_STATE <= r_last;

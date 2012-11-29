@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <symbol version="7" name="Clock">
     <symboltype>BLOCK</symboltype>
-    <timestamp>2012-11-12T22:55:41</timestamp>
+    <timestamp>2012-11-29T14:36:18</timestamp>
     <pin polarity="Input" x="0" y="112" name="clk_in1_p" />
     <pin polarity="Input" x="0" y="144" name="clk_in1_n" />
+    <pin polarity="Input" x="0" y="432" name="reset" />
     <pin polarity="Output" x="608" y="80" name="clk_out1" />
     <pin polarity="Output" x="608" y="176" name="clk_out2" />
     <pin polarity="Output" x="608" y="272" name="clk_out3" />
-    <pin polarity="Input" x="0" y="352" name="reset" />
-    <pin polarity="Output" x="608" y="352" name="locked" />
+    <pin polarity="Output" x="608" y="976" name="locked" />
     <graph>
         <text style="fontsize:40;fontname:Arial" x="32" y="32">Clock</text>
-        <rect width="544" x="32" y="32" height="364" />
+        <rect width="544" x="32" y="32" height="1056" />
         <line x2="32" y1="112" y2="112" x1="0" />
         <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="36" y="112" type="pin clk_in1_p" />
         <line x2="32" y1="144" y2="144" x1="0" />
         <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="36" y="144" type="pin clk_in1_n" />
+        <line x2="32" y1="432" y2="432" x1="0" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="36" y="432" type="pin reset" />
         <line x2="576" y1="80" y2="80" x1="608" />
         <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="572" y="80" type="pin clk_out1" />
         <line x2="576" y1="176" y2="176" x1="608" />
         <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="572" y="176" type="pin clk_out2" />
         <line x2="576" y1="272" y2="272" x1="608" />
         <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="572" y="272" type="pin clk_out3" />
-        <line x2="32" y1="352" y2="352" x1="0" />
-        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="36" y="352" type="pin reset" />
-        <line x2="576" y1="352" y2="352" x1="608" />
-        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="572" y="352" type="pin locked" />
+        <line x2="576" y1="976" y2="976" x1="608" />
+        <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="572" y="976" type="pin locked" />
     </graph>
 </symbol>
