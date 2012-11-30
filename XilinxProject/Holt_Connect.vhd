@@ -45,14 +45,14 @@ entity Holt_Connect is
 			  slow_clock: in STD_LOGIC;
            reset : in  STD_LOGIC;
 			  
-           DATA_h_o_0 : out  STD_LOGIC_VECTOR (7 downto 0);
-           DATA_h_o_1 : out  STD_LOGIC_VECTOR (7 downto 0);
-           DATA_h_vo_0 : out  STD_LOGIC;
-           DATA_h_vo_1 : out  STD_LOGIC;
+           DATA_h_out : out  STD_LOGIC_VECTOR (15 downto 0);
+           DATA_h_valid_out: out  STD_LOGIC;
+           --DATA_h_vo_1 : out  STD_LOGIC; --S- Only need one valid out
 			  
 			  --holt com busses
            ADDRESS_HOLT : out  STD_LOGIC_VECTOR (15 downto 0);
            DATA_HOLT : inout  STD_LOGIC_VECTOR (15 downto 0);
+			  READY_HOLT : in STD_LOGIC; --Added to avoid bad writes
 			  
 			  --config signals
            BWID : out  STD_LOGIC;
@@ -64,7 +64,7 @@ entity Holt_Connect is
            nWE : out  STD_LOGIC;
            nOE : out  STD_LOGIC;
            nMR : out  STD_LOGIC;
-			  hWAIT : IN STD_LOGIC;
+			  --hWAIT : IN STD_LOGIC;
 			  
            DATA_i_ack : out  STD_LOGIC;
 			  
@@ -79,7 +79,7 @@ end Holt_Connect;
 architecture Behavioral of Holt_Connect is
 
 		--Addressing
-		SIGNAL pre_ADDRESS_HOLT : STD_LOGIC_VECTOR(15 DOWNTO 0);
+		--SIGNAL pre_ADDRESS_HOLT : STD_LOGIC_VECTOR(15 DOWNTO 0);
 
 		--Writing
 		SIGNAL DATA_i8085_L_LAT : STD_LOGIC_VECTOR(7 DOWNTO 0);
@@ -89,31 +89,22 @@ architecture Behavioral of Holt_Connect is
 		SIGNAL DATA_i_ACK_int,DATA_i_ACK_int_post_lat : STD_LOGIC;
 		SIGNAL DATA_i_ACK_en : STD_LOGIC;
 		SIGNAL nDAT_L_VAL,nDAT_H_VAL : STD_LOGIC;
-		SIGNAL dat_in_L_en,dat_in_H_en : STD_LOGIC;
 		SIGNAL data_tri_out : STD_LOGIC;
 		SIGNAL nCEw : STD_LOGIC;
 		
 		--statemachine regs
 		SIGNAL wr_reset : STD_LOGIC;
-
-		--Read or Write regs
-		SIGNAL wrnotrd_status,wrnotrd_en,wrnotrd_status_lat : STD_LOGIC;
 		
 		--Reading
-		SIGNAL DATA_HOLT_FULL_LAT : STD_LOGIC_VECTOR(15 DOWNTO 0);
 		SIGNAL dat_input_holt_lat_en : STD_LOGIC;
 		SIGNAL nCEr : STD_LOGIC;
-		SIGNAL rd_reset : STD_LOGIC;
 		SIGNAL nOE_int : STD_LOGIC;
-		SIGNAL dat_valid_holt_lat0_val, dat_valid_holt_lat0_en : STD_LOGIC;
-		SIGNAL dat_valid_holt_lat1_val, dat_valid_holt_lat1_en : STD_LOGIC;
-		SIGNAL DATA_h_vo_0_int,DATA_h_vo_1_int : STD_LOGIC;
 		
 		--S- FMS stuff
 		type state_type_w is (s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11,s12,s13,s14,s15,s16);
 		signal wr_state : state_type_w := s16;
 --		type state_type_r is (rdst_idle,rdst_go,rdst_wait_for_hwait_high,rdst_wait_for_hwait_low,rdst_latch,rdst_latch_2,rdst_done);
-		type state_type_r is (rdst_idle,r1,r2,r3,r4,r5,r6,r7,r8,r_last);--,r9,r10,r11,r12,r13,);
+		type state_type_r is (rdst_nReady,rdst_idle,rdst_req_read,rdst_wait0,rdst_readOut,rdst_wait_ack,rdst_wait1, rdst_wait2, rdst_wait3);--,r9,r10,r11,r12,r13,);
 		signal rd_state : state_type_r;
 		
 		
@@ -176,10 +167,10 @@ begin
 	
 	--CLOCKING IN THE READ OR WRITE STATUS
 	
-	--Read or Write Status
-	wrnotrd_status <= NOT nWR_o and nRD_o;--wr=1 rd=0
-	wrnotrd_en <= NOT (nWR_o and nRD_o);
-	wrnotrd_dff : d_ff_1bit port map(a =>wrnotrd_status, en=>wrnotrd_en, clk=>fast_clk, rst => reset, d_ff_out=>wrnotrd_status_lat);
+	--Read or Write Status  --S- Waste of space
+----------	wrnotrd_status <= NOT nWR_o and nRD_o;--wr=1 rd=0
+----------	wrnotrd_en <= NOT (nWR_o and nRD_o);
+----------	wrnotrd_dff : d_ff_1bit port map(a =>wrnotrd_status, en=>wrnotrd_en, clk=>fast_clk, rst => reset, d_ff_out=>wrnotrd_status_lat);
 	
 	
 	
@@ -188,8 +179,9 @@ begin
 	--CLOCKING IN THE ADDRESS
 
 	--Get first address and latch it onto the ADDRESS_HOLT bus
-	adr_input_i8085_lat: d_ff_16bit port map (a=>ADDRESS_LATCHED, en => ALE_o, clk => fast_clk, rst => reset, d_ff_out => pre_ADDRESS_HOLT);
-	ADDRESS_HOLT(14 DOWNTO 1) <= pre_ADDRESS_HOLT(14 DOWNTO 1);
+	--S- Already latched form i8085_Connect
+	--adr_input_i8085_lat: d_ff_16bit port map (a=>ADDRESS_LATCHED, en => ALE_o, clk => fast_clk, rst => reset, d_ff_out => pre_ADDRESS_HOLT);
+	ADDRESS_HOLT(14 DOWNTO 1) <= ADDRESS_LATCHED(14 DOWNTO 1); --S- Bit shifted it in the FUTURE?
 	ADDRESS_HOLT(15) <= '0';
 	ADDRESS_HOLT(0) <= '0';
 	
@@ -199,10 +191,12 @@ begin
 	--WRITING LOGIC--
 	
 	--use  valid signal to en latch data
-	dat_in_L_en <= DATA_i_vo_0;-- and ADDRESS_LATCHED(15) and NOT ADDRESS_LATCHED(0);
-	dat_input_i8085_L_lat: d_ff_8bit port map (a=>DATA_i_o_0, en => dat_in_L_en, clk => fast_clk, rst => reset, d_ff_out => DATA_i8085_L_LAT);
-	dat_in_H_en <= DATA_i_vo_1; --and ADDRESS_LATCHED(15) and ADDRESS_LATCHED(1);
-	dat_input_i8085_H_lat: d_ff_8bit port map (a=>DATA_i_o_1, en => dat_in_H_en, clk => fast_clk, rst => reset, d_ff_out => DATA_i8085_H_LAT);
+----	dat_in_L_en <= DATA_i_vo_0;-- and ADDRESS_LATCHED(15) and NOT ADDRESS_LATCHED(0); --S- Not needed
+----	dat_in_H_en <= DATA_i_vo_1; --and ADDRESS_LATCHED(15) and ADDRESS_LATCHED(1);
+	
+	dat_input_i8085_L_lat: d_ff_8bit port map (a=>DATA_i_o_0, en => DATA_i_vo_0, clk => fast_clk, rst => reset, d_ff_out => DATA_i8085_L_LAT);
+	dat_input_i8085_H_lat: d_ff_8bit port map (a=>DATA_i_o_1, en => DATA_i_vo_1, clk => fast_clk, rst => reset, d_ff_out => DATA_i8085_H_LAT);
+	
 	DATA_HOLT(15 DOWNTO 8) <= DATA_i8085_H_LAT WHEN data_tri_out='1' ELSE "ZZZZZZZZ";
 	DATA_HOLT(7 DOWNTO 0) <= DATA_i8085_L_LAT WHEN data_tri_out='1' ELSE "ZZZZZZZZ";
 		
@@ -323,135 +317,99 @@ begin
 	
 	--Reads
 --	dat_input_holt_lat_en <= NOT nOE_int and NOT hWAIT;
-	dat_input_holt_lat: d_ff_16bit port map(a=>DATA_HOLT, en => dat_input_holt_lat_en, clk => fast_clk, rst => reset, d_ff_out => DATA_HOLT_FULL_LAT);
-	DATA_h_o_0 <= DATA_HOLT_FULL_LAT(7 downto 0);
-	DATA_h_o_1 <= DATA_HOLT_FULL_LAT(15 downto 8);
+	dat_input_holt_lat: d_ff_16bit port map(a=>DATA_HOLT, en => dat_input_holt_lat_en, clk => fast_clk, rst => reset, d_ff_out => DATA_h_out);
 	
-	--raise valid lines
---	dat_valid_holt_lat0_val <= NOT DATA_h_ack;
-	dat_valid_holt_lat0_en <= dat_input_holt_lat_en OR DATA_h_vo_0_int;
---	dat_valid_holt_lat1_val <= NOT DATA_h_ack;
-	dat_valid_holt_lat1_en <= dat_input_holt_lat_en OR DATA_h_vo_1_int;
-	dat_valid_holt_lat0: d_ff_1bit port map(a=>dat_input_holt_lat_en, en => dat_valid_holt_lat0_en, clk => fast_clk, rst => reset, d_ff_out => DATA_h_vo_0_int);
-	dat_valid_holt_lat1: d_ff_1bit port map(a=>dat_input_holt_lat_en, en => dat_valid_holt_lat1_en, clk => fast_clk, rst => reset, d_ff_out => DATA_h_vo_1_int);
-	DATA_h_vo_0 <= DATA_h_vo_0_int;
-	DATA_h_vo_1 <= DATA_h_vo_1_int;
+	DATA_h_valid_out <= dat_input_holt_lat_en; --If data latched it is valid
 	
 	
-	--UGLY delay module for reading --S- Made it  asnyc reset FSM
---	rd_reset <= NOT nRD_o;
-	read_holt_p : PROCESS(fast_clk, rd_reset)
+	
+	--S- Redid entire FSM
+	read_holt_p : PROCESS(fast_clk, reset) --S- Changed rd_reset to reset
 	BEGIN
 		--Reset State and data validity
-		IF(reset = '1') THEN 	--S- I assumed these were reset values
-			RD_STATE <= rdst_idle;
+		IF(reset = '1') THEN
+			RD_STATE <= rdst_nReady;
+			
 			nCEr <= '1';
 			nOE_int <= '1';
 			dat_input_holt_lat_en <= '0';
 
 		ELSIF(fast_clk = '1' AND fast_clk'event) THEN
 		
-				--As soon as read is ready take it and wait for the next, setting valid bit as it is sent out
-			CASE RD_STATE IS --S- So many comment locations, so few comments
-				WHEN rdst_idle =>
+				--waits for holt to be ready, then waits for read requests from the 8085, then waits for data from the holt, then sends data to i8085Connect and waits for ack
+			CASE RD_STATE IS --Ref for States:rdst_nReady,rdst_idle,rdst_req_read,rdst_wait0,rdst_readOut,rdst_wait1, rdst_wait2, rdst_wait3
+			
+				WHEN rdst_nReady => --Wait for the Holt ot be ready
+				
 					nCEr <= '1';
 					nOE_int <= '1';
 					dat_input_holt_lat_en <= '0';
-					if (nRD_o = '0' and ALE_o = '1') then
-					--if (ALE_o = '1' and pre_ADDRESS_HOLT(15) = '1') then
-						RD_STATE <= r1;
+					
+					if (READY_HOLT = '1') then
+						RD_STATE <= rdst_idle;
+					else
+						RD_STATE <= rdst_nReady;
+					end if;
+					
+				WHEN rdst_idle => --Wait for he 8085 to want to read
+				
+					nCEr <= '1';
+					nOE_int <= '1';
+					dat_input_holt_lat_en <= '0';
+					
+					if (ADDRESS_LATCHED(15) = '1' AND nRD_o = '0') then
+						RD_STATE <= rdst_req_read;
 					else
 						RD_STATE <= rdst_idle;
 					end if;
 					
-				WHEN r1 =>
-					nCEr <= '0';
-					nOE_int <= '0';
-					dat_input_holt_lat_en <= '0';
-					RD_STATE <= r2;
+				WHEN rdst_req_read => --Tell the Holt the 8085 wants to read
 				
-				WHEN r2 =>
 					nCEr <= '0';
 					nOE_int <= '0';
 					dat_input_holt_lat_en <= '0';
-					RD_STATE <= r3;
 					
-				WHEN r3 =>
+					RD_STATE <= rdst_wait0;
+					
+				WHEN rdst_wait0 | rdst_wait1 | rdst_wait2 | rdst_wait3 => --Wait 130ns for the data to appear
+				
 					nCEr <= '0';
 					nOE_int <= '0';
 					dat_input_holt_lat_en <= '0';
-					RD_STATE <= r4;
 					
-				WHEN r4 =>
+					if (RD_STATE = rdst_wait0) then
+						RD_STATE <= rdst_wait1;
+					elsif (RD_STATE = rdst_wait1) then
+						RD_STATE <= rdst_wait2;
+					elsif (RD_STATE = rdst_wait2) then
+						RD_STATE <= rdst_wait3;
+					else
+						RD_STATE <= rdst_readOut;
+					end if;
+
+					
+				WHEN rdst_readOut => --Send the data to i8085_Connect to dish out and wait for an ALE fall
+				
 					nCEr <= '0';
 					nOE_int <= '0';
 					dat_input_holt_lat_en <= '1';
-					RD_STATE <= r_last;
 					
-				WHEN r5 =>
---					nCEr <= '0';
---					nOE_int <= '0';
---					dat_input_holt_lat_en <= '0';
---					RD_STATE <= r_last;
+					iF (ALE_o = '0') then
+						RD_STATE <= rdst_wait_ack;
+					else
+						RD_STATE <= rdst_readOut;
+					end if;
 					
-				WHEN r6 =>
---					nCEr <= '0';
---					nOE_int <= '0';
---					dat_input_holt_lat_en <= '0';
---					RD_STATE <= r7;
-					
-				WHEN r7 =>
---					nCEr <= '0';
---					nOE_int <= '0';
---					dat_input_holt_lat_en <= '0';
---					RD_STATE <= r8;
-					
-				WHEN r8 =>
---					nCEr <= '0';
---					nOE_int <= '0';
---					dat_input_holt_lat_en <= '1';
---					RD_STATE <= r_last;
---					
---				WHEN r9 =>
---					nCEr <= '0';
---					nOE_int <= '0';
---					dat_input_holt_lat_en <= '0';
---					RD_STATE <= r10;
---					
---				WHEN r10 =>
---					nCEr <= '0';
---					nOE_int <= '0';
---					dat_input_holt_lat_en <= '0';
---					RD_STATE <= r11;
---					
---				WHEN r11 =>
---					nCEr <= '0';
---					nOE_int <= '0';
---					dat_input_holt_lat_en <= '0';
---					RD_STATE <= r12;
---					
---				WHEN r12 =>
---					nCEr <= '0';
---					nOE_int <= '0';
---					dat_input_holt_lat_en <= '0';
---					RD_STATE <= r13;
---					
---				WHEN r13 =>
---					nCEr <= '0';
---					nOE_int <= '0';
---					dat_input_holt_lat_en <= '1';
---					RD_STATE <= r_last;
-
-					
-				WHEN r_last => -- hold here until ale resets to 0
-					nCEr <= '0';
-					nOE_int <= '0';
+				WHEN rdst_wait_ack => --Wait for an ack to restart
+				
+					nCEr <= '1';
+					nOE_int <= '1';
 					dat_input_holt_lat_en <= '0';
 					
-					iF (DATA_h_ack = '1' OR ALE_o = '0') then
+					iF (DATA_h_ack = '1') then
 						RD_STATE <= rdst_idle;
 					else
-						RD_STATE <= r_last;
+						RD_STATE <= rdst_wait_ack;
 					end if;
 
 				

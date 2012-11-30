@@ -171,6 +171,8 @@ BEGIN
    BEGIN
 		CPU_RESET <= '1';
 		
+		ready <= '1';
+		
 		GPIO_BUTTON0 <= '0';
 		GPIO_BUTTON1 <= '1';
 		GPIO_BUTTON2 <= '0';

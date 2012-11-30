@@ -1,8 +1,8 @@
 INTSTYLE=ise
-INFILE=C:\Users\cmulady\Documents\GitHub\1553-Firmware\XilinxProject\System.ncd
-OUTFILE=C:\Users\cmulady\Documents\GitHub\1553-Firmware\XilinxProject\System.bit
+INFILE=D:\Documents\GitHub\1553-Firmware\XilinxProject\System.ncd
+OUTFILE=D:\Documents\GitHub\1553-Firmware\XilinxProject\System.bit
 FAMILY=Spartan6
 PART=xc6slx45t-3fgg484
-WORKINGDIR=C:\Users\cmulady\Documents\GitHub\1553-Firmware\XilinxProject
+WORKINGDIR=D:\Documents\GitHub\1553-Firmware\XilinxProject
 LICENSE=WebPack
-USER_INFO=_0_0_1341899873_010
+USER_INFO=210671618_1777488304_210549700_205

@@ -40,10 +40,9 @@ entity i8085_Connect is
            nRD : in  STD_LOGIC;
 			  
 			  --Holt data, from Holt_Connect, is given out one at a time to the i8085
-           DATA_h_in_0 : in  STD_LOGIC_VECTOR (7 downto 0);
-           DATA_h_in_1 : in  STD_LOGIC_VECTOR (7 downto 0);
-           DATA_h_vin_0 : in  STD_LOGIC;
-           DATA_h_vin_1 : in  STD_LOGIC;
+           DATA_holt_in : in  STD_LOGIC_VECTOR (15 downto 0);
+           DATA_holt_valid_in : in  STD_LOGIC;
+
 			  
 			  --This is enabled by add_i8085(15) for the Holt_Connect
            address_latched : out  STD_LOGIC_VECTOR (15 downto 0);	  
@@ -64,8 +63,8 @@ entity i8085_Connect is
 			  DATA_h_ack  : out  STD_LOGIC;
 			  
 			  --Out to i8085
-           IDATA_out : out  STD_LOGIC_VECTOR (7 downto 0);
-			  i8085_hold : out STD_LOGIC
+           IDATA_out : out  STD_LOGIC_VECTOR (7 downto 0)
+			  --i8085_hold : out STD_LOGIC
 			  
 			  );
 end i8085_Connect;
@@ -73,29 +72,27 @@ end i8085_Connect;
 architecture Behavioral of i8085_Connect is
 
 	signal addr_temp 			: STD_LOGIC_VECTOR(15 DOWNTO 0);
-	signal data_temp 			: STD_LOGIC_VECTOR(7 DOWNTO 0);
+	signal idata_temp 			: STD_LOGIC_VECTOR(7 DOWNTO 0);
 	signal DATA_i_vout_L_temp 	: STD_LOGIC;
 	signal DATA_i_vout_U_temp 	: STD_LOGIC;
 	signal DATA_h_ack_temp 		: STD_LOGIC;
-	signal data_temp_val : STD_LOGIC_VECTOR(7 DOWNTO 0);
+	
+	signal holt_data_in 			: STD_LOGIC_VECTOR(15 DOWNTO 0);
+	signal holt_data_lat 		: STD_LOGIC_VECTOR(15 DOWNTO 0);
 	
 	--DFF Enables
 	signal DATA_i_L_en 	: STD_LOGIC;
 	signal DATA_i_U_en 	: STD_LOGIC; 
-	signal IDATA_en 	: STD_LOGIC;
+	signal IDATA_tri 	: STD_LOGIC;
 	signal data_temp_en  : STD_LoGIC;
+	signal holt_data_en   : STD_LoGIC;
 	
 	
 	--FMS stuff
 	type state_type_w is (s1,s2,s3,s4,s5);
 	signal state_w : state_type_w;
-	type state_type_r is (s1,s2,s3,s4,s5,s6,s7,s8);
+	type state_type_r is (s1,s2,s3,s4,s5,s6,sWait_1,sWait_2);
 	signal state_r : state_type_r;
-	type state_type_hold is (sth_idle,sth_hold,sth_progress);
-	signal state_h : state_type_hold;
-	
-	--hold-release signals
-	Signal hold_release_wr,hold_release_rd : STD_LOGIC;
 	
 	
 	
@@ -123,16 +120,12 @@ architecture Behavioral of i8085_Connect is
 
 begin
 
-	--can ignore or remove this
-	i8085_hold <= '0';
-
 	--Latching the 8085 address for Holt_Connect, High Z otherwise
 	DFF_add : d_ff_16bit port map (a=>add_i8085, en => ALE, clk => fast_clk, rst => reset, d_ff_out => addr_temp);
 		
 	--High Z when no need
 	address_latched <= addr_temp WHEN add_i8085(15) = '1' ELSE "ZZZZZZZZZZZZZZZZ";
-	IDATA_en <= '1' WHEN NOT (ALE = '1' and nRD = '1') and add_i8085(15) = '1' ELSE '0';
-	IDATA_out <= data_temp WHEN IDATA_en = '1' ELSE "ZZZZZZZZ";
+	IDATA_out <= idata_temp WHEN IDATA_tri = '1' ELSE "ZZZZZZZZ";
 	
 	--Driving with temps
 	DATA_i_vout_L <= DATA_i_vout_L_temp;
@@ -241,7 +234,7 @@ begin
 	--Take Data from the Holt_Connect and set it up for the i8085
 	--Work under process, fixing messsed up CASE, not rigerously tested
 	
-	DFF_data_out : d_ff_8bit port map (a=>data_temp_val, en => data_temp_en, clk => fast_clk, rst => reset, d_ff_out => data_temp);
+	DFF_data_out : d_ff_16bit port map (a=>DATA_holt_in, en => holt_data_en, clk => fast_clk, rst => reset, d_ff_out => holt_data_lat);
 	
 	read_p : PROCESS(reset,fast_clk)
 	BEGIN
@@ -249,112 +242,106 @@ begin
 			
 			state_r <= s1;
 			
---			data_temp <= x"00";
---			IDATA_en <= '0';
-			data_temp_val <= x"00";
-			data_temp_en <= '0';
+			IDATA_tri <= '0';
+			idata_temp <= x"00";
+			holt_data_en <= '0';
 			DATA_h_ack_temp <='0';
 			
 		ELSIF(fast_clk = '1' AND fast_clk'event) then
 				--Waits for a valid signal, puts the data out then waits for the processer to stop reading, 
 					--then it puts out the second data, and waits for the processor to stop reading
 			CASE STATE_R IS
-				WHEN s1 => --On lower 8bit valid flag, show data
-				
-					--data_temp <= x"00";
-					--IDATA_en <= '0';
-					data_temp_val <= x"00";
-					data_temp_en <= '0';
+				WHEN s1 => --Wait for lower holt_data valid flag
+
+					IDATA_tri <= '0';
+					idata_temp <= x"00";
+					holt_data_en <= '0';
 					DATA_h_ack_temp <='0';
 					
-					IF( DATA_h_vin_0 = '1' AND add_i8085(15) = '1' ) THEN
+					IF( DATA_holt_valid_in = '1') THEN
 						STATE_R <= s2;
 					ELSE
 						STATE_R <= s1;
 					END IF;
-				WHEN s2 => --Connect data to tri and Wait for start of read
+				WHEN s2 => --Latch in Holt data
 				
---					data_temp <= DATA_h_in_0;
---					IDATA_en <= '0';
-					data_temp_val <= DATA_h_in_0;
-					data_temp_en <= '1';
+					IDATA_tri <= '0';
+					idata_temp <= holt_data_lat(7 downto 0);
+					holt_data_en <= '1';
 					DATA_h_ack_temp <='0';
 					
-					IF( nRD = '0' AND add_i8085(15) = '1' ) THEN 
-						STATE_R <= s3;
+					STATE_R <= s3;
+
+
+				WHEN s3 => --Hold out data for i8085 Wait for end of read
+				
+					IDATA_tri <= '1';
+					idata_temp <= holt_data_lat(7 downto 0);
+					holt_data_en <= '0';
+					DATA_h_ack_temp <='0';
+					
+					IF( ALE = '0' ) THEN
+						STATE_R <= sWait_1;
 					ELSE
-						STATE_R <= s2;
+						STATE_R <= s3;
 					END IF;
-				WHEN s3 => --Enable the IDATA tristate and Wait for end of read
+				WHEN sWait_1 => --Wait for nRD to go high                 
 				
---					data_temp <= DATA_h_in_0;
---					IDATA_en <= '1';
-					data_temp_val <= DATA_h_in_0;
-					data_temp_en <= '1';
+					IDATA_tri <= '0';
+					idata_temp <= holt_data_lat(15 downto 8);
+					holt_data_en <= '0';
 					DATA_h_ack_temp <='0';
 					
-					IF( nRD = '1' AND add_i8085(15) = '1' ) THEN
+					IF( nRD = '1' ) THEN
 						STATE_R <= s4;
 					ELSE
-						STATE_R <= s3;
+						STATE_R <= sWait_1;
 					END IF;
-				WHEN s4 => --End Data out, Wait for next data                      
+				WHEN s4 => --Wait for the next half of the Holt data read Wait for start of read                 
 				
---					data_temp <= x"00";
---					IDATA_en <= '0';
-					data_temp_val <= x"00";
-					data_temp_en <= '0';
+					IDATA_tri <= '0';
+					idata_temp <= holt_data_lat(15 downto 8);
+					holt_data_en <= '0';
 					DATA_h_ack_temp <='0';
 					
-					IF( DATA_h_vin_1 = '1' ) THEN
+					IF( nRD = '0' AND addr_temp(15) = '1' ) THEN
 						STATE_R <= s5;
 					ELSE
 						STATE_R <= s4;
 					END IF;
-				WHEN s5 => --COnnect data to tri, Wait for start of read                     
+				WHEN s5 => --Hold out second half of holt data Wait for end of read               
 				
---					data_temp <= DATA_h_in_1;
---					IDATA_en <= '0';
-					data_temp_val <= DATA_h_in_1;
-					data_temp_en <= '1';
+					IDATA_tri <= '1';
+					idata_temp <= holt_data_lat(15 downto 8);
+					holt_data_en <= '0';
 					DATA_h_ack_temp <='0';
 					
-					IF( nRD = '0' AND add_i8085(15) = '1' ) THEN
-						STATE_R <= s6;
+					IF( ALE = '0' ) THEN
+						STATE_R <= sWait_2;
 					ELSE
 						STATE_R <= s5;
 					END IF;
-				WHEN s6 => --Enable IDATA tristate, Wait for end of read                     
+				WHEN sWait_2 => --Wait for nRD to go high                 
 				
---					data_temp <= DATA_h_in_1;
---					IDATA_en <= '1';
-					data_temp_val <= DATA_h_in_1;
-					data_temp_en <= '1';
+					IDATA_tri <= '0';
+					idata_temp <= x"00";
+					holt_data_en <= '0';
 					DATA_h_ack_temp <='0';
 					
-					IF( nRD = '1' AND add_i8085(15) = '1' ) THEN
-						STATE_R <= s7;
-					ELSE
+					IF( nRD = '1' ) THEN
 						STATE_R <= s6;
+					ELSE
+						STATE_R <= sWait_2;
 					END IF;
-				WHEN s7 => --SEnd out an Acknowledge then reset states               
+				WHEN s6 => --Send out awknowledge                 
 				
---					data_temp <= x"00";
---					IDATA_en <= '0';
-					data_temp_val <= x"00";
-					data_temp_en <= '0';
-					DATA_h_ack_temp <='1';	
-					
-					STATE_R <= s8;
-				WHEN s8 => --SEnd out an Acknowledge then reset states               
-				
---					data_temp <= x"00";
---					IDATA_en <= '0';
-					data_temp_val <= x"00";
-					data_temp_en <= '0';
-					DATA_h_ack_temp <='1';	
+					IDATA_tri <= '0';
+					idata_temp <= x"00";
+					holt_data_en <= '0';
+					DATA_h_ack_temp <='1';
 					
 					STATE_R <= s1;
+
 						
 			END CASE;
 		END IF;
