@@ -41,10 +41,6 @@
         <signal name="MTRUN" />
         <signal name="BCTRIG" />
         <signal name="TEST" />
-        <signal name="ACTIVE" />
-        <signal name="MTPKRDY" />
-        <signal name="READY" />
-        <signal name="nRT1MC8" />
         <signal name="CPU_RESET" />
         <signal name="HWAIT" />
         <signal name="CLOCK_8085" />
@@ -129,46 +125,38 @@
         <signal name="SEL_SFR(5)" />
         <signal name="MEM_ADDR(14:0)" />
         <signal name="nOE" />
-        <signal name="nCE" />
         <signal name="nWE" />
         <signal name="XLXN_218" />
         <signal name="XLXN_224" />
         <signal name="XLXN_230" />
         <signal name="XLXN_231" />
-        <signal name="DATA(0)">
-        </signal>
-        <signal name="DATA(4)">
-        </signal>
-        <signal name="DATA(8)">
-        </signal>
-        <signal name="DATA(12)">
-        </signal>
-        <signal name="DATA(1)">
-        </signal>
-        <signal name="DATA(5)">
-        </signal>
-        <signal name="DATA(9)">
-        </signal>
-        <signal name="DATA(13)">
-        </signal>
-        <signal name="DATA(2)">
-        </signal>
-        <signal name="DATA(6)">
-        </signal>
-        <signal name="DATA(10)">
-        </signal>
-        <signal name="DATA(14)">
-        </signal>
-        <signal name="DATA(3)">
-        </signal>
-        <signal name="DATA(7)">
-        </signal>
-        <signal name="DATA(11)">
-        </signal>
-        <signal name="DATA(15)">
-        </signal>
-        <signal name="ADDRESS(15:0)" />
+        <signal name="DATA(0)" />
+        <signal name="DATA(4)" />
+        <signal name="DATA(8)" />
+        <signal name="DATA(12)" />
+        <signal name="DATA(1)" />
+        <signal name="DATA(5)" />
+        <signal name="DATA(9)" />
+        <signal name="DATA(13)" />
+        <signal name="DATA(2)" />
+        <signal name="DATA(6)" />
+        <signal name="DATA(10)" />
+        <signal name="DATA(14)" />
+        <signal name="DATA(3)" />
+        <signal name="DATA(7)" />
+        <signal name="DATA(11)" />
+        <signal name="DATA(15)" />
         <signal name="DATA(0:15)" />
+        <signal name="nCE" />
+        <signal name="ADDRESS(15:0)" />
+        <signal name="ACTIVEi" />
+        <signal name="MTPKRDYi" />
+        <signal name="READYi" />
+        <signal name="nRT1MC8i" />
+        <signal name="nRT1MC8" />
+        <signal name="READY" />
+        <signal name="MTPKRDY" />
+        <signal name="ACTIVE" />
         <port polarity="Output" name="NET_GND" />
         <port polarity="Input" name="SYSCLK_P" />
         <port polarity="Input" name="SYSCLK_N" />
@@ -176,10 +164,6 @@
         <port polarity="Output" name="MTRUN" />
         <port polarity="Output" name="BCTRIG" />
         <port polarity="Output" name="TEST" />
-        <port polarity="Input" name="ACTIVE" />
-        <port polarity="Input" name="MTPKRDY" />
-        <port polarity="Input" name="READY" />
-        <port polarity="Input" name="nRT1MC8" />
         <port polarity="Input" name="CPU_RESET" />
         <port polarity="Input" name="HWAIT" />
         <port polarity="Input" name="GPIO_BUTTON0" />
@@ -203,10 +187,14 @@
         <port polarity="Input" name="nIRQ" />
         <port polarity="Input" name="USER_CLK" />
         <port polarity="Output" name="nOE" />
-        <port polarity="Output" name="nCE" />
         <port polarity="Output" name="nWE" />
+        <port polarity="Input" name="DATA(0:15)" />
+        <port polarity="Output" name="nCE" />
         <port polarity="Output" name="ADDRESS(15:0)" />
-        <port polarity="Output" name="DATA(0:15)" />
+        <port polarity="Input" name="nRT1MC8" />
+        <port polarity="Input" name="READY" />
+        <port polarity="Input" name="MTPKRDY" />
+        <port polarity="Input" name="ACTIVE" />
         <blockdef name="I8085_c">
             <timestamp>2012-11-7T20:44:41</timestamp>
             <rect width="384" x="64" y="-768" height="768" />
@@ -638,10 +626,10 @@
             <blockpin signalname="SEL_SFR(1)" name="CS" />
             <blockpin signalname="CLOCK_8085" name="clock" />
             <blockpin signalname="IDATA(7:0)" name="DOUT(7:0)" />
-            <blockpin signalname="ACTIVE" name="ACTIVE" />
-            <blockpin signalname="MTPKRDY" name="MTPKRDY" />
-            <blockpin signalname="READY" name="READY" />
-            <blockpin signalname="nRT1MC8" name="nRT1MC8" />
+            <blockpin signalname="ACTIVEi" name="ACTIVE" />
+            <blockpin signalname="MTPKRDYi" name="MTPKRDY" />
+            <blockpin signalname="READYi" name="READY" />
+            <blockpin signalname="nRT1MC8i" name="nRT1MC8" />
         </block>
         <block symbolname="ibuf" name="XLXI_101">
             <blockpin signalname="CPU_RESET" name="I" />
@@ -890,14 +878,6 @@
         <block symbolname="vcc" name="XLXI_197">
             <blockpin signalname="XLXN_204" name="P" />
         </block>
-        <block symbolname="constant" name="XLXI_198">
-            <attr value="0014" name="CValue">
-                <trait delete="all:1 sym:0" />
-                <trait editname="all:1 sch:0" />
-                <trait valuetype="BitVector 32 Hexadecimal" />
-            </attr>
-            <blockpin signalname="ADDRESS(15:0)" name="O" />
-        </block>
         <block symbolname="m4_1e" name="XLXI_202">
             <blockpin signalname="DATA(0)" name="D0" />
             <blockpin signalname="DATA(4)" name="D1" />
@@ -953,13 +933,39 @@
         <block symbolname="vcc" name="XLXI_201">
             <blockpin signalname="nWE" name="P" />
         </block>
-        <block symbolname="obuf" name="XLXI_210">
-            <blockpin signalname="SLOW_CLOCK" name="I" />
+        <block symbolname="and2" name="XLXI_212">
+            <blockpin signalname="READYi" name="I0" />
+            <blockpin signalname="SLOW_CLOCK" name="I1" />
             <blockpin signalname="nOE" name="O" />
         </block>
-        <block symbolname="obuf" name="XLXI_211">
-            <blockpin signalname="SLOW_CLOCK" name="I" />
+        <block symbolname="and2" name="XLXI_213">
+            <blockpin signalname="READYi" name="I0" />
+            <blockpin signalname="SLOW_CLOCK" name="I1" />
             <blockpin signalname="nCE" name="O" />
+        </block>
+        <block symbolname="constant" name="XLXI_198">
+            <attr value="0014" name="CValue">
+                <trait delete="all:1 sym:0" />
+                <trait editname="all:1 sch:0" />
+                <trait valuetype="BitVector 32 Hexadecimal" />
+            </attr>
+            <blockpin signalname="ADDRESS(15:0)" name="O" />
+        </block>
+        <block symbolname="ibuf" name="XLXI_216">
+            <blockpin signalname="ACTIVE" name="I" />
+            <blockpin signalname="ACTIVEi" name="O" />
+        </block>
+        <block symbolname="ibuf" name="XLXI_217">
+            <blockpin signalname="MTPKRDY" name="I" />
+            <blockpin signalname="MTPKRDYi" name="O" />
+        </block>
+        <block symbolname="ibuf" name="XLXI_218">
+            <blockpin signalname="READY" name="I" />
+            <blockpin signalname="READYi" name="O" />
+        </block>
+        <block symbolname="ibuf" name="XLXI_219">
+            <blockpin signalname="nRT1MC8" name="I" />
+            <blockpin signalname="nRT1MC8i" name="O" />
         </block>
     </netlist>
     <sheet sheetnum="1" width="7040" height="5440">
@@ -1174,22 +1180,6 @@
         <iomarker fontsize="28" x="2080" y="2208" name="BCTRIG" orien="R0" />
         <iomarker fontsize="28" x="2080" y="2272" name="TEST" orien="R0" />
         <iomarker fontsize="28" x="2064" y="2144" name="MTRUN" orien="R0" />
-        <branch name="ACTIVE">
-            <wire x2="2672" y1="1840" y2="1840" x1="2608" />
-        </branch>
-        <branch name="MTPKRDY">
-            <wire x2="2672" y1="1904" y2="1904" x1="2624" />
-        </branch>
-        <branch name="READY">
-            <wire x2="2656" y1="1968" y2="1968" x1="2608" />
-            <wire x2="2672" y1="1968" y2="1968" x1="2656" />
-        </branch>
-        <branch name="nRT1MC8">
-            <wire x2="2672" y1="2032" y2="2032" x1="2624" />
-        </branch>
-        <iomarker fontsize="28" x="2624" y="2032" name="nRT1MC8" orien="R180" />
-        <iomarker fontsize="28" x="2624" y="1904" name="MTPKRDY" orien="R180" />
-        <iomarker fontsize="28" x="2608" y="1840" name="ACTIVE" orien="R180" />
         <instance x="2560" y="2432" name="XLXI_101" orien="R0" />
         <branch name="CPU_RESET">
             <wire x2="2560" y1="2400" y2="2400" x1="2512" />
@@ -1257,7 +1247,6 @@
         </branch>
         <instance x="368" y="1904" name="XLXI_9" orien="R0">
         </instance>
-        <iomarker fontsize="28" x="2608" y="1968" name="READY" orien="R180" />
         <branch name="CLOCK_8085">
             <attrtext style="alignment:SOFT-LEFT;fontsize:28;fontname:Arial" attrname="Name" x="880" y="736" type="branch" />
             <wire x2="880" y1="736" y2="736" x1="848" />
@@ -1888,14 +1877,6 @@
             <attrtext style="alignment:SOFT-LEFT;fontsize:28;fontname:Arial" attrname="Name" x="4672" y="1584" type="branch" />
             <wire x2="4672" y1="1584" y2="1584" x1="4592" />
         </branch>
-        <branch name="nOE">
-            <attrtext style="alignment:SOFT-LEFT;fontsize:28;fontname:Arial" attrname="Name" x="5472" y="992" type="branch" />
-            <wire x2="5472" y1="992" y2="992" x1="5376" />
-        </branch>
-        <branch name="nCE">
-            <attrtext style="alignment:SOFT-LEFT;fontsize:28;fontname:Arial" attrname="Name" x="5472" y="1088" type="branch" />
-            <wire x2="5472" y1="1088" y2="1088" x1="5376" />
-        </branch>
         <branch name="nWE">
             <attrtext style="alignment:SOFT-LEFT;fontsize:28;fontname:Arial" attrname="Name" x="5472" y="912" type="branch" />
             <wire x2="5216" y1="912" y2="912" x1="5200" />
@@ -2051,42 +2032,100 @@
             <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="6288" y="4320" type="branch" />
             <wire x2="6320" y1="4320" y2="4320" x1="6288" />
         </branch>
-        <instance x="4960" y="1200" name="XLXI_198" orien="R0">
-        </instance>
-        <branch name="ADDRESS(15:0)">
-            <attrtext style="alignment:SOFT-LEFT;fontsize:28;fontname:Arial" attrname="Name" x="5280" y="1232" type="branch" />
-            <wire x2="5280" y1="1232" y2="1232" x1="5104" />
-        </branch>
         <branch name="nWE">
             <wire x2="5776" y1="912" y2="912" x1="5632" />
         </branch>
-        <branch name="nOE">
-            <wire x2="5760" y1="992" y2="992" x1="5616" />
-        </branch>
-        <branch name="nCE">
-            <wire x2="5744" y1="1088" y2="1088" x1="5616" />
-        </branch>
-        <branch name="ADDRESS(15:0)">
-            <wire x2="5760" y1="1216" y2="1216" x1="5632" />
-        </branch>
         <branch name="DATA(0:15)">
+            <attrtext style="alignment:SOFT-LEFT;fontsize:28;fontname:Arial" attrname="Name" x="5664" y="1520" type="branch" />
             <wire x2="5664" y1="1520" y2="1520" x1="5376" />
         </branch>
-        <iomarker fontsize="28" x="5664" y="1520" name="DATA(0:15)" orien="R0" />
-        <iomarker fontsize="28" x="5760" y="1216" name="ADDRESS(15:0)" orien="R0" />
-        <iomarker fontsize="28" x="5744" y="1088" name="nCE" orien="R0" />
         <iomarker fontsize="28" x="5760" y="992" name="nOE" orien="R0" />
         <iomarker fontsize="28" x="5776" y="912" name="nWE" orien="R0" />
         <instance x="5200" y="976" name="XLXI_201" orien="R270" />
-        <instance x="5152" y="1024" name="XLXI_210" orien="R0" />
-        <instance x="5152" y="1120" name="XLXI_211" orien="R0" />
         <branch name="SLOW_CLOCK">
             <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="5088" y="992" type="branch" />
             <wire x2="5152" y1="992" y2="992" x1="5088" />
         </branch>
-        <branch name="SLOW_CLOCK">
-            <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="5088" y="1088" type="branch" />
-            <wire x2="5152" y1="1088" y2="1088" x1="5088" />
+        <instance x="4944" y="1264" name="XLXI_198" orien="R0">
+        </instance>
+        <branch name="ADDRESS(15:0)">
+            <attrtext style="alignment:SOFT-LEFT;fontsize:28;fontname:Arial" attrname="Name" x="5264" y="1296" type="branch" />
+            <wire x2="5264" y1="1296" y2="1296" x1="5088" />
         </branch>
+        <branch name="ADDRESS(15:0)">
+            <wire x2="5744" y1="1280" y2="1280" x1="5616" />
+        </branch>
+        <branch name="SLOW_CLOCK">
+            <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="5072" y="1152" type="branch" />
+            <wire x2="5088" y1="1152" y2="1152" x1="5072" />
+            <wire x2="5136" y1="1152" y2="1152" x1="5088" />
+        </branch>
+        <iomarker fontsize="28" x="5744" y="1280" name="ADDRESS(15:0)" orien="R0" />
+        <instance x="5152" y="1120" name="XLXI_212" orien="R0" />
+        <instance x="5136" y="1280" name="XLXI_213" orien="R0" />
+        <branch name="nOE">
+            <attrtext style="alignment:SOFT-LEFT;fontsize:28;fontname:Arial" attrname="Name" x="5504" y="1024" type="branch" />
+            <wire x2="5504" y1="1024" y2="1024" x1="5408" />
+        </branch>
+        <branch name="nCE">
+            <attrtext style="alignment:SOFT-LEFT;fontsize:28;fontname:Arial" attrname="Name" x="5488" y="1184" type="branch" />
+            <wire x2="5488" y1="1184" y2="1184" x1="5392" />
+        </branch>
+        <branch name="nCE">
+            <wire x2="5744" y1="1184" y2="1184" x1="5616" />
+        </branch>
+        <iomarker fontsize="28" x="5744" y="1184" name="nCE" orien="R0" />
+        <branch name="nOE">
+            <wire x2="5760" y1="992" y2="992" x1="5616" />
+        </branch>
+        <branch name="ACTIVEi">
+            <attrtext style="alignment:SOFT-BCENTER;fontsize:28;fontname:Arial" attrname="Name" x="2624" y="1840" type="branch" />
+            <wire x2="2624" y1="1840" y2="1840" x1="2592" />
+            <wire x2="2672" y1="1840" y2="1840" x1="2624" />
+        </branch>
+        <branch name="MTPKRDYi">
+            <attrtext style="alignment:SOFT-BCENTER;fontsize:28;fontname:Arial" attrname="Name" x="2624" y="1904" type="branch" />
+            <wire x2="2624" y1="1904" y2="1904" x1="2592" />
+            <wire x2="2672" y1="1904" y2="1904" x1="2624" />
+        </branch>
+        <branch name="READYi">
+            <attrtext style="alignment:SOFT-BCENTER;fontsize:28;fontname:Arial" attrname="Name" x="2624" y="1968" type="branch" />
+            <wire x2="2624" y1="1968" y2="1968" x1="2592" />
+            <wire x2="2672" y1="1968" y2="1968" x1="2624" />
+        </branch>
+        <instance x="2368" y="2000" name="XLXI_218" orien="R0" />
+        <instance x="2368" y="1936" name="XLXI_217" orien="R0" />
+        <instance x="2368" y="1872" name="XLXI_216" orien="R0" />
+        <branch name="nRT1MC8i">
+            <attrtext style="alignment:SOFT-BCENTER;fontsize:28;fontname:Arial" attrname="Name" x="2608" y="2032" type="branch" />
+            <wire x2="2608" y1="2032" y2="2032" x1="2592" />
+            <wire x2="2672" y1="2032" y2="2032" x1="2608" />
+        </branch>
+        <instance x="2368" y="2064" name="XLXI_219" orien="R0" />
+        <branch name="nRT1MC8">
+            <wire x2="2368" y1="2032" y2="2032" x1="2336" />
+        </branch>
+        <iomarker fontsize="28" x="2336" y="2032" name="nRT1MC8" orien="R180" />
+        <branch name="READY">
+            <wire x2="2368" y1="1968" y2="1968" x1="2336" />
+        </branch>
+        <iomarker fontsize="28" x="2336" y="1968" name="READY" orien="R180" />
+        <branch name="MTPKRDY">
+            <wire x2="2368" y1="1904" y2="1904" x1="2336" />
+        </branch>
+        <iomarker fontsize="28" x="2336" y="1904" name="MTPKRDY" orien="R180" />
+        <branch name="ACTIVE">
+            <wire x2="2368" y1="1840" y2="1840" x1="2336" />
+        </branch>
+        <iomarker fontsize="28" x="2336" y="1840" name="ACTIVE" orien="R180" />
+        <branch name="READYi">
+            <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="5120" y="1056" type="branch" />
+            <wire x2="5152" y1="1056" y2="1056" x1="5120" />
+        </branch>
+        <branch name="READYi">
+            <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="5104" y="1216" type="branch" />
+            <wire x2="5136" y1="1216" y2="1216" x1="5104" />
+        </branch>
+        <iomarker fontsize="28" x="5376" y="1520" name="DATA(0:15)" orien="R180" />
     </sheet>
 </drawing>
