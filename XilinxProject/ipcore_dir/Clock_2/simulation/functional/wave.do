@@ -50,10 +50,10 @@
 add wave -noupdate -divider {Input clocks}
 add wave -noupdate -format Logic /Clock_2_tb/CLK_IN1
 add wave -noupdate -divider {Output clocks}
-add wave -noupdate -format Logic /Clock_2_tb/dut/clk
+add wave -noupdate -format Literal -expand /Clock_2_tb/dut/clk
 add wave -noupdate -divider Status/control
 add wave -noupdate -format Logic /Clock_2_tb/RESET
 add wave -noupdate -format Logic /Clock_2_tb/LOCKED
 add wave -noupdate -divider Counters
 add wave -noupdate -format Literal -radix hexadecimal /Clock_2_tb/COUNT
-add wave -noupdate -format Literal -radix hexadecimal /Clock_2_tb/dut/counter
+add wave -noupdate -format Literal -radix hexadecimal -expand /Clock_2_tb/dut/counter

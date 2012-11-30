@@ -113,7 +113,7 @@ architecture Behavioral of Holt_Connect is
 		type state_type_w is (s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11,s12,s13,s14,s15,s16);
 		signal wr_state : state_type_w := s16;
 --		type state_type_r is (rdst_idle,rdst_go,rdst_wait_for_hwait_high,rdst_wait_for_hwait_low,rdst_latch,rdst_latch_2,rdst_done);
-		type state_type_r is (rdst_idle,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12,r13,r_last);
+		type state_type_r is (rdst_idle,r1,r2,r3,r4,r5,r6,r7,r8,r_last);--,r9,r10,r11,r12,r13,);
 		signal rd_state : state_type_r;
 		
 		
@@ -385,62 +385,62 @@ begin
 				WHEN r4 =>
 					nCEr <= '0';
 					nOE_int <= '0';
-					dat_input_holt_lat_en <= '0';
-					RD_STATE <= r5;
-					
-				WHEN r5 =>
-					nCEr <= '0';
-					nOE_int <= '0';
-					dat_input_holt_lat_en <= '0';
-					RD_STATE <= r6;
-					
-				WHEN r6 =>
-					nCEr <= '0';
-					nOE_int <= '0';
-					dat_input_holt_lat_en <= '0';
-					RD_STATE <= r7;
-					
-				WHEN r7 =>
-					nCEr <= '0';
-					nOE_int <= '0';
-					dat_input_holt_lat_en <= '0';
-					RD_STATE <= r8;
-					
-				WHEN r8 =>
-					nCEr <= '0';
-					nOE_int <= '0';
-					dat_input_holt_lat_en <= '0';
-					RD_STATE <= r9;
-					
-				WHEN r9 =>
-					nCEr <= '0';
-					nOE_int <= '0';
-					dat_input_holt_lat_en <= '0';
-					RD_STATE <= r10;
-					
-				WHEN r10 =>
-					nCEr <= '0';
-					nOE_int <= '0';
-					dat_input_holt_lat_en <= '0';
-					RD_STATE <= r11;
-					
-				WHEN r11 =>
-					nCEr <= '0';
-					nOE_int <= '0';
-					dat_input_holt_lat_en <= '0';
-					RD_STATE <= r12;
-					
-				WHEN r12 =>
-					nCEr <= '0';
-					nOE_int <= '0';
-					dat_input_holt_lat_en <= '0';
-					RD_STATE <= r13;
-					
-				WHEN r13 =>
-					nCEr <= '0';
-					nOE_int <= '0';
 					dat_input_holt_lat_en <= '1';
 					RD_STATE <= r_last;
+					
+				WHEN r5 =>
+--					nCEr <= '0';
+--					nOE_int <= '0';
+--					dat_input_holt_lat_en <= '0';
+--					RD_STATE <= r_last;
+					
+				WHEN r6 =>
+--					nCEr <= '0';
+--					nOE_int <= '0';
+--					dat_input_holt_lat_en <= '0';
+--					RD_STATE <= r7;
+					
+				WHEN r7 =>
+--					nCEr <= '0';
+--					nOE_int <= '0';
+--					dat_input_holt_lat_en <= '0';
+--					RD_STATE <= r8;
+					
+				WHEN r8 =>
+--					nCEr <= '0';
+--					nOE_int <= '0';
+--					dat_input_holt_lat_en <= '1';
+--					RD_STATE <= r_last;
+--					
+--				WHEN r9 =>
+--					nCEr <= '0';
+--					nOE_int <= '0';
+--					dat_input_holt_lat_en <= '0';
+--					RD_STATE <= r10;
+--					
+--				WHEN r10 =>
+--					nCEr <= '0';
+--					nOE_int <= '0';
+--					dat_input_holt_lat_en <= '0';
+--					RD_STATE <= r11;
+--					
+--				WHEN r11 =>
+--					nCEr <= '0';
+--					nOE_int <= '0';
+--					dat_input_holt_lat_en <= '0';
+--					RD_STATE <= r12;
+--					
+--				WHEN r12 =>
+--					nCEr <= '0';
+--					nOE_int <= '0';
+--					dat_input_holt_lat_en <= '0';
+--					RD_STATE <= r13;
+--					
+--				WHEN r13 =>
+--					nCEr <= '0';
+--					nOE_int <= '0';
+--					dat_input_holt_lat_en <= '1';
+--					RD_STATE <= r_last;
 
 					
 				WHEN r_last => -- hold here until ale resets to 0

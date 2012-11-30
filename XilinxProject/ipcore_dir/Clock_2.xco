@@ -1,7 +1,7 @@
 ##############################################################
 #
 # Xilinx Core Generator version 14.2
-# Date: Thu Nov 29 12:05:49 2012
+# Date: Fri Nov 30 00:52:08 2012
 #
 ##############################################################
 #
@@ -70,13 +70,13 @@ CSET clkin2_jitter_ps=100.0
 CSET clkin2_ui_jitter=0.010
 CSET clkout1_drives=BUFG
 CSET clkout1_requested_duty_cycle=50.000
-CSET clkout1_requested_out_freq=3.000
+CSET clkout1_requested_out_freq=0.843
 CSET clkout1_requested_phase=0.000
 CSET clkout2_drives=BUFG
 CSET clkout2_requested_duty_cycle=50.000
-CSET clkout2_requested_out_freq=100.000
+CSET clkout2_requested_out_freq=27
 CSET clkout2_requested_phase=0.000
-CSET clkout2_used=false
+CSET clkout2_used=true
 CSET clkout3_drives=BUFG
 CSET clkout3_requested_duty_cycle=50.000
 CSET clkout3_requested_out_freq=100.000
@@ -106,14 +106,14 @@ CSET clock_mgr_type=AUTO
 CSET component_name=Clock_2
 CSET daddr_port=DADDR
 CSET dclk_port=DCLK
-CSET dcm_clk_feedback=1X
+CSET dcm_clk_feedback=2X
 CSET dcm_clk_out1_port=CLKDV
-CSET dcm_clk_out2_port=CLK0
+CSET dcm_clk_out2_port=CLK2X
 CSET dcm_clk_out3_port=CLK0
 CSET dcm_clk_out4_port=CLK0
 CSET dcm_clk_out5_port=CLK0
 CSET dcm_clk_out6_port=CLK0
-CSET dcm_clkdv_divide=9.0
+CSET dcm_clkdv_divide=16.0
 CSET dcm_clkfx_divide=1
 CSET dcm_clkfx_multiply=4
 CSET dcm_clkgen_clk_out1_port=CLKFX
@@ -127,7 +127,7 @@ CSET dcm_clkgen_clkin_period=10.000
 CSET dcm_clkgen_notes=None
 CSET dcm_clkgen_spread_spectrum=NONE
 CSET dcm_clkgen_startup_wait=false
-CSET dcm_clkin_divide_by_2=false
+CSET dcm_clkin_divide_by_2=true
 CSET dcm_clkin_period=37.037
 CSET dcm_clkout_phase_shift=NONE
 CSET dcm_deskew_adjust=SYSTEM_SYNCHRONOUS
@@ -189,7 +189,7 @@ CSET mmcm_notes=None
 CSET mmcm_ref_jitter1=0.010
 CSET mmcm_ref_jitter2=0.010
 CSET mmcm_startup_wait=false
-CSET num_out_clks=1
+CSET num_out_clks=2
 CSET override_dcm=false
 CSET override_dcm_clkgen=false
 CSET override_mmcm=false
@@ -197,13 +197,13 @@ CSET override_pll=false
 CSET platform=nt64
 CSET pll_bandwidth=OPTIMIZED
 CSET pll_clk_feedback=CLKFBOUT
-CSET pll_clkfbout_mult=37
+CSET pll_clkfbout_mult=15
 CSET pll_clkfbout_phase=0.000
 CSET pll_clkin_period=37.037
-CSET pll_clkout0_divide=10
+CSET pll_clkout0_divide=128
 CSET pll_clkout0_duty_cycle=0.500
 CSET pll_clkout0_phase=0.000
-CSET pll_clkout1_divide=1
+CSET pll_clkout1_divide=15
 CSET pll_clkout1_duty_cycle=0.500
 CSET pll_clkout1_phase=0.000
 CSET pll_clkout2_divide=1
@@ -266,4 +266,4 @@ CSET use_status=false
 MISC pkg_timestamp=2012-05-10T12:44:55Z
 # END Extra information
 GENERATE
-# CRC: 163828ed
+# CRC: 29368309

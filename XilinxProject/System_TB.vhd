@@ -160,9 +160,9 @@ BEGIN
 	clocking_user : PROCESS
 	BEGIN
 		CLOCK_27MHZ <= '0';
-		wait for 37.037 ns;
+		wait for 18.519 ns;
 		CLOCK_27MHZ <= '1';
-		wait for 37.037 ns;
+		wait for 18.519 ns;
 	END PROCESS;
 	
 

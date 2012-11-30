@@ -1,1 +1,1 @@
--intstyle "ise" -incremental -lib "secureip" -o "D:/Documents/GitHub/1553-Firmware/XilinxProject/System_System_sch_tb_isim_beh.exe" -prj "D:/Documents/GitHub/1553-Firmware/XilinxProject/System_System_sch_tb_beh.prj" "work.System_System_sch_tb" 
+-intstyle "ise" -incremental -lib "secureip" -o "C:/Users/cmulady/Documents/GitHub/1553-Firmware-Curtis_WorkingCopy/XilinxProject/System_System_sch_tb_isim_beh.exe" -prj "C:/Users/cmulady/Documents/GitHub/1553-Firmware-Curtis_WorkingCopy/XilinxProject/System_System_sch_tb_beh.prj" "work.System_System_sch_tb" 

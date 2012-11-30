@@ -110,7 +110,6 @@
         <signal name="i8085_nhold" />
         <signal name="XLXN_170" />
         <signal name="USER_CLK" />
-        <signal name="slower_clk" />
         <signal name="LED_OUT2(7:0)" />
         <signal name="LED_OUT(0)" />
         <signal name="LED_OUT(4)" />
@@ -201,7 +200,7 @@
             <line x2="512" y1="-32" y2="-32" x1="448" />
         </blockdef>
         <blockdef name="Memory">
-            <timestamp>2012-11-29T15:55:3</timestamp>
+            <timestamp>2012-11-29T22:28:45</timestamp>
             <rect width="512" x="32" y="32" height="1344" />
             <line x2="32" y1="80" y2="80" style="linewidth:W" x1="0" />
             <line x2="32" y1="112" y2="112" style="linewidth:W" x1="0" />
@@ -403,14 +402,6 @@
             <line x2="560" y1="-96" y2="-96" x1="496" />
             <rect width="432" x="64" y="-704" height="1152" />
         </blockdef>
-        <blockdef name="bufg">
-            <timestamp>2000-1-1T10:10:10</timestamp>
-            <line x2="64" y1="-64" y2="0" x1="64" />
-            <line x2="64" y1="-32" y2="-64" x1="128" />
-            <line x2="128" y1="0" y2="-32" x1="64" />
-            <line x2="128" y1="-32" y2="-32" x1="224" />
-            <line x2="64" y1="-32" y2="-32" x1="0" />
-        </blockdef>
         <blockdef name="Holt_Connect">
             <timestamp>2012-11-28T1:11:55</timestamp>
             <line x2="0" y1="32" y2="32" x1="64" />
@@ -479,11 +470,12 @@
             <line x2="320" y1="-192" y2="-192" x1="384" />
         </blockdef>
         <blockdef name="Clock_2">
-            <timestamp>2012-11-29T12:6:10</timestamp>
+            <timestamp>2012-11-30T0:53:0</timestamp>
             <rect width="544" x="32" y="32" height="1056" />
             <line x2="32" y1="80" y2="80" x1="0" />
             <line x2="32" y1="432" y2="432" x1="0" />
             <line x2="576" y1="80" y2="80" x1="608" />
+            <line x2="576" y1="176" y2="176" x1="608" />
             <line x2="576" y1="976" y2="976" x1="608" />
         </blockdef>
         <blockdef name="m4_1e">
@@ -508,7 +500,7 @@
             <line x2="128" y1="-200" y2="-160" x1="128" />
         </blockdef>
         <block symbolname="I8085_c" name="XLXI_1">
-            <blockpin signalname="slower_clk" name="X1" />
+            <blockpin signalname="SLOW_CLOCK" name="X1" />
             <blockpin signalname="XLXN_120" name="SID" />
             <blockpin signalname="XLXN_121" name="TRAP" />
             <blockpin signalname="XLXN_122" name="RST75" />
@@ -726,14 +718,6 @@
             <blockpin signalname="IDATA(7:0)" name="IDATA_out(7:0)" />
             <blockpin signalname="i8085_hold" name="i8085_hold" />
         </block>
-        <block symbolname="bufg" name="XLXI_176">
-            <blockpin signalname="XLXN_164" name="I" />
-            <blockpin signalname="FAST_CLOCK" name="O" />
-        </block>
-        <block symbolname="bufg" name="XLXI_177">
-            <blockpin signalname="XLXN_165" name="I" />
-            <blockpin signalname="SLOW_CLOCK" name="O" />
-        </block>
         <block symbolname="Holt_Connect" name="XLXI_178">
             <blockpin signalname="nWR_out" name="nWR_o" />
             <blockpin signalname="nRD_out" name="nRD_o" />
@@ -798,7 +782,8 @@
         <block symbolname="Clock_2" name="XLXI_187">
             <blockpin signalname="USER_CLK" name="clk_in1" />
             <blockpin signalname="CPU_RESET_BUF" name="reset" />
-            <blockpin signalname="slower_clk" name="clk_out1" />
+            <blockpin signalname="SLOW_CLOCK" name="clk_out1" />
+            <blockpin signalname="FAST_CLOCK" name="clk_out2" />
             <blockpin name="locked" />
         </block>
         <block symbolname="sfr_GPIO_OUTPUT" name="XLXI_188">
@@ -923,7 +908,7 @@
             <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="256" y="800" type="branch" />
             <wire x2="336" y1="800" y2="800" x1="256" />
         </branch>
-        <branch name="slower_clk">
+        <branch name="SLOW_CLOCK">
             <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="256" y="160" type="branch" />
             <wire x2="336" y1="160" y2="160" x1="256" />
         </branch>
@@ -1443,22 +1428,12 @@
             <wire x2="3216" y1="848" y2="848" x1="3152" />
             <wire x2="3232" y1="848" y2="848" x1="3216" />
         </branch>
-        <branch name="SLOW_CLOCK">
-            <attrtext style="alignment:SOFT-LEFT;fontsize:28;fontname:Arial" attrname="Name" x="1200" y="1120" type="branch" />
-            <wire x2="1200" y1="1120" y2="1120" x1="1168" />
-        </branch>
-        <branch name="FAST_CLOCK">
-            <attrtext style="alignment:SOFT-LEFT;fontsize:28;fontname:Arial" attrname="Name" x="1200" y="1024" type="branch" />
-            <wire x2="1200" y1="1024" y2="1024" x1="1168" />
-        </branch>
         <branch name="XLXN_164">
             <wire x2="944" y1="1024" y2="1024" x1="912" />
         </branch>
-        <instance x="944" y="1056" name="XLXI_176" orien="R0" />
         <branch name="XLXN_165">
             <wire x2="944" y1="1120" y2="1120" x1="912" />
         </branch>
-        <instance x="944" y="1152" name="XLXI_177" orien="R0" />
         <instance x="3776" y="1200" name="XLXI_178" orien="R0">
         </instance>
         <branch name="SLOW_CLOCK">
@@ -1643,7 +1618,7 @@
             <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="3936" y="1840" type="branch" />
             <wire x2="3984" y1="1840" y2="1840" x1="3936" />
         </branch>
-        <branch name="slower_clk">
+        <branch name="SLOW_CLOCK">
             <attrtext style="alignment:SOFT-LEFT;fontsize:28;fontname:Arial" attrname="Name" x="4656" y="1488" type="branch" />
             <wire x2="4656" y1="1488" y2="1488" x1="4592" />
         </branch>
@@ -1837,6 +1812,10 @@
             <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="208" y="1232" type="branch" />
             <wire x2="256" y1="1232" y2="1232" x1="208" />
             <wire x2="304" y1="1232" y2="1232" x1="256" />
+        </branch>
+        <branch name="FAST_CLOCK">
+            <attrtext style="alignment:SOFT-LEFT;fontsize:28;fontname:Arial" attrname="Name" x="4672" y="1584" type="branch" />
+            <wire x2="4672" y1="1584" y2="1584" x1="4592" />
         </branch>
     </sheet>
 </drawing>

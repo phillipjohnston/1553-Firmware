@@ -87,8 +87,8 @@ architecture test of Clock_2_tb is
 
   -- Declare the input clock signals
   signal CLK_IN1       : std_logic := '1';
-  -- The high bit of the sampling counter
-  signal COUNT         : std_logic;
+  -- The high bits of the sampling counters
+  signal COUNT         : std_logic_vector(2 downto 1);
   -- Status and control signals
   signal RESET         : std_logic := '0';
   signal LOCKED        : std_logic;
@@ -96,7 +96,7 @@ architecture test of Clock_2_tb is
   signal timeout_counter : std_logic_vector (13 downto 0) := (others => '0');
 --  signal defined to stop mti simulation without severity failure in the report
   signal end_of_sim : std_logic := '0';
-  signal CLK_OUT : std_logic_vector(1 downto 1);
+  signal CLK_OUT : std_logic_vector(2 downto 1);
 --Freq Check using the M & D values setting and actual Frequency generated
 
 component Clock_2_exdes
@@ -105,9 +105,9 @@ port
   CLK_IN1           : in  std_logic;
   -- Reset that only drives logic in example design
   COUNTER_RESET     : in  std_logic;
-  CLK_OUT           : out std_logic_vector(1 downto 1) ;
+  CLK_OUT           : out std_logic_vector(2 downto 1) ;
   -- High bits of counters driven by clocks
-  COUNT             : out std_logic;
+  COUNT             : out std_logic_vector(2 downto 1);
   -- Status and control signals
   RESET             : in  std_logic;
   LOCKED            : out std_logic
