@@ -50,7 +50,7 @@ entity i8085_Connect is
            nRD_out : out  STD_LOGIC;
            ALE_out : out  STD_LOGIC;
 			  
-			  --Data, held out for te Holt_Connect
+			  --Data, held out for te Holt_Connect and its validity
            DATA_i_out_L : out  STD_LOGIC_VECTOR (7 downto 0);
            DATA_i_out_U : out  STD_LOGIC_VECTOR (7 downto 0);
            DATA_i_vout_L : out  STD_LOGIC;
@@ -71,6 +71,7 @@ end i8085_Connect;
 
 architecture Behavioral of i8085_Connect is
 
+	--Temp variables for driving outputs
 	signal addr_temp 			: STD_LOGIC_VECTOR(15 DOWNTO 0);
 	signal idata_temp 			: STD_LOGIC_VECTOR(7 DOWNTO 0);
 	signal DATA_i_vout_L_temp 	: STD_LOGIC;
@@ -232,7 +233,6 @@ begin
 	
 	
 	--Take Data from the Holt_Connect and set it up for the i8085
-	--Work under process, fixing messsed up CASE, not rigerously tested
 	
 	DFF_data_out : d_ff_16bit port map (a=>DATA_holt_in, en => holt_data_en, clk => fast_clk, rst => reset, d_ff_out => holt_data_lat);
 	
@@ -348,10 +348,5 @@ begin
 	
 	END PROCESS read_p;
 	
-
-
-	
-	
-
 end Behavioral;
 

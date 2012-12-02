@@ -53,6 +53,7 @@
 -- 16. Fixed the jump commands by adding a PC change in the M3 T3 for JMP, 
 -- 17. Fixed memory writing and memory writing status signals for many commands
 -- 18. Added high impedance out for ADDRESS/DATA and RDBAR/WRBAR for the prerequisite states
+-- 19. Removed some logic reset the disabling the priority interupt functions
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -83,7 +84,7 @@ architecture BEHAVIOR of I8085_c is
 
     signal TSTATES : std_logic_vector (3 downto 0);
     signal MCYCLE  : std_logic_vector (2 downto 0);
-    signal WR_MOD, HOLDFF, INTEFF  : std_logic; 
+    signal HOLDFF, INTEFF  : std_logic; 
     signal RESETOUTFF              : std_logic;    
     signal HLTAFF                  : std_logic;          
     signal Z, S, P, CY, AC         : std_logic;
@@ -254,7 +255,6 @@ begin
 
              RESETOUTFF <= '0';
              HLTAFF <= '0';
-             WR_MOD <= '0';
              INTEFF <= '0';
              M75FF <= '1';
              M65FF <= '1';
@@ -646,7 +646,6 @@ begin
 																			S0  <= '0' ; --after 1 ns;
 																		  end if;
                                                     when "0010" => --when 2 =>
-                                                        WR_MOD <= '1';
                                                         if(DDD(0) = '0') then --L&S
                                                             ADDRESS_OUT(7 downto 0) <= L ; --after 1 ns;
                                                         else
@@ -675,7 +674,6 @@ begin
 																			S0  <= '0' ; --after 1 ns;
 																		  end if;
                                                     when "0010" => --when 2 =>
-                                                        WR_MOD <= '1';
                                                         if(DDD(0) = '0') then --L&S
                                                             ADDRESS_OUT(7 downto 0) <= H ; --after 1 ns;
                                                         else
@@ -740,7 +738,6 @@ begin
                                                         else
                                                             ACC <= ID; -- LDA
                                                         end if;
-                                                        WR_MOD <= '1';
                                                     when "0011" => --when 3 =>
                                                         END_INST_flag <= '1';
                                                         MCYCLE <= "001";
@@ -821,7 +818,6 @@ begin
                                                     S0  <= '1' ; --after 1 ns;
                                                 when "0010" => --when 2 =>
                                                     ADDRESS_OUT(7 downto 0) <= TEMP ; --after 1 ns;
-                                                    WR_MOD <= '1';
                                                 when "0011" => --when 3 =>
                                                     END_INST_flag <= '1';
                                                     MCYCLE <= "001";
@@ -891,7 +887,6 @@ begin
                                                           S0 <= '1' ; --after 1 ns;
                                                   when "0010" => --when 2 =>
                                                           ADDRESS_OUT(7 downto 0) <= TEMP ; --after 1 ns;
-                                                          WR_MOD <= '1';
                                                   when "0011" => --when 3 =>
                                                           END_INST_flag <= '1';
                                                           MCYCLE <= "001";
@@ -1029,7 +1024,6 @@ begin
                                     S1 <= '0' ; --after 1 ns;
                                     S0 <= '1' ; --after 1 ns;
                                 when "0010" => --when 2 => -- WRITE_T2
-                                    WR_MOD <= '1';
                                     ADDRESS_OUT(7 downto 0)  <= TEMP;
                                 when "0011" => --when 3 =>
                                     MCYCLE <= "001";
@@ -1165,10 +1159,6 @@ begin
                                                 PC(15 downto 8) <= ID;
                                                 W_reg <= ID;
                                             when "0011" => --when 3 =>
-                                                --S- ADDRESS_OUT(15 downto 8) <= W_REG ; --after 1 ns;
-                                                --S- ADDRESS_OUT(7 downto 0)  <= Z_REG ; --after 1 ns;
-																--S- PC(15 downto 8) <= W_REG ; --S- Added to expedite jumps
-                                                --S- PC(7 downto 0)  <= Z_REG ; --S- Added to expedite jumps
                                                 END_INST_flag <= '1';
                                                 FETCH_F_WZ <= '1';
                                                 MCYCLE <= "001";
@@ -1466,7 +1456,6 @@ begin
                                                         S1  <= '0' ; --after 1 ns;
                                                         S0  <= '1' ; --after 1 ns;
                                                     when "0010" => --when 2 =>
-                                                        WR_MOD <= '1';
                                                         ADDRESS_OUT(7 downto 0) <= H ; --after 1 ns;
                                                         SP <= plus16(SP,allone16); --dec_sig(SP);
                                                     when "0011" => --when 3 =>
@@ -1481,7 +1470,6 @@ begin
                                                         S1  <= '0' ; --after 1 ns;
                                                         S0  <= '1' ; --after 1 ns;
                                                     when "0010" => --when 2 =>
-                                                        WR_MOD <= '1';
                                                         ADDRESS_OUT(7 downto 0) <= L ; --after 1 ns;
                                                     when "0011" => --when 3 =>
                                                         L <= Z_reg;
@@ -1575,7 +1563,6 @@ begin
                                             when "0010" => --when 2 =>
                                                 SP <= plus16(SP,allone16); --dec_sig(SP); 
                                                 DBUF <= PC(15 downto 8);
-                                                WR_MOD <= '1';
 																ADDRESS_OUT(7 downto 0) <= PC(15 downto 8); --after 1 ns; --S- Moved up a MC
                                             when "0011" => --when 3 => -- WRITE_T3; 
                                                 --S- ADDRESS_OUT(7 downto 0) <= DBUF ; --after 1 ns;
@@ -1591,7 +1578,6 @@ begin
                                                 IOMBAR <= '0' ; --after 1 ns;
                                             when "0010" => --when 2 =>
                                                 DBUF <= PC(7 downto 0);
-                                                WR_MOD <= '1';
 																ADDRESS_OUT(7 downto 0) <= PC(7 downto 0); --after 1 ns; --S- Moved up a MC
                                             when "0011" => --when 3 => -- WRITE_T3; 
 																END_INST_flag <= '1';
@@ -1635,7 +1621,6 @@ begin
                                                             when others => null;
                                                         end case;
                                                         SP <= plus16(SP,allone16); --dec_sig(SP);
-                                                        WR_MOD <= '1';
                                                     when "0011" => --when 3 => 
                                                         MCYCLE <= "011";
                                                         ADDRESS_OUT <= SP ; --after 1 ns;
@@ -1665,7 +1650,6 @@ begin
                                                             ADDRESS_OUT(7) <= S ; --after 1 ns;
                                                         when others => null;
                                                     end case;
-                                                    WR_MOD <= '1';
                                                 when "0011" => --when 3 => 
                                                     END_INST_flag <= '1';
                                                     MCYCLE <= "001";
@@ -1726,7 +1710,6 @@ begin
                                                                 SP <= plus16(SP,allone16); --dec_sig(SP);
                                                                 DBUF <= PC(15 downto 8);
 																					 ADDRESS_OUT(7 downto 0) <= PC(15 downto 8); --S- Moved up a cycle
-                                                                WR_MOD <= '1';
                                                             when "0011" => --when 3 => -- WRITE_T3; 
                                                                 --S- ADDRESS_OUT(7 downto 0) <= DBUF ; --after 1 ns;
                                                                 MCYCLE <= "101";
@@ -1742,9 +1725,7 @@ begin
                                                             when "0010" => --when 2 =>
                                                                 DBUF <= PC(7 downto 0);
 																					 ADDRESS_OUT(7 downto 0) <= PC(7 downto 0); --S- Moved up a cycle
-                                                                WR_MOD <= '1';
                                                             when "0011" => --when 3 => -- WRITE_T3; 
-                                                                --S- ADDRESS_OUT(7 downto 0) <= DBUF ; --after 1 ns;
 																				    PC(15 downto 8) <= W_REG ; --S- Added to expedite jumps
 																				    PC(7 downto 0)  <= Z_REG ; --S- Added to expedite jumps
                                                                 MCYCLE <= "001";
@@ -1802,7 +1783,6 @@ begin
                                             when "0010" => --when 2 => -- SP_READ_T2
                                                 SP <= plus16(SP,allone16); --dec_sig(SP);
                                                 ADDRESS_OUT(7 downto 0) <= PC(15 downto 8) ; --after 1 ns;
-																WR_MOD <= '1'; --S- Missing
                                             when "0011" => --when 3 =>
                                                 MCYCLE <= "011";
                                             when others => null;
@@ -1819,7 +1799,6 @@ begin
                                                 Z_reg(7 downto 6) <= "00";
                                                 Z_reg(5 downto 3) <= TEMP(5 downto 3);
                                                 Z_reg(2 downto 0) <= "000";
-																WR_MOD <= '1'; --S- Missing
                                             when "0011" => --when 3 =>
 																PC(15 downto 8) <= W_REG ; --S- Added to expedite jumps
                                                 PC(7 downto 0)  <= Z_REG ; --S- Added to expedite jumps
@@ -1835,25 +1814,6 @@ begin
                     when others => null;
                  end case; -- end of case IGROUP
 					  
-					  
-					  					 --S- Holding Tstates
---					 Case TSTATES is
---							when "0110" => --S- Added for hold ----------------------------------HOLD ADDED
---								if HOLDFF = '1' then --S- 0110
---									ADDRESS_OUT(15 downto 0) <= "ZZZZZZZZZZZZZZZZ"; --S- Added High Impedance out
---									IOMBAR <= 'Z' ; --S- Added High Impedance out
---								end if;								
---							when "1000" => --S- Added for hold
---								if HOLD = '1' then --S- 1000
---									ADDRESS_OUT(15 downto 0) <= "ZZZZZZZZZZZZZZZZ"; --S- Added High Impedance out
---									IOMBAR <= 'Z' ; --S- Added High Impedance out
---								end if;
---							when "1001" => --S- Added for hold
---								ADDRESS_OUT(15 downto 0) <= "ZZZZZZZZZZZZZZZZ"; --S- Added High Impedance out
---								IOMBAR <= 'Z' ; --S- Added High Impedance out ------------------------HOLD ADDED
---							when others => null;
---					 end case;
-
 					if HLDA_STATE = '1' then --S- 0110
 						ADDRESS_OUT(15 downto 0) <= "ZZZZZZZZZZZZZZZZ"; --S- Added High Impedance out
 						IOMBAR <= 'Z' ; --S- Added High Impedance out
@@ -1933,7 +1893,7 @@ begin
 --
 -- M1, M2, M3, M4, M5
 -------------------------------------------------------------------------
-P4: process(RESETINBAR,X1,TSTATES,MCYCLE,IGROUP,DDD,SSS,HOLDFF,HLTAFF,HOLD,WR_MOD,READY,RST75FF)
+P4: process(RESETINBAR,X1,TSTATES,MCYCLE,IGROUP,DDD,SSS,HOLDFF,HLTAFF,HOLD,READY,RST75FF)
   variable BIMC	                   : logic_state;
 
   begin
@@ -1941,7 +1901,6 @@ P4: process(RESETINBAR,X1,TSTATES,MCYCLE,IGROUP,DDD,SSS,HOLDFF,HLTAFF,HOLD,WR_MO
     if(RESETINBAR = '0') then
         TSTATES <= "0000";
         HOLDFF <= '0';
-        --S-HLDA <= '0';
 		  HLDA_STATE <= '0'; --S- Hold variable
 	
     elsif((X1 = '1') and (X1'event)) then   -- X1 is the clock signal
@@ -1975,10 +1934,6 @@ P4: process(RESETINBAR,X1,TSTATES,MCYCLE,IGROUP,DDD,SSS,HOLDFF,HLTAFF,HOLD,WR_MO
 		    
           when "0011" =>
                     if (HOLDFF = '1') then
---                        if WR_MOD = '1' then 
---                             HLDA <= '1' ; --after 20 ns; -- CK_PERIOD
---                        else HLDA <= '1' ; --after 1 ns; 
---                        end if;
 								HLDA_STATE <= '1'; --S- Hold variable
                     end if;
                     if MCYCLE = "001" then TSTATES <= "0100"; 
@@ -1986,8 +1941,6 @@ P4: process(RESETINBAR,X1,TSTATES,MCYCLE,IGROUP,DDD,SSS,HOLDFF,HLTAFF,HOLD,WR_MO
                     else
                         TSTATES <= "0001"; --TT := 1;
                     end if;
-                    WR_MOD <= '0';
-
           when "0100" =>
                     if( ((IGROUP="00") and (SSS="011"))  -- INX/DCX instructions
                            or 
@@ -2003,7 +1956,6 @@ P4: process(RESETINBAR,X1,TSTATES,MCYCLE,IGROUP,DDD,SSS,HOLDFF,HLTAFF,HOLD,WR_MO
                          end if;
                     elsif HOLDFF = '1' then
                         TSTATES <= "1001"; --TT  := 9;
-                        --S-HLDA <= '1' ; --after 20 ns; -- CK_PERIOD
 								HLDA_STATE <= '1'; --S- Hold variable
                     else
                         TSTATES <= "0001"; --TT  := 1;
@@ -2014,7 +1966,6 @@ P4: process(RESETINBAR,X1,TSTATES,MCYCLE,IGROUP,DDD,SSS,HOLDFF,HLTAFF,HOLD,WR_MO
           when "0110" =>
                     if HOLDFF = '1' then
 								TSTATES <= "1001"; --TT := 9;
-								--S-HLDA <= '1' ; --after 20 ns; -- CK_PERIOD
 								HLDA_STATE <= '1'; --S- Hold variable
                     else TSTATES <= "0001"; --else TT := 1; 
                     end if;
@@ -2032,7 +1983,6 @@ P4: process(RESETINBAR,X1,TSTATES,MCYCLE,IGROUP,DDD,SSS,HOLDFF,HLTAFF,HOLD,WR_MO
                     if not (HOLD = '1') then
 								TSTATES <= "0001";
 								HOLDFF <= '0';
-                        --S-HLDA <= '0' ; --after 20 ns;
 								HLDA_STATE <= '0'; --S- Hold variable
                     end if;
 
@@ -2102,9 +2052,6 @@ P7: process(RESETINBAR,X1,INTEFF,TSTATES,MCYCLE,END_INST_flag)
 	       or (END_INST_flag = '1')) then
                PRIO_ENCODE <= PIE;
            end if;
-	   --S-if PRIO_ENCODE /= "111" then --S- Was not allowing interupts
-	       --S-PRIO_ENCODE <= "111";
-	   --S-end if;
            if(PRIO_ENCODE = "100") then
                INTA <= '1';
            else
