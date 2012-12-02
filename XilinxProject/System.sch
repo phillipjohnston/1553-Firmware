@@ -80,8 +80,6 @@
         <signal name="MTPKRDY" />
         <signal name="READY" />
         <signal name="nRT1MC8" />
-        <signal name="XLXN_974" />
-        <signal name="XLXN_981" />
         <signal name="XLXN_167" />
         <signal name="XLXN_166" />
         <signal name="CPU_RESET" />
@@ -146,7 +144,6 @@
         <signal name="XLXN_124" />
         <signal name="XLXN_125" />
         <signal name="XLXN_170" />
-        <signal name="XLXN_1279" />
         <signal name="CPU_RESET_BUF_INV" />
         <signal name="NET_GND" />
         <port polarity="Input" name="nIRQ" />
@@ -605,7 +602,7 @@
             <blockpin signalname="XLXN_247(15:0)" name="I(15:0)" />
             <blockpin signalname="ADDRESS(15:0)" name="O(15:0)" />
         </block>
-        <block symbolname="sfr_8_output" name="XLXI_98">
+        <block symbolname="sfr_8_output" name="SFR_CONFIG">
             <blockpin signalname="RE" name="RE" />
             <blockpin signalname="WE" name="WE" />
             <blockpin signalname="CLOCK_8085" name="clock" />
@@ -619,7 +616,7 @@
             <blockpin signalname="txinhai" name="TXINHA" />
             <blockpin signalname="txinhbi" name="TXINHB" />
         </block>
-        <block symbolname="sfr_8_input" name="XLXI_99">
+        <block symbolname="sfr_8_input" name="SFR_STAT">
             <blockpin signalname="RE" name="RE" />
             <blockpin signalname="SEL_SFR(1)" name="CS" />
             <blockpin signalname="CLOCK_8085" name="clock" />
@@ -629,7 +626,7 @@
             <blockpin signalname="READYi" name="READY" />
             <blockpin signalname="nRT1MC8i" name="nRT1MC8" />
         </block>
-        <block symbolname="sfr_8_output_pulse" name="XLXI_100">
+        <block symbolname="sfr_8_output_pulse" name="SFR_TRIG">
             <blockpin signalname="RE" name="RE" />
             <blockpin signalname="WE" name="WE" />
             <blockpin signalname="CLOCK_8085" name="clock" />
@@ -772,7 +769,7 @@
         <block symbolname="vcc" name="XLXI_197">
             <blockpin signalname="XLXN_204" name="P" />
         </block>
-        <block symbolname="sfr_GPIO_OUTPUT" name="XLXI_188">
+        <block symbolname="sfr_GPIO_OUTPUT" name="SFR_LEDOUT_H">
             <blockpin signalname="RE" name="RE" />
             <blockpin signalname="WE" name="WE" />
             <blockpin signalname="CLOCK_8085" name="clock" />
@@ -782,7 +779,7 @@
             <blockpin signalname="IDATA(7:0)" name="DOUT(7:0)" />
             <blockpin signalname="LED_OUT2(7:0)" name="Q(7:0)" />
         </block>
-        <block symbolname="sfr_GPIO_OUTPUT" name="XLXI_135">
+        <block symbolname="sfr_GPIO_OUTPUT" name="SFR_LEDOUT_L">
             <blockpin signalname="RE" name="RE" />
             <blockpin signalname="WE" name="WE" />
             <blockpin signalname="CLOCK_8085" name="clock" />
@@ -808,7 +805,7 @@
             <blockpin signalname="GPIO_BUTTON3" name="I" />
             <blockpin signalname="BTNS_IN(3)" name="O" />
         </block>
-        <block symbolname="sfr_GPIO_INPUT" name="XLXI_134">
+        <block symbolname="sfr_GPIO_INPUT" name="SFR_BTNS_IN">
             <blockpin signalname="RE" name="RE" />
             <blockpin signalname="SEL_SFR(3)" name="CS" />
             <blockpin signalname="CLOCK_8085" name="clock" />
@@ -1233,19 +1230,23 @@
             <wire x2="5792" y1="2640" y2="2640" x1="5776" />
             <wire x2="5904" y1="2640" y2="2640" x1="5792" />
         </branch>
-        <instance x="5392" y="2288" name="XLXI_98" orien="R0">
+        <instance x="5392" y="2288" name="SFR_CONFIG" orien="R0">
+            <attrtext style="fontsize:28;fontname:Arial" attrname="InstName" x="64" y="400" type="instance" />
         </instance>
         <branch name="IDATA(7:0)">
             <attrtext style="alignment:SOFT-LEFT;fontsize:28;fontname:Arial" attrname="Name" x="5824" y="3936" type="branch" />
-            <wire x2="5824" y1="3936" y2="3936" x1="5776" />
+            <wire x2="5808" y1="3936" y2="3936" x1="5776" />
+            <wire x2="5824" y1="3936" y2="3936" x1="5808" />
         </branch>
         <branch name="RE">
             <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="5344" y="3680" type="branch" />
-            <wire x2="5392" y1="3680" y2="3680" x1="5344" />
+            <wire x2="5360" y1="3680" y2="3680" x1="5344" />
+            <wire x2="5392" y1="3680" y2="3680" x1="5360" />
         </branch>
         <branch name="SEL_SFR(1)">
             <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="5344" y="3744" type="branch" />
-            <wire x2="5392" y1="3744" y2="3744" x1="5344" />
+            <wire x2="5360" y1="3744" y2="3744" x1="5344" />
+            <wire x2="5392" y1="3744" y2="3744" x1="5360" />
         </branch>
         <branch name="CLOCK_8085">
             <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="5344" y="3808" type="branch" />
@@ -1272,7 +1273,8 @@
             <wire x2="5328" y1="4192" y2="4192" x1="5312" />
             <wire x2="5392" y1="4192" y2="4192" x1="5328" />
         </branch>
-        <instance x="5392" y="3904" name="XLXI_99" orien="R0">
+        <instance x="5392" y="3904" name="SFR_STAT" orien="R0">
+            <attrtext style="fontsize:28;fontname:Arial" attrname="InstName" x="64" y="336" type="instance" />
         </instance>
         <branch name="RE">
             <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="5344" y="2864" type="branch" />
@@ -1414,7 +1416,8 @@
         <iomarker fontsize="28" x="6448" y="4096" name="nRT1MC8" orien="R0" />
         <rect width="3448" x="3476" y="56" height="1640" />
         <rect width="2092" x="4832" y="1796" height="2684" />
-        <instance x="5392" y="3216" name="XLXI_100" orien="R0">
+        <instance x="5392" y="3216" name="SFR_TRIG" orien="R0">
+            <attrtext style="fontsize:28;fontname:Arial" attrname="InstName" x="65" y="272" type="instance" />
         </instance>
         <text style="fontsize:64;fontname:Arial" x="6088" y="1624">Holt Data Transfer Modules</text>
         <text style="fontsize:64;fontname:Arial" x="6092" y="4408">Holt Signal Control Modules</text>
@@ -1619,7 +1622,8 @@
         <branch name="GPIO_LED_3">
             <wire x2="4224" y1="4944" y2="4944" x1="4192" />
         </branch>
-        <instance x="2608" y="5232" name="XLXI_188" orien="R0">
+        <instance x="2608" y="5232" name="SFR_LEDOUT_H" orien="R0">
+            <attrtext style="fontsize:28;fontname:Arial" attrname="InstName" x="72" y="16" type="instance" />
         </instance>
         <branch name="RE">
             <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="2496" y="4880" type="branch" />
@@ -1653,7 +1657,8 @@
             <attrtext style="alignment:SOFT-LEFT;fontsize:28;fontname:Arial" attrname="Name" x="3104" y="4880" type="branch" />
             <wire x2="3104" y1="4880" y2="4880" x1="2992" />
         </branch>
-        <instance x="2624" y="4608" name="XLXI_135" orien="R0">
+        <instance x="2624" y="4608" name="SFR_LEDOUT_L" orien="R0">
+            <attrtext style="fontsize:28;fontname:Arial" attrname="InstName" x="72" y="16" type="instance" />
         </instance>
         <branch name="RE">
             <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="2512" y="4256" type="branch" />
@@ -1720,7 +1725,8 @@
         <instance x="2672" y="3888" name="XLXI_168" orien="R0" />
         <instance x="2672" y="3952" name="XLXI_169" orien="R0" />
         <instance x="2672" y="4016" name="XLXI_170" orien="R0" />
-        <instance x="2624" y="3600" name="XLXI_134" orien="R0">
+        <instance x="2624" y="3600" name="SFR_BTNS_IN" orien="R0">
+            <attrtext style="fontsize:28;fontname:Arial" attrname="InstName" x="64" y="16" type="instance" />
         </instance>
         <branch name="RE">
             <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="2512" y="3376" type="branch" />
