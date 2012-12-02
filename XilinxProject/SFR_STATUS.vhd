@@ -50,12 +50,13 @@ architecture Behavioral of sfr_8_input is
 
 begin
 
+	--Allow processor to read these bits
 	re_cs <= RE & CS;
-	
 	with CS select
 			DOUT <= 	Q_internal when  '1',
 						"ZZZZZZZZ" when others;
-						
+				
+	--Tie Holt input signals to appropriate bits on Internal Register
 	Q(7) <= ACTIVE;
 	Q(6) <= MTPKRDY;
 	Q(5) <= READY;
@@ -65,15 +66,11 @@ begin
 	Q(1) <= '0';
 	Q(0) <= '0';
 
+	--Latch in Data on clock edge
 	process(clock)
 	begin
-	
-
-			
 		if (clock='1' and clock'event) then
-		
-			Q_internal <= Q;
-			
+			Q_internal <= Q;	
 		end if;
 	end process;
 

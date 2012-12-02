@@ -52,53 +52,48 @@ architecture Behavioral of sfr_8_output_pulse is
 
 begin
 
-	re_cs <= RE & CS;
-	we_or_re <= WE OR RE;
 	
+	--we_or_re <= WE;-- OR RE; --Don't allow reading
+	
+	re_cs <= RE & CS;
 	with re_cs select
 		DOUT <= 	"00000000" when "11",
 					"ZZZZZZZZ" when others;
 	
+	--Tie pulsed Holt signals to appropriate internal register bits
 	MTRUN <= Q_internal(7);	
 	BCTRIG <= Q_internal(6);	
 	TEST <= Q_internal(4);	
 	
 
-process(we_or_re, clear)
+--Process of pulsing requested signals high for a few uS
+process(WE, clear)
 	variable COUNT : unsigned (7 DOWNTO 0) := "00000000";
 	begin
-		if clear = '1' then
+	
+		--if clear, then we clear (async)
+		if clear = '1' then												
 			Q_internal <= "00000000";
 			
-		elsif (we_or_re'event and we_or_re = '0') then
-				if(CS='1') then
+		--On Write Enable event
+		elsif (WE'event and WE = '0') then
+				
+				--if CS and we are writing, place data in register, reset counter
+				if(CS='1') then											
 					Q_internal <= DIN;
 					COUNT := "00000000";
-				elsif (CS = '0' AND COUNT < "00000100" ) then
-					--Q_internal <= "00000000";
+				
+				--count up to some value (arbitrary)
+				elsif (CS = '0' AND COUNT < "00000100" ) then 	
 					COUNT := COUNT + 1;
-				elsif (COUNT = "00000100") then
+				
+				--if we reach count thresh, stop and clear internal reg
+				elsif (COUNT = "00000100") then						
 					COUNT := "00000000";
 					Q_internal <= "00000000";
 					
 				end if;
-				
-		--elsif (CS = '0' and CS'event) then
-				--Q_internal <= "00000000";--
 
-		
-
-			
-		
-		
-			
-			--Use WE line to pulse output
-			--IF WE = '1' AND CS = '1' THEN 
-			--	Q_internal <= DIO;
-			--ELSE
-			--	Q_internal <= "00000000";
-			--END IF;
-		
 			
 			
 		end if;

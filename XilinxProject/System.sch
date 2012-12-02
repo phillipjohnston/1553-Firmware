@@ -214,14 +214,14 @@
             <line x2="512" y1="-32" y2="-32" x1="448" />
         </blockdef>
         <blockdef name="Memory">
-            <timestamp>2012-12-2T14:11:51</timestamp>
+            <timestamp>2012-12-2T16:6:14</timestamp>
             <line x2="32" y1="80" y2="80" style="linewidth:W" x1="0" />
             <line x2="32" y1="112" y2="112" style="linewidth:W" x1="0" />
             <line x2="32" y1="144" y2="144" x1="0" />
             <line x2="32" y1="208" y2="208" style="linewidth:W" x1="0" />
             <line x2="32" y1="272" y2="272" x1="0" />
             <line x2="544" y1="80" y2="80" style="linewidth:W" x1="576" />
-            <rect width="512" x="32" y="36" height="296" />
+            <rect width="512" x="32" y="36" height="288" />
         </blockdef>
         <blockdef name="vcc">
             <timestamp>2000-1-1T10:10:10</timestamp>
@@ -273,7 +273,8 @@
             <circle r="16" cx="144" cy="-32" />
         </blockdef>
         <blockdef name="SFR_Address_Decoder">
-            <timestamp>2012-11-23T22:37:54</timestamp>
+            <timestamp>2012-12-2T14:46:40</timestamp>
+            <line x2="0" y1="224" y2="224" x1="64" />
             <line x2="0" y1="96" y2="96" x1="64" />
             <line x2="0" y1="160" y2="160" x1="64" />
             <line x2="0" y1="32" y2="32" x1="64" />
@@ -281,10 +282,10 @@
             <line x2="0" y1="-32" y2="-32" x1="64" />
             <rect width="64" x="320" y="-44" height="24" />
             <line x2="384" y1="-32" y2="-32" x1="320" />
-            <rect width="256" x="64" y="-64" height="256" />
+            <rect width="256" x="64" y="-64" height="320" />
         </blockdef>
         <blockdef name="sfr_8_output">
-            <timestamp>2012-11-15T1:38:43</timestamp>
+            <timestamp>2012-12-2T15:7:41</timestamp>
             <line x2="384" y1="96" y2="96" x1="320" />
             <line x2="384" y1="160" y2="160" x1="320" />
             <line x2="384" y1="224" y2="224" x1="320" />
@@ -295,11 +296,11 @@
             <rect width="64" x="320" y="20" height="24" />
             <line x2="384" y1="32" y2="32" x1="320" />
             <line x2="0" y1="-288" y2="-288" x1="64" />
-            <line x2="0" y1="-224" y2="-224" x1="64" />
             <line x2="0" y1="-160" y2="-160" x1="64" />
             <line x2="0" y1="-96" y2="-96" x1="64" />
             <line x2="0" y1="-32" y2="-32" x1="64" />
-            <rect width="256" x="64" y="-320" height="704" />
+            <rect width="256" x="64" y="-320" height="708" />
+            <line x2="0" y1="-224" y2="-224" x1="64" />
         </blockdef>
         <blockdef name="sfr_8_input">
             <timestamp>2012-11-15T2:6:40</timestamp>
@@ -369,10 +370,8 @@
             <line x2="384" y1="-224" y2="-224" x1="320" />
         </blockdef>
         <blockdef name="sfr_GPIO_OUTPUT">
-            <timestamp>2012-11-27T1:56:6</timestamp>
-            <rect width="256" x="64" y="-384" height="384" />
+            <timestamp>2012-12-2T15:17:47</timestamp>
             <line x2="0" y1="-352" y2="-352" x1="64" />
-            <line x2="0" y1="-288" y2="-288" x1="64" />
             <line x2="0" y1="-224" y2="-224" x1="64" />
             <line x2="0" y1="-160" y2="-160" x1="64" />
             <line x2="0" y1="-96" y2="-96" x1="64" />
@@ -382,6 +381,8 @@
             <line x2="384" y1="-352" y2="-352" x1="320" />
             <rect width="64" x="320" y="-44" height="24" />
             <line x2="384" y1="-32" y2="-32" x1="320" />
+            <rect width="256" x="64" y="-384" height="384" />
+            <line x2="0" y1="-288" y2="-288" x1="64" />
         </blockdef>
         <blockdef name="i8085_Connect">
             <timestamp>2012-11-30T18:26:31</timestamp>
@@ -604,17 +605,17 @@
         </block>
         <block symbolname="sfr_8_output" name="SFR_CONFIG">
             <blockpin signalname="RE" name="RE" />
-            <blockpin signalname="WE" name="WE" />
             <blockpin signalname="CLOCK_8085" name="clock" />
             <blockpin signalname="RESET_OUT" name="clear" />
             <blockpin signalname="SEL_SFR(0)" name="CS" />
             <blockpin signalname="ADDR_OUT_8085(7:0)" name="DIN(7:0)" />
-            <blockpin signalname="IDATA(7:0)" name="DOUT(7:0)" />
             <blockpin signalname="bcenai" name="BCENA" />
             <blockpin signalname="rt1enai" name="RT1ENA" />
             <blockpin signalname="rt1ssfi" name="RT1SSF" />
             <blockpin signalname="txinhai" name="TXINHA" />
             <blockpin signalname="txinhbi" name="TXINHB" />
+            <blockpin signalname="IDATA(7:0)" name="DOUT(7:0)" />
+            <blockpin signalname="nWR" name="nWR" />
         </block>
         <block symbolname="sfr_8_input" name="SFR_STAT">
             <blockpin signalname="RE" name="RE" />
@@ -771,23 +772,23 @@
         </block>
         <block symbolname="sfr_GPIO_OUTPUT" name="SFR_LEDOUT_H">
             <blockpin signalname="RE" name="RE" />
-            <blockpin signalname="WE" name="WE" />
             <blockpin signalname="CLOCK_8085" name="clock" />
             <blockpin signalname="RESET_OUT" name="clear" />
             <blockpin signalname="SEL_SFR(5)" name="CS" />
             <blockpin signalname="ADDR_OUT_8085(7:0)" name="DIN(7:0)" />
             <blockpin signalname="IDATA(7:0)" name="DOUT(7:0)" />
             <blockpin signalname="LED_OUT2(7:0)" name="Q(7:0)" />
+            <blockpin signalname="nWR" name="nWR" />
         </block>
         <block symbolname="sfr_GPIO_OUTPUT" name="SFR_LEDOUT_L">
             <blockpin signalname="RE" name="RE" />
-            <blockpin signalname="WE" name="WE" />
             <blockpin signalname="CLOCK_8085" name="clock" />
             <blockpin signalname="RESET_OUT" name="clear" />
             <blockpin signalname="SEL_SFR(4)" name="CS" />
             <blockpin signalname="ADDR_OUT_8085(7:0)" name="DIN(7:0)" />
             <blockpin signalname="IDATA(7:0)" name="DOUT(7:0)" />
             <blockpin signalname="LED_OUT(7:0)" name="Q(7:0)" />
+            <blockpin signalname="nWR" name="nWR" />
         </block>
         <block symbolname="ibuf" name="XLXI_167">
             <blockpin signalname="GPIO_BUTTON0" name="I" />
@@ -814,10 +815,11 @@
         </block>
         <block symbolname="SFR_Address_Decoder" name="XLXI_96">
             <blockpin signalname="ALE" name="ALE" />
-            <blockpin signalname="ADDR_OUT_8085(15:0)" name="ADDR(15:0)" />
-            <blockpin signalname="SEL_SFR(15:0)" name="SEL(15:0)" />
             <blockpin signalname="WE" name="WR" />
             <blockpin signalname="RE" name="RD" />
+            <blockpin signalname="ADDR_OUT_8085(15:0)" name="ADDR(15:0)" />
+            <blockpin signalname="SEL_SFR(15:0)" name="SEL(15:0)" />
+            <blockpin signalname="RESET_OUT" name="RESET" />
         </block>
         <block symbolname="Mem8085_Controller" name="XLXI_19">
             <blockpin signalname="ALE" name="ALE" />
@@ -1179,31 +1181,33 @@
         <iomarker fontsize="28" x="6464" y="688" name="nOE" orien="R0" />
         <branch name="RE">
             <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="5344" y="2000" type="branch" />
-            <wire x2="5392" y1="2000" y2="2000" x1="5344" />
-        </branch>
-        <branch name="WE">
-            <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="5344" y="2064" type="branch" />
-            <wire x2="5392" y1="2064" y2="2064" x1="5344" />
+            <wire x2="5360" y1="2000" y2="2000" x1="5344" />
+            <wire x2="5392" y1="2000" y2="2000" x1="5360" />
         </branch>
         <branch name="CLOCK_8085">
             <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="5344" y="2128" type="branch" />
-            <wire x2="5392" y1="2128" y2="2128" x1="5344" />
+            <wire x2="5360" y1="2128" y2="2128" x1="5344" />
+            <wire x2="5392" y1="2128" y2="2128" x1="5360" />
         </branch>
         <branch name="RESET_OUT">
             <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="5344" y="2192" type="branch" />
-            <wire x2="5392" y1="2192" y2="2192" x1="5344" />
+            <wire x2="5360" y1="2192" y2="2192" x1="5344" />
+            <wire x2="5392" y1="2192" y2="2192" x1="5360" />
         </branch>
         <branch name="SEL_SFR(0)">
             <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="5344" y="2256" type="branch" />
-            <wire x2="5392" y1="2256" y2="2256" x1="5344" />
+            <wire x2="5360" y1="2256" y2="2256" x1="5344" />
+            <wire x2="5392" y1="2256" y2="2256" x1="5360" />
         </branch>
         <branch name="ADDR_OUT_8085(7:0)">
             <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="5344" y="2320" type="branch" />
-            <wire x2="5392" y1="2320" y2="2320" x1="5344" />
+            <wire x2="5360" y1="2320" y2="2320" x1="5344" />
+            <wire x2="5392" y1="2320" y2="2320" x1="5360" />
         </branch>
         <branch name="IDATA(7:0)">
             <attrtext style="alignment:SOFT-LEFT;fontsize:28;fontname:Arial" attrname="Name" x="5824" y="2320" type="branch" />
-            <wire x2="5824" y1="2320" y2="2320" x1="5776" />
+            <wire x2="5808" y1="2320" y2="2320" x1="5776" />
+            <wire x2="5824" y1="2320" y2="2320" x1="5808" />
         </branch>
         <branch name="bcenai">
             <attrtext style="alignment:SOFT-BCENTER;fontsize:28;fontname:Arial" attrname="Name" x="5792" y="2384" type="branch" />
@@ -1231,7 +1235,7 @@
             <wire x2="5904" y1="2640" y2="2640" x1="5792" />
         </branch>
         <instance x="5392" y="2288" name="SFR_CONFIG" orien="R0">
-            <attrtext style="fontsize:28;fontname:Arial" attrname="InstName" x="64" y="400" type="instance" />
+            <attrtext style="fontsize:28;fontname:Arial" attrname="InstName" x="64" y="464" type="instance" />
         </instance>
         <branch name="IDATA(7:0)">
             <attrtext style="alignment:SOFT-LEFT;fontsize:28;fontname:Arial" attrname="Name" x="5824" y="3936" type="branch" />
@@ -1629,10 +1633,6 @@
             <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="2496" y="4880" type="branch" />
             <wire x2="2608" y1="4880" y2="4880" x1="2496" />
         </branch>
-        <branch name="WE">
-            <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="2496" y="4944" type="branch" />
-            <wire x2="2608" y1="4944" y2="4944" x1="2496" />
-        </branch>
         <branch name="CLOCK_8085">
             <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="2496" y="5008" type="branch" />
             <wire x2="2608" y1="5008" y2="5008" x1="2496" />
@@ -1663,10 +1663,6 @@
         <branch name="RE">
             <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="2512" y="4256" type="branch" />
             <wire x2="2624" y1="4256" y2="4256" x1="2512" />
-        </branch>
-        <branch name="WE">
-            <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="2512" y="4320" type="branch" />
-            <wire x2="2624" y1="4320" y2="4320" x1="2512" />
         </branch>
         <branch name="CLOCK_8085">
             <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="2512" y="4384" type="branch" />
@@ -1772,8 +1768,8 @@
             <wire x2="3904" y1="2400" y2="2400" x1="3824" />
         </branch>
         <branch name="ALE">
-            <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="3888" y="2336" type="branch" />
-            <wire x2="3904" y1="2336" y2="2336" x1="3888" />
+            <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="3824" y="2336" type="branch" />
+            <wire x2="3904" y1="2336" y2="2336" x1="3824" />
         </branch>
         <branch name="RE">
             <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="3824" y="2464" type="branch" />
@@ -2013,5 +2009,21 @@
         <iomarker fontsize="28" x="1264" y="3808" name="NET_GND" orien="R270" />
         <rect width="1640" x="76" y="3088" height="1140" />
         <text style="fontsize:64;fontname:Arial" x="860" y="4168">Misc Signals and Ground Net</text>
+        <branch name="RESET_OUT">
+            <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="3824" y="2528" type="branch" />
+            <wire x2="3904" y1="2528" y2="2528" x1="3824" />
+        </branch>
+        <branch name="nWR">
+            <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="5344" y="2064" type="branch" />
+            <wire x2="5392" y1="2064" y2="2064" x1="5344" />
+        </branch>
+        <branch name="nWR">
+            <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="2512" y="4320" type="branch" />
+            <wire x2="2624" y1="4320" y2="4320" x1="2512" />
+        </branch>
+        <branch name="nWR">
+            <attrtext style="alignment:SOFT-RIGHT;fontsize:28;fontname:Arial" attrname="Name" x="2496" y="4944" type="branch" />
+            <wire x2="2608" y1="4944" y2="4944" x1="2496" />
+        </branch>
     </sheet>
 </drawing>

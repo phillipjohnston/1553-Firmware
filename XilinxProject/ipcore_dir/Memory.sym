@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <symbol version="7" name="Memory">
     <symboltype>BLOCK</symboltype>
-    <timestamp>2012-12-2T14:11:51</timestamp>
+    <timestamp>2012-12-2T16:6:14</timestamp>
     <pin polarity="Input" x="0" y="80" name="addra(14:0)" />
     <pin polarity="Input" x="0" y="112" name="dina(7:0)" />
     <pin polarity="Input" x="0" y="144" name="ena" />
@@ -21,7 +21,7 @@
         <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="36" y="272" type="pin clka" />
         <line x2="544" y1="80" y2="80" style="linewidth:W" x1="576" />
         <attrtext style="alignment:RIGHT;fontsize:24;fontname:Arial" attrname="PinName" x="540" y="80" type="pin douta(7:0)" />
-        <rect width="512" x="32" y="36" height="296" />
-        <text style="fontsize:40;fontname:Arial" x="32" y="8">Memory</text>
+        <rect width="512" x="32" y="36" height="288" />
+        <text style="fontsize:40;fontname:Arial" x="32" y="16">Memory</text>
     </graph>
 </symbol>

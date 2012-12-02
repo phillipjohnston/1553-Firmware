@@ -20,22 +20,14 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx primitives in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
 
 entity SFR_Address_Decoder is
     Port ( ADDR : in  STD_LOGIC_VECTOR (15 downto 0);
 			  ALE : in STD_LOGIC;
 			  WR : in STD_LOGIC;
 			  RD : in STD_LOGIC;
-           SEL : out  STD_LOGIC_VECTOR (15 downto 0)
-			  
+           SEL : out  STD_LOGIC_VECTOR (15 downto 0);
+			  RESET : IN STD_LOGIC
 			  );
 			  
 end SFR_Address_Decoder;
@@ -47,22 +39,35 @@ architecture Behavioral of SFR_Address_Decoder is
 	SIGNAL wrorrd_event : STD_LOGIC;
 	SIGNAL activate : STD_LOGIC;
 	
-	COMPONENT Latch16Bit IS
-		PORT(
-			data    : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
-			enable : IN STD_LOGIC;
-			clk	: IN STD_LOGIC;
-			q   : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
-		);
-	END COMPONENT;
+--	COMPONENT Latch16Bit IS
+--		PORT(
+--			data    : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+--			enable : IN STD_LOGIC;
+--			clk	: IN STD_LOGIC;
+--			q   : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
+--		);
+--	END COMPONENT;
+	
+	COMPONENT d_ff_16bit is
+		Port (  a : in  STD_LOGIC_VECTOR (15 downto 0);
+				  en : in  STD_LOGIC;
+				  clk : in  STD_LOGIC;
+				  rst : in STD_LOGIC;
+				  d_ff_out : out  STD_LOGIC_VECTOR (15 downto 0));
+		end COMPONENT;
+	
+	
 	
 
 begin
 
-	wrorrd_event <= WR OR RD;
-	activate <= NOT ((ALE AND (NOT RD  AND NOT WR))); 
-	addr_L : Latch16Bit port map (data=>ADDR, enable => ALE, clk => wrorrd_event,q => ADDR_LATCHED);
+	wrorrd_event <= WR OR RD; -- Latch data in when 
+	activate <= NOT ((ALE AND (NOT RD AND NOT WR))); -- Data is not valid when ALE is high and RD or WR are low, valid otherwise
+--	addr_L : Latch16Bit port map (data=>ADDR, enable => ALE, clk => wrorrd_event,q => ADDR_LATCHED);
+	addr_L : d_ff_16bit port map (a=>ADDR, en => ALE, clk => wrorrd_event,rst => reset, d_ff_out => ADDR_LATCHED);
 
+	--Activate the proper SFR line, depending on the address received
+	--Only activate if data is valid
 	WITH ADDR_LATCHED&activate SELECT
 		SEL <= 	X"0001" 		WHEN base_addr & "00000000" & '1',
 					X"0002" 		WHEN base_addr & "00000001" & '1',

@@ -1,4 +1,2 @@
-work	"Holt_Connect.vhd"
-work	"d_ff_16bit.vhd"
-work	"d_ff_1bit.vhd"
+work	"SFR_GPIO_OUTPUT.vhd"
 work	"d_ff_8bit.vhd"

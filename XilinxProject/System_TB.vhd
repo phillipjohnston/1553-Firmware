@@ -172,6 +172,9 @@ BEGIN
 		CPU_RESET <= '1';
 		
 		ready <= '1';
+		nrt1mc8 <= '0';
+		mtpkrdy <= '0';
+		active <= '0';
 		
 		GPIO_BUTTON0 <= '0';
 		GPIO_BUTTON1 <= '1';
