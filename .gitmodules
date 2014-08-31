@@ -1,3 +1,6 @@
 [submodule "8085-HI6130-Port"]
 	path = 8085-HI6130-Port
 	url = https://github.com/TheWorldJoker/8085-HI6130-Port
+[submodule "SREC-to-COE"]
+	path = SREC-to-COE
+	url = https://github.com/TheWorldJoker/SREC-to-COE
